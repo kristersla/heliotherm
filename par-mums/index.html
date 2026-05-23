@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Par mums – Heliotherm Baltics</title>
+  <link rel="icon" type="image/x-icon" href="../media/image/favicon.ico" />
+  <meta name="theme-color" content="#0b0c0f" />
+  <meta name="description" content="Heliotherm ir Eiropas siltumsūkņu tehnoloģiju līderis ar desmitgadēm ilgu pieredzi, starptautiskiem patentiēm un sertificētu kvalitātes vadību. Uzziniet vairāk par mūsu stāstu, kvalitāti un atbalstu sabiedrībai." />
+  <link rel="stylesheet" href="../assets/style/style.css" />
+
+  <!-- Page specific styles for the timeline and badges -->
+  <style>
+    .section-respo{
+      padding-top: 20px;
+    }
+
+    .page-hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: var(--gap);
+      align-items: center;
+      padding-top: 60px;
+    }
+
+    .eyebrow {
+      font-size: .85rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 26px;
+      display: grid;
+      gap: 18px;
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 12px;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -26px;
+      top: .5rem;
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: #fff;
+      border: 2px solid var(--brand);
+      box-shadow: 0 0 0 4px rgba(196,18,47,.08);
+    }
+    .timeline-year {
+      font-weight: 800;
+      font-size: .95rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: .15rem;
+    }
+    .timeline-item h3 {
+      margin: 0 0 .15rem;
+      font-size: 1.05rem;
+    }
+
+    .logo-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+    .logo-chip {
+      font-size: .78rem;
+      padding: .35rem .7rem;
+      border-radius: 999px;
+      border: 1px solid var(--hair);
+      background: #fff;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: var(--gap);
+    }
+
+    /* ========= Mobile and tablet tweaks (desktop stays same) ========= */
+
+    @media (max-width: 900px) {
+      .page-hero-inner {
+        grid-template-columns: 1fr;
+        padding-top: 40px;
+        row-gap: 28px;
+      }
+
+      .page-hero .card {
+        margin-top: 8px;
+      }
+
+      .timeline {
+        padding-left: 22px;
+        gap: 16px;
+      }
+
+      .support-grid {
+        grid-template-columns: 1fr;
+        row-gap: 24px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .section,
+      .section-quality,
+      .section-members,
+      .section-terms,
+      .section-respo {
+        padding-top: 32px;
+        padding-bottom: 40px;
+      }
+
+      .timeline-item {
+        padding-left: 10px;
+      }
+
+      .timeline-item h3 {
+        font-size: .98rem;
+      }
+
+      .timeline {
+        gap: 14px;
+      }
+
+      .logo-chip {
+        white-space: normal;
+      }
+
+      .card {
+        border-radius: 18px;
+        padding: 18px 18px 20px;
+      }
+
+      .members-card,
+      .quality-card,
+      .terms-card {
+        border-radius: 18px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page-hero h1 {
+        font-size: clamp(1.8rem, 7vw, 2.3rem) !important;
+        line-height: 1.15;
+      }
+
+      .page-hero .muted {
+        font-size: .95rem;
+      }
+
+      .pill {
+        white-space: normal;
+      }
+
+      .timeline {
+        padding-left: 18px;
+      }
+
+      .timeline-item h3 {
+        font-size: .95rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+        gap: .6rem;
+      }
+
+      .actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .logo-chip {
+        font-size: .76rem;
+        padding: .3rem .6rem;
+      }
+    }
+    /* Mobile timeline layout */
+    @media (max-width: 768px) {
+      .timeline-title {
+        margin-bottom: 20px;
+      }
+
+      .timeline-title h2 {
+        font-size: clamp(1.4rem, 5vw, 1.8rem);
+        line-height: 1.25;
+      }
+
+      .timeline {
+        padding-left: 0;
+      }
+
+      /* Remove vertical line and circles on mobile */
+      .timeline::before,
+      .timeline ul::before,
+      .timeline li::before,
+      .timeline-item::before,
+      .timeline .tcontent::before {
+        content: none !important;
+      }
+
+      .timeline ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .timeline ul li {
+        margin: 0;
+      }
+
+      /* Turn each entry into a full width card */
+      .timeline .tcontent {
+        position: static;
+        margin: 0;
+        padding: 14px 16px 14px;
+        border-radius: 16px;
+        background: #fff;
+        border: 1px solid var(--ring);
+        box-shadow: 0 8px 24px rgba(15,23,42,.06);
+      }
+
+      .timeline .tcontent h3 {
+        font-size: .98rem;
+      }
+
+      .timeline .tcontent p {
+        font-size: .93rem;
+        line-height: 1.55;
+      }
+    }
+
+    /* keep original 900px rule at the end if you prefer, but merged above already */
+  </style>
+</head>
+<body>
+  <app-header active="about"></app-header>
+
+  <!-- ===== Hero / Intro ===== -->
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <div>
+        <div class="eyebrow">Heliotherm – Eiropas tehnoloģiju līderis</div>
+        <h1 style="font-size:clamp(2rem,4.2vw,3rem);line-height:1.05;margin:.4rem 0 0;">
+          Siltumsūkņu tehnoloģija prasīgākajiem projektiem.
+        </h1>
+        <p class="muted" style="margin-top:1rem;max-width:65ch;">
+          Daudzi starptautiskie patenti un balvas apliecina Heliotherm kā vienu no Eiropas vadošajiem siltumsūkņu
+          ražotājiem. Mūsu lielākā balva tomēr ir klientu apmierinātība, ko veidojām kopā ar vairāk nekā
+          180 sertificētiem partneriem visā Eiropā. 
+        </p>
+        <p class="muted" style="max-width:65ch;">Latvijā esam realizējuši vairāk kā <strong>600 veiksmīgus</strong> projektus. </p>
+        <p class="muted" style="max-width:65ch;">
+          Mūsu aicinājums ikvienam, kurš vēlas pamest neprognozējamu fosilā kurināmā pasauli:
+          <strong>Kļūstiet neatkarīgi ar Heliotherm siltumsūkņiem.</strong>
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.1rem;">
+          <span class="pill">Starptautiski patenti un balvas</span>
+          <span class="pill">180+ sertificētu partneru tīkls</span>
+          <span class="pill">Risinājumi no dzīvokļa līdz industrijai</span>
+        </div>
+      </div>
+
+      <div class="card" style="background:#fff;border-radius:20px;">
+        <h3 style="margin:0 0 .4rem;">Heliotherm Baltics Latvijā</h3>
+        <p class="muted" style="margin:0 0 .5rem;">
+          SIA Heliotherm Baltics ir Heliotherm tehnoloģiju pārstāvis Baltijas reģionā.
+          Mēs apvienojam Eiropas inženieriju ar vietējo tirgus izpratni un piedāvājam pilnu ciklu:
+          no konsultācijas un projektēšanas līdz iekārtu piegādei un servisam. 
+        </p>
+        <ul class="feature-list muted" style="margin-top:.3rem;">
+          <li>Siltumsūkņi privātmājām, daudzdzīvokļu namiem un komerctelpām</li>
+          <li>Inženiertehniskie risinājumi sarežģītām ēkām un modernizācijas projektiem</li>
+          <li>Ilgtspējīga pieeja, kas palīdz samazināt izmaksas un CO₂ emisijas</li>
+        </ul>
+        <div class="actions" style="margin-top:1rem;">
+          <a class="btn primary" href="/heliotherm/produkti/">Apskatīt produktus</a>
+          <a class="btn ghost" href="/heliotherm/kontakti/">Sazināties ar mums</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Brand timeline ===== -->
+  <section class="timeline-cover" id="timeline">
+    <div class="container">
+      <div class="timeline-title">
+        <span class="eyebrow">Attīstības ceļš</span>
+        <h2>No pirmā prototipa līdz tehnoloģiju līdera statusam.</h2>
+        <p class="muted">
+          Heliotherm stāsts ir vairāk nekā trīsdesmit gadu ilga nepārtraukta inovācija siltumsūkņu jomā.
+          Katrs solis zemāk mūs ir pietuvinājis efektīvākai un ilgtspējīgākai apkurei.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <ul>
+          <li>
+            <div class="tcontent">
+              <div class="tbadge">1987</div>
+              <h3>Uzņēmuma dibināšana</h3>
+              <p class="muted">
+                Uzņēmumu dibina īpašnieks un vadītājs Andreas Bangēri. Vīzija ir radīt siltumsūkņu tehnoloģiju,
+                kas sniedz stabilu komfortu un energo neatkarību.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="tcontent">
+              <div class="tbadge">1994</div>
+              <h3>Pirmais modulējamais siltumsūknis</h3>
+              <p class="muted">
+                Tiek prezentēts pirmais modulējamais siltumsūknis, kas pielāgo jaudu reālajai slodzei
+                un strādā daudz efektīvāk par tradicionālajām iekārtām.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="tcontent">
+              <div class="tbadge">1997</div>
+              <h3>Tālvadības risinājumi</h3>
+              <p class="muted">
+                Izstrādāta tālvadības tehnoloģija, kas ļauj uzraudzīt un regulēt siltumsūkņu darbību attālināti.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="tcontent">
+              <div class="tbadge">2003</div>
+              <h3>Web Control 321</h3>
+              <p class="muted">
+                Tiek izstrādāta viena no pirmajām web vadības sistēmām siltumsūkņiem, kas ļauj pārvaldīt iekārtu
+                ar pārlūka palīdzību.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="tcontent">
+              <div class="tbadge">2005</div>
+              <h3>Pilnībā modulējams siltumsūknis</h3>
+              <p class="muted">
+                Heliotherm prezentē pilnībā modulējamu siltumsūkni, kas precīzi seko nepieciešamajai jaudai
+                un optimizē elektroenerģijas patēriņu.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="tcontent">
+              <div class="tbadge">2007</div>
+              <h3>Kompetences centra atvēršana</h3>
+              <p class="muted">
+                Langkampfenā, Tirolē tiek atvērts Heliotherm siltumsūkņu kompetences centrs. Šeit notiek izpēte,
+                attīstība un uzstādītāju apmācība.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="tcontent">
+              <div class="tbadge">2010</div>
+              <h3>Pētniecības un ražošanas paplašināšana</h3>
+              <p class="muted">
+                Tiek izveidots pētniecības un attīstības centrs un paplašināta ražošanas teritorija,
+                lai apmierinātu augošo pieprasījumu.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="tcontent">
+              <div class="tbadge">2011</div>
+              <h3>ISO 9001 sertifikācija</h3>
+              <p class="muted">
+                Heliotherm kvalitātes vadības sistēma tiek sertificēta atbilstoši DIN EN ISO 9001 un
+                to apstiprina neatkarīgā ALL CERT institūcija.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="tcontent">
+              <div class="tbadge">2012</div>
+              <h3>MCS sertifikācija</h3>
+              <p class="muted">
+                Papildu starptautiskā sertifikācija nostiprina uzņēmuma pozīcijas Eiropas tirgū.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="tcontent">
+              <div class="tbadge">2015</div>
+              <h3>Saules fotoelementu integrācija</h3>
+              <p class="muted">
+                Siltumsūkņu sistēmās tiek integrēti saules paneļi, kas ļauj izmantot pašu saražoto elektrību
+                un samazināt izmaksas.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div class="tcontent">
+              <div class="tbadge">2016</div>
+              <h3>Sensor produktu līnija</h3>
+              <p class="muted">
+                Tirgū nonāk Sensor produktu līnija ar vēl precīzāku vadību un augstu efektivitāti sarežģītos apstākļos.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Quality management ===== -->
+  <section class="section section-quality" id="quality">
+    <div class="container">
+      <div class="quality-grid">
+        <!-- Left side -->
+        <div class="quality-main">
+          <span class="eyebrow">Kvalitātes vadība</span>
+          <h2 class="quality-heading">
+            ISO&nbsp;9001 sertificēta kvalitāte
+          </h2>
+
+          <p class="muted">
+            Heliotherm kvalitātes vadības sistēma ir sertificēta saskaņā ar DIN EN ISO&nbsp;9001.
+            Sertifikācijas audits apliecina, ka procesi tiek plānoti un īstenoti tā, lai nodrošinātu
+            augstu pakalpojumu kvalitāti un darba efektivitāti.
+          </p>
+          <p class="muted">
+            Galvenie principi ir skaidrs fokuss uz klientu, uz procesu un risinājumiem vērsta domāšana
+            un nepārtraukti uzlabojumi. Trīs gadus derīga sertifikācija ar ikgadējiem uzraudzības auditiem
+            nodrošina, ka sistēma ir dzīvotspējīga un pastāvīgi pilnveidojas.
+          </p>
+
+          <div class="quality-meta">
+            <div class="qmeta-item">
+              <div class="qmeta-label">Sertifikācija</div>
+              <div class="qmeta-value">DIN EN ISO&nbsp;9001</div>
+            </div>
+            <div class="qmeta-item">
+              <div class="qmeta-label">Audits</div>
+              <div class="qmeta-value">ALL CERT</div>
+            </div>
+            <div class="qmeta-item">
+              <div class="qmeta-label">Fokuss</div>
+              <div class="qmeta-value">Ilgtermiņa sadarbība</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right side -->
+        <aside class="quality-side">
+          <div class="quality-card">
+            <div class="quality-card-header">
+              <p class="quality-card-eyebrow">ISO&nbsp;9001</p>
+              <h3>Ko tas nozīmē klientiem</h3>
+            </div>
+
+            <ul class="check-list muted">
+              <li>Strukturēta kvalitātes vadība visos projektu posmos</li>
+              <li>Dokumentēti procesi un skaidra atbildība</li>
+              <li>Regulāri uzraudzības auditi un uzlabojumi</li>
+              <li>Prognozējama pakalpojumu kvalitāte un drošība</li>
+            </ul>
+
+            <div class="quality-foot">
+              <a class="btn quality-btn" href="media/docs/heliotherm-iso9001.pdf">
+                Lejupielādēt kvalitātes sertifikātu
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="quality-quote-row">
+        <div class="quality-quote">
+          <p>
+            “Sertifikācija nebija obligāta prasība. Mums bija svarīgi, lai augstos iekšējos standartus
+            apstiprinātu neatkarīga institūcija.”
+          </p>
+          <span class="muted">Andreas Bangēri, Heliotherm vadītājs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Memberships & associations ===== -->
+  <section class="section section-members">
+    <div class="container members-grid">
+      <!-- Left column -->
+      <div class="members-main">
+        <span class="eyebrow">Dalība un partnerības</span>
+        <h2 class="members-title">
+          Daļa no vadošajām Eiropas nozares apvienībām.
+        </h2>
+        <p class="muted">
+          Heliotherm ir aktīvs dalībnieks reģionālajās un Eiropas organizācijās,
+          kas strādā pie atjaunojamās enerģijas un efektīvu ēku risinājumiem.
+          Tās nodrošina piekļuvi jaunākajām zināšanām un standartiem, ko integrējam
+          savos projektos.
+        </p>
+      </div>
+
+      <!-- Right column -->
+      <aside class="members-side">
+        <div class="members-card">
+          <header class="members-card-head">
+            <h3>Nozares un reģionālās apvienības</h3>
+            <p class="muted">
+              Klasteru iniciatīvas un profesionālās apvienības, kurās piedalāmies.
+            </p>
+          </header>
+
+          <div class="members-chip-cloud">
+            <span class="logo-chip">Tiroles teritoriālā aģentūra&nbsp;– atjaunojamās enerģijas klasteris</span>
+            <span class="logo-chip">EHPA&nbsp;– Eiropas siltumsūkņu asociācija</span>
+            <span class="logo-chip">Energoefektīvā siltumsūkņa iniciatīva</span>
+            <span class="logo-chip">klima:aktiv programma</span>
+            <span class="logo-chip">Umwelt Arena</span>
+            <span class="logo-chip">Wärmepumpen Marktplatz NRW</span>
+            <span class="logo-chip">Bundesverband Wärmepumpe Deutschland</span>
+            <span class="logo-chip">KlimaHaus aģentūra</span>
+            <span class="logo-chip">Verband Wärmepumpe Austria</span>
+            <span class="logo-chip">Fachvereinigung Wärmepumpe Schweiz</span>
+            <span class="logo-chip">Fair Energy Partner</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== Social responsibility / Support ===== -->
+  <section class="section-respo section-terms">
+    <div class="container">
+      <div class="terms-shell">
+        <span class="eyebrow">Vispārīgie noteikumi</span>
+        <h2>Noteikumi skaidrai un caurspīdīgai sadarbībai.</h2>
+        <p class="muted">
+          Lai nodrošinātu vienotus standartus visiem projektiem, Heliotherm ir izstrādājis
+          detalizētus vispārīgos noteikumus un nosacījumus. Tajos atradīsiet informāciju par
+          garantijām, piegādes nosacījumiem, atbildības sadalījumu un citiem būtiskiem
+          juridiskajiem aspektiem.
+        </p>
+
+        <div class="terms-card">
+          <p class="muted">
+            Pilnu noteikumu tekstu iespējams lejupielādēt PDF formātā. Dokumentu regulāri
+            aktualizējam, lai tas atbilstu spēkā esošajiem standartiem un normatīvajām prasībām.
+          </p>
+          <a class="btn ghost" href="media/docs/heliotherm-visparigie-noteikumi.pdf">
+            Lejupielādēt noteikumus (PDF)
+          </a>
+          <p class="terms-footnote muted">
+            Jautājumiem par noteikumiem vai līguma nosacījumiem saziņai izmantojiet sadaļu
+            <a href="kontakti.html">Kontakti</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-footer></app-footer>
+
+  <script src="/heliotherm/assets/js/components.js"></script>
+  <script>
+    var yearEl = document.getElementById('year');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+  </script>
+  <script>
+    (function () {
+      const cards = document.querySelectorAll('.tcontent');
+      if (!cards.length || !('IntersectionObserver' in window)) {
+        cards.forEach(c => c.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      cards.forEach(card => observer.observe(card));
+    })();
+  </script>
+
+</body>
+</html>

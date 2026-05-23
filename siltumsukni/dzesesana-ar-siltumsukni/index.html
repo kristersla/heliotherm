@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Heliotherm Baltic</title>
+  <link rel="icon" type="image/x-icon" href="../../media/image/favicon.ico" />
+  <meta name="theme-color" content="#0b0c0f" />
+  <meta name="description" content="Dzesēšana ar siltumsūkni – aktīvā un pasīvā dzesēšana. Efektīvs un videi draudzīgs risinājums komfortam vasarā." />
+  <link rel="stylesheet" href="../../assets/style/style.css" />
+
+  <style>
+    .grid {
+        grid-template-columns: repeat(2, 1fr)
+    }
+    .heat-section-head {
+      max-width: 760px;
+      margin: 0 auto 32px;
+      text-align: center;
+    }
+    .heat-section-eyebrow {
+      margin: 0 0 .35rem;
+      font-size: .78rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .heat-section-head h2 {
+      margin: 0 0 .6rem;
+      font-size: clamp(2rem, 3.4vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -.01em;
+    }
+    .heat-section-lead {
+      max-width: 70ch;
+      margin: 0 auto .6rem;
+      color: var(--muted);
+      font-size: .98rem;
+    }
+    .heat-section-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .heat-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      height: 100%;
+    }
+    .heat-card-head {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .heat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(196,18,47,.10), rgba(226,42,70,.12));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .heat-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+    .heat-card h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      line-height: 1.2;
+    }
+    .heat-card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.65;
+    }
+  </style>
+</head>
+<body>
+  <app-header active="home"></app-header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+
+        <!-- Heading -->
+        <div class="heat-section-head">
+          <p class="heat-section-eyebrow">Tehniskās specifikācijas</p>
+          <h2>Dzesēšana ar <span style="color:#C4122F;">siltumsūkni</span></h2>
+          <p class="heat-section-lead">
+            Heliotherm siltumsūkņi ne tikai nodrošina apkuri ziemā, bet arī spēj efektīvi
+            atdzesēt telpas vasarā. Tie patērē mazāk enerģijas nekā tradicionālie
+            kondicionieri, nodrošinot videi draudzīgu un ekonomisku komfortu.
+          </p>
+          <p class="heat-section-note">Divi dzesēšanas veidi – aktīvā un pasīvā dzesēšana</p>
+        </div>
+
+        <!-- Two cards (Active cooling / Passive cooling) -->
+        <div class="grid">
+
+          <!-- Active Cooling -->
+          <article class="card heat-card">
+            <div class="heat-card-head">
+              <h3>Aktīvā dzesēšana</h3>
+            </div>
+
+            <div class="heat-card-body">
+              <p>
+                Aktīvās dzesēšanas procesā siltumsūkņa aukstuma aprites cikls tiek pilnībā
+                apgriezts. Ēka kļūst par siltuma avotu, savukārt siltums tiek nodots
+                apkārtējā vidē – zemei, ūdenim vai ārējam gaisam.
+              </p>
+              <p>
+                Šī metode nodrošina spēcīgu un ātru dzesēšanas efektu, īpaši karstās dienās,
+                kad nepieciešama intensīvāka temperatūras pazemināšana.
+              </p>
+            </div>
+          </article>
+
+          <!-- Passive Cooling -->
+          <article class="card heat-card">
+            <div class="heat-card-head">
+            
+              <h3>Pasīvā dzesēšana</h3>
+            </div>
+
+            <div class="heat-card-body">
+              <p>
+                Pasīvās dzesēšanas procesā tiek izmantota dabīgi zemā zemes vai gruntsūdens
+                temperatūra. Siltumsūknis darbību veic minimāli, jo dzesēšanu nodrošina
+                ārējais siltummainis.
+              </p>
+              <p>
+                Šī metode patērē ļoti maz elektroenerģijas, tādēļ tā ir īpaši izdevīga
+                pastāvīgai telpu atdzesēšanai vasarā ar minimālām izmaksām.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <app-footer></app-footer>
+  <script src="../../assets/js/components.js"></script>
+</body>
+</html>

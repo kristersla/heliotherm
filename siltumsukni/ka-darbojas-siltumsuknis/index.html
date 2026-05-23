@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Heliotherm Baltic</title>
+  <link rel="icon" type="image/x-icon" href="../../media/image/favicon.ico" />
+  <meta name="theme-color" content="#0b0c0f" />
+  <meta name="description" content="Kā darbojas siltumsūknis. Soli pa solim no dabas siltuma avota līdz komfortablai telpu temperatūrai." />
+  <link rel="stylesheet" href="../../assets/style/style.css" />
+
+  <style>
+    .heat-section-head {
+      max-width: 760px;
+      margin: 0 auto 24px;
+      text-align: center;
+    }
+    .heat-section-eyebrow {
+      margin: 0 0 .35rem;
+      font-size: .78rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .heat-section-head h2 {
+      margin: 0 0 .6rem;
+      font-size: clamp(2rem, 3.4vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -.01em;
+    }
+    .heat-section-lead {
+      max-width: 70ch;
+      margin: 0 auto .6rem;
+      color: var(--muted);
+      font-size: .98rem;
+    }
+    .heat-section-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .video-wrap {
+      margin: 28px auto 8px;
+      max-width: 720px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0,0,0,.16);
+      background: #000;
+      aspect-ratio: 16 / 9;
+    }
+    .video-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    /* Steps layout - its own grid so it does not use global .grid rules */
+    .steps-grid {
+      margin-top: 40px;
+      max-width: 1000px;
+      margin-inline: auto;
+      display: grid;
+      gap: var(--gap);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 800px) {
+      .steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .heat-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      height: 100%;
+    }
+    .heat-card-head {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .heat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(196,18,47,.10), rgba(226,42,70,.14));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .heat-icon span {
+      font-size: .95rem;
+      font-weight: 700;
+      color: #C4122F;
+    }
+    .heat-card h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      line-height: 1.25;
+    }
+    .heat-card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.65;
+    }
+  </style>
+</head>
+<body>
+  <app-header active="home"></app-header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+
+        <!-- Heading and intro -->
+        <div class="heat-section-head">
+          <p class="heat-section-eyebrow">Darbības princips</p>
+          <h2>Kā darbojas <span style="color:#C4122F;">siltumsūknis</span></h2>
+          <p class="heat-section-lead">
+            Siltumsūknis nodrošina enerģētisko neatkarību no fosilajiem kurināmajiem
+            un to cenu svārstībām. Tas izmanto siltumu no dabas avota
+            (gaiss, zeme vai ūdens) un ar augstu efektivitāti nodod to jūsu
+            apkures sistēmai. Pēc būtības siltumsūknis darbojas līdzīgi kā
+            ledusskapis, tikai pretējā virzienā.
+          </p>
+          <p class="heat-section-note">
+            Noskatieties īsu animāciju par siltumsūkņa ciklu (0:41 min).
+          </p>
+        </div>
+
+        <!-- Embedded video -->
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/rIReQY3FEhg"
+            title="How a heat pump works"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <!-- Four step cards -->
+        <div class="steps-grid">
+
+          <!-- Step 1 -->
+          <article class="card heat-card">
+            <div class="heat-card-head">
+              <div class="heat-icon">
+                <span>1</span>
+              </div>
+              <h3>Aukstumnesējs uzņem siltumu</h3>
+            </div>
+
+            <div class="heat-card-body">
+              <p>
+                Slēgtā sistēmā cirkulē īpašs aukstumnesējs, kas vārās ļoti
+                zemā temperatūrā. Siltums tiek paņemts no dabas avota
+                (ūdens, grunts vai ārējais gaiss) un nodots šim šķidrumam.
+              </p>
+              <p>
+                Siltumsūkņa sistēmu veido trīs galvenās daļas:
+                siltuma avots, pati siltumsūkņa iekārta un siltuma sadale
+                ēkā, piemēram, grīdas vai sienu apkure.
+              </p>
+            </div>
+          </article>
+
+          <!-- Step 2 -->
+          <article class="card heat-card">
+            <div class="heat-card-head">
+              <div class="heat-icon">
+                <span>2</span>
+              </div>
+              <h3>Iztvaicētājā aukstumnesējs iztvaiko</h3>
+            </div>
+
+            <div class="heat-card-body">
+              <p>
+                Iztvaicētājs ir siltummainis, kurā aukstumnesējs
+                zemā temperatūrā sāk vārīties un pāriet gāzveida stāvoklī.
+                Šajā brīdī tas paņem sev līdzi dabas avotā esošo siltuma enerģiju.
+              </p>
+              <p>
+                Aukstumnesējs vairs nav šķidrums, bet gāze ar zemu
+                temperatūru un zemu spiedienu, kas ir gatava nākamajam solim.
+              </p>
+            </div>
+          </article>
+
+          <!-- Step 3 -->
+          <article class="card heat-card">
+            <div class="heat-card-head">
+              <div class="heat-icon">
+                <span>3</span>
+              </div>
+              <h3>Kompresors paaugstina spiedienu un temperatūru</h3>
+            </div>
+
+            <div class="heat-card-body">
+              <p>
+                Kompresors saspiež aukstumnesēja gāzi. Samazinoties tilpumam,
+                strauji pieaug spiediens un līdz ar to arī temperatūra.
+              </p>
+              <p>
+                Rezultātā iegūstam ļoti karstu gāzi, kas var nodot siltumu
+                apkures sistēmai. Šajā posmā rodas apkurei nepieciešamā
+                temperatūra.
+              </p>
+            </div>
+          </article>
+
+          <!-- Step 4 -->
+          <article class="card heat-card">
+            <div class="heat-card-head">
+              <div class="heat-icon">
+                <span>4</span>
+              </div>
+              <h3>Kondensators atdod siltumu apkurei</h3>
+            </div>
+
+            <div class="heat-card-body">
+              <p>
+                Karstā gāze nonāk kondensatorā, kur tā atdod siltumu
+                apkures ūdenim vai bufera tvertnei. Apkures sistēma šo siltumu
+                tālāk izplata pa telpām.
+              </p>
+              <p>
+                Atdziestot aukstumnesējs atkal kļūst šķidrs un pēc spiediena
+                samazināšanas izplešanās vārstā ir gatavs uzņemt jaunu siltuma
+                devu no dabas avota. Cikls sākas no jauna.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <app-footer></app-footer>
+  <script src="../../assets/js/components.js"></script>
+</body>
+</html>

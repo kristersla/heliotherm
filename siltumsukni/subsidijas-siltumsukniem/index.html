@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Heliotherm Baltic – Subsīdijas siltumsūkņiem</title>
+  <link rel="icon" type="image/x-icon" href="../../media/image/favicon.ico" />
+  <meta name="theme-color" content="#0b0c0f" />
+  <meta name="description" content="Uzziniet par valsts un pašvaldību subsīdijām siltumsūkņu uzstādīšanai." />
+  <link rel="stylesheet" href="../../assets/style/style.css" />
+
+  <style>
+    .subsidy-section {
+      padding: 60px 0 80px;
+      background:#fff;
+    }
+
+    .subsidy-wrap {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .subsidy-card {
+      background:#fff;
+      border-radius:24px;
+      border:1px solid var(--ring);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .subsidy-thumb {
+      position:relative;
+      overflow:hidden;
+      aspect-ratio:4/3;
+    }
+
+    .subsidy-thumb img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .subsidy-body {
+      padding:20px 22px 22px;
+    }
+
+    .subsidy-eyebrow {
+      margin:0 0 .45rem;
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+    }
+
+    .subsidy-body h1 {
+      margin:.1rem 0 .6rem;
+      font-size:1.4rem;
+      line-height:1.25;
+    }
+
+    .subsidy-body p {
+      margin:0 0 .9rem;
+      font-size:.95rem;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .subsidy-divider {
+      height:1px;
+      background:var(--hair);
+      margin:.2rem 0 .9rem;
+    }
+
+    .subsidy-cta {
+      display:inline-block;
+      font-size:.95rem;
+      font-weight:600;
+      color:var(--brand);
+      text-decoration:none;
+    }
+
+    .subsidy-cta:hover {
+      text-decoration:underline;
+    }
+  </style>
+</head>
+<body>
+  <app-header active="home"></app-header>
+
+  <main>
+    <section class="subsidy-section">
+      <div class="container">
+        <div class="subsidy-wrap">
+          <article class="subsidy-card">
+            <div class="subsidy-thumb">
+              <!-- Nomaini uz savu bildi -->
+              <img src="../../media/image/cropped-image-of-hand-putting-coins-in-jars-with-plants-755740897-5ab88ee1875db9003759d390.jpg" alt="Ģimene plāno siltumsūkņa projektu ar ietaupījumu krājkasīti" />
+            </div>
+
+            <div class="subsidy-body">
+              <p class="subsidy-eyebrow">Atbalsta programmas</p>
+              <h1>Subsīdijas siltumsūkņiem</h1>
+
+              <p>
+                Pateicoties Heliotherm siltumsūkņu augstajam sezonālajam lietderības koeficientam (SCOP),
+                daudzās valstīs un reģionos ir pieejams maksimāli iespējamais valsts, pašvaldību un
+                komunālo uzņēmumu atbalsts siltumsūkņu uzstādīšanai.
+              </p>
+              <p>
+                Subsīdiju apmērs un nosacījumi atšķiras atkarībā no valsts un konkrētās pašvaldības programmas.
+                Jūsu Heliotherm kompetenču partneris palīdzēs izvēlēties piemērotāko risinājumu un
+                paskaidros, kāds atbalsts ir pieejams tieši jūsu projektam.
+              </p>
+
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <app-footer></app-footer>
+  <script src="../../assets/js/components.js"></script>
+</body>
+</html>

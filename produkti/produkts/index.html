@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produkts - Heliotherm Baltics</title>
+  <link rel="icon" type="image/x-icon" href="../../media/image/favicon.ico" />
+  <meta name="theme-color" content="#f5f5f7" />
+  <meta name="description" content="Heliotherm siltumsūkņu produktu lapa." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg:#f5f5f7;
+      --bg-elevated:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --hair:#e5e7eb;
+      --hair-soft:#edf0f4;
+      --brand:#C4122F;
+      --brand-dark:#8b0c22;
+      --radius-xl:26px;
+      --radius-lg:18px;
+      --radius-md:12px;
+      --shadow-soft:0 18px 40px rgba(15,23,42,0.08);
+      --shadow-very-soft:0 10px 24px rgba(15,23,42,0.06);
+      --maxw:1120px;
+      --mx:min(5vw,32px);
+      --gap:clamp(24px,3vw,40px);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .page-shell{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    main{
+      flex:1;
+    }
+
+    .page-inner{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding-inline:var(--mx);
+      padding-bottom:48px;
+    }
+
+    /* Breadcrumb */
+
+    .breadcrumb-wrap{
+      border-bottom:1px solid var(--hair-soft);
+      background:rgba(245,245,247,0.96);
+      backdrop-filter:blur(18px);
+    }
+    .breadcrumb-inner{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:.7rem var(--mx);
+      font-size:.8rem;
+      color:var(--muted);
+      display:flex;
+      align-items:center;
+      gap:.35rem;
+      flex-wrap:wrap;
+    }
+    .breadcrumb-inner a{
+      color:var(--muted);
+      text-decoration:none;
+    }
+    .breadcrumb-inner a:hover{
+      text-decoration:underline;
+    }
+    .breadcrumb-sep{
+      opacity:.55;
+    }
+
+    /* Hero */
+
+    .hero{
+      padding:clamp(32px,5vh,44px) 0 70px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.55fr) minmax(0,1.1fr);
+      gap:var(--gap);
+      align-items:center;
+    }
+
+    @media (max-width:960px){
+      .hero-grid{
+        grid-template-columns:1fr;
+        align-items:flex-start;
+      }
+    }
+
+    .prod-eyebrow{
+      font-size:.78rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:#9ca3af;
+      margin-bottom:.55rem;
+    }
+
+    .prod-title{
+      font-size:clamp(2.4rem,3.6vw,2.9rem);
+      letter-spacing:-.03em;
+      margin:.1rem 0 .7rem;
+    }
+
+    .prod-intro{
+      font-size:1rem;
+      line-height:1.7;
+      max-width:60ch;
+      color:var(--muted);
+    }
+
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.45rem;
+      margin-top:1.4rem;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
+      padding:.28rem .8rem;
+      border-radius:999px;
+      border:1px solid var(--hair-soft);
+      background:rgba(255,255,255,0.9);
+      font-size:.8rem;
+      color:var(--muted);
+    }
+
+    .pill-dot{
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background:var(--brand);
+      opacity:.9;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.7rem;
+      margin-top:1.8rem;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:.6rem 1.4rem;
+      border-radius:999px;
+      border:1px solid transparent;
+      font-size:.9rem;
+      font-weight:600;
+      text-decoration:none;
+      cursor:pointer;
+      transition:
+        background .16s ease,
+        border-color .16s ease,
+        box-shadow .16s ease,
+        transform .1s ease,
+        color .16s ease;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--brand),var(--brand-dark));
+      color:#fff;
+      box-shadow:0 16px 32px rgba(180,15,40,0.3);
+    }
+    .btn-primary:hover{
+      transform:translateY(-1px);
+      box-shadow:0 22px 44px rgba(180,15,40,0.34);
+    }
+
+    .btn-ghost{
+      border-color:var(--hair-soft);
+      background:rgba(255,255,255,0.9);
+      color:var(--text);
+      box-shadow:0 10px 24px rgba(15,23,42,0.04);
+    }
+    .btn-ghost:hover{
+      transform:translateY(-1px);
+      box-shadow:0 16px 32px rgba(15,23,42,0.08);
+    }
+
+    /* Spec column (hero right) */
+
+    .spec-column{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      align-self:stretch;
+    }
+
+    .spec-media-card,
+    .spec-summary-card{
+      border-radius:var(--radius-xl);
+      background:var(--bg-elevated);
+      border:1px solid var(--hair-soft);
+      box-shadow:var(--shadow-soft);
+      padding:1.15rem 1.4rem 1.4rem;
+      display:flex;
+      flex-direction:column;
+      gap:.9rem;
+    }
+
+    /* Image card */
+
+    .spec-media-card{
+      gap:1rem;
+    }
+
+    .spec-media-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:.6rem;
+    }
+
+    .spec-media-label{
+      font-size:.78rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:#9ca3af;
+    }
+
+    .spec-media-brand{
+      font-size:.76rem;
+      color:#9ca3af;
+    }
+
+    .spec-image{
+      border-radius:var(--radius-lg);
+      border:1px solid var(--hair-soft);
+      background-color:#fff;
+      position:relative;
+      overflow:hidden;
+      aspect-ratio:4/3;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .spec-image img{
+      max-width:100%;
+      max-height:100%;
+      object-fit:contain;
+      display:block;
+    }
+
+    .image-placeholder{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+
+    .image-placeholder-inner{
+      width:64%;
+      max-width:260px;
+      aspect-ratio:3/5;
+      border-radius:18px;
+      border:1px dashed #d1d5db;
+      background:linear-gradient(180deg,#f3f4f6,#e5e7eb);
+    }
+
+    .spec-image.has-image .image-placeholder{ display:none; }
+    .spec-image:not(.has-image) img{ display:none; }
+
+    /* Summary card */
+
+    .spec-summary-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:.6rem;
+    }
+
+    .spec-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
+      padding:.25rem .8rem;
+      border-radius:999px;
+      background:#f3f4f6;
+      font-size:.78rem;
+      color:#4b5563;
+    }
+
+    .spec-chip-dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:var(--brand);
+    }
+
+    .spec-label-small{
+      font-size:.76rem;
+      color:#9ca3af;
+      text-align:right;
+    }
+
+    .spec-rows{
+      margin-top:.55rem;
+      border-radius:18px;
+      background:linear-gradient(180deg,#fafbff,#f5f7fb);
+      border:1px solid #e2e5f0;
+      padding:.9rem 1rem;
+      display:grid;
+      gap:.4rem;
+    }
+
+    .spec-row{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items:start;
+      font-size:.9rem;
+    }
+
+    .spec-row + .spec-row{
+      padding-top:.55rem;
+      border-top:1px solid rgba(209,213,219,0.7);
+      margin-top:.1rem;
+    }
+
+    .spec-label{
+      font-size:.78rem;
+      font-weight:600;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#9ca3af;
+    }
+
+    .spec-value{
+      color:#111827;
+      line-height:1.6;
+    }
+
+    /* Metrics line */
+
+    .spec-metrics{
+      margin-top:.9rem;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:.75rem;
+    }
+
+    .metric{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:.35rem;
+      border-radius:16px;
+      padding:.7rem .85rem;
+      background:#ffffff;
+      border:1px solid #e5e7eb;
+      box-shadow:0 10px 24px rgba(148,163,184,0.18);
+      font-size:.8rem;
+      text-align:center;
+    }
+
+    .metric-label{
+      color:#9ca3af;
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .metric-value{
+      font-size:14px;
+      font-weight:600;
+      color:#111827;
+    }
+
+    /* Icon row (SVG badges) */
+
+    .spec-icons{
+      margin-top:.85rem;
+      padding-top:.65rem;
+
+      border-top:1px solid rgba(229,231,235,0.8);
+      display:flex;
+      justify-content: center;
+      flex-wrap:wrap;
+      gap:.55rem;
+    }
+
+    .spec-icon-card{
+      flex:0 0 auto;
+      min-width:92px;
+      padding: 2px 20px;
+      border-radius:999px;
+      border:1px solid #e5e7eb;
+      background:#f9fafb;
+      display:flex;
+      align-items:center;
+      gap:.45rem;
+      font-size:.78rem;
+      color:#4b5563;
+      box-shadow:0 8px 20px rgba(148,163,184,0.16);
+    }
+
+    .spec-icon-card svg{
+      width: 55px;
+      height: 55px;
+      flex-shrink:0;
+    }
+
+    .spec-icon-label{
+      white-space:nowrap;
+    }
+
+    @media (max-width:960px){
+      .spec-column{ margin-top:4px; }
+    }
+
+    @media (max-width:640px){
+      .spec-media-card,
+      .spec-summary-card{
+        padding:1.1rem 1.1rem 1.25rem;
+      }
+      .spec-metrics{
+        grid-template-columns:1fr;
+      }
+    }
+
+    /* Generic sections */
+
+
+    .section-card{
+      margin-top: 70px;
+      border-radius:var(--radius-xl);
+      background:var(--bg-elevated);
+      border:1px solid var(--hair-soft);
+      box-shadow:var(--shadow-very-soft);
+      padding:1.7rem 1.9rem 1.8rem;
+    }
+
+    @media (max-width:640px){
+      .section-card{
+        padding:1.2rem 1.2rem 1.4rem;
+      }
+    }
+
+    .section-header{
+      margin-bottom:1.4rem;
+      display:flex;
+      flex-direction:column;
+      gap:.35rem;
+    }
+
+    .section-eyebrow{
+      font-size:.78rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:#9ca3af;
+    }
+
+    .section-title{
+      font-size:1.3rem;
+      letter-spacing:-.01em;
+    }
+
+    .section-description{
+      font-size:.95rem;
+      color:var(--muted);
+      max-width:64ch;
+      line-height:1.7;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:minmax(0,1.4fr) minmax(0,1.1fr);
+      gap:var(--gap);
+      align-items:flex-start;
+    }
+
+    @media (max-width:960px){
+      .two-col{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .bullet-list{
+      margin:.4rem 0 0;
+      padding-left:1.15rem;
+      font-size:.95rem;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .bullet-list li{
+      margin:.2rem 0;
+    }
+
+    /* Gallery */
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+    @media (max-width:960px){
+      .gallery-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+    @media (max-width:640px){
+      .gallery-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .gallery-card{
+      border-radius:var(--radius-lg);
+      padding:9px 9px 11px;
+      border:1px solid var(--hair-soft);
+      background:var(--bg-elevated);
+      box-shadow:var(--shadow-very-soft);
+      display:flex;
+      flex-direction:column;
+      gap:.55rem;
+      transition:transform .12s ease, box-shadow .12s ease;
+    }
+
+    .gallery-card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 16px 34px rgba(15,23,42,0.12);
+    }
+
+    .gallery-card img,
+    .gallery-placeholder-box{
+      border-radius:var(--radius-md);
+      border:1px solid #e5e7eb;
+      background:#f3f4f6;
+      width:100%;
+      display:block;
+      object-fit:cover;
+    }
+
+    .gallery-placeholder-box{
+      aspect-ratio:4/3;
+      background:linear-gradient(135deg,#f3f4f6,#e5e7eb);
+    }
+
+    .gallery-caption{
+      font-size:.84rem;
+      color:var(--muted);
+      padding-inline:1px;
+    }
+
+    /* Downloads */
+
+    .download-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      gap:.75rem;
+    }
+
+    .download-item{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1.1rem;
+      padding:.8rem 1rem;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--hair-soft);
+      background:var(--bg-elevated);
+      box-shadow:var(--shadow-very-soft);
+      font-size:.9rem;
+    }
+
+    @media (max-width:640px){
+      .download-item{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    .download-main{
+      display:flex;
+      flex-direction:column;
+      gap:.16rem;
+    }
+
+    .download-title{
+      font-weight:600;
+    }
+
+    .download-meta{
+      font-size:.8rem;
+      color:var(--muted);
+    }
+
+    /* Compatibility */
+
+    .compat-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      gap:.8rem;
+    }
+
+    .compat-item{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1.1rem;
+      padding:.9rem 1.1rem;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--hair-soft);
+      background:#f9fafb;
+      font-size:.9rem;
+    }
+
+    .compat-main{
+      display:flex;
+      flex-direction:column;
+      gap:.12rem;
+    }
+
+    .compat-title{
+      font-weight:600;
+    }
+
+    .compat-sub{
+      font-size:.84rem;
+      color:var(--muted);
+    }
+
+    @media (max-width:640px){
+      .compat-item{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    /* Same lineup */
+
+    .lineup-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:var(--gap);
+    }
+
+    @media (max-width:960px){
+      .lineup-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+    @media (max-width:640px){
+      .lineup-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .lineup-card{
+      border-radius:var(--radius-lg);
+      padding:1.1rem 1.1rem 1.2rem;
+      border:1px solid var(--hair-soft);
+      background:var(--bg-elevated);
+      box-shadow:var(--shadow-very-soft);
+      display:flex;
+      flex-direction:column;
+      gap:.4rem;
+      font-size:.9rem;
+    }
+
+    .lineup-name{
+      font-weight:600;
+    }
+
+    .lineup-desc{
+      font-size:.86rem;
+      color:var(--muted);
+    }
+
+    .lineup-tag{
+      display:inline-flex;
+      align-items:center;
+      padding:.18rem .6rem;
+      border-radius:999px;
+      border:1px solid var(--hair-soft);
+      font-size:.78rem;
+      color:#6b7280;
+      background:#f9fafb;
+      margin-top:.2rem;
+    }
+
+    /* ===== Compatibility modern cards ===== */
+
+    .compat-box{
+      margin-top: 70px;
+      border-radius: var(--radius-xl);
+      background: var(--bg-elevated);
+      border: 1px solid var(--hair-soft);
+      box-shadow: var(--shadow-very-soft);
+      padding: 2rem;
+    }
+
+    .compat-header{
+      margin-bottom: 1.6rem;
+    }
+
+    .compat-eyebrow{
+      font-size: .78rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+
+    .compat-title{
+      font-size: 1.35rem;
+      margin-top: .3rem;
+    }
+
+    .compat-desc{
+      font-size: .95rem;
+      color: var(--muted);
+      margin-top: .35rem;
+      max-width: 60ch;
+    }
+
+    .compat-cards{
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .compat-card{
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.1rem 1.3rem;
+      border-radius: var(--radius-lg);
+      background: #f9fafb;
+      border: 1px solid var(--hair-soft);
+    }
+
+    .compat-img{
+      width: 78px;
+      height: 78px;
+      border-radius: var(--radius-md);
+      background: #e5e7eb;
+      border: 1px solid var(--hair);
+    }
+
+    .compat-info h3{
+      margin: 0;
+      font-size: .95rem;
+      font-weight: 600;
+    }
+
+    .compat-info p{
+      margin: .2rem 0 0;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    .compat-btn{
+      margin-left: auto;
+      white-space: nowrap;
+      padding: .55rem 1.1rem;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 600;
+      background: #fff;
+      border: 1px solid var(--hair-soft);
+      text-decoration: none;
+      color: var(--text);
+      box-shadow: 0 8px 20px rgba(15,23,42,.06);
+      transition: transform .1s ease, box-shadow .1s ease;
+    }
+
+    .compat-btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(15,23,42,.1);
+    }
+
+    @media(max-width:640px){
+      .compat-card{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .compat-btn{
+        margin-left: 0;
+        margin-top: .6rem;
+      }
+    }
+    .compat-img{
+      width: 120px;
+      height: 120px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #e5e7eb;
+      border: 1px solid var(--hair);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .compat-img img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .real-view {
+      margin-top: 40px;
+    }
+
+    .gallery-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .gallery-sub {
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 28px;
+    }
+
+    .gallery-card {
+      background: #fff;
+      padding: 18px;
+      border-radius: 20px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .media-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #f2f4f7;
+    }
+
+    .media-wrap img,
+    .media-wrap iframe {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: none;
+      display: block;
+    }
+
+    .caption {
+      margin-top: 12px;
+      font-size: .95rem;
+      color: var(--text);
+    }
+    .image-viewer {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999; /* VERY HIGH so it beats <app-header> */
+      padding: 24px;
+      backdrop-filter: blur(4px);
+    }
+
+    .image-viewer.active {
+      display: flex;
+    }
+
+    .image-viewer-content img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 22px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+      animation: fadeIn 0.22s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.97); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Close button */
+    .image-viewer-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+      transition: background 0.15s, transform 0.15s;
+    }
+
+    .image-viewer-close:hover {
+      background: rgba(255,255,255,0.25);
+      transform: scale(1.05);
+    }
+
+    .gallery-card img {
+      cursor: zoom-in;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-shell">
+
+  <app-header active="Products"></app-header>
+
+
+  <main>
+    <div class="page-inner">
+
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="prod-eyebrow" id="prod-category">Siltumsūknis</div>
+            <h1 class="prod-title" id="prod-title">Produkts</h1>
+            <p class="prod-intro" id="prod-intro">
+              Īss ievads par produktu.
+            </p>
+
+            <div class="pill-row" id="prod-tags"></div>
+
+            <div class="hero-actions">
+              <a href="#downloads" class="btn btn-ghost">Lejupielādēt brošūru</a>
+              <a href="../contact/index.html" class="btn btn-primary">Pieteikt konsultāciju</a>
+            </div>
+          </div>
+
+          <aside class="spec-column">
+
+            <!-- Image card -->
+            <div class="spec-media-card">
+              <div class="spec-media-header">
+                <span class="spec-media-label">Produkts</span>
+                <span class="spec-media-brand">Heliotherm Baltics</span>
+              </div>
+              <div class="spec-image" id="prod-hero-wrap">
+                <div class="image-placeholder">
+                  <div class="image-placeholder-inner"></div>
+                </div>
+                <img id="prod-hero-img" src="" alt="" />
+              </div>
+            </div>
+
+            <!-- Technical summary card -->
+
+          </aside>
+        </div>
+      </section>
+
+      <!-- Concept + benefits -->
+      <section class="section">
+        <div class="spec-summary-card">
+          <div class="spec-summary-header">
+            <div class="spec-chip">
+              <span class="spec-chip-dot"></span>
+              <span>Tehniskais kopsavilkums</span>
+            </div>
+            <span class="spec-label-small" id="prod-short-tagline">Īss apraksts</span>
+          </div>
+
+          <div class="spec-rows">
+            <div class="spec-row">
+              <div class="spec-label">Sistēma</div>
+              <div class="spec-value" id="prod-system"></div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-label">Efektivitāte</div>
+              <div class="spec-value" id="prod-efficiency"></div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-label">Jaudas</div>
+              <div class="spec-value" id="prod-power"></div>
+            </div>
+          </div>
+
+          <div class="spec-metrics">
+            <div class="metric">
+              <div class="metric-label">SCOP koeficients</div>
+              <div class="metric-value" id="metric-scop">–</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Plūsmas temperatūra</div>
+              <div class="metric-value" id="metric-temp">–</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Modeļu jauda</div>
+              <div class="metric-value" id="metric-range">–</div>
+            </div>
+          </div>
+
+          <!-- SVG badges row; replace SVGs with real ones -->
+          <div class="spec-icons" id="prod-icons">
+            <div class="spec-icon-card" data-icon="modulation">
+              <svg xmlns="http://www.w3.org/2000/svg" width="101" height="101" viewBox="0 0 101 101" fill="none" class="injected-svg" data-src="/media/icons/modulation.svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 50px">
+                <path d="M50.0022 0.997559C22.3905 0.997559 0.00439453 23.3837 0.00439453 50.9976C0.00439453 78.6114 22.3905 100.998 50.0022 100.998C77.6139 100.998 100.007 78.6159 100.007 50.9976C100.007 23.3793 77.6205 0.997559 50.0022 0.997559Z" fill="white"></path>
+                <path d="M98.0065 57.3717C98.2821 55.2837 98.4364 53.1582 98.4364 50.9974C98.4364 24.2478 76.7537 2.56506 50.0019 2.56506C23.2501 2.56506 1.57178 24.2478 1.57178 50.9974C1.57178 53.1582 1.72831 55.2837 2.00171 57.3717H98.0065Z" fill="#EDEDED"></path>
+                <path d="M50.0019 98.5566C23.7837 98.5566 2.4559 77.2244 2.4559 50.9974C2.4559 24.7704 23.7837 3.4404 50.0019 3.4404C76.2201 3.4404 97.5523 24.777 97.5523 50.9974C97.5523 77.2178 76.2245 98.5566 50.0019 98.5566ZM50.0019 2.56506C23.2567 2.56506 1.57178 24.2478 1.57178 50.9974C1.57178 77.747 23.2567 99.4319 50.0019 99.4319C76.7471 99.4319 98.4386 77.7514 98.4386 50.9974C98.4386 24.2434 76.7537 2.56506 50.0019 2.56506Z" fill="#1D1D1B"></path>
+                <path d="M85.3348 37.3823H15.6387V37.9005H85.3348V37.3823Z" fill="#1D1D1B"></path>
+                <path d="M70.3069 55.0411C66.2124 55.0411 64.5896 47.0484 62.7111 37.7923C61.2867 30.7632 59.514 22.012 56.8924 22.012C54.2708 22.012 52.4848 30.7676 51.0539 37.8055C49.1709 47.0528 47.5437 55.0411 43.4559 55.0411C39.368 55.0411 37.7519 47.0594 35.8733 37.8166C34.4423 30.7742 32.6608 22.012 30.0304 22.012C25.2568 22.012 24.2095 33.2767 24.2095 37.6159H22.4302C22.4302 35.8388 22.6419 20.2305 30.0304 20.2305C34.1138 20.2305 35.7388 28.2143 37.6196 37.4616C39.0484 44.4996 40.8277 53.2595 43.4559 53.2595C46.0841 53.2595 47.8722 44.4929 49.3054 37.4506C51.1884 28.2099 52.8112 20.2305 56.8924 20.2305C60.9736 20.2305 62.5876 28.2033 64.4618 37.4373C65.8905 44.4885 67.6699 53.2595 70.3069 53.2595C75.0893 53.2595 76.1388 41.9838 76.1388 37.6402H77.9181C77.9181 39.4217 77.7043 55.0411 70.3069 55.0411Z" fill="#1D1D1B"></path>
+                <path d="M15.8202 64.5615L19.4274 74.177L23.0522 64.5615H25.1336V76.0048H23.6916V66.4842H23.6585L20.0844 76.0048H18.7857L15.2116 66.4842H15.1808V76.0048H13.7388V64.5615H15.8202Z" fill="#1D1D1B"></path>
+                <path d="M27.1039 70.164C27.2737 69.6348 27.5316 69.1762 27.8734 68.7838C28.2152 68.3935 28.6385 68.0892 29.1412 67.8621C29.6439 67.6372 30.2194 67.527 30.8699 67.527C31.5335 67.527 32.1112 67.6394 32.6095 67.8621C33.1078 68.0892 33.5267 68.3935 33.8685 68.7838C34.208 69.1762 34.466 69.6348 34.638 70.164C34.8078 70.691 34.8937 71.262 34.8937 71.8684C34.8937 72.4747 34.8078 73.0436 34.638 73.5683C34.466 74.0931 34.2102 74.5495 33.8685 74.9398C33.5267 75.33 33.1056 75.6343 32.6095 75.8526C32.1112 76.0731 31.5335 76.1811 30.8699 76.1811C30.2194 76.1811 29.6417 76.0709 29.1412 75.8526C28.6363 75.6343 28.2152 75.33 27.8734 74.9398C27.5339 74.5495 27.2759 74.0931 27.1039 73.5683C26.9341 73.0458 26.8481 72.4791 26.8481 71.8684C26.8481 71.2576 26.9341 70.691 27.1039 70.164ZM28.4908 73.2089C28.6253 73.5992 28.8105 73.9255 29.0442 74.1857C29.2779 74.4481 29.5536 74.6487 29.8688 74.7854C30.1864 74.9243 30.5193 74.9949 30.8699 74.9949C31.2226 74.9949 31.5578 74.9265 31.8731 74.7854C32.1884 74.6487 32.464 74.4481 32.6977 74.1857C32.9314 73.9255 33.1166 73.597 33.2511 73.2089C33.3856 72.8209 33.4518 72.3733 33.4518 71.8706C33.4518 71.3679 33.3856 70.9225 33.2511 70.5344C33.1166 70.1464 32.9314 69.8156 32.6977 69.5488C32.464 69.2821 32.1884 69.0792 31.8731 68.9403C31.5556 68.8036 31.2226 68.7308 30.8699 68.7308C30.5193 68.7308 30.1841 68.8014 29.8688 68.9403C29.5536 69.0792 29.2779 69.2821 29.0442 69.5488C28.8105 69.8156 28.6253 70.1464 28.4908 70.5344C28.3563 70.9225 28.2901 71.3701 28.2901 71.8706C28.2901 72.3711 28.3563 72.8209 28.4908 73.2089Z" fill="#1D1D1B"></path>
+                <path d="M42.3798 76.0048V74.8826H42.3468C42.1219 75.3412 41.7691 75.6719 41.2906 75.8748C40.8077 76.0798 40.2808 76.1812 39.7031 76.1812C39.0615 76.1812 38.5037 76.0622 38.0274 75.8285C37.5512 75.5947 37.1543 75.2794 36.8412 74.8826C36.5237 74.4857 36.2877 74.0271 36.129 73.5045C35.968 72.982 35.8887 72.4263 35.8887 71.8376C35.8887 71.2489 35.9658 70.6933 36.1202 70.1685C36.2745 69.646 36.5104 69.1896 36.8235 68.7993C37.141 68.409 37.5335 68.1004 38.0097 67.8688C38.486 67.6373 39.0394 67.5249 39.67 67.5249C39.8839 67.5249 40.1132 67.5469 40.3579 67.5888C40.6027 67.6307 40.8496 67.7035 41.0944 67.8049C41.3391 67.9085 41.5728 68.0408 41.7911 68.2062C42.0116 68.3716 42.1946 68.5788 42.3445 68.8236H42.3776V64.5593H43.7402V76.0026H42.3776L42.3798 76.0048ZM37.4828 73.0635C37.5842 73.4318 37.7385 73.7603 37.948 74.0491C38.1553 74.338 38.4221 74.5673 38.7484 74.737C39.0725 74.9068 39.454 74.9928 39.8949 74.9928C40.3536 74.9928 40.746 74.9024 41.0635 74.7194C41.3854 74.5386 41.6478 74.3027 41.8485 74.0072C42.0513 73.714 42.199 73.381 42.2894 73.0062C42.3798 72.6314 42.4261 72.2521 42.4261 71.8663C42.4261 71.4606 42.3798 71.0681 42.2828 70.6889C42.188 70.3096 42.0359 69.9767 41.8264 69.6879C41.6169 69.399 41.348 69.1675 41.0172 68.9911C40.6865 68.8147 40.2852 68.7265 39.8155 68.7265C39.3547 68.7265 38.9645 68.8191 38.6448 68.9999C38.3251 69.1807 38.0671 69.4211 37.8753 69.7209C37.6834 70.0208 37.5445 70.3626 37.4607 70.7462C37.3748 71.1321 37.3306 71.5267 37.3306 71.9324C37.3306 72.3183 37.3792 72.6953 37.4828 73.0635Z" fill="#1D1D1B"></path>
+                <path d="M51.2746 76.0047V74.6906H51.2416C50.9527 75.2021 50.5845 75.5792 50.1347 75.8195C49.6871 76.0598 49.1579 76.1811 48.5472 76.1811C48.0026 76.1811 47.5484 76.1083 47.1868 75.9628C46.823 75.8195 46.5297 75.6144 46.3048 75.3476C46.0799 75.0808 45.9234 74.7611 45.833 74.3929C45.7404 74.0247 45.6963 73.6146 45.6963 73.1648V67.7144H47.0589V73.3258C47.0589 73.8373 47.2088 74.2452 47.5087 74.5451C47.8064 74.8449 48.2187 74.9927 48.7434 74.9927C49.158 74.9927 49.5217 74.9287 49.8238 74.8008C50.1303 74.6707 50.3839 74.4899 50.5867 74.2562C50.7896 74.0203 50.9417 73.7469 51.0431 73.4294C51.1445 73.1141 51.1953 72.7701 51.1953 72.3953V67.7144H52.5579V76.0025H51.2746V76.0047Z" fill="#1D1D1B"></path>
+                <path d="M55.9063 64.5615V76.0048H54.5459V64.5615H55.9063Z" fill="#1D1D1B"></path>
+                <path d="M65.2225 75.9739C64.9887 76.1128 64.6602 76.1833 64.2457 76.1833C63.8929 76.1833 63.6129 76.0841 63.4034 75.8857C63.194 75.6872 63.0903 75.3653 63.0903 74.9177C62.7155 75.3653 62.2812 75.6894 61.7829 75.8857C61.2846 76.0819 60.7487 76.1833 60.1733 76.1833C59.7984 76.1833 59.4435 76.1392 59.1083 76.0532C58.7732 75.9694 58.4799 75.835 58.2352 75.6519C57.9904 75.4711 57.7942 75.2352 57.6487 74.9398C57.5054 74.6465 57.4326 74.2893 57.4326 73.8748C57.4326 73.4052 57.512 73.0193 57.673 72.7217C57.8317 72.4218 58.0434 72.1793 58.3057 71.9919C58.5659 71.8044 58.8658 71.6655 59.2032 71.5685C59.5383 71.4715 59.8844 71.3921 60.2372 71.3282C60.6099 71.2554 60.9648 71.1981 61.3022 71.1606C61.6373 71.1231 61.935 71.0702 62.1908 71.0019C62.4465 70.9313 62.6494 70.8299 62.7993 70.6954C62.947 70.5609 63.0242 70.3691 63.0242 70.1111C63.0242 69.8112 62.9691 69.5709 62.8566 69.3901C62.7442 69.2071 62.6009 69.0682 62.4245 68.9734C62.2481 68.8786 62.0496 68.8146 61.8291 68.7815C61.6109 68.7485 61.3948 68.733 61.1809 68.733C60.6032 68.733 60.1248 68.8433 59.7389 69.0616C59.3531 69.2799 59.1458 69.6944 59.1149 70.3029H57.7523C57.7744 69.7914 57.8802 69.357 58.0742 69.0042C58.2661 68.6515 58.5218 68.3648 58.8437 68.1465C59.1656 67.9261 59.5317 67.7695 59.9418 67.6725C60.3519 67.5755 60.7951 67.5292 61.2647 67.5292C61.6395 67.5292 62.0099 67.5556 62.3804 67.6086C62.7486 67.6615 63.0815 67.7717 63.3814 67.9371C63.6812 68.1002 63.9194 68.334 64.1024 68.6316C64.2832 68.9293 64.3736 69.3195 64.3736 69.798V74.0534C64.3736 74.3731 64.3934 74.6068 64.4287 74.7568C64.4684 74.9045 64.5918 74.9817 64.8057 74.9817C64.9248 74.9817 65.0615 74.9596 65.2225 74.9177V75.9739ZM63.011 71.7251C62.839 71.8551 62.6141 71.9478 62.3363 72.0051C62.0584 72.0624 61.7674 72.1131 61.4631 72.1484C61.1589 72.1859 60.8524 72.2278 60.5415 72.2763C60.2306 72.3248 59.9528 72.402 59.708 72.5056C59.4633 72.6136 59.2627 72.7636 59.1083 72.962C58.954 73.1582 58.8768 73.4272 58.8768 73.7668C58.8768 73.9895 58.9231 74.1791 59.0135 74.3334C59.1039 74.4856 59.223 74.6112 59.3663 74.7083C59.5096 74.8031 59.6794 74.8714 59.8712 74.9155C60.063 74.9596 60.2659 74.9795 60.4775 74.9795C60.9273 74.9795 61.311 74.9177 61.6307 74.7942C61.9526 74.673 62.215 74.5186 62.4156 74.3334C62.6185 74.146 62.7684 73.9432 62.8654 73.7271C62.9603 73.5088 63.0088 73.306 63.0088 73.1141V71.7251H63.011Z" fill="#1D1D1B"></path>
+                <path d="M69.8856 67.7191V68.923H68.2342V74.067C68.2342 74.2279 68.2474 74.3558 68.2739 74.4528C68.3025 74.5498 68.351 74.6226 68.426 74.6777C68.501 74.7328 68.6046 74.7659 68.7391 74.7836C68.8736 74.799 69.0478 74.8078 69.2594 74.8078H69.8856V76.0095H68.8427C68.4899 76.0095 68.1879 75.9852 67.9365 75.9389C67.6852 75.8904 67.4823 75.8022 67.328 75.6743C67.1736 75.5442 67.059 75.3634 66.984 75.1297C66.909 74.8938 66.8716 74.5829 66.8716 74.1993V68.9252H65.4604V67.7213H66.8716V65.2386H68.2342V67.7213H69.8856V67.7191Z" fill="#1D1D1B"></path>
+                <path d="M71.3281 66.2284V64.5615H72.6885V66.2284H71.3281ZM72.6885 67.7189V76.007H71.3281V67.7189H72.6885Z" fill="#1D1D1B"></path>
+                <path d="M74.4701 70.164C74.6399 69.6348 74.8979 69.1762 75.2396 68.7838C75.5814 68.3935 76.0047 68.0892 76.5074 67.8621C77.0101 67.6372 77.5856 67.527 78.236 67.527C78.8997 67.527 79.4774 67.6394 79.9757 67.8621C80.474 68.0892 80.8929 68.3935 81.2347 68.7838C81.5742 69.1762 81.8322 69.6348 82.0042 70.164C82.1739 70.691 82.2599 71.262 82.2599 71.8684C82.2599 72.4747 82.1739 73.0436 82.0042 73.5683C81.8322 74.0931 81.5764 74.5495 81.2347 74.9398C80.8929 75.33 80.4718 75.6343 79.9757 75.8526C79.4774 76.0731 78.8997 76.1811 78.236 76.1811C77.5856 76.1811 77.0079 76.0709 76.5074 75.8526C76.0025 75.6343 75.5814 75.33 75.2396 74.9398C74.9001 74.5495 74.6421 74.0931 74.4701 73.5683C74.3003 73.0458 74.2144 72.4791 74.2144 71.8684C74.2144 71.2576 74.3003 70.691 74.4701 70.164ZM75.857 73.2089C75.9915 73.5992 76.1767 73.9255 76.4104 74.1857C76.6441 74.4481 76.9197 74.6487 77.235 74.7854C77.5525 74.9243 77.8855 74.9949 78.236 74.9949C78.5888 74.9949 78.924 74.9265 79.2393 74.7854C79.5545 74.6487 79.8302 74.4481 80.0639 74.1857C80.2976 73.9255 80.4828 73.597 80.6173 73.2089C80.7518 72.8209 80.818 72.3733 80.818 71.8706C80.818 71.3679 80.7518 70.9225 80.6173 70.5344C80.4828 70.1464 80.2976 69.8156 80.0639 69.5488C79.8302 69.2821 79.5545 69.0792 79.2393 68.9403C78.9218 68.8036 78.5888 68.7308 78.236 68.7308C77.8855 68.7308 77.5503 68.8014 77.235 68.9403C76.9197 69.0792 76.6441 69.2821 76.4104 69.5488C76.1767 69.8156 75.9915 70.1464 75.857 70.5344C75.7225 70.9225 75.6563 71.3701 75.6563 71.8706C75.6563 72.3711 75.7225 72.8209 75.857 73.2089Z" fill="#1D1D1B"></path>
+                <path d="M84.9825 67.7188V69.0351H85.0155C85.5822 68.0297 86.4796 67.527 87.7077 67.527C88.2545 67.527 88.7065 67.6019 89.0703 67.7519C89.4341 67.9018 89.7274 68.1113 89.9523 68.3781C90.1772 68.6448 90.3337 68.9624 90.4241 69.3328C90.5145 69.701 90.5608 70.1111 90.5608 70.5587V76.0091H89.1982V70.3999C89.1982 69.8862 89.0483 69.4805 88.7484 69.1806C88.4485 68.8808 88.0384 68.7308 87.5137 68.7308C87.0992 68.7308 86.7353 68.7948 86.4333 68.9249C86.1268 69.0528 85.8733 69.2358 85.6704 69.4695C85.4676 69.7032 85.3154 69.9788 85.214 70.2941C85.1126 70.6116 85.0619 70.9556 85.0619 71.3282V76.0091H83.6992V67.721H84.9825V67.7188Z" fill="#1D1D1B"></path>
+                <g opacity="0.2">
+                <path d="M50.0022 0.997559C22.3949 0.997559 0.00878906 23.3837 0.00878906 50.9976C0.00878906 78.6114 22.3949 100.998 50.0022 100.998C77.6094 100.998 100.002 78.6159 100.002 50.9976C100.002 23.3793 77.6182 0.997559 50.0022 0.997559Z" fill="white"></path>
+                </g>
+              </svg>
+              <span class="spec-icon-label">Modulation</span>
+            </div>
+
+            <div class="spec-icon-card" data-icon="pv">
+              <svg xmlns="http://www.w3.org/2000/svg" width="101" height="101" viewBox="0 0 101 101" fill="none" class="injected-svg" data-src="/media/icons/pv-ready.svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 50px">
+                <path d="M49.9978 0.997559C22.3861 0.997559 0 23.3837 0 50.9976C0 78.6114 22.3861 100.998 49.9978 100.998C77.6095 100.998 100.002 78.6159 100.002 50.9976C100.002 23.3793 77.6161 0.997559 49.9978 0.997559Z" fill="white"></path>
+                <path d="M98.0023 57.3717C98.2779 55.2837 98.4323 53.1582 98.4323 50.9974C98.4323 24.2478 76.7495 2.56506 49.9978 2.56506C23.246 2.56506 1.56763 24.2478 1.56763 50.9974C1.56763 53.1582 1.72417 55.2837 1.99758 57.3717H98.0023Z" fill="#1D1D1B"></path>
+                <path d="M49.9978 98.5566C23.7796 98.5566 2.45178 77.2244 2.45178 50.9974C2.45178 24.7704 23.7796 3.4404 49.9978 3.4404C76.216 3.4404 97.5481 24.777 97.5481 50.9974C97.5481 77.2178 76.2204 98.5566 49.9978 98.5566ZM49.9978 2.56506C23.2526 2.56506 1.56763 24.2478 1.56763 50.9974C1.56763 77.747 23.2526 99.4319 49.9978 99.4319C76.7429 99.4319 98.4345 77.7514 98.4345 50.9974C98.4345 24.2434 76.7495 2.56506 49.9978 2.56506Z" fill="#1D1D1B"></path>
+                <path d="M81.0508 50.7305C80.8788 50.9444 80.612 51.059 80.2923 51.059H75.7701L74.6875 46.8102H80.4136L81.1919 49.9301C81.2669 50.2322 81.2184 50.5144 81.0508 50.7305ZM69.4443 51.059L68.3683 46.8102H74.3766L75.4548 51.059H69.4443ZM64.4789 51.059C63.8175 51.059 63.1318 50.5254 62.9818 49.8949L62.2167 46.8102H68.0552L69.1334 51.059H64.4789ZM62.1285 50.7305C61.9566 50.9444 61.6876 51.059 61.3701 51.059H56.8456L55.7653 46.8102H61.4913L62.2674 49.9301C62.3446 50.2322 62.2939 50.5144 62.1285 50.7305ZM50.5221 51.059L49.4439 46.8102H55.4522L56.5326 51.059H50.5221ZM45.5567 51.059C44.8952 51.059 44.2095 50.5254 44.0596 49.8949L43.2945 46.8102H49.1308L50.2112 51.059H45.5567ZM43.2041 50.7305C43.0321 50.9444 42.7653 51.059 42.4456 51.059H37.9234L36.8408 46.8102H42.5669L43.3452 49.9301C43.4201 50.2322 43.3716 50.5144 43.2041 50.7305ZM31.5998 51.059L30.5216 46.8102H36.5299L37.6081 51.059H31.5998ZM26.6322 51.059C25.973 51.059 25.285 50.5254 25.1351 49.8949L24.37 46.8102H30.2085L31.2889 51.059H26.6322ZM23.1926 42.0587H29.0025L30.1358 46.5126H24.2972L23.1926 42.0587ZM22.0108 37.3006H27.7986L28.9275 41.7589H23.1176L22.0108 37.3006ZM20.8334 32.5513H26.5925L27.7236 37.0029H21.9358L20.8334 32.5513ZM19.6494 27.791H25.3865L26.5154 32.247H20.7562L19.6494 27.791ZM18.8093 24.4021C18.7321 24.1022 18.7829 23.8112 18.946 23.5995C19.1092 23.3834 19.3804 23.2621 19.7001 23.2621H24.2377L25.3137 27.4911H19.5766L18.8093 24.4021ZM30.5569 23.2621L31.6329 27.4911H25.6224L24.5464 23.2621H30.5569ZM35.5179 23.2621C36.1837 23.2621 36.8584 23.7891 37.0172 24.4329L37.7734 27.4911H31.9416L30.8656 23.2621H35.5179ZM37.8683 23.5995C38.0314 23.3834 38.3026 23.2621 38.6223 23.2621H43.16L44.2359 27.4911H38.5011L37.7316 24.4021C37.6566 24.1022 37.7073 23.8112 37.8683 23.5995ZM49.4814 23.2621L50.5573 27.4911H44.5468L43.4708 23.2621H49.4814ZM54.4423 23.2621C55.1082 23.2621 55.7807 23.7891 55.9394 24.4329L56.6957 27.4911H50.8638L49.79 23.2621H54.4423ZM56.7927 23.5995C56.9559 23.3834 57.2271 23.2621 57.5468 23.2621H62.0844L63.1582 27.4911H57.4233L56.656 24.4021C56.5789 24.1022 56.6296 23.8112 56.7927 23.5995ZM68.4036 23.2621L69.4796 27.4911H63.4691L62.3931 23.2621H68.4036ZM73.3646 23.2621C74.0305 23.2621 74.7051 23.7891 74.8617 24.4329L75.6202 27.4911H69.7883L68.7123 23.2621H73.3646ZM76.7998 32.247H70.9921L69.8632 27.791H75.6929L76.7998 32.247ZM77.9816 37.0029H72.2004L71.0693 32.5513H76.8725L77.9816 37.0029ZM79.1634 41.7589H73.4087L72.2754 37.3006H78.0544L79.1634 41.7589ZM67.1601 42.0587H73.1705L74.3017 46.5126H68.2934L67.1601 42.0587ZM61.0393 42.0587H66.8492L67.9825 46.5126H62.144L61.0393 42.0587ZM54.5614 42.0587H60.3117L61.4185 46.5126H55.6925L54.5614 42.0587ZM48.2378 42.0587H54.2461L55.3794 46.5126H49.3689L48.2378 42.0587ZM42.1149 42.0587H47.9269L49.058 46.5126H43.2217L42.1149 42.0587ZM35.6391 42.0587H41.3894L42.4941 46.5126H36.768L35.6391 42.0587ZM35.326 42.0587L36.4571 46.5126H30.4466L29.3133 42.0587H35.326ZM34.1178 37.3006L35.2489 41.7589H29.2384L28.1095 37.3006H34.1178ZM32.9139 32.5513L34.0428 37.0029H28.0323L26.9034 32.5513H32.9139ZM32.8389 32.247H26.8262L25.6951 27.791H31.7056L32.8389 32.247ZM38.9531 32.247H33.1498L32.0165 27.791H37.8484L38.9531 32.247ZM45.4398 32.247H39.6785L38.5716 27.791H44.3087L45.4398 32.247ZM51.7612 32.247H45.7485L44.6196 27.791H50.6301L51.7612 32.247ZM57.8775 32.247H52.0721L50.9388 27.791H56.7729L57.8775 32.247ZM64.3621 32.247H58.6007L57.4961 27.791H63.2332L64.3621 32.247ZM64.673 32.247L63.5419 27.791H69.5523L70.6834 32.247H64.673ZM65.879 37.0029L64.7501 32.5513H70.7606L71.8895 37.0029H65.879ZM65.9562 37.3006H71.9645L73.0956 41.7589H67.0851L65.9562 37.3006ZM59.8575 37.3006H65.6431L66.7742 41.7589H60.9644L59.8575 37.3006ZM53.3531 37.3006H59.1321L60.2389 41.7589H54.4842L53.3531 37.3006ZM47.0339 37.3006H53.0422L54.1711 41.7589H48.1606L47.0339 37.3006ZM40.9353 37.3006H46.7209L47.8519 41.7589H42.0399L40.9353 37.3006ZM40.2076 37.3006L41.3167 41.7589H35.562L34.4287 37.3006H40.2076ZM40.1349 37.0029H34.3537L33.2248 32.5513H39.0258L40.1349 37.0029ZM46.6459 37.0029H40.8603L39.7556 32.5513H45.517L46.6459 37.0029ZM52.9673 37.0029H46.9568L45.8257 32.5513H51.8362L52.9673 37.0029ZM58.6779 32.5513H64.4392L65.5703 37.0029H59.7825L58.6779 32.5513ZM59.0593 37.0029H53.276L52.1471 32.5513H57.9525L59.0593 37.0029ZM80.3408 46.5126H74.6147L73.4836 42.0587H79.2362L80.3408 46.5126ZM81.8997 49.8949L75.5695 24.4021C75.3181 23.3922 74.2664 22.5742 73.2257 22.5742H57.4101C56.8964 22.5742 56.4708 22.7638 56.182 23.1232C56.1158 23.207 56.0982 23.3151 56.0541 23.4099C55.5933 22.9204 54.9583 22.5742 54.3012 22.5742H38.4878C37.9741 22.5742 37.5486 22.7638 37.2597 23.1232C37.1936 23.207 37.1737 23.3151 37.1318 23.4099C36.6688 22.9204 36.0338 22.5742 35.379 22.5742H19.5634C19.0496 22.5742 18.6241 22.7638 18.3353 23.1232C18.0619 23.4716 17.9781 23.9368 18.1015 24.4329L24.4273 49.9279C24.6765 50.9289 25.726 51.7425 26.7711 51.7425H42.5867C43.1137 51.7425 43.5348 51.5573 43.8126 51.1979C43.8788 51.1141 43.8964 51.0083 43.9405 50.9135C44.3991 51.403 45.0363 51.7425 45.6956 51.7425H61.5089C62.0359 51.7425 62.4593 51.5573 62.7349 51.1979C62.8032 51.1141 62.8209 51.0083 62.8628 50.9135C63.3236 51.403 63.9608 51.7425 64.6178 51.7425H80.4312C80.9604 51.7425 81.3815 51.5573 81.6571 51.1979C81.9349 50.8474 82.0231 50.3843 81.8997 49.8949Z" fill="white"></path>
+                <path d="M21.4031 64.5643C22.5562 64.5643 23.4293 64.862 24.0224 65.4529C24.6156 66.046 24.911 66.8772 24.911 67.9466C24.911 69.016 24.6134 69.8472 24.0224 70.4469C23.4271 71.0445 22.5562 71.3377 21.4031 71.3267H17.9083V76.0077H16.387V64.5643H21.4031ZM20.8893 70.0457C21.7558 70.0567 22.3886 69.8803 22.7899 69.5165C23.1912 69.1527 23.3897 68.6301 23.3897 67.9466C23.3897 67.2631 23.189 66.7405 22.7899 66.3834C22.3864 66.0262 21.7536 65.8454 20.8893 65.8454H17.9083V70.0457H20.8893Z" fill="#1D1D1B"></path>
+                <path d="M29.5459 76.0075L25.5242 64.5642H27.158L30.4278 74.4862H30.4609L33.7616 64.5642H35.3491L31.2767 76.0075H29.5459Z" fill="#1D1D1B"></path>
+                <path d="M47.5926 64.5642C48.6818 64.5642 49.5351 64.831 50.148 65.3646C50.7632 65.8982 51.0697 66.6302 51.0697 67.5606C51.0697 68.2552 50.9131 68.8637 50.5978 69.3885C50.2803 69.911 49.7776 70.2682 49.0809 70.4601V70.4931C49.4116 70.5571 49.6806 70.6651 49.8901 70.815C50.0995 70.965 50.2649 71.1436 50.3884 71.3508C50.5118 71.5603 50.6022 71.7918 50.6596 72.0476C50.7191 72.3033 50.7654 72.5723 50.7963 72.8479C50.8183 73.128 50.8338 73.4102 50.8426 73.699C50.8514 73.9879 50.8801 74.2723 50.922 74.5501C50.9638 74.8279 51.0278 75.0925 51.1072 75.3417C51.1865 75.593 51.3078 75.8157 51.4665 76.0075H49.7666C49.6608 75.8885 49.588 75.7297 49.5505 75.5269C49.5108 75.3218 49.4888 75.0969 49.4778 74.8433C49.4667 74.5942 49.4557 74.323 49.4447 74.0342C49.4336 73.7453 49.4028 73.4631 49.3499 73.1853C49.3058 72.9075 49.2529 72.6429 49.1889 72.3915C49.1272 72.1424 49.0235 71.9219 48.8846 71.7345C48.7457 71.5471 48.5627 71.3993 48.34 71.2869C48.1173 71.1744 47.8175 71.1193 47.4427 71.1193H43.723V76.0075H42.2017V64.5642H47.586H47.5926ZM47.9145 69.7567C48.2364 69.7038 48.5142 69.6002 48.7568 69.4436C48.9949 69.2893 49.1889 69.0798 49.3344 68.8174C49.4778 68.5572 49.5505 68.2177 49.5505 67.801C49.5505 67.2233 49.3918 66.7514 49.0698 66.3876C48.7479 66.026 48.2298 65.843 47.5154 65.843H43.7318V69.8361H46.9047C47.2575 69.8361 47.5926 69.8096 47.9145 69.7567Z" fill="#1D1D1B"></path>
+                <path d="M58.8314 75.4784C58.2118 75.9502 57.4313 76.1839 56.4898 76.1839C55.8261 76.1839 55.2529 76.0759 54.7678 75.862C54.2827 75.6482 53.8726 75.3505 53.5397 74.9646C53.2111 74.5788 52.9598 74.1202 52.7944 73.5866C52.6291 73.053 52.5365 72.4687 52.5144 71.8403C52.5144 71.2097 52.6114 70.6321 52.8032 70.1095C52.9951 69.5847 53.2663 69.1305 53.6124 68.7469C53.9586 68.361 54.3709 68.0612 54.8472 67.8495C55.3234 67.6378 55.8438 67.5276 56.4104 67.5276C57.1468 67.5276 57.7576 67.6797 58.2449 67.984C58.7322 68.2905 59.1202 68.6763 59.4157 69.146C59.7089 69.6156 59.9118 70.1293 60.0242 70.685C60.1367 71.2406 60.1808 71.7676 60.1609 72.2725H53.9586C53.9476 72.6341 53.9917 72.978 54.0887 73.3066C54.1835 73.6307 54.3378 73.9195 54.5517 74.1731C54.7678 74.4222 55.039 74.6229 55.3697 74.7728C55.7004 74.9205 56.0907 74.9977 56.5383 74.9977C57.116 74.9977 57.59 74.8632 57.9582 74.5964C58.3287 74.3296 58.569 73.9217 58.6881 73.3771H60.033C59.8522 74.3076 59.4509 75.0065 58.8314 75.4762V75.4784ZM58.5028 70.158C58.3794 69.8692 58.214 69.62 58.0067 69.4128C57.7973 69.2033 57.5525 69.0379 57.2681 68.9145C56.9859 68.791 56.6706 68.7292 56.331 68.7292C55.9783 68.7292 55.6586 68.791 55.3763 68.9145C55.0919 69.0379 54.8494 69.2055 54.6465 69.4194C54.4437 69.6354 54.2827 69.8824 54.1659 70.1668C54.0468 70.4491 53.9784 70.7511 53.9564 71.0708H58.7167C58.6947 70.7489 58.6219 70.4468 58.4984 70.158H58.5028Z" fill="#1D1D1B"></path>
+                <path d="M68.9117 75.9743C68.6779 76.1132 68.3494 76.1838 67.9349 76.1838C67.5821 76.1838 67.3021 76.0846 67.0926 75.8861C66.8832 75.6877 66.7795 75.3658 66.7795 74.9182C66.4047 75.3658 65.9704 75.6899 65.472 75.8861C64.9737 76.0824 64.438 76.1838 63.8625 76.1838C63.4877 76.1838 63.1327 76.1397 62.7975 76.0537C62.4624 75.9699 62.1691 75.8354 61.9244 75.6524C61.6797 75.4716 61.4834 75.2357 61.3379 74.9403C61.1946 74.647 61.1218 74.2898 61.1218 73.8753C61.1218 73.4057 61.2012 73.0198 61.3622 72.7221C61.5209 72.4223 61.7326 72.1797 61.9949 71.9923C62.2551 71.8049 62.555 71.666 62.8923 71.569C63.2275 71.472 63.5736 71.3926 63.9264 71.3287C64.299 71.2559 64.654 71.1986 64.9914 71.1611C65.3265 71.1236 65.6242 71.0707 65.8799 71.0023C66.1357 70.9318 66.3386 70.8304 66.4885 70.6959C66.6362 70.5614 66.7134 70.3695 66.7134 70.1116C66.7134 69.8117 66.6583 69.5714 66.5458 69.3906C66.4334 69.2076 66.2901 69.0687 66.1137 68.9739C65.9373 68.879 65.7388 68.8151 65.5183 68.782C65.3001 68.749 65.084 68.7335 64.8701 68.7335C64.2924 68.7335 63.814 68.8438 63.4281 69.0621C63.0423 69.2803 62.835 69.6949 62.8041 70.3034H61.4415C61.4636 69.7919 61.5694 69.3575 61.7634 69.0047C61.9553 68.6519 62.211 68.3653 62.5329 68.147C62.8549 67.9265 63.2209 67.77 63.631 67.673C64.0411 67.576 64.4843 67.5297 64.9539 67.5297C65.3287 67.5297 65.6991 67.5561 66.0696 67.609C66.4378 67.662 66.7707 67.7722 67.0706 67.9376C67.3704 68.1007 67.6086 68.3344 67.7916 68.6321C67.9724 68.9298 68.0628 69.32 68.0628 69.7985V74.0539C68.0628 74.3736 68.0826 74.6073 68.1179 74.7573C68.1576 74.905 68.2811 74.9822 68.4949 74.9822C68.614 74.9822 68.7507 74.9601 68.9117 74.9182V75.9743ZM66.7002 71.7255C66.5282 71.8556 66.3033 71.9482 66.0255 72.0056C65.7477 72.0629 65.4566 72.1136 65.1523 72.1489C64.8481 72.1864 64.5416 72.2283 64.2307 72.2768C63.9198 72.3253 63.642 72.4024 63.3973 72.5061C63.1525 72.6141 62.9519 72.764 62.7975 72.9625C62.6432 73.1587 62.566 73.4277 62.566 73.7673C62.566 73.99 62.6123 74.1796 62.7027 74.3339C62.7931 74.486 62.9122 74.6117 63.0555 74.7087C63.1988 74.8036 63.3686 74.8719 63.5604 74.916C63.7522 74.9601 63.9551 74.9799 64.1668 74.9799C64.6165 74.9799 65.0002 74.9182 65.3199 74.7947C65.6418 74.6735 65.9042 74.5191 66.1048 74.3339C66.3077 74.1465 66.4576 73.9437 66.5546 73.7276C66.6494 73.5093 66.698 73.3064 66.698 73.1146V71.7255H66.7002Z" fill="#1D1D1B"></path>
+                <path d="M76.2226 76.0075V74.8852H76.1895C75.9646 75.3439 75.6118 75.6746 75.1334 75.8774C74.6505 76.0825 74.1236 76.1839 73.5459 76.1839C72.9043 76.1839 72.3464 76.0649 71.8702 75.8311C71.3939 75.5974 70.997 75.2821 70.684 74.8852C70.3664 74.4884 70.1305 74.0298 69.9718 73.5072C69.8108 72.9846 69.7314 72.429 69.7314 71.8403C69.7314 71.2516 69.8086 70.696 69.9629 70.1712C70.1173 69.6487 70.3532 69.1923 70.6663 68.802C70.9838 68.4117 71.3763 68.103 71.8525 67.8715C72.3288 67.64 72.8822 67.5276 73.5128 67.5276C73.7267 67.5276 73.956 67.5496 74.2007 67.5915C74.4455 67.6334 74.6924 67.7062 74.9372 67.8076C75.1819 67.9112 75.4156 68.0435 75.6339 68.2089C75.8544 68.3742 76.0374 68.5815 76.1873 68.8262H76.2204V64.562H77.583V76.0053H76.2204L76.2226 76.0075ZM71.3256 73.0662C71.427 73.4344 71.5813 73.763 71.7908 74.0518C71.9981 74.3406 72.2648 74.57 72.5912 74.7397C72.9153 74.9095 73.2967 74.9955 73.7377 74.9955C74.1963 74.9955 74.5888 74.9051 74.9063 74.7221C75.2282 74.5413 75.4906 74.3054 75.6912 74.0099C75.8941 73.7167 76.0418 73.3837 76.1322 73.0089C76.2226 72.6341 76.2689 72.2548 76.2689 71.869C76.2689 71.4633 76.2226 71.0708 76.1256 70.6916C76.0308 70.3123 75.8786 69.9794 75.6692 69.6906C75.4597 69.4017 75.1907 69.1702 74.86 68.9938C74.5293 68.8174 74.128 68.7292 73.6583 68.7292C73.1975 68.7292 72.8072 68.8218 72.4875 69.0026C72.1678 69.1834 71.9099 69.4238 71.718 69.7236C71.5262 70.0235 71.3873 70.3652 71.3035 70.7489C71.2175 71.1347 71.1734 71.5294 71.1734 71.9351C71.1734 72.321 71.2219 72.698 71.3256 73.0662Z" fill="#1D1D1B"></path>
+                <path d="M82.9362 77.1142C82.7752 77.5199 82.6165 77.8617 82.4622 78.1395C82.3078 78.4173 82.138 78.6444 81.9506 78.8208C81.7632 78.9972 81.5537 79.1273 81.3244 79.2066C81.0951 79.286 80.8305 79.3279 80.5329 79.3279C80.3741 79.3279 80.211 79.3169 80.0522 79.2948C79.8913 79.2728 79.7347 79.2375 79.587 79.1824V77.9322C79.7038 77.9851 79.8405 78.0314 79.9971 78.0689C80.1492 78.1064 80.2815 78.1241 80.3896 78.1241C80.6674 78.1241 80.8989 78.0579 81.0863 77.9234C81.2737 77.7867 81.4126 77.5993 81.5096 77.3523L82.0719 75.9589L78.7866 67.7192H80.3234L82.7444 74.4992H82.7774L85.1036 67.7192H86.5456L82.9384 77.1142H82.9362Z" fill="#1D1D1B"></path>
+                <g opacity="0.2">
+                <path d="M49.9978 0.997559C22.3905 0.997559 0.00439453 23.3837 0.00439453 50.9976C0.00439453 78.6114 22.3905 100.998 49.9978 100.998C77.6051 100.998 99.9978 78.6159 99.9978 50.9976C99.9978 23.3793 77.6139 0.997559 49.9978 0.997559Z" fill="white"></path>
+                </g>
+              </svg>
+              <span class="spec-icon-label">PV Ready</span>
+            </div>
+
+            <div class="spec-icon-card" data-icon="cooling">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Ebene_1" x="0px" y="0px" viewBox="0 0 101 101" style="width: 50px" xml:space="preserve" class="injected-svg" data-src="/media/icons/Cooling.svg">
+                <style type="text/css">
+                  .st0{fill:#FFFFFF;}
+                  .st1{fill:#EDEDED;}
+                  .st2{fill:#1D1D1B;}
+                  .st3{display:none;fill:#1D1D1B;}
+                  .st4{opacity:0.2;}
+                  .st5{fill:none;}
+                  .st6{fill:#575E62;}
+                  .st7{font-family:'HelveticaNeueLTW1G-Lt';}
+                  .st8{font-size:16px;}
+                </style>
+                <path class="st0" d="M50,1C22.4,1,0,23.4,0,51c0,27.6,22.4,50,50,50s50-22.4,50-50S77.6,1,50,1z"></path>
+                <path class="st1" d="M98,57.4c0.3-2.1,0.4-4.2,0.4-6.4C98.4,24.2,76.8,2.6,50,2.6S1.6,24.2,1.6,51c0,2.2,0.2,4.3,0.4,6.4H98z"></path>
+                <path class="st2" d="M50,98.6C23.8,98.6,2.5,77.2,2.5,51S23.8,3.4,50,3.4S97.6,24.8,97.6,51S76.2,98.6,50,98.6z M50,2.6  C23.3,2.6,1.6,24.2,1.6,51S23.3,99.4,50,99.4c26.7,0,48.4-21.7,48.4-48.4S76.8,2.6,50,2.6z"></path>
+                <path class="st2" d="M78.3,48.1L78,47.2L66,52.4l-14.2-8.8L66.2,35l11.7,5.3l0.5-0.8l-11.4-5l11.8-7l-0.4-0.9l-11.8,7.1l0.9-12.3  l-1-0.2l-0.8,13l-14.3,8.4l0.1-16.5L62,19.1l-0.5-0.8l-10.2,7l0.1-13.6l-1-0.1v13.7l-10.1-7.1l-0.6,0.7l10.7,7.4l-0.2,16.5  l-14.2-8.6l-0.6-12.8l-1,0l0.7,12.4l-11.6-7.2l-0.6,0.8l11.8,7.1l-11.3,4.9l0.3,0.9L35.8,35l14.2,8.8l-14.3,8.6L24,47.1l-0.5,0.8  l11.4,5l-11.8,7l0.4,0.9l11.8-7.1l-0.8,12.3l1,0.1l0.8-13l14.3-8.4l-0.1,16.5l-10.7,7.1l0.5,0.8l10.2-7l-0.1,13.6h1V62.1l10.1,7.1  l0.6-0.7l-10.7-7.4l0.2-16.5l14.1,8.6L66.3,66l1,0l-0.7-12.4l11.6,7.2l0.6-0.8l-11.8-7.1L78.3,48.1z"></path>
+                <path class="st0" d="M81.8,57.4H13.6v21.2h68.1V57.4z"></path>
+                <path class="st3" d="M24.5,64.6v5.7l5.8-5.7h2l-4.8,4.6l5,6.8h-1.9l-4.1-5.8L24.5,72v4H23V64.6L24.5,64.6L24.5,64.6z"></path>
+                <path class="st3" d="M38.9,76v-1.3h0c-0.3,0.5-0.7,0.9-1.1,1.1c-0.4,0.2-1,0.4-1.6,0.4c-0.5,0-1-0.1-1.4-0.2  c-0.4-0.1-0.7-0.3-0.9-0.6s-0.4-0.6-0.5-1c-0.1-0.4-0.1-0.8-0.1-1.2v-5.5h1.4v5.6c0,0.5,0.1,0.9,0.4,1.2c0.3,0.3,0.7,0.4,1.2,0.4  c0.4,0,0.8-0.1,1.1-0.2c0.3-0.1,0.6-0.3,0.8-0.5c0.2-0.2,0.4-0.5,0.5-0.8c0.1-0.3,0.2-0.7,0.2-1v-4.7h1.4V76L38.9,76L38.9,76z   M36,64.9v1.7h-1.4v-1.7H36z M39,64.9v1.7h-1.4v-1.7H39z"></path>
+                <path class="st3" d="M43.6,64.6v4.4h0c0.1-0.3,0.3-0.5,0.4-0.6c0.2-0.2,0.4-0.3,0.6-0.4c0.2-0.1,0.5-0.2,0.8-0.2  c0.3-0.1,0.5-0.1,0.8-0.1c0.5,0,1,0.1,1.4,0.2c0.4,0.1,0.7,0.4,0.9,0.6c0.2,0.3,0.4,0.6,0.5,1c0.1,0.4,0.1,0.8,0.1,1.2V76h-1.4v-5.6  c0-0.5-0.1-0.9-0.4-1.2c-0.3-0.3-0.7-0.4-1.2-0.4c-0.4,0-0.8,0.1-1.1,0.2c-0.3,0.1-0.6,0.3-0.8,0.5c-0.2,0.2-0.4,0.5-0.5,0.8  c-0.1,0.3-0.2,0.7-0.2,1V76h-1.4V64.6L43.6,64.6L43.6,64.6z"></path>
+                <path class="st3" d="M52.6,64.6V76h-1.4V64.6H52.6z"></path>
+                <path class="st3" d="M60.3,76v-1.3h0c-0.3,0.5-0.7,0.9-1.1,1.1c-0.4,0.2-1,0.4-1.6,0.4c-0.5,0-1-0.1-1.4-0.2  c-0.4-0.1-0.7-0.3-0.9-0.6s-0.4-0.6-0.5-1c-0.1-0.4-0.1-0.8-0.1-1.2v-5.5h1.4v5.6c0,0.5,0.1,0.9,0.4,1.2c0.3,0.3,0.7,0.4,1.2,0.4  c0.4,0,0.8-0.1,1.1-0.2c0.3-0.1,0.6-0.3,0.8-0.5c0.2-0.2,0.4-0.5,0.5-0.8c0.1-0.3,0.2-0.7,0.2-1v-4.7h1.4V76L60.3,76L60.3,76z"></path>
+                <path class="st3" d="M64.9,67.7V69h0c0.6-1,1.5-1.5,2.7-1.5c0.5,0,1,0.1,1.4,0.2c0.4,0.1,0.7,0.4,0.9,0.6s0.4,0.6,0.5,1  c0.1,0.4,0.1,0.8,0.1,1.2V76h-1.4v-5.6c0-0.5-0.1-0.9-0.4-1.2c-0.3-0.3-0.7-0.4-1.2-0.4c-0.4,0-0.8,0.1-1.1,0.2  c-0.3,0.1-0.6,0.3-0.8,0.5c-0.2,0.2-0.4,0.5-0.5,0.8C65,70.6,65,71,65,71.3V76h-1.4v-8.3L64.9,67.7L64.9,67.7z"></path>
+                <path class="st3" d="M78.7,78.3c-0.6,0.7-1.6,1-2.9,1c-0.4,0-0.8,0-1.2-0.1c-0.4-0.1-0.8-0.2-1.1-0.4c-0.3-0.2-0.6-0.4-0.8-0.8  c-0.2-0.3-0.3-0.7-0.4-1.1h1.4c0,0.2,0.1,0.5,0.2,0.6c0.1,0.2,0.3,0.3,0.5,0.4c0.2,0.1,0.4,0.2,0.7,0.2c0.2,0,0.5,0.1,0.7,0.1  c0.4,0,0.8-0.1,1.1-0.2c0.3-0.2,0.6-0.4,0.8-0.6c0.2-0.3,0.3-0.6,0.4-1c0.1-0.4,0.1-0.8,0.1-1.3v-0.5h0c-0.2,0.5-0.6,0.9-1.1,1.1  c-0.5,0.2-1,0.4-1.5,0.4c-0.6,0-1.2-0.1-1.6-0.3c-0.5-0.2-0.8-0.5-1.2-0.9c-0.3-0.4-0.5-0.8-0.7-1.3c-0.2-0.5-0.2-1-0.2-1.6  c0-0.5,0.1-1,0.2-1.5c0.1-0.5,0.3-1,0.6-1.4c0.3-0.4,0.7-0.8,1.2-1c0.5-0.3,1.1-0.4,1.8-0.4c0.5,0,1,0.1,1.4,0.3  c0.4,0.2,0.8,0.6,1,1h0v-1.2h1.3v7.6C79.7,76.7,79.4,77.7,78.7,78.3L78.7,78.3z M77,74.6c0.3-0.2,0.6-0.4,0.8-0.7  c0.2-0.3,0.3-0.7,0.4-1c0.1-0.4,0.1-0.8,0.1-1.2c0-0.4,0-0.7-0.1-1.1c-0.1-0.4-0.2-0.7-0.4-1c-0.2-0.3-0.4-0.5-0.7-0.7  c-0.3-0.2-0.7-0.3-1.1-0.3c-0.4,0-0.8,0.1-1.1,0.2c-0.3,0.2-0.6,0.4-0.8,0.7c-0.2,0.3-0.3,0.6-0.4,1s-0.1,0.7-0.1,1.1  c0,0.4,0,0.7,0.1,1.1c0.1,0.4,0.2,0.7,0.4,1c0.2,0.3,0.4,0.5,0.7,0.7c0.3,0.2,0.7,0.3,1.1,0.3C76.3,74.9,76.7,74.8,77,74.6L77,74.6z  "></path>
+                <g class="st4">
+                  <path class="st0" d="M50,1C22.4,1,0,23.4,0,51c0,27.6,22.4,50,50,50s50-22.4,50-50S77.6,1,50,1z"></path>
+                </g>
+                <rect x="24.2" y="64.6" class="st5" width="56.8" height="14.7"></rect>
+                <text transform="matrix(1 0 0 1 24.2051 76.0334)" class="st6 st7 st8">Cooling</text>
+              </svg>
+              <span class="spec-icon-label">Cooling</span>
+            </div>
+
+            <div class="spec-icon-card" data-icon="sg">
+             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="101" viewBox="0 0 100 101" fill="none" class="injected-svg" data-src="/media/icons/sg.svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 50px">
+              <path d="M79.5911 0.997559H20.4089C9.18342 0.997559 0 10.181 0 21.4042V80.5887C0 91.8119 9.18342 100.998 20.4089 100.998H79.5911C90.8166 100.998 100 91.8119 100 80.5887V21.4042C100 10.181 90.8166 0.997559 79.5911 0.997559Z" fill="white"></path>
+              <path d="M79.5913 2.07861H20.409C9.73446 2.07861 1.08105 10.732 1.08105 21.4065V80.5888C1.08105 91.2633 9.73446 99.9167 20.409 99.9167H79.5913C90.2658 99.9167 98.9192 91.2633 98.9192 80.5888V21.4065C98.9192 10.732 90.2658 2.07861 79.5913 2.07861Z" fill="#1D1D1B"></path>
+              <path d="M79.5911 0.997559H20.4089C9.18342 0.997559 0 10.181 0 21.4064V80.5887C0 91.8141 9.18342 100.998 20.4089 100.998H79.5911C90.8166 100.998 100 91.8141 100 80.5887V21.4064C100 10.181 90.8166 0.997559 79.5911 0.997559ZM79.5911 3.15943C84.444 3.15943 89.0188 5.0635 92.4764 8.52113C95.9363 11.9788 97.8404 16.5558 97.8404 21.4064V80.5887C97.8404 85.4416 95.9363 90.0186 92.4764 93.474C89.0188 96.9339 84.444 98.8379 79.5911 98.8379H20.4089C15.556 98.8379 10.9789 96.9339 7.52131 93.474C4.06368 90.0186 2.15961 85.4416 2.15961 80.5887V21.4064C2.15961 16.5558 4.06368 11.9788 7.52131 8.52113C10.9789 5.0635 15.556 3.15943 20.4089 3.15943H79.5911Z" fill="white"></path>
+              <path d="M78.0607 5.07703H21.9403C12.1169 5.07703 4.08228 13.1139 4.08228 22.9351V79.0577C4.08228 88.8788 12.1169 96.9135 21.9403 96.9135H78.0607C87.8818 96.9135 95.9165 88.8788 95.9165 79.0577V22.9351C95.9165 13.1139 87.8818 5.07703 78.0607 5.07703ZM78.0607 7.23889C82.2352 7.23889 86.17 8.87613 89.1459 11.8521C92.1196 14.8258 93.7569 18.7628 93.7569 22.9351V79.0577C93.7569 83.2299 92.1196 87.167 89.1459 90.1429C86.17 93.1166 82.2352 94.7539 78.0607 94.7539H21.9403C17.7658 94.7539 13.8288 93.1166 10.8551 90.1429C7.88138 87.167 6.24188 83.2299 6.24188 79.0577V22.9351C6.24188 18.7628 7.88138 14.8258 10.8551 11.8521C13.8288 8.87613 17.7658 7.23889 21.9403 7.23889H78.0607Z" fill="white"></path>
+              <path d="M43.0747 26.7886V20.3098C43.0747 20.2329 42.4574 19.9683 42.394 19.9389C41.788 19.6269 41.1639 19.3487 40.5284 19.1045C38.6718 18.3854 36.718 17.9467 34.7235 17.9512C30.8792 17.9625 26.5396 18.6862 24.6966 22.5237C24.2466 23.4667 23.991 24.4956 23.9051 25.5358C23.7558 27.3834 24.484 29.3033 25.6079 30.7438C26.8584 32.3471 28.6517 33.376 30.4992 34.1539C31.4196 34.5406 32.3287 34.9544 33.2242 35.4022C34.3006 35.9359 36.0441 36.7952 35.9288 38.2379C35.7004 41.1099 31.4626 40.2302 29.6603 39.7553C27.7223 39.2443 25.9697 38.204 24.2217 37.2271V43.9321C24.2217 43.9954 24.9747 44.2374 25.0335 44.26C25.7526 44.5359 26.4808 44.7846 27.2157 45.0085C29.2939 45.6439 31.4716 46.1279 33.6516 46.164C37.2132 46.2274 41.1299 45.1216 43.1267 41.9466C43.6808 41.0647 44.0629 40.0697 44.1556 39.0272C44.3999 36.2728 43.6491 33.9052 41.4194 32.1345C40.1123 31.0988 38.6176 30.2576 37.1137 29.5023C36.1956 29.041 35.2459 28.643 34.3368 28.1658C33.6018 27.7814 32.7538 27.4015 32.2563 26.705C31.752 25.9972 31.89 24.9841 32.5232 24.4006C33.2219 23.7607 34.3164 23.6499 35.221 23.6612C38.1675 23.7019 40.6279 25.3436 43.0747 26.7886Z" fill="white"></path>
+              <path d="M75.1113 26.5193V19.9952C75.1113 19.8731 73.6957 19.4909 73.5849 19.4547C70.6293 18.5276 67.4498 18.0233 64.3336 17.9781C60.971 17.926 57.7938 18.4145 54.7997 19.9816C53.5311 20.6442 52.3393 21.4741 51.3398 22.5031C50.1865 23.6925 49.5669 25.0064 48.9676 26.5193C47.9749 29.0362 47.8121 32.0528 48.2169 34.6986C48.8478 38.8211 51.2222 42.1159 54.8879 44.0946C55.8874 44.6351 56.948 45.0625 58.0425 45.3632C59.7363 45.8268 61.4934 46.0349 63.2437 46.0824C64.4603 46.1163 65.6792 46.0665 66.889 45.9331C68.5262 45.7545 70.1635 45.4447 71.7645 45.0489C72.3615 44.9019 72.954 44.7255 73.5419 44.5401C73.7635 44.47 75.6518 43.9476 75.6518 43.7984V30.6146H64.6728V36.1482H68.4064V39.4339C68.4064 39.4339 67.1762 39.8478 65.392 39.8478C63.6417 39.8478 61.8439 39.5153 60.3039 38.6651C58.8702 37.8736 57.7033 36.657 57.0317 35.1577C56.6405 34.2825 56.4392 33.3282 56.4392 32.3694C56.4392 30.0515 57.2556 27.7336 58.9991 26.1461C61.066 24.2647 63.965 23.7446 66.6742 23.878C69.3561 24.0091 71.7374 24.7622 74.1208 25.9336L75.1113 26.5193Z" fill="white"></path>
+              <path d="M80.6295 52.5094H16.8408L13.7834 73.3705H80.6295C83.7163 73.3705 86.2422 70.8446 86.2422 67.7578V58.1199C86.2422 55.0353 83.7163 52.5094 80.6295 52.5094Z" fill="white"></path>
+              <path d="M21.639 78.888C21.7656 78.888 21.8968 78.9152 22.0257 78.9694C22.1546 79.0237 22.2789 79.1051 22.4011 79.2159L23.0388 78.2345C22.8171 78.1056 22.582 78.0083 22.3287 77.9428C22.0777 77.8749 21.8334 77.8433 21.5937 77.8433C21.3359 77.8433 21.0985 77.8817 20.8814 77.9586C20.6621 78.0355 20.4721 78.1418 20.3093 78.282C20.1465 78.4199 20.0108 78.5873 19.9045 78.7817C19.7982 78.9785 19.7281 79.1956 19.6942 79.433C19.6603 79.6727 19.6693 79.8717 19.7236 80.0277C19.7756 80.1838 19.857 80.3127 19.9633 80.4144C20.0718 80.5185 20.1985 80.5999 20.3455 80.6632C20.4925 80.7242 20.644 80.7808 20.8 80.8305C20.9312 80.8803 21.042 80.921 21.1324 80.9594C21.2229 81.0001 21.2952 81.0408 21.3495 81.0861C21.4015 81.1313 21.4377 81.181 21.4558 81.2331C21.4739 81.2873 21.4784 81.3484 21.4671 81.423C21.4513 81.5429 21.3857 81.6492 21.2726 81.7441C21.1596 81.8391 20.999 81.8843 20.7932 81.8843C20.6146 81.8843 20.4382 81.8436 20.2663 81.7622C20.0922 81.6808 19.9249 81.5587 19.7598 81.3891L19.0791 82.4044C19.5495 82.7685 20.0899 82.9494 20.7028 82.9494C20.9967 82.9494 21.2658 82.911 21.5101 82.8318C21.7543 82.7504 21.9669 82.6396 22.1478 82.4972C22.3287 82.3547 22.4757 82.1828 22.5865 81.9816C22.6973 81.7803 22.7719 81.5564 22.8058 81.3077C22.8578 80.9391 22.8058 80.6406 22.6475 80.4122C22.4892 80.1838 22.2134 80.0006 21.8221 79.8627C21.7249 79.8287 21.6254 79.7971 21.5236 79.7677C21.4241 79.736 21.3359 79.7021 21.2568 79.6614C21.1799 79.6207 21.1189 79.5732 21.0759 79.5167C21.0307 79.4624 21.0148 79.3923 21.0284 79.3064C21.0442 79.182 21.1098 79.0802 21.2251 79.0033C21.3382 78.9265 21.4762 78.888 21.639 78.888Z" fill="white"></path>
+              <path d="M28.9523 79.7473C28.8686 79.65 28.7601 79.5777 28.6289 79.5347C28.5 79.4895 28.3575 79.4691 28.2038 79.4691C27.7198 79.4691 27.3173 79.6749 26.9985 80.091C26.7995 79.6794 26.4557 79.4736 25.9695 79.4736C25.5738 79.4736 25.1984 79.6251 24.8411 79.9304L24.8977 79.5256H23.7353L23.2717 82.8159H24.4341L24.6625 81.1923C24.6873 81.0181 24.7213 80.8757 24.7642 80.7671C24.8072 80.6563 24.8569 80.5727 24.9157 80.5116C24.9723 80.4483 25.0356 80.4053 25.1034 80.385C25.1713 80.3646 25.2414 80.3533 25.3137 80.3533C25.3974 80.3533 25.472 80.3646 25.5308 80.3872C25.5942 80.4121 25.6394 80.4551 25.671 80.5184C25.7027 80.584 25.7208 80.6699 25.7276 80.7807C25.7344 80.8893 25.7253 81.0272 25.7027 81.1923L25.4743 82.8159H26.6344L26.8628 81.1923C26.9397 80.6495 27.1635 80.3782 27.5367 80.3782C27.6045 80.3782 27.6678 80.3895 27.7244 80.4121C27.7809 80.4325 27.8261 80.4732 27.8646 80.532C27.9007 80.593 27.9234 80.6744 27.9301 80.783C27.9392 80.8915 27.9301 81.0272 27.9075 81.1923L27.6814 82.8159H28.8415L29.1422 80.6812C29.1739 80.4619 29.1716 80.2764 29.1332 80.1226C29.0993 79.9666 29.0382 79.8422 28.9523 79.7473Z" fill="white"></path>
+              <path d="M32.598 79.8535C32.3673 79.5664 32.0485 79.4216 31.6369 79.4216C31.3949 79.4216 31.1643 79.4691 30.9517 79.5618C30.7369 79.6523 30.5469 79.7767 30.3796 79.935C30.21 80.0933 30.072 80.2787 29.959 80.4913C29.8481 80.7038 29.778 80.9254 29.7441 81.1606C29.7079 81.4139 29.717 81.6468 29.7713 81.8616C29.8233 82.0742 29.9137 82.2596 30.0426 82.4202C30.1693 82.5785 30.3276 82.7006 30.5175 82.7888C30.7052 82.8747 30.92 82.92 31.1597 82.92C31.5826 82.92 31.9399 82.7639 32.2316 82.4496L32.1796 82.8159H33.3487L33.8101 79.5256H32.6432L32.598 79.8535ZM32.3492 81.4614C32.2949 81.5518 32.2316 81.6332 32.1547 81.7011C32.0779 81.7689 31.9919 81.8232 31.8947 81.8616C31.7974 81.9001 31.6979 81.9182 31.5939 81.9182C31.4876 81.9182 31.3904 81.9001 31.3045 81.8616C31.2185 81.8232 31.1462 81.7689 31.0896 81.7011C31.0331 81.6332 30.9924 81.5518 30.9653 81.4591C30.9404 81.3664 30.9359 81.2692 30.9494 81.1606C30.9653 81.0589 30.9969 80.9639 31.0489 80.8757C31.0987 80.7875 31.162 80.7106 31.2389 80.6428C31.3135 80.5727 31.4017 80.5184 31.4989 80.4799C31.5962 80.4415 31.6979 80.4234 31.8042 80.4234C31.9083 80.4234 32.0032 80.4415 32.0892 80.4799C32.1751 80.5184 32.2452 80.5727 32.304 80.6428C32.3605 80.7106 32.4035 80.7898 32.4306 80.8825C32.4578 80.9752 32.4645 81.0724 32.451 81.1742C32.4352 81.2759 32.4012 81.3732 32.3492 81.4614Z" fill="white"></path>
+              <path d="M36.8539 79.4553C36.6165 79.4553 36.3971 79.5073 36.2049 79.6114C36.0104 79.7154 35.8363 79.8669 35.6848 80.0636L35.7617 79.5254H34.5993L34.1357 82.8157H35.2981L35.4971 81.4046C35.5401 81.0971 35.6396 80.8619 35.7978 80.7036C35.9539 80.5408 36.1687 80.4616 36.4378 80.4616C36.6165 80.4616 36.7793 80.5001 36.9217 80.577L37.0778 79.4689C37.0326 79.4576 36.9896 79.4553 36.9557 79.4553H36.8539Z" fill="white"></path>
+              <path d="M39.1464 78.535H37.9841L37.8461 79.5255H37.4594L37.3237 80.4934H37.7104L37.3825 82.8158H38.5426L38.8705 80.4934H39.5308L39.6688 79.5255H39.0062L39.1464 78.535Z" fill="white"></path>
+              <path d="M45.4241 79.8447H43.6082L43.8705 77.9768H42.6132L41.9348 82.8139H43.1899L43.4725 80.8193H45.2862L45.008 82.8139H46.2653L46.9437 77.9768H45.6864L45.4241 79.8447Z" fill="white"></path>
+              <path d="M50.5956 79.8919C50.4644 79.7336 50.2926 79.6115 50.0822 79.5301C49.8719 79.4442 49.6255 79.4034 49.3473 79.4034C49.0669 79.4034 48.8068 79.4442 48.5717 79.5301C48.3342 79.6115 48.1262 79.7291 47.9453 79.8851C47.7666 80.0389 47.6174 80.2266 47.502 80.4459C47.3844 80.6653 47.3075 80.914 47.2691 81.1877C47.2307 81.4522 47.242 81.692 47.303 81.9045C47.3618 82.1194 47.4636 82.3048 47.6061 82.4563C47.7508 82.6123 47.9317 82.7299 48.151 82.8136C48.3704 82.8973 48.6191 82.938 48.8973 82.938C49.8041 82.938 50.4237 82.5626 50.7561 81.8095H49.6322C49.4762 82.0153 49.2704 82.1171 49.0194 82.1171C48.5468 82.1171 48.3478 81.8661 48.4179 81.3663H50.8624L50.8805 81.2442C50.919 80.957 50.9144 80.7015 50.8669 80.4708C50.8172 80.2424 50.7267 80.0479 50.5956 79.8919ZM48.5445 80.6924C48.5988 80.5206 48.6892 80.3894 48.8159 80.2944C48.9425 80.2017 49.0963 80.1542 49.2749 80.1542C49.4468 80.1542 49.5848 80.204 49.691 80.3012C49.7973 80.4007 49.8561 80.5296 49.8742 80.6924H48.5445Z" fill="white"></path>
+              <path d="M54.2751 79.8535C54.0468 79.5664 53.7279 79.4216 53.3163 79.4216C53.0744 79.4216 52.8437 79.4691 52.6289 79.5618C52.4163 79.6523 52.2264 79.7767 52.059 79.935C51.8894 80.0933 51.7515 80.2787 51.6384 80.4913C51.5276 80.7038 51.4552 80.9254 51.4236 81.1606C51.3874 81.4139 51.3964 81.6468 51.4507 81.8616C51.5027 82.0742 51.5932 82.2596 51.7221 82.4202C51.8487 82.5785 52.007 82.7006 52.1947 82.7888C52.3846 82.8747 52.5995 82.92 52.8392 82.92C53.2621 82.92 53.6194 82.7639 53.9111 82.4496L53.8591 82.8159H55.0282L55.4895 79.5256H54.3226L54.2751 79.8535ZM54.0264 81.4614C53.9744 81.5518 53.9088 81.6332 53.8342 81.7011C53.7573 81.7689 53.6714 81.8232 53.5741 81.8616C53.4769 81.9001 53.3774 81.9182 53.2734 81.9182C53.1671 81.9182 53.0698 81.9001 52.9839 81.8616C52.8957 81.8232 52.8256 81.7689 52.7691 81.7011C52.7125 81.6332 52.6718 81.5518 52.6447 81.4591C52.6198 81.3664 52.6153 81.2692 52.6289 81.1606C52.6447 81.0589 52.6764 80.9639 52.7284 80.8757C52.7781 80.7875 52.8414 80.7106 52.9183 80.6428C52.993 80.5727 53.0789 80.5184 53.1784 80.4799C53.2756 80.4415 53.3774 80.4234 53.4837 80.4234C53.5877 80.4234 53.6827 80.4415 53.7686 80.4799C53.8545 80.5184 53.9246 80.5727 53.9834 80.6428C54.04 80.7106 54.0807 80.7898 54.1101 80.8825C54.1372 80.9752 54.144 81.0724 54.1282 81.1742C54.1146 81.2759 54.0807 81.3732 54.0264 81.4614Z" fill="white"></path>
+              <path d="M57.7165 78.535H56.5541L56.4162 79.5255H56.0295L55.8938 80.4934H56.2805L55.9526 82.8158H57.1149L57.4406 80.4934H58.1009L58.2388 79.5255H57.5763L57.7165 78.535Z" fill="white"></path>
+              <path d="M63.1825 77.979H61.1812L60.5005 82.8161H61.7578L61.9839 81.2128H62.7279C63.2707 81.2128 63.7071 81.0726 64.035 80.7899C64.3629 80.5072 64.5642 80.1092 64.6365 79.5959C64.7089 79.0826 64.6207 78.6846 64.372 78.4019C64.1209 78.1192 63.7252 77.979 63.1825 77.979ZM62.5425 80.1974H62.1264L62.296 78.9921H62.7121C63.1734 78.9921 63.3769 79.1934 63.3204 79.5959C63.2639 79.9961 63.0038 80.1974 62.5425 80.1974Z" fill="white"></path>
+              <path d="M67.2869 81.3798C67.2303 81.7869 67.0042 81.9881 66.6107 81.9881C66.2172 81.9881 66.0499 81.7869 66.1064 81.3798L66.3665 79.5255H65.2064L64.9124 81.6037C64.8514 82.0492 64.9509 82.3839 65.2132 82.6055C65.4732 82.8271 65.8961 82.9379 66.4773 82.9379C67.0585 82.9379 67.5107 82.8271 67.8364 82.6055C68.1597 82.3839 68.3542 82.0492 68.4153 81.6037L68.7093 79.5255H67.5469L67.2869 81.3798Z" fill="white"></path>
+              <path d="M74.7152 79.7473C74.6316 79.65 74.523 79.5777 74.3918 79.5347C74.263 79.4895 74.1205 79.4691 73.9667 79.4691C73.4828 79.4691 73.0803 79.6749 72.7614 80.091C72.5624 79.6794 72.2209 79.4736 71.7325 79.4736C71.339 79.4736 70.9614 79.6251 70.6041 79.9304L70.6606 79.5256H69.4982L69.0347 82.8159H70.197L70.4254 81.1923C70.4503 81.0181 70.4842 80.8757 70.5272 80.7671C70.5701 80.6563 70.6199 80.5727 70.6787 80.5116C70.7375 80.4483 70.7985 80.4053 70.8664 80.385C70.9342 80.3646 71.0043 80.3533 71.0767 80.3533C71.1626 80.3533 71.235 80.3646 71.296 80.3872C71.3571 80.4121 71.4023 80.4551 71.434 80.5184C71.4656 80.584 71.4837 80.6699 71.4905 80.7807C71.4973 80.8893 71.4883 81.0272 71.4656 81.1923L71.2372 82.8159H72.3973L72.6257 81.1923C72.7026 80.6495 72.9265 80.3782 73.2996 80.3782C73.3675 80.3782 73.4308 80.3895 73.4873 80.4121C73.5438 80.4325 73.5913 80.4732 73.6275 80.532C73.6637 80.593 73.6863 80.6744 73.6954 80.783C73.7021 80.8915 73.6953 81.0272 73.6727 81.1923L73.4443 82.8159H74.6044L74.9052 80.6812C74.9368 80.4619 74.9323 80.2764 74.8961 80.1226C74.8622 79.9666 74.8012 79.8422 74.7152 79.7473Z" fill="white"></path>
+              <path d="M79.2813 79.935C79.1547 79.7767 78.9964 79.6523 78.8064 79.5596C78.6142 79.4669 78.4016 79.4194 78.1665 79.4194C77.7391 79.4194 77.3795 79.5777 77.0878 79.8898L77.1398 79.5235H75.9774L75.2832 84.4578H76.4455L76.7214 82.4949C76.9566 82.7753 77.2777 82.9178 77.6893 82.9178C77.9245 82.9178 78.1484 82.8725 78.3609 82.7843C78.5758 82.6939 78.768 82.5695 78.9376 82.4112C79.1072 82.2529 79.2496 82.0698 79.3605 81.8594C79.4735 81.6491 79.5481 81.423 79.5821 81.1788C79.616 80.9346 79.6069 80.7061 79.5527 80.4936C79.5007 80.2788 79.4102 80.0933 79.2813 79.935ZM78.2682 81.4614C78.2162 81.5519 78.1506 81.6311 78.076 81.6989C77.9991 81.7667 77.9132 81.821 77.8182 81.8594C77.7232 81.8979 77.6237 81.916 77.522 81.916C77.4179 81.916 77.323 81.8979 77.237 81.8572C77.1511 81.8165 77.0787 81.7622 77.0199 81.6944C76.9611 81.631 76.9182 81.5519 76.8933 81.4614C76.8662 81.3733 76.8616 81.276 76.8752 81.172C76.8888 81.0702 76.9227 80.973 76.977 80.8803C77.0312 80.7876 77.0946 80.7084 77.1714 80.6406C77.2461 80.5727 77.332 80.5185 77.4292 80.48C77.5242 80.4416 77.6215 80.4212 77.7255 80.4212C77.8318 80.4212 77.929 80.4416 78.0149 80.4823C78.1009 80.5252 78.1732 80.5773 78.232 80.6474C78.2908 80.7152 78.3315 80.7943 78.3564 80.8871C78.379 80.9798 78.3835 81.077 78.37 81.1788C78.3564 81.2783 78.3225 81.3733 78.2682 81.4614Z" fill="white"></path>
+              <path d="M82.0269 80.7242C81.9138 80.6993 81.8256 80.6767 81.7578 80.6586C81.6877 80.6427 81.6379 80.6224 81.604 80.602C81.5701 80.5794 81.5497 80.5591 81.543 80.5342C81.5362 80.5116 81.5339 80.4799 81.543 80.4415C81.552 80.3691 81.595 80.3103 81.6673 80.2674C81.7374 80.2267 81.8279 80.204 81.9342 80.204C82.14 80.204 82.3412 80.2606 82.5402 80.3714L83.0377 79.6138C82.7166 79.4736 82.3729 79.4012 82.0088 79.4012C81.7872 79.4012 81.5814 79.4284 81.3914 79.4849C81.2015 79.5415 81.0364 79.6206 80.8917 79.7224C80.7492 79.8241 80.6339 79.9508 80.5434 80.0978C80.4552 80.2447 80.3964 80.4121 80.3716 80.5952C80.3376 80.8463 80.3806 81.0453 80.5027 81.19C80.6271 81.3325 80.8645 81.441 81.2128 81.5134C81.3146 81.5337 81.4005 81.5541 81.4638 81.5744C81.5271 81.5948 81.5746 81.6151 81.604 81.6377C81.6357 81.6626 81.6538 81.6875 81.6628 81.7146C81.6696 81.7418 81.6696 81.7802 81.6628 81.8209C81.6515 81.8933 81.6108 81.9543 81.5339 82.0018C81.4593 82.0493 81.3688 82.0719 81.2625 82.0719C80.9708 82.0719 80.6791 81.9611 80.3851 81.7372L79.8469 82.5581C80.2427 82.8114 80.6633 82.9358 81.1088 82.9358C81.3394 82.9358 81.5543 82.9086 81.7555 82.8498C81.9568 82.7933 82.1309 82.7119 82.2847 82.6079C82.4362 82.5016 82.5606 82.3727 82.6601 82.2189C82.7573 82.0651 82.8206 81.891 82.8478 81.6988C82.884 81.4433 82.8342 81.2307 82.6985 81.0679C82.5628 80.9028 82.3412 80.7875 82.0291 80.7242H82.0269Z" fill="white"></path>
+              <path d="M37.0938 60.9104C37.148 60.5259 37.1367 60.1641 37.0598 59.8249C36.983 59.488 36.8382 59.1895 36.6302 58.9339C36.4221 58.6761 36.1372 58.4726 35.7822 58.3256C35.4249 58.1764 34.9929 58.0995 34.4864 58.0995H30.8072L29.5317 67.1925H31.8949L32.3856 63.6964L34.1495 67.1925H37.0915L34.7578 63.468C35.4294 63.3142 35.9631 63.0225 36.3565 62.5928C36.75 62.1632 36.9965 61.6023 37.0938 60.9104ZM34.1608 61.8737C33.8849 62.0682 33.5117 62.1654 33.0459 62.1654H32.6004L32.917 59.9222H33.3625C33.8283 59.9222 34.1721 60.0194 34.3937 60.2116C34.6176 60.4038 34.7012 60.682 34.6515 61.0438C34.6017 61.4056 34.4366 61.6815 34.1608 61.8737Z" fill="#1D1D1B"></path>
+              <path d="M44.1802 61.693C43.9337 61.3967 43.6126 61.1706 43.2146 61.0123C42.8189 60.8562 42.3598 60.7771 41.8374 60.7771C41.3083 60.7771 40.8198 60.8562 40.3766 61.0123C39.9311 61.1706 39.5399 61.3922 39.2029 61.6816C38.8637 61.9711 38.5856 62.3239 38.3662 62.7354C38.1469 63.1515 38.0021 63.6151 37.9298 64.1307C37.8597 64.6282 37.88 65.0782 37.9931 65.4785C38.1062 65.881 38.2961 66.227 38.5652 66.5165C38.8343 66.8082 39.1735 67.0298 39.5874 67.1858C39.9989 67.3418 40.467 67.421 40.9871 67.421C42.6922 67.421 43.8568 66.7132 44.4832 65.2998H42.3711C42.0771 65.6865 41.6904 65.8787 41.2178 65.8787C40.3336 65.8787 39.9582 65.4084 40.0894 64.4677H44.6822L44.7161 64.237C44.7908 63.6988 44.7817 63.2149 44.6913 62.7852C44.5986 62.3533 44.429 61.9915 44.1802 61.693ZM40.3268 63.2013C40.4286 62.8802 40.5982 62.6314 40.8379 62.4528C41.0753 62.2764 41.3625 62.1882 41.6995 62.1882C42.0206 62.1882 42.2806 62.2809 42.4796 62.4641C42.6809 62.6495 42.794 62.896 42.8234 63.2013H40.3268Z" fill="#1D1D1B"></path>
+              <path d="M51.1004 61.6203C50.6685 61.0821 50.0692 60.813 49.2958 60.813C48.839 60.813 48.4071 60.8989 48.0068 61.073C47.6043 61.2449 47.2448 61.4801 46.9304 61.7763C46.6161 62.0748 46.3538 62.4231 46.1457 62.8188C45.9354 63.2191 45.7998 63.6397 45.7387 64.0807C45.6731 64.5533 45.6889 64.992 45.7884 65.3945C45.8879 65.797 46.0598 66.1453 46.2995 66.4438C46.537 66.7423 46.8355 66.973 47.1905 67.138C47.5433 67.3009 47.9458 67.3845 48.3981 67.3845C49.1918 67.3845 49.8657 67.0905 50.4129 66.5049L50.318 67.1901H52.5115L53.3821 61.0052H51.1863L51.1004 61.6203ZM50.6323 64.646C50.5328 64.8156 50.4107 64.9649 50.2682 65.0938C50.1258 65.2227 49.9629 65.3222 49.7798 65.3945C49.5966 65.4669 49.4089 65.5031 49.2167 65.5031C49.0154 65.5031 48.8322 65.4669 48.6694 65.3945C48.5089 65.3222 48.3732 65.2227 48.2669 65.0938C48.1606 64.9649 48.0837 64.8134 48.0362 64.6392C47.9865 64.4674 47.9775 64.2819 48.0046 64.0807C48.0317 63.8885 48.0928 63.7075 48.19 63.5447C48.285 63.3796 48.4048 63.2327 48.5473 63.1038C48.6898 62.9749 48.8526 62.8754 49.0358 62.8007C49.2167 62.7306 49.4089 62.6944 49.6102 62.6944C49.8046 62.6944 49.981 62.7306 50.1438 62.8007C50.3067 62.8754 50.4401 62.9749 50.5486 63.1038C50.6549 63.2327 50.7341 63.3842 50.7861 63.556C50.8381 63.7302 50.8517 63.9111 50.8223 64.1055C50.7974 64.2978 50.7318 64.4787 50.6323 64.646Z" fill="#1D1D1B"></path>
+              <path d="M60.1774 57.1836L59.5532 61.6204C59.1236 61.0822 58.522 60.8131 57.7509 60.8131C57.2919 60.8131 56.8599 60.899 56.4529 61.0731C56.0481 61.245 55.6863 61.4802 55.372 61.7764C55.0554 62.0749 54.7976 62.4232 54.5918 62.8189C54.386 63.2169 54.2548 63.6375 54.1915 64.0808C54.1259 64.5466 54.144 64.9808 54.2435 65.3811C54.343 65.7858 54.5149 66.1341 54.7546 66.4326C54.9943 66.7288 55.2905 66.9618 55.6433 67.1314C55.9984 67.2987 56.4009 67.3846 56.8509 67.3846C57.6469 67.3846 58.3185 67.0907 58.868 66.505L58.7708 67.1902H60.9643L62.3709 57.1836H60.1774ZM59.0851 64.6461C58.9856 64.8157 58.8635 64.965 58.721 65.0939C58.5786 65.2228 58.4158 65.3223 58.2326 65.3946C58.0517 65.467 57.8617 65.5032 57.6695 65.5032C57.4682 65.5032 57.2873 65.467 57.1245 65.3946C56.9617 65.3223 56.826 65.2228 56.7197 65.0939C56.6134 64.965 56.5366 64.8135 56.4891 64.6393C56.4393 64.4675 56.4303 64.282 56.4574 64.0808C56.4845 63.8886 56.5501 63.7076 56.6496 63.5448C56.7469 63.3797 56.869 63.2328 57.0114 63.1039C57.1539 62.975 57.3167 62.8755 57.4999 62.8008C57.6831 62.7307 57.8708 62.6946 58.063 62.6946C58.2575 62.6946 58.4338 62.7307 58.5989 62.8008C58.7595 62.8755 58.8952 62.975 59.0015 63.1039C59.1077 63.2328 59.1869 63.3843 59.2389 63.5561C59.2909 63.7303 59.3045 63.9112 59.2773 64.1056C59.2502 64.2979 59.1869 64.4788 59.0851 64.6461Z" fill="#1D1D1B"></path>
+              <path d="M68.4793 61.0073L66.4305 64.1778L65.2251 61.0073H62.6924L64.9312 66.3487L62.2695 70.2789H64.7163L70.9871 61.0073H68.4793Z" fill="#1D1D1B"></path>
+              <g opacity="0.2">
+              <path d="M79.5911 0.997559H20.4089C9.18342 0.997559 0 10.181 0 21.4042V80.5887C0 91.8119 9.18342 100.998 20.4089 100.998H79.5911C90.8166 100.998 100 91.8119 100 80.5887V21.4042C100 10.181 90.8166 0.997559 79.5911 0.997559Z" fill="white"></path>
+              </g>
+            </svg>
+              <span class="spec-icon-label">SG Ready</span>
+            </div>
+          </div>
+        </div>
+        <div class="section-card">
+          <div class="two-col">
+            <div>
+              <div class="section-header">
+                <div class="section-eyebrow">Risinājuma koncepts</div>
+                <h2 class="section-title" id="prod-section-heading">Detaļas par produktu</h2>
+                <p class="section-description" id="prod-section-text">
+                  Apraksts par to, kā produkts darbojas un kādas problēmas risina.
+                </p>
+              </div>
+              <ul class="bullet-list" id="prod-features"></ul>
+            </div>
+
+            <div>
+              <div class="section-header">
+                <div class="section-eyebrow">Kāpēc klienti izvēlas</div>
+                <h2 class="section-title">Priekšrocības īsumā</h2>
+                <p class="section-description">
+                  Galvenie ieguvumi, kurus jūt gala lietotājs gan ikdienā, gan rēķinos.
+                </p>
+              </div>
+              <ul class="bullet-list" id="prod-benefits"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <section class="real-view">
+        <h2 class="gallery-title">Attēlu galerija</h2>
+        <p class="gallery-sub">Skats, kā risinājums izskatās tehniskajā telpā un dārzā.</p>
+
+        <div id="prod-gallery" class="gallery-grid"></div>
+      </section>
+
+
+      <!-- Downloads -->
+      <section class="section" id="downloads">
+        <div class="section-card">
+          <div class="section-header">
+            <div class="section-eyebrow">Dokumenti</div>
+            <h2 class="section-title">Lejupielādes</h2>
+            <p class="section-description">
+              Brošūras, sertifikāti un lietošanas instrukcijas projektēšanai un klientu konsultācijām.
+            </p>
+          </div>
+
+          <ul class="download-list" id="prod-downloads"></ul>
+        </div>
+      </section>
+
+      <!-- Compatibility -->
+      <section class="section" id="compat-section">
+        <div class="compat-box">
+          <div class="compat-header">
+            <div class="compat-eyebrow">Pilns risinājums</div>
+            <h2 class="compat-title">Saderīgi produkti</h2>
+            <p class="compat-desc">
+              Komponentes, ar kurām šo siltumsūkni visbiežāk apvieno pilnai apkures un karstā ūdens sistēmai.
+            </p>
+          </div>
+
+          <div class="compat-cards">
+            <!-- Card 1 -->
+            <div class="compat-card">
+              <div class="compat-img">
+                <img src="../../media/image/products/sub-warmwasserbereitung-mit-dem-heliotherm-frischwassersystem-1.webp" alt="">
+              </div>
+              <div class="compat-info">
+                <h3>Svaigā ūdens sistēma karstā ūdens sagatavošanai</h3>
+                <p>Plūsmas princips ar augstu higiēnas līmeni un komfortu.</p>
+              </div>
+              <a href="#" class="compat-btn">Uzzināt vairāk</a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="compat-card">
+              <div class="compat-img">
+                <img src="../../media/image/products/sub-waermepumpen-systemsteuerung.webp" alt="">
+              </div>
+              <div class="compat-info">
+                <h3>Heliotherm sistēmas vadība</h3>
+                <p>Attālināta uzraudzība un konfigurācija no jebkuras vietas.</p>
+              </div>
+              <a href="#" class="compat-btn">Uzzināt vairāk</a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="compat-card">
+              <div class="compat-img">
+                <img src="../../media/image/products/sub-home-energy-management-system-heliotherm-2.webp" alt="">
+              </div>
+              <div class="compat-info">
+                <h3>Heliotherm HEMS</h3>
+                <p>Gudra enerģijas pārvaldība ar PV, siltumsūkni un citiem patērētājiem.</p>
+              </div>
+              <a href="#" class="compat-btn">Uzzināt vairāk</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Same lineup -->
+      <section class="section" id="lineup-section">
+        <div class="section-card">
+          <div class="section-header">
+            <div class="section-eyebrow">Tā pati sērija</div>
+            <h2 class="section-title">Citi modeļi no šīs līnijas</h2>
+            <p class="section-description">
+              Modeļi ar līdzīgu koncepciju, bet citu jaudu vai uzstādīšanas tipu.
+            </p>
+          </div>
+
+          <div class="lineup-grid" id="prod-lineup"></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <app-footer></app-footer>
+
+</div>
+<div id="imageViewer" class="image-viewer">
+  <button class="image-viewer-close" aria-label="Aizvērt">
+    ✕
+  </button>
+
+  <div class="image-viewer-content">
+    <img id="imageViewerImg" src="" alt="">
+  </div>
+</div>
+<script src="../../assets/js/components.js"></script>
+<script>
+  const PRODUCTS = {
+    dx: {
+      id: "dx",
+      category: "Ģeotermiskais siltumsūknis",
+      name: "Ģeotermiskais siltumsūknis tiešā iztvaikošanā",
+      intro: "Iedomājies savu dārzu kā vietu, kur atpūsties un iedvesmoties. Šī tiešās iztvaikošanas sistēma izmanto zemē uzkrāto saules enerģiju apkurei un dzesēšanai ar izcili augstu efektivitāti.",
+      shortTagline: "Dabas enerģija tieši no tavas zemes, bez dziļurbuma.",
+      system: "Tiešās iztvaikošanas ģeotermiskais siltumsūknis ar virszemes kolektoriem. Nav starpsistēmas siltummaiņa, tāpēc netiek zaudēts siltums.",
+      efficiency: "Sertificēts SCOP līdz 6.2. Iespējams plūsmas temperatūras līdz 65 °C.",
+      power: "Pieejamie modeļi: 8 kW, 12 kW, 20 kW.",
+      metaScop: "Līdz 6.2",
+      metaTemp: "Līdz 65 °C",
+      metaRange: "8 / 12 / 20 kW",
+      heroImg: "../../media/image/products/erdwaermepumpe-mit-direktverdampfung-von-heliotherm.png",
+      heroAlt: "Heliotherm tiešās iztvaikošanas ģeotermiskais siltumsūknis",
+      sectionHeading: "Daba augšā, ģeotermija zemē",
+      sectionText: "Pazemes kolektori atrodas zem auglīgās zemes kārtas, tāpēc dārzs paliek brīvs un izmantojams. Kolektori uztver saules un lietus enerģiju, ko zeme uzkrāj dabiskā veidā, un nodod to siltumsūknim bez jebkādiem starpposma zudumiem.",
+      tags: ["Nav dziļurbuma", "SCOP līdz 6.2", "Plūsma līdz 65 °C"],
+      icons: ["modulation", "pv", "cooling", "sg"],
+      
+      features: [
+        "Nav nepieciešama dziļurbumu urbšana – tiek izmantoti vienkārši uzstādāmi virszemes kolektori.",
+        "Nav starp-cirkulācijas siltummaiņa, tāpēc nav siltuma zudumu un sistēma darbojas ļoti efektīvi.",
+        "Daudzos gadījumos nav vajadzīga regulatīvā atļauja kolektoru ierakšanai.",
+        "Tiešās iztvaikošanas sistēma ir uzticama un ar ļoti zemu apkopes nepieciešamību."
+      ],
+
+      benefits: [
+        "Ļoti zemas apkures izmaksas pateicoties SCOP līdz 6.2.",
+        "Kluss darbs telpās, nekāda āra ventilatora trokšņa.",
+        "Sistēma gatava integrācijai ar saules PV moduļiem.",
+        "Iespējama arī dzesēšana (papildaprīkojums)."
+      ],
+
+      gallery: [
+        {
+          type: "image",
+          src: "../../media/image/1st_product.webp",
+          alt: "DX siltumsūknis tehniskajā telpā",
+          caption: "Kompakta iekštelpu iekārta ar pārskatāmu hidrauliku."
+        },
+        {
+          type: "video",
+          src: "https://www.youtube.com/embed/l1GcsAA61gE",
+          caption: "Kā darbojas tiešās iztvaikošanas ģeotermijas sistēma."
+        }
+      ],
+
+      downloads: [
+        {
+          title: "Brošūra: Ģeotermiskais siltumsūknis tiešā iztvaikošanā",
+          size: "PDF · 3.7 MB",
+          url: "../media/downloads/brochure-ground-heat-pump-direct-evaporation.pdf"
+        },
+        {
+          title: "EHPA testa sertifikāts Direct Evaporation 2025",
+          size: "PDF · 173 KB",
+          url: "../media/downloads/ehpa-test-certificate-geothermal-heat-pumps-direct-evaporation.pdf"
+        },
+        {
+          title: "Vadības ierīces rokasgrāmata",
+          size: "PDF · 5.38 MB",
+          url: "../media/downloads/instruction-manual-control-unit-heliotherm.pdf"
+        }
+      ],
+
+      compatibility: [
+        {
+          title: "Svaigā ūdens sistēma karstā ūdens sagatavošanai",
+          subtitle: "Plūsmas princips ar augstu higiēnu un izcilu karstā ūdens komfortu.",
+          url: "../produkts/index.html?item=fresh"
+        },
+        {
+          title: "Heliotherm sistēmas vadība",
+          subtitle: "Attālināta uzraudzība un konfigurācija jebkurā laikā.",
+          url: "../produkts/index.html?item=control"
+        },
+        {
+          title: "Heliotherm HEMS",
+          subtitle: "Gudra enerģijas pārvaldība ar PV, siltumsūkni un citiem patērētājiem.",
+          url: "../produkts/index.html?item=hems"
+        }
+      ]
+    },
+
+
+    natural: {
+      id: "natural",
+      category: "Ģeotermiskais siltumsūknis",
+      name: "Direct Expansion Natural Technology",
+      intro: "Tiešās iztvaikošanas ģeotermiskais siltumsūknis ar dabisku aukstumaģentu un āra uzstādījumu. Visdabiskākais un efektīvākais risinājums ilgtspējīgai apkurei.",
+      shortTagline: "Visdabiskākā un efektīvākā ģeotermiskā tehnoloģija.",
+      system: "Ārā uzstādāms tiešās iztvaikošanas ģeotermiskais siltumsūknis ar propāna aukstumaģentu.",
+      efficiency: "Sezonālā efektivitāte (SCOP) līdz 6.7, pārbaudīta un sertificēta.",
+      power: "Apkures jaudas 3–10 kW un 5–15 kW dažādu ēku vajadzībām.",
+      metaScop: "SCOP 6.7",
+      metaTemp: "Līdz 70 °C plūsmas temperatūra",
+      metaRange: "3–10 kW, 5–15 kW",
+      heroImg: "../../media/image/products/erdwaermepumpe-direktverdampfer-natural-technology-von-heliotherm.png",
+      heroAlt: "Heliotherm Direct Expansion Natural Technology",
+      sectionHeading: "Visdabiskākais veids, kā apsildīt māju",
+      sectionText: "Natural Technology izmanto dabisku aukstumaģentu propānu, kas ir videi draudzīgs, efektīvs un nekaitīgs gruntsūdeņiem. Iekārta darbojas ar tiešo iztvaikošanu un tiek uzstādīta ārā, ļaujot ietaupīt vietu iekšpusē un nodrošinot īpaši augstu efektivitāti.",
+      tags: [
+        "Propāna aukstumaģents",
+        "SCOP 6.7",
+        "Āra uzstādīšana"
+      ],
+      icons: ["modulation", "cooling", "sg"],
+
+      features: [
+        "Dabisks propāna aukstumaģents, pilnībā nekaitīgs videi un gruntsūdeņiem.",
+        "Augstākā efektivitāte savā klasē ar SCOP līdz 6.7.",
+        "Āra uzstādījums, kas taupa vietu dzīvojamajās telpās.",
+        "Plūsmas temperatūras līdz 70 °C, piemērots arī radiatoru sistēmām.",
+        "Pilnībā modulējoša darbība, kas optimizē enerģijas patēriņu.",
+        "Saderīgs ar saules paneļu sistēmām vēl zemākām apkures izmaksām."
+      ],
+
+      benefits: [
+        "Ļoti zemas ekspluatācijas izmaksas, pateicoties izcilai energoefektivitātei.",
+        "Videi draudzīgs risinājums bez sintētiskiem fluorētajiem gāzveida aukstumaģentiem.",
+        "Drošs lietošanai ūdens aizsardzības zonās.",
+        "Nevajag tehnisko telpu kompresoram, jo iekārta stāv ārā.",
+        "Klusāka dzīvojamā zona, jo ārā novietotā iekārta netraucē ikdienai."
+      ],
+
+      gallery: [
+        {
+          src: "../../media/image/erdwaermepumpe-natural-technology-mit-direktverdampfung.webp",
+          alt: "Natural Technology āra iekārta",
+          caption: "Ārā uzstādāma sistēma ar efektīvu tiešās iztvaikošanas tehnoloģiju."
+        },
+        {
+          type: "video",
+          src: "https://www.youtube.com/embed/l1GcsAA61gE",
+          caption: "Kā darbojas tiešās iztvaikošanas ģeotermijas sistēma."
+        }
+      ],
+
+      downloads: [
+        {
+          title: "Brošūra: Natural Technology Direct Evaporation",
+          size: "PDF · 4.25 MB",
+          url: "../../media/downloads/brochure-natural-technology.pdf"
+        },
+        {
+          title: "EHPA testa sertifikāts: Natural Technology",
+          size: "PDF · 143 KB",
+          url: "../../media/downloads/ehpa-natural-technology.pdf"
+        },
+        {
+          title: "Vadības sistēmas instrukcija",
+          size: "PDF · 5.38 MB",
+          url: "../../media/downloads/heliotherm-control-unit.pdf"
+        }
+      ],
+
+      sameLineup: [
+        {
+          title: "Tiešās iztvaikošanas ģeotermiskais siltumsūknis",
+          desc: "DX princips ar virszemes kolektoriem un sintētisku aukstumaģentu.",
+          tag: "DX sērija",
+          url: "../produkts/index.html?item=dx"
+        },
+        {
+          title: "Brīnes siltumsūknis ar dziļurbumu",
+          desc: "Efektīvs risinājums lielākiem projektiem ar dziļurbumu sistēmu.",
+          tag: "Brīnes sērija",
+          url: "../produkts/index.html?item=brine"
+        }
+      ]
+    },
+
+
+    brine: {
+      id: "prestigeDX",
+      category: "Ģeotermiskais siltumsūknis",
+      name: "PrestigeDX tiešās iztvaikošanas tehnoloģija",
+      intro: "Premium klases tiešās iztvaikošanas ģeotermiskais siltumsūknis ar izcilu efektivitāti, klusu darbību un ilgtermiņa drošību. SCOP līdz 6.2 un modulējoša darbība nākotnes enerģijas sistēmām.",
+      shortTagline: "Premium klases tiešās iztvaikošanas tehnoloģija.",
+      system: "Jaunās paaudzes tiešās iztvaikošanas ģeotermiskais siltumsūknis ar modulējošu kompresoru un augstas precizitātes vadību.",
+      efficiency: "SCOP līdz 6.2, viena no efektīvākajām sistēmām tirgū.",
+      power: "Mainīga jauda: 5.2–14.5 kW vai 7.8–22.5 kW, piemērots gan jaunbūvēm, gan nomaiņai.",
+      metaScop: "SCOP līdz 6.2",
+      metaTemp: "Līdz 65 °C",
+      metaRange: "5.2–14.5 kW un 7.8–22.5 kW",
+      heroImg: "../../media/image/products/erdwaermepumpe-mit-direktverdampfung-heliotherm-prestigedx.png",
+      heroAlt: "Heliotherm PrestigeDX ģeotermiskais siltumsūknis",
+
+      sectionHeading: "Smalkākais veids, kā izmantot ģeotermālo enerģiju",
+      sectionText:
+        "PrestigeDX apvieno augstāko efektivitāti, izcilu klusumu un ilgmūžību. Pilnībā modulējošā darbība, enerģijas pārvaldības integrācija un inovatīta skaņas izolācija padara šo sistēmu par vienu no modernākajiem ģeotermālajiem risinājumiem tirgū.",
+
+      tags: ["SCOP 6.2", "Modulējoša darbība", "Premium klase"],
+      icons: ["modulation", "cooling", "sg"],
+
+      features: [
+        "Premium klases tiešās iztvaikošanas tehnoloģija ar maksimālu efektivitāti.",
+        "SCOP līdz 6.2, būtisks samazinājums apkures izmaksām.",
+        "Modulējošs kompresors stabilai, klusai un ekonomiskai darbībai.",
+        "Īpaši klusa darbība, pateicoties dubultai vibrāciju un skaņas atdalīšanai.",
+        "Saderīga ar PV un enerģijas vadības sistēmām (EMS).",
+        "Līdz 65 °C plūsmas temperatūra, piemērots arī radiatoru sistēmām.",
+        "Ilgs kalpošanas laiks, kvalitāte “Made in Austria”."
+      ],
+
+      benefits: [
+        "Samazina CO₂ emisijas līdz 11.2 tonnām gadā.",
+        "Ļoti augsts komforta līmenis ar minimālu trokšņa līmeni.",
+        "Pilnīgi modulējoša darbība nodrošina enerģijas ietaupījumu visu gadu.",
+        "Ideāli piemērots gan jaunbūvēm, gan siltumsūkņa nomaiņai.",
+        "Izcila saderība ar modernām mājas enerģijas sistēmām un PV."
+      ],
+
+      gallery: [
+        {
+          src: "../../media/image/prestigedx-erdwaermepumpe-mit-direktverdampfung.webp",
+          alt: "PrestigeDX ģeotermiskā iekārta",
+          caption: "PrestigeDX ar inovatīvu tiešās iztvaikošanas tehnoloģiju."
+        },
+        {
+          src: "../../media/image/header-dxerdwaermepumpe-1.webp",
+          alt: "PrestigeDX sistēmas pārskats",
+          caption: "Klusāka, efektīvāka un nākotnei gatava ģeotermālā apkure."
+        }
+      ],
+
+      downloads: [
+        {
+          title: "EHPA testa sertifikāts – Direct Evaporation 2025",
+          size: "PDF · 173.66 KB",
+          url: "../../media/downloads/ehpa-2025-prestigedx.pdf"
+        },
+        {
+          title: "Vadības sistēmas instrukcija",
+          size: "PDF · 5.38 MB",
+          url: "../../media/downloads/heliotherm-control-unit.pdf"
+        }
+      ],
+
+    }
+
+  };
+
+  function getProductFromUrl(){
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("item");
+    if (id && PRODUCTS[id]) return PRODUCTS[id];
+    return PRODUCTS.dx;
+  }
+
+  function setText(id, value){
+    const el = document.getElementById(id);
+    if (el && value != null) el.textContent = value;
+  }
+
+  function renderCompatibility(product){
+    const section = document.getElementById("compat-section");
+    const list = document.getElementById("prod-compat");
+    const items = product.compatibility || [];
+    if (!items.length){
+      section.style.display = "none";
+      return;
+    }
+    section.style.display = "";
+    list.innerHTML = items.map(item => `
+      <li class="compat-item">
+        <div class="compat-main">
+          <span class="compat-title">${item.title}</span>
+          ${item.subtitle ? `<span class="compat-sub">${item.subtitle}</span>` : ""}
+        </div>
+        ${item.url ? `<a href="${item.url}" class="btn btn-ghost">Uzzināt vairāk</a>` : ""}
+      </li>
+    `).join("");
+  }
+
+  function renderLineup(product){
+    const section = document.getElementById("lineup-section");
+    const grid = document.getElementById("prod-lineup");
+    const items = product.sameLineup || [];
+    if (!items.length){
+      section.style.display = "none";
+      return;
+    }
+    section.style.display = "";
+    grid.innerHTML = items.map(item => `
+      <article class="lineup-card">
+        <div class="lineup-name">${item.title}</div>
+        ${item.desc ? `<div class="lineup-desc">${item.desc}</div>` : ""}
+        ${item.tag ? `<div class="lineup-tag">${item.tag}</div>` : ""}
+        ${item.url ? `<a href="${item.url}" class="btn btn-ghost" style="margin-top:.55rem;">Skatīt modeli</a>` : ""}
+      </article>
+    `).join("");
+  }
+
+  function renderGallery(product){
+    const grid = document.getElementById("prod-gallery");
+    const items = product.gallery || [];
+
+    if (!items.length){
+      grid.innerHTML = `
+        <article class="gallery-card">
+          <div class="gallery-placeholder-box"></div>
+          <div class="gallery-caption">Attēla vieta - tehniskā telpa</div>
+        </article>
+        <article class="gallery-card">
+          <div class="gallery-placeholder-box"></div>
+          <div class="gallery-caption">Attēla vieta - ārējā iekārta vai dārzs</div>
+        </article>
+        <article class="gallery-card">
+          <div class="gallery-placeholder-box"></div>
+          <div class="gallery-caption">Attēla vieta - sistēmas shēma</div>
+        </article>
+      `;
+      return;
+    }
+
+    grid.innerHTML = items.map(item => {
+      const type = item.type || "image";
+      const caption = item.caption || "";
+
+      if (type === "video") {
+        return `
+          <article class="gallery-card">
+            <div class="media-wrap">
+              <iframe 
+                src="${item.src}" 
+                title="${item.alt || caption}"
+                frameborder="0"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <div class="caption">${caption}</div>
+          </article>
+        `;
+      }
+
+      return `
+        <article class="gallery-card">
+          <div class="media-wrap">
+            <img src="${item.src}" alt="${item.alt || caption}">
+          </div>
+          <div class="caption">${caption}</div>
+        </article>
+      `;
+    }).join("");
+  }
+  function enableImageViewer() {
+    const viewer = document.getElementById("imageViewer");
+    const viewerImg = document.getElementById("imageViewerImg");
+    const closeBtn = document.querySelector(".image-viewer-close");
+
+    if (!viewer || !viewerImg) return;
+
+    // CLOSE
+    const close = () => viewer.classList.remove("active");
+
+    closeBtn.addEventListener("click", close);
+    viewer.addEventListener("click", (e) => {
+      if (e.target === viewer) close(); // click only background
+    });
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") close();
+    });
+
+    // OPEN
+    document.querySelectorAll(".gallery-card img").forEach(img => {
+      img.addEventListener("click", () => {
+        viewerImg.src = img.src;
+        viewer.classList.add("active");
+      });
+    });
+  }
+
+  function renderDownloads(product){
+    const list = document.getElementById("prod-downloads");
+    const items = product.downloads || [];
+    if (!items.length){
+      list.innerHTML = '<li class="download-item"><div class="download-main"><span class="download-title">Dokumenti nav pievienoti</span></div></li>';
+      return;
+    }
+    list.innerHTML = items.map(item => `
+      <li class="download-item">
+        <div class="download-main">
+          <span class="download-title">${item.title}</span>
+          <span class="download-meta">${item.size}</span>
+        </div>
+        <a href="${item.url}" target="_blank" rel="noopener" class="btn btn-ghost">Lejupielādēt</a>
+      </li>
+    `).join("");
+  }
+
+  function renderIcons(product){
+    const wrap = document.getElementById("prod-icons");
+    if (!wrap) return;
+
+    const allowed = product.icons || [];
+    const any = allowed.length > 0;
+
+    wrap.style.display = any ? "" : "none";
+
+    wrap.querySelectorAll(".spec-icon-card").forEach(card => {
+      const key = card.dataset.icon;
+      card.style.display = allowed.includes(key) ? "" : "none";
+    });
+  }
+
+  function initProductPage(){
+    const product = getProductFromUrl();
+
+    setText("crumb-product", product.name);
+    setText("prod-category", product.category);
+    setText("prod-title", product.name);
+    setText("prod-intro", product.intro);
+    setText("prod-section-heading", product.sectionHeading);
+    setText("prod-section-text", product.sectionText);
+    setText("prod-system", product.system);
+    setText("prod-efficiency", product.efficiency);
+    setText("prod-power", product.power);
+    setText("prod-short-tagline", product.shortTagline || "");
+
+    setText("metric-scop", product.metaScop);
+    setText("metric-temp", product.metaTemp);
+    setText("metric-range", product.metaRange);
+
+    const heroImg = document.getElementById("prod-hero-img");
+    const heroWrap = document.getElementById("prod-hero-wrap");
+    if (product.heroImg){
+      heroImg.src = product.heroImg;
+      heroImg.alt = product.heroAlt || "";
+      heroWrap.classList.add("has-image");
+    } else {
+      heroImg.removeAttribute("src");
+      heroWrap.classList.remove("has-image");
+    }
+
+    const tagsWrap = document.getElementById("prod-tags");
+    tagsWrap.innerHTML = (product.tags || [])
+      .map(t => `<span class="pill"><span class="pill-dot"></span>${t}</span>`)
+      .join("");
+
+    const featList = document.getElementById("prod-features");
+    featList.innerHTML = (product.features || [])
+      .map(f => `<li>${f}</li>`)
+      .join("");
+
+    const benList = document.getElementById("prod-benefits");
+    benList.innerHTML = (product.benefits || [])
+      .map(b => `<li>${b}</li>`)
+      .join("");
+
+    renderGallery(product);
+    enableImageViewer();
+    renderDownloads(product);
+    renderCompatibility(product);
+    renderLineup(product);
+    renderIcons(product);
+
+    document.title = `${product.name} - Heliotherm Baltics`;
+  }
+
+  initProductPage();
+</script>
+
+</body>
+</html>
