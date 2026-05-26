@@ -116,8 +116,8 @@
             width: 10px;
             height: 10px;
             border-radius: 999px;
-            border: 2px solid var(--brand);          /* red ring */
-            background: #fff;                         /* white center */
+            border: 2px solid var(--brand);
+            background: #fff;
             box-shadow: 0 0 0 4px rgba(196,18,47,.08);/* soft outer glow */
         }
         
@@ -314,7 +314,7 @@
         /* Full-bleed band background only for this section */
         .split{
             position: relative;
-            isolation: isolate;                            /* prevent margin collapse */
+            isolation: isolate;
             display: grid;
             grid-template-columns: 1fr;
             gap: var(--gap);
@@ -333,10 +333,10 @@
             z-index: -1;
             left: 50%;
             transform: translateX(-50%);
-            width: 99vw;         /* bleed to edges */
+            width: 99vw;
             top: 0;
             bottom: 0;
-            background: var(--band-bg);        /* from earlier: #f6f8fb (tweak if needed) */
+            background: var(--band-bg);
             
         }
         @media (min-width:980px){
@@ -812,7 +812,22 @@
             }
         }
 
+        .fact .thumb.is-clickable {
+            cursor: pointer;
+            }
 
+            .fact .thumb.is-clickable img {
+            transition: transform .22s ease;
+            }
+
+            .fact .thumb.is-clickable:hover img {
+            transform: scale(1.035);
+            }
+
+            .fact .thumb.is-clickable:focus-visible {
+            outline: 3px solid var(--brand);
+            outline-offset: 4px;
+            }
         /* responsive tweaks */
 
         @media (max-width: 900px) {
@@ -1304,7 +1319,7 @@
 
         .quality-quote {
             max-width: 640px;
-            margin: 0;                 /* no big centered pill */
+            margin: 0;
             padding: 10px 0 0 16px;
             border-radius: 0;
             border: none;
@@ -1346,9 +1361,9 @@
             width: 10px;
             height: 10px;
             border-radius: 999px;
-            border: 2px solid var(--brand);          /* red ring */
-            background: #fff;                         /* white center */
-            box-shadow: 0 0 0 4px rgba(196,18,47,.08);/* soft outer glow */
+            border: 2px solid var(--brand);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(196,18,47,.08);
         }
         /* ===== Konstruēts ziemeļu ziemām section ===== */
 
@@ -1772,75 +1787,65 @@
                     </p>
                 </div>
 
-                <div class="fact-grid product-listing">
+                                <div class="fact-grid product-listing">
 
-                    <!-- 1. Ģeotermiskais DX -->
                     <div class="fact">
-                        <div class="thumb">
-                            <img
-                            src="../media/image/products/erdwaermepumpe-mit-direktverdampfung-von-heliotherm.png"
-                            alt="Ģeotermiskais siltumsūknis tiešā iztvaikošanā"
-                            >
+                        <div class="thumb"
+                             style="background-image:url('../media/image/products/mobile-erdwaermepumpe-direktverdampfung-prestige-web-dx.webp');">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Geothermal Heat Pump Direct Evaporation <span class="em">"Prestige WEB DX"</span></h3>
+                            <p class="muted">Premium tiešās iztvaikošanas siltumsūknis ar SCOP līdz 6.2, modulējošu darbību, PV un Smart Grid gatavību.</p>
+                            <div class="chips">
+                                <span class="chip">Prestige WEB DX</span>
+                                <span class="chip">Direct Evaporation</span>
+                                <span class="chip">PV Ready</span>
+                            </div>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=dx_web">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fact">
+                        <div class="thumb"
+                             style="background-image:url('../media/image/products/mobile-heliotherm-erdwaermepumpe-direktverdampfung-natural-technology.webp');">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Geothermal Heat Pump Direct Expansion <span class="em">"Natural Technology"</span></h3>
+                            <p class="muted">Tiešās izplešanās ģeotermiskais risinājums ar dabisku propāna aukstumaģentu un SCOP līdz 6.7.</p>
+                            <div class="chips">
+                                <span class="chip">Natural Technology</span>
+                                <span class="chip">Direct Expansion</span>
+                                <span class="chip">R290</span>
+                            </div>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=natural-goth">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fact">
+                        <div class="thumb"
+                             style="background-image:url('../media/image/products/erdwaermepumpe-mit-direktverdampfung-von-heliotherm.png');">
                         </div>
                         <div class="body">
                             <div class="rule"></div>
                             <h3>Zemes siltumsūknis - tiešā iztvaikošana <span class="em">"Basic Comfort"</span></h3>
-                            <p class="muted">
-                            Ļoti augsta efektivitāte un klusa darbība, izmantojot zemes dabisko siltumu.
-                            </p>
+                            <p class="muted">Klasisks tiešās iztvaikošanas risinājums, kas izmanto zemē uzkrāto enerģiju apkurei un dzesēšanai.</p>
                             <div class="chips">
-                            <span class="chip">Basic Comfort</span>
-                            <span class="chip">Natural Technology</span>
-                            <span class="chip">Prestige DX</span>
-                            </div>
-                            <div class="cta">
-                            <a href="produkts/index.html?item=dx">Uzzināt vairāk</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2. Sālsūdens / ūdens -->
-                    <div class="fact">
-                        <div class="thumb"
-                             style="background-image:url('../media/image/products/erdwaermepumpe-direktverdampfer-natural-technology-von-heliotherm.png');">
-                        </div>
-                        <div class="body">
-                            <div class="rule"></div>
-                            <h3>Zemes siltumsūknis - tiešā iztvaikošana <span class="em">"Natural Technology"</h3>
-                            <div class="chips">
-                                <span class="chip">Basic Comfort</span>
-                                <span class="chip">Complete</span>
-                                <span class="chip">Cube</span>
-                                <span class="chip">Prestige Sole Pro</span>
-                            </div>
-                            <div class="cta">
-                                <a href="./produkts/index.html?item=natural">Uzzināt vairāk</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 3. Gruntsūdeņu siltumsūknis -->
-                    <div class="fact">
-                        <div class="thumb"
-                             style="background-image:url('../media/image/products/erdwaermepumpe-mit-direktverdampfung-heliotherm-prestigedx.png');">
-                        </div>
-                        <div class="body">
-                            <div class="rule"></div>
-                            <h3>Zemes siltumsūknis - tiešā iztvaikošana <span class="em">"PrestigeDX"</span></h3>
-                            <p class="muted">Izmanto stabilo gruntsūdeņu temperatūru maksimālai gada efektivitātei.</p>
-                            <div class="chips">
-                                <span class="chip">Augsts COP</span>
+                                <span class="chip">Direct Evaporation</span>
+                                <span class="chip">Ģeotermija</span>
                                 <span class="chip">Basic Comfort</span>
                             </div>
                             <div class="cta">
-                                <a href="./produkts/index.html?item=brine">Uzzināt vairāk</a>
+                                <a href="./produkts/index.html?item=dx-basic-comfort">Uzzināt vairāk</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tālākie modeļi - sākotnēji paslēpti -->
-
-                    <!-- 4. Gaisa split -->
                     <div class="fact is-extra">
                         <div class="thumb"
                              style="background-image:url('../media/image/products/erdwaermepumpe-mit-direktverdampfung-von-heliotherm.png');">
@@ -1848,20 +1853,18 @@
                         <div class="body">
                             <div class="rule"></div>
                             <h3>Zemes siltumsūknis - glikola kontūra <span class="em">"Basic Comfort"</span></h3>
-                            <p class="muted">Ātra uzstādīšana ar atsevišķu āra bloku, ideāli renovācijas projektiem.</p>
+                            <p class="muted">Elastīgs brīnes siltumsūknis ar dziļurbumu zondi vai virszemes kolektoru.</p>
                             <div class="chips">
-                                <span class="chip">Basic Comfort</span>
-                                <span class="chip">Complete</span>
-                                <span class="chip">Cube</span>
+                                <span class="chip">Brine</span>
+                                <span class="chip">Probe</span>
+                                <span class="chip">Surface Collector</span>
                             </div>
                             <div class="cta">
-
-                                <a href="#">Skatīt sēriju &rarr;</a>
+                                <a href="./produkts/index.html?item=brine-heat-pump">Uzzināt vairāk</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 5. Gaisa kompakt + R290 -->
                     <div class="fact is-extra">
                         <div class="thumb"
                              style="background-image:url('../media/image/products/erdwaermepumpe-direktverdampfer-natural-technology-von-heliotherm.png');">
@@ -1869,18 +1872,18 @@
                         <div class="body">
                             <div class="rule"></div>
                             <h3>Zemes siltumsūknis - glikola kontūra <span class="em">"Natural Technology"</span></h3>
-                            <p class="muted">Kompakts viss vienā risinājums jaunbūvēm. Pieejams jaunais ilgtspējīgais R290 modelis.</p>
+                            <p class="muted">Ilgtspējīgāks nākamās paaudzes brīnes risinājums ar Natural Technology pieeju.</p>
                             <div class="chips">
-                                <span class="chip">Compact</span>
-                                <span class="chip product-badge new">R290 Jaunums</span>
+                                <span class="chip">Brine</span>
+                                <span class="chip">Natural Technology</span>
+                                <span class="chip">Ilgtspēja</span>
                             </div>
                             <div class="cta">
-                                <a href="#">Skatīt modeļus &rarr;</a>
+                                <a href="./produkts/index.html?item=brine-natural-technology">Uzzināt vairāk</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 6. Prestige nākamā paaudze -->
                     <div class="fact is-extra">
                         <div class="thumb"
                              style="background-image:url('../media/image/products/solewaermepumpe-complete-von-heliotherm.png');">
@@ -1888,18 +1891,17 @@
                         <div class="body">
                             <div class="rule"></div>
                             <h3>Zemes siltumsūknis - glikola kontūra <span class="em">"Complete"</span></h3>
-                            <p class="muted">Nākamās paaudzes tehnoloģija, kas apvieno maksimālu veiktspēju un ļoti klusu darbību.</p>
+                            <p class="muted">Pilns brīnes risinājums apkurei, dzesēšanai un karstā ūdens komfortam.</p>
                             <div class="chips">
-                                <span class="chip">Augsta veiktspēja</span>
-                                <span class="chip">Zems trokšņu līmenis</span>
+                                <span class="chip">Complete</span>
+                                <span class="chip">Brine</span>
+                                <span class="chip">All in One</span>
                             </div>
                             <div class="cta">
-                                <a href="#">Uzzināt vairāk &rarr;</a>
+                                <a href="./produkts/index.html?item=complete-brine">Uzzināt vairāk</a>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Zemāk atkārtojas tie paši bloki - atstāju struktūru, bet teksts latviski -->
 
                     <div class="fact is-extra">
                         <div class="thumb"
@@ -1908,51 +1910,14 @@
                         <div class="body">
                             <div class="rule"></div>
                             <h3>Zemes siltumsūknis - glikola kontūra <span class="em">"Cube"</span></h3>
-                            <p class="muted">Ātra uzstādīšana ar atsevišķu āra bloku, ideāli renovācijas projektiem.</p>
+                            <p class="muted">Kompakts brīnes siltumsūknis ar tikai 0.6 m² nospiedumu apkurei un dzesēšanai.</p>
                             <div class="chips">
-                                <span class="chip">Basic Comfort</span>
-                                <span class="chip">Complete</span>
                                 <span class="chip">Cube</span>
-                            </div>
-                            <div class="cta">
-                                <a href="#">Skatīt sēriju &rarr;</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fact is-extra">
-                        <div class="thumb"
-                             style="background-image:url('../media/image/products/solewaermepumpe-heliotherm-prestige-sole-pro.png');">
-                        </div>
-                        <div class="body">
-                            <div class="rule"></div>
-                            <h3>Zemes siltumsūknis - glikola kontūra <span class="em">"Prestige Sole Pro"</span> drīzumā</h3>
-                            <p class="muted">Kompakts viss vienā risinājums jaunbūvēm. Pieejams jaunais ilgtspējīgais R290 modelis.</p>
-                            <div class="chips">
+                                <span class="chip">0.6 m²</span>
                                 <span class="chip">Compact</span>
-                                <span class="chip product-badge new">R290 Jaunums</span>
                             </div>
                             <div class="cta">
-                                <a href="#">Skatīt modeļus &rarr;</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fact is-extra">
-                        <div class="thumb"
-                             style="background-image:url('../media/image/products/this_one.png');">
-                        </div>
-                        <div class="body">
-                            <div class="rule"></div>
-                            <h3>Zemes siltumsūknis - glikola kontūra <span class="em">"Prestige Brine"</span></h3>
-                            <p class="muted">Ātra uzstādīšana ar atsevišķu āra bloku, ideāli renovācijas projektiem.</p>
-                            <div class="chips">
-                                <span class="chip">Basic Comfort</span>
-                                <span class="chip">Complete</span>
-                                <span class="chip">Cube</span>
-                            </div>
-                            <div class="cta">
-                                <a href="#">Skatīt sēriju &rarr;</a>
+                                <a href="./produkts/index.html?item=brine-cube">Uzzināt vairāk</a>
                             </div>
                         </div>
                     </div>
@@ -1964,13 +1929,13 @@
                         <div class="body">
                             <div class="rule"></div>
                             <h3>Gruntsūdens siltumsūknis <span class="em">"Basic Comfort"</span></h3>
-                            <p class="muted">Nākamās paaudzes tehnoloģija, kas apvieno maksimālu veiktspēju un ļoti klusu darbību.</p>
+                            <p class="muted">Augstas efektivitātes risinājums, kas izmanto gruntsūdeni kā stabilu siltuma avotu.</p>
                             <div class="chips">
-                                <span class="chip">Augsta veiktspēja</span>
-                                <span class="chip">Zems trokšņu līmenis</span>
+                                <span class="chip">Groundwater</span>
+                                <span class="chip">Augsta efektivitāte</span>
                             </div>
                             <div class="cta">
-                                <a href="#">Uzzināt vairāk &rarr;</a>
+                                <a href="./produkts/index.html?item=groundwater-heat-pump">Uzzināt vairāk</a>
                             </div>
                         </div>
                     </div>
@@ -1982,14 +1947,14 @@
                         <div class="body">
                             <div class="rule"></div>
                             <h3>Gaisa siltumsūkņa dalītā konstrukcija <span class="em">"Basic Comfort"</span></h3>
-                            <p class="muted">Ātra uzstādīšana ar atsevišķu āra bloku, ideāli renovācijas projektiem.</p>
+                            <p class="muted">Kluss split tipa gaisa siltumsūknis ar elastīgu uzstādīšanu renovācijām un jaunbūvēm.</p>
                             <div class="chips">
-                                <span class="chip">Basic Comfort</span>
-                                <span class="chip">Complete</span>
-                                <span class="chip">Cube</span>
+                                <span class="chip">Air Source</span>
+                                <span class="chip">Split</span>
+                                <span class="chip">Quiet</span>
                             </div>
-                            <div class="cta"> 
-                                <a href="#">Skatīt sēriju &rarr;</a>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=air-split">Uzzināt vairāk</a>
                             </div>
                         </div>
                     </div>
@@ -2001,31 +1966,33 @@
                         <div class="body">
                             <div class="rule"></div>
                             <h3>Gaisa siltumsūkņa dalītā konstrukcija <span class="em">"Complete"</span></h3>
-                            <p class="muted">Kompakts viss vienā risinājums jaunbūvēm. Pieejams jaunais ilgtspējīgais R290 modelis.</p>
+                            <p class="muted">Complete Air Split risinājums apkurei, dzesēšanai un karstā ūdens sagatavošanai.</p>
                             <div class="chips">
-                                <span class="chip">Compact</span>
-                                <span class="chip product-badge new">R290 Jaunums</span>
+                                <span class="chip">Complete</span>
+                                <span class="chip">Air Split</span>
+                                <span class="chip">Hot Water</span>
                             </div>
                             <div class="cta">
-                                <a href="#">Skatīt modeļus &rarr;</a>
+                                <a href="./produkts/index.html?item=complete-air-split">Uzzināt vairāk</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="fact is-extra">
                         <div class="thumb"
-                             style="background-image:url('../media/image/products/luftwaermepumpe-in-splitbauweise-complete-von-heliotherm.png');">
+                             style="background-image:url('../media/image/air_cube1.png');">
                         </div>
                         <div class="body">
                             <div class="rule"></div>
                             <h3>Gaisa siltumsūkņa dalītā konstrukcija <span class="em">"Cube"</span></h3>
-                            <p class="muted">Nākamās paaudzes tehnoloģija, kas apvieno maksimālu veiktspēju un ļoti klusu darbību.</p>
+                            <p class="muted">Moderns Air Source Split Cube kompakta dizaina risinājums ar augstu efektivitātes fokusu.</p>
                             <div class="chips">
-                                <span class="chip">Augsta veiktspēja</span>
-                                <span class="chip">Zems trokšņu līmenis</span>
+                                <span class="chip">Split Cube</span>
+                                <span class="chip">Air Source</span>
+                                <span class="chip">Compact</span>
                             </div>
                             <div class="cta">
-                                <a href="#">Uzzināt vairāk &rarr;</a>
+                                <a href="./produkts/index.html?item=air-cube">Uzzināt vairāk</a>
                             </div>
                         </div>
                     </div>
@@ -2036,15 +2003,15 @@
                         </div>
                         <div class="body">
                             <div class="rule"></div>
-                            <h3>Gaisa siltumsūknis - <span class="em">kompakts</span></h3>
-                            <p class="muted">Ātra uzstādīšana ar atsevišķu āra bloku, ideāli renovācijas projektiem.</p>
+                            <h3>Gaisa siltumsūknis - <span class="em">Comfort Compact</span></h3>
+                            <p class="muted">Ļoti kluss, kompakts un efektīvs gaisa siltumsūknis privātmājām.</p>
                             <div class="chips">
-                                <span class="chip">Basic Comfort</span>
-                                <span class="chip">Complete</span>
-                                <span class="chip">Cube</span>
+                                <span class="chip">Comfort Compact</span>
+                                <span class="chip">Air Source</span>
+                                <span class="chip">Quiet</span>
                             </div>
                             <div class="cta">
-                                <a href="#">Skatīt sēriju &rarr;</a>
+                                <a href="./produkts/index.html?item=comfort-compact">Uzzināt vairāk</a>
                             </div>
                         </div>
                     </div>
@@ -2055,14 +2022,15 @@
                         </div>
                         <div class="body">
                             <div class="rule"></div>
-                            <h3><span class="em">Jaunums: </span>Gaisa siltumsūknis<span class="em">“Comfort Compact” R290</span></h3>
-                            <p class="muted">Kompakts viss vienā risinājums jaunbūvēm. Pieejams jaunais ilgtspējīgais R290 modelis.</p>
+                            <h3><span class="em">Jaunums:</span> Gaisa siltumsūknis <span class="em">“Comfort Compact” R290</span></h3>
+                            <p class="muted">Kompakts gaisa siltumsūknis ar dabisko R290 aukstumaģentu un ilgtspējīgāku tehnoloģijas virzienu.</p>
                             <div class="chips">
-                                <span class="chip">Compact</span>
-                                <span class="chip product-badge new">R290 Jaunums</span>
+                                <span class="chip">Comfort Compact</span>
+                                <span class="chip">R290</span>
+                                <span class="chip">Jaunums</span>
                             </div>
                             <div class="cta">
-                                <a href="#">Skatīt modeļus &rarr;</a>
+                                <a href="./produkts/index.html?item=comfort-compact-r290">Uzzināt vairāk</a>
                             </div>
                         </div>
                     </div>
@@ -2101,7 +2069,7 @@
                                 Mērogojama veiktspēja lieliem zemes kolektoriem un augstam siltuma patēriņam.
                             </p>
                             <div class="cta">
-                                <a href="#">Pieteikt konsultāciju</a>
+                                <a href="./produkts/index.html?item=solid-brine-large">Uzzināt vairāk</a>
                             </div>
                         </div>
                     </div>
@@ -2119,7 +2087,7 @@
                                 Efektīva, lielas jaudas apkure un dzesēšana, izmantojot ūdens resursus.
                             </p>
                             <div class="cta">
-                                <a href="#">Pieteikt konsultāciju</a>
+                                <a href="./produkts/index.html?item=solid-water-large">Uzzināt vairāk</a>
                             </div>
                         </div>
                     </div>
@@ -2137,7 +2105,7 @@
                                 Uzticams gaisa avota risinājums komerciālām telpām ar elastīgām uzstādīšanas iespējām.
                             </p>
                             <div class="cta">
-                                <a href="#">Pieteikt konsultāciju</a>
+                                <a href="./produkts/index.html?item=solid-air-split-large">Uzzināt vairāk</a>
                             </div>
                         </div>
                     </div>
@@ -2152,11 +2120,11 @@
                             <div class="rule"></div>
                             <h3>Industriālais <span class="em">gaisa kompaktais siltumsūknis</span></h3>
                             <p class="muted">
-                                Dziļurbumu risinājums ļoti lielām bāzes slodzēm un ilgam darba laikam.
+                                Kompakts gaisa avota lieljaudas risinājums komerciālām ēkām ar klusu darbību un āra uzstādīšanu.
                             </p>
                             <div class="cta">
                                 <span class="product-badge">Premium</span>
-                                <a href="#">Pieteikt konsultāciju →</a>
+                                <a href="./produkts/index.html?item=solid-air-compact-large">Uzzināt vairāk</a>
                             </div>
                         </div>
                     </div>
@@ -2175,7 +2143,7 @@
                             </p>
                             <div class="cta">
                                 <span class="product-badge">Hibrīdsistēma</span>
-                                <a href="#">Pieteikt konsultāciju →</a>
+                                <a href="./produkts/index.html?item=solid-compact-uni">Uzzināt vairāk</a>
                             </div>
                         </div>
                     </div>
@@ -2211,20 +2179,52 @@
             btn.textContent = expanded ? lessLabel : moreLabel;
           });
         }
+        
 
         setupToggle(
-          '.fact-grid.product-listing',
-          'toggle-residential',
-          'Rādīt vairāk siltumsūkņu',
-          'Rādīt mazāk modeļu'
+        '.fact-grid.product-listing',
+        'toggle-residential',
+        'Rādīt vairāk siltumsūkņu',
+        'Rādīt mazāk modeļu'
         );
 
         setupToggle(
-          '.fact-grid.commercial-listing',
-          'toggle-commercial',
-          'Rādīt vairāk industriālo siltumsūkņu',
-          'Rādīt mazāk modeļu'
+        '.fact-grid.commercial-listing',
+        'toggle-commercial',
+        'Rādīt vairāk industriālo siltumsūkņu',
+        'Rādīt mazāk modeļu'
         );
+
+        function makeProductImagesClickable() {
+        document.querySelectorAll('.fact').forEach((card) => {
+            const thumb = card.querySelector('.thumb');
+            const link = card.querySelector('.cta a[href]');
+
+            if (!thumb || !link) return;
+
+            const href = link.getAttribute('href');
+
+            if (!href || href === '#') return;
+
+            thumb.classList.add('is-clickable');
+            thumb.setAttribute('role', 'link');
+            thumb.setAttribute('tabindex', '0');
+            thumb.setAttribute('aria-label', 'Atvērt produkta detalizēto lapu');
+
+            thumb.addEventListener('click', () => {
+            window.location.href = href;
+            });
+
+            thumb.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                window.location.href = href;
+            }
+            });
+        });
+        }
+
+        makeProductImagesClickable();
       });
     </script>
 </body>
