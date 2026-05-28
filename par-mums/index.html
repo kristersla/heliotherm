@@ -247,6 +247,97 @@
     }
 
     /* keep original 900px rule at the end if you prefer, but merged above already */
+
+    /* ===== Mobile text + centered roadmap cards fix ===== */
+    @media (max-width: 768px) {
+      /* Justify readable text on mobile */
+      .page-hero p,
+      .timeline-title p,
+      .timeline .tcontent p,
+      .quality-main p,
+      .quality-quote p,
+      .members-main p,
+      .members-card p,
+      .terms-shell p,
+      .terms-card p,
+      .card p,
+      .feature-list,
+      .check-list {
+        text-align: justify;
+        text-justify: inter-word;
+      }
+
+      /* Keep headings/buttons normal, only body text justified */
+      .timeline .tcontent h3,
+      .timeline-title h2,
+      .page-hero h1,
+      .quality-heading,
+      .members-title,
+      .terms-shell h2 {
+        text-align: left;
+      }
+
+      /* Center the roadmap/timeline area on mobile */
+      .timeline-cover .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .timeline-title {
+        width: 100%;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .timeline {
+        width: 100%;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0 !important;
+        display: flex;
+        justify-content: center;
+      }
+
+      .timeline ul {
+        width: 100%;
+        align-items: center;
+      }
+
+      .timeline ul li {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .timeline .tcontent {
+        width: 100%;
+        max-width: 380px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        box-sizing: border-box;
+      }
+
+      .timeline .tbadge {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .timeline-title,
+      .timeline {
+        max-width: 100%;
+      }
+
+      .timeline .tcontent {
+        max-width: 100%;
+      }
+    }
+
   </style>
 </head>
 <body>

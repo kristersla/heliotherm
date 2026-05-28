@@ -8,16 +8,1037 @@
   <meta name="theme-color" content="#0b0c0f" />
   <meta name="description" content="Luksusa klases Austrijā ražoti siltumsūkņi mājām un uzņēmumiem. Klusi, ilgmūžīgi un izcili efektīvi." />
   <link rel="stylesheet" href="assets/style/style.css" />
+
+  <style>
+    /* ===== Subtle premium dynamic layer, keeps existing design ===== */
+    .hero{
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+    }
+
+    .hero .container,
+    .hero-inner{
+      position:relative;
+      z-index:2;
+    }
+
+    .premium-dynamic-mesh{
+      position:absolute;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      overflow:hidden;
+      --mesh-x:72%;
+      --mesh-y:32%;
+      --mesh-scroll:0px;
+    }
+
+    .premium-dynamic-mesh::before{
+      content:"";
+      position:absolute;
+      inset:-18%;
+      opacity:.55;
+      background:
+        radial-gradient(circle at var(--mesh-x) var(--mesh-y), rgba(227,6,44,.16), transparent 24rem),
+        radial-gradient(circle at 18% 78%, rgba(227,6,44,.08), transparent 20rem),
+        linear-gradient(90deg, rgba(227,6,44,.055) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(227,6,44,.045) 1px, transparent 1px);
+      background-size:auto, auto, 58px 58px, 58px 58px;
+      transform:translate3d(0, var(--mesh-scroll), 0) rotate(-7deg) scale(1.08);
+      transition:background-position .18s ease-out;
+      mask-image:linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+      -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+    }
+
+    .premium-dynamic-mesh::after{
+      content:"";
+      position:absolute;
+      width:420px;
+      height:420px;
+      right:8%;
+      top:18%;
+      border-radius:999px;
+      background:radial-gradient(circle, rgba(227,6,44,.13), transparent 66%);
+      filter:blur(8px);
+      transform:translate3d(calc((var(--mesh-x) - 72%) * .16), calc((var(--mesh-y) - 32%) * .16), 0);
+    }
+
+    .visual{
+      position:relative;
+    }
+
+    .premium-quality-chip{
+      position:absolute;
+      left:18px;
+      bottom:18px;
+      z-index:4;
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:10px 13px;
+      border-radius:999px;
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(227,6,44,.18);
+      box-shadow:0 14px 34px rgba(15,23,42,.16);
+      backdrop-filter:blur(12px);
+      color:#111827;
+      font-size:11px;
+      font-weight:600;
+      letter-spacing:.07em;
+      text-transform:uppercase;
+    }
+
+    .premium-quality-chip span{
+      position:relative;
+      width:9px;
+      height:9px;
+      border-radius:999px;
+      background:var(--brand, #e3062c);
+      box-shadow:0 0 0 0 rgba(227,6,44,.32);
+      animation:premiumPulse 2.3s ease-out infinite;
+      flex:0 0 auto;
+    }
+
+    .hero-video{
+      position:relative;
+    }
+
+    
+
+    .premium-reveal{
+      opacity:0;
+      transform:translateY(22px);
+      transition:
+        opacity .75s ease,
+        transform .75s cubic-bezier(.2,.8,.2,1);
+      will-change:opacity, transform;
+    }
+
+    .premium-reveal.is-visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .premium-story-card,
+    .climate-stat,
+    .fact,
+    .product{
+      will-change:transform;
+    }
+
+    .premium-story-card:hover,
+    .fact:hover,
+    .product:hover{
+      transform:translateY(-4px);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+
+    @keyframes premiumPulse{
+      0%{
+        box-shadow:0 0 0 0 rgba(227,6,44,.34);
+      }
+      70%{
+        box-shadow:0 0 0 10px rgba(227,6,44,0);
+      }
+      100%{
+        box-shadow:0 0 0 0 rgba(227,6,44,0);
+      }
+    }
+
+    @keyframes premiumScan{
+      0%, 100%{
+        transform:translateY(0);
+        opacity:.2;
+      }
+      45%, 55%{
+        opacity:.72;
+      }
+      50%{
+        transform:translateY(270px);
+      }
+    }
+
+    @media (max-width:720px){
+      .premium-quality-chip{
+        left:12px;
+        bottom:12px;
+        max-width:calc(100% - 24px);
+        font-size:10px;
+        padding:8px 10px;
+      }
+
+      .visual::after{
+        display:none;
+      }
+
+      .premium-dynamic-mesh::before{
+        opacity:.36;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .premium-quality-chip span,
+      .visual::after{
+        animation:none;
+      }
+
+      .premium-reveal{
+        opacity:1;
+        transform:none;
+        transition:none;
+      }
+
+      .premium-dynamic-mesh::before{
+        transform:none;
+      }
+    }
+
+    /* ===== Entrance premium engineering flow ===== */
+    .premium-engineering-flow{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      pointer-events:none;
+      overflow:hidden;
+      opacity:0;
+      animation:premiumFlowEnter 1.15s ease-out .15s forwards;
+    }
+
+    .premium-flow-svg{
+      position:absolute;
+      right:4%;
+      top:7%;
+      width:min(58vw, 820px);
+      height:min(46vw, 600px);
+      min-width:520px;
+      opacity:.9;
+      transform:translate3d(0, 8px, 0);
+    }
+
+    .premium-flow-line{
+      fill:none;
+      stroke:rgba(227,6,44,.18);
+      stroke-width:1.2;
+      stroke-linecap:round;
+      stroke-dasharray:8 12;
+      animation:premiumDash 16s linear infinite;
+    }
+
+    .premium-flow-line.is-soft{
+      stroke:rgba(15,23,42,.075);
+      stroke-width:1;
+      stroke-dasharray:3 13;
+      animation-duration:22s;
+    }
+
+    .premium-flow-node{
+      fill:#fff;
+      stroke:rgba(227,6,44,.28);
+      stroke-width:1.5;
+      filter:drop-shadow(0 8px 18px rgba(227,6,44,.18));
+      transform-origin:center;
+      animation:premiumNodePulse 3.4s ease-in-out infinite;
+    }
+
+    .premium-flow-node.is-delay-1{ animation-delay:.7s; }
+    .premium-flow-node.is-delay-2{ animation-delay:1.4s; }
+
+    .premium-moving-dot{
+      width:9px;
+      height:9px;
+      border-radius:999px;
+      background:var(--brand, #e3062c);
+      box-shadow:0 0 0 7px rgba(227,6,44,.10), 0 14px 28px rgba(227,6,44,.22);
+      offset-rotate:0deg;
+      position:absolute;
+      left:0;
+      top:0;
+      opacity:.88;
+    }
+
+    .premium-moving-dot.dot-a{
+      offset-path:path("M 40 330 C 190 160, 340 120, 520 210 S 730 320, 820 130");
+      animation:premiumDotTravel 9s cubic-bezier(.45,0,.2,1) infinite;
+    }
+
+    .premium-moving-dot.dot-b{
+      offset-path:path("M 120 470 C 280 360, 420 420, 560 300 S 690 190, 790 250");
+      animation:premiumDotTravel 11s cubic-bezier(.45,0,.2,1) infinite;
+      animation-delay:1.8s;
+      opacity:.58;
+    }
+
+    .premium-floating-spec{
+      position:absolute;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 13px;
+      border-radius:999px;
+      background:rgba(255,255,255,.78);
+      border:1px solid rgba(227,6,44,.12);
+      box-shadow:0 14px 34px rgba(15,23,42,.10);
+      backdrop-filter:blur(14px);
+      color:#111827;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      opacity:0;
+      transform:translateY(12px);
+      animation:premiumChipEnter .85s ease-out forwards, premiumFloat 5.5s ease-in-out infinite;
+    }
+
+    .premium-floating-spec b{
+      color:var(--brand, #e3062c);
+      font-weight:950;
+    }
+
+    .premium-floating-spec::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:var(--brand, #e3062c);
+      box-shadow:0 0 0 5px rgba(227,6,44,.10);
+      flex:0 0 auto;
+    }
+
+    .premium-floating-spec.spec-a{
+      right:39%;
+      top:19%;
+      animation-delay:.35s, 1.2s;
+    }
+
+    .premium-floating-spec.spec-b{
+      right:7%;
+      top:58%;
+      animation-delay:.65s, 1.8s;
+    }
+
+    .premium-floating-spec.spec-c{
+      right:27%;
+      bottom:13%;
+      animation-delay:.95s, 2.4s;
+    }
+
+    @keyframes premiumFlowEnter{
+      from{
+        opacity:0;
+        transform:translateY(14px) scale(.985);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+      }
+    }
+
+    @keyframes premiumDash{
+      to{ stroke-dashoffset:-260; }
+    }
+
+    @keyframes premiumNodePulse{
+      0%, 100%{
+        transform:scale(1);
+        opacity:.72;
+      }
+      50%{
+        transform:scale(1.25);
+        opacity:1;
+      }
+    }
+
+    @keyframes premiumDotTravel{
+      0%{
+        offset-distance:0%;
+        opacity:0;
+      }
+      10%, 85%{
+        opacity:.88;
+      }
+      100%{
+        offset-distance:100%;
+        opacity:0;
+      }
+    }
+
+    @keyframes premiumChipEnter{
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @keyframes premiumFloat{
+      0%, 100%{ translate:0 0; }
+      50%{ translate:0 -8px; }
+    }
+
+    @media (max-width:900px){
+      .premium-flow-svg{
+        right:-22%;
+        top:18%;
+        opacity:.55;
+      }
+
+      .premium-floating-spec.spec-a{
+        right:8%;
+        top:15%;
+      }
+
+      .premium-floating-spec.spec-b,
+      .premium-floating-spec.spec-c{
+        display:none;
+      }
+    }
+
+    @media (max-width:720px){
+      .premium-engineering-flow{
+        opacity:.72;
+      }
+
+      .premium-flow-svg{
+        right:-65%;
+        top:5%;
+        min-width:560px;
+        opacity:.38;
+      }
+
+      .premium-moving-dot{
+        display:none;
+      }
+
+      .premium-floating-spec{
+        display:none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .premium-engineering-flow,
+      .premium-flow-line,
+      .premium-flow-node,
+      .premium-moving-dot,
+      .premium-floating-spec{
+        animation:none !important;
+      }
+
+      .premium-engineering-flow{
+        opacity:.75;
+      }
+
+      .premium-moving-dot{
+        display:none;
+      }
+    }
+
+
+    /* ===== Site-wide subtle premium engineering background ===== */
+    body{
+      position:relative;
+    }
+
+    app-header,
+    .hero .container,
+    .hero-inner,
+    .section .container,
+    .intro .container,
+    .section-climate .container,
+    .facts .container,
+    #products .container,
+    app-footer{
+      position:relative;
+      z-index:3;
+    }
+
+    .premium-site-flow{
+      position:fixed;
+      inset:0;
+      z-index:1;
+      pointer-events:none;
+      overflow:hidden;
+      opacity:.82;
+      --site-x:68%;
+      --site-y:34%;
+      --site-scroll:0px;
+    }
+
+    .premium-site-flow::before{
+      content:"";
+      position:absolute;
+      inset:-12%;
+      opacity:.42;
+      background:
+        radial-gradient(circle at var(--site-x) var(--site-y), rgba(227,6,44,.105), transparent 24rem),
+        radial-gradient(circle at 12% 18%, rgba(227,6,44,.055), transparent 22rem),
+        radial-gradient(circle at 84% 74%, rgba(227,6,44,.07), transparent 24rem),
+        linear-gradient(90deg, rgba(227,6,44,.032) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(227,6,44,.026) 1px, transparent 1px);
+      background-size:auto, auto, auto, 76px 76px, 76px 76px;
+      transform:translate3d(0, var(--site-scroll), 0) rotate(-5deg) scale(1.08);
+      mask-image:linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+      -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+    }
+
+    .premium-site-svg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      opacity:.52;
+    }
+
+    .premium-site-line{
+      fill:none;
+      stroke:rgba(227,6,44,.105);
+      stroke-width:1;
+      stroke-linecap:round;
+      stroke-dasharray:7 16;
+      animation:siteLineMove 24s linear infinite;
+    }
+
+    .premium-site-line.is-soft{
+      stroke:rgba(15,23,42,.045);
+      stroke-dasharray:4 18;
+      animation-duration:34s;
+    }
+
+    .premium-site-dot{
+      position:absolute;
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:var(--brand, #e3062c);
+      box-shadow:0 0 0 7px rgba(227,6,44,.075), 0 12px 24px rgba(227,6,44,.13);
+      opacity:.68;
+      offset-rotate:0deg;
+    }
+
+    .premium-site-dot.site-a{
+      offset-path:path("M 40 160 C 260 50, 450 190, 680 110 S 980 70, 1180 220 S 1430 350, 1600 230");
+      animation:siteDotTravel 15s cubic-bezier(.45,0,.2,1) infinite;
+    }
+
+    .premium-site-dot.site-b{
+      offset-path:path("M 70 620 C 270 480, 480 580, 680 430 S 980 260, 1240 380 S 1460 500, 1620 390");
+      animation:siteDotTravel 19s cubic-bezier(.45,0,.2,1) infinite;
+      animation-delay:3.2s;
+      opacity:.48;
+    }
+
+    .premium-site-dot.site-c{
+      offset-path:path("M 0 840 C 220 690, 420 780, 650 640 S 1050 520, 1320 690 S 1510 820, 1660 720");
+      animation:siteDotTravel 22s cubic-bezier(.45,0,.2,1) infinite;
+      animation-delay:6.4s;
+      opacity:.38;
+    }
+
+    .premium-site-orb{
+      position:absolute;
+      width:14px;
+      height:14px;
+      border-radius:999px;
+      border:1px solid rgba(227,6,44,.18);
+      background:rgba(255,255,255,.72);
+      box-shadow:0 14px 34px rgba(227,6,44,.10);
+      animation:siteOrbFloat 7s ease-in-out infinite;
+    }
+
+    .premium-site-orb.orb-a{
+      left:12%;
+      top:28%;
+    }
+
+    .premium-site-orb.orb-b{
+      right:14%;
+      top:34%;
+      animation-delay:1.5s;
+    }
+
+    .premium-site-orb.orb-c{
+      left:72%;
+      bottom:18%;
+      animation-delay:3s;
+    }
+
+    @keyframes siteLineMove{
+      to{
+        stroke-dashoffset:-360;
+      }
+    }
+
+    @keyframes siteDotTravel{
+      0%{
+        offset-distance:0%;
+        opacity:0;
+      }
+      10%, 82%{
+        opacity:.68;
+      }
+      100%{
+        offset-distance:100%;
+        opacity:0;
+      }
+    }
+
+    @keyframes siteOrbFloat{
+      0%, 100%{
+        transform:translate3d(0,0,0) scale(1);
+        opacity:.45;
+      }
+      50%{
+        transform:translate3d(0,-16px,0) scale(1.12);
+        opacity:.8;
+      }
+    }
+
+    @media (max-width:900px){
+      .premium-site-flow{
+        opacity:.56;
+      }
+
+      .premium-site-svg{
+        opacity:.36;
+        width:150%;
+        left:-25%;
+      }
+
+      .premium-site-dot.site-b,
+      .premium-site-dot.site-c,
+      .premium-site-orb.orb-b,
+      .premium-site-orb.orb-c{
+        display:none;
+      }
+    }
+
+    @media (max-width:720px){
+      .premium-site-flow{
+        opacity:.38;
+      }
+
+      .premium-site-dot{
+        display:none;
+      }
+
+      .premium-site-orb{
+        display:none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .premium-site-line,
+      .premium-site-dot,
+      .premium-site-orb{
+        animation:none !important;
+      }
+
+      .premium-site-dot{
+        display:none;
+      }
+    }
+
+
+    /* ===== FIX: keep motion behind content + soft fade edges ===== */
+    html,
+    body{
+      background:#fff;
+    }
+
+    body{
+      position:relative;
+      isolation:isolate;
+    }
+
+    /* The global engineering animation is now a true background layer */
+    .premium-site-flow{
+      z-index:0 !important;
+      opacity:.46 !important;
+      mix-blend-mode:multiply;
+      -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%);
+      mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%);
+    }
+
+    /* Hero-specific animated layers also stay behind the hero content */
+    .premium-dynamic-mesh,
+    .premium-engineering-flow{
+      z-index:0 !important;
+      -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 68%, transparent 100%);
+      mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 68%, transparent 100%);
+    }
+
+    /* Keep page sections above the animation, but transparent enough for background to show in empty spaces */
+    .hero,
+    .section,
+    .intro,
+    .intro-spec,
+    .section-climate,
+    .facts,
+    #products{
+      position:relative;
+      z-index:1;
+    }
+
+    .section,
+    .intro,
+    .intro-spec,
+    .section-climate,
+    .facts,
+    #products{
+      background:transparent !important;
+    }
+
+    /* Every actual content block sits above the moving background */
+    app-header,
+    app-footer,
+    .hero .container,
+    .hero-inner,
+    .copy,
+    .visual,
+    .premium-story-wrap,
+    .intro-spec-grid,
+    .intro-spec-panel,
+    .intro-spec-main,
+    .climate-grid,
+    .climate-main,
+    .climate-card,
+    .facts .container,
+    #products .container,
+    .hd,
+    .fact-grid,
+    .tcarousel{
+      position:relative;
+      z-index:5 !important;
+    }
+
+    /* Cards become solid surfaces, so dots/lines never show on top of card text */
+    .premium-story-wrap,
+    .premium-story-card,
+    .intro-spec-panel,
+    .climate-card,
+    .fact,
+    .product{
+      position:relative;
+      z-index:6 !important;
+      isolation:isolate;
+      background-color:#fff !important;
+    }
+
+    /* Fade the hero background into the next section instead of ending as a hard line */
+    .hero::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-1px;
+      z-index:2;
+      height:170px;
+      pointer-events:none;
+      background:linear-gradient(
+        to bottom,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,.72) 58%,
+        #fff 100%
+      );
+    }
+
+    /* Keep hero content above the fade overlay */
+    .hero .container,
+    .hero-inner{
+      z-index:6 !important;
+    }
+
+    /* So the animated dots do not visually sit on text-heavy areas */
+    .premium-site-dot,
+    .premium-moving-dot,
+    .premium-site-orb,
+    .premium-flow-node{
+      opacity:.42;
+    }
+
+    @media (max-width:720px){
+      .premium-site-flow{
+        opacity:.28 !important;
+      }
+
+      .premium-dynamic-mesh,
+      .premium-engineering-flow{
+        opacity:.48 !important;
+      }
+    }
+
+
+    /* ===== EVENED OUT: consistent mesh grid through the whole page ===== */
+    body{
+      background:#fff !important;
+      position:relative;
+      isolation:isolate;
+    }
+
+    /* Keep all content above the background mesh */
+    app-header,
+    app-footer,
+    .hero,
+    .section,
+    .intro,
+    .intro-spec,
+    .section-climate,
+    .facts,
+    #products{
+      position:relative;
+      z-index:2;
+    }
+
+    .hero .container,
+    .hero-inner,
+    .copy,
+    .visual,
+    .premium-story-wrap,
+    .intro-spec-grid,
+    .intro-spec-panel,
+    .intro-spec-main,
+    .climate-grid,
+    .climate-main,
+    .climate-card,
+    .facts .container,
+    #products .container,
+    .hd,
+    .fact-grid,
+    .tcarousel{
+      position:relative;
+      z-index:5 !important;
+    }
+
+    /* Sections stay transparent so the background grid is visible in empty page space */
+    .hero,
+    .section,
+    .intro,
+    .intro-spec,
+    .section-climate,
+    .facts,
+    #products{
+      background:transparent !important;
+    }
+
+    /* Cards/containers stay solid so mesh never covers text */
+    .premium-story-wrap,
+    .premium-story-card,
+    .intro-spec-panel,
+    .climate-card,
+    .fact,
+    .product{
+      position:relative;
+      z-index:6 !important;
+      isolation:isolate;
+      background-color:rgba(255,255,255,.94) !important;
+      backdrop-filter:blur(6px);
+    }
+
+    /* Main fixed mesh, visible throughout the whole viewport on every scroll position */
+    .premium-site-flow{
+      position:fixed !important;
+      inset:0 !important;
+      z-index:0 !important;
+      pointer-events:none !important;
+      overflow:hidden !important;
+      opacity:.72 !important;
+      mix-blend-mode:multiply;
+      -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%) !important;
+      mask-image:linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%) !important;
+    }
+
+    /* Even base grid, not only a top blob */
+    .premium-site-flow::before{
+      content:"";
+      position:absolute;
+      inset:-16%;
+      opacity:.72 !important;
+      background:
+        linear-gradient(90deg, rgba(227,6,44,.038) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(227,6,44,.032) 1px, transparent 1px),
+        radial-gradient(circle at 14% 20%, rgba(227,6,44,.070), transparent 24rem),
+        radial-gradient(circle at 82% 18%, rgba(227,6,44,.075), transparent 26rem),
+        radial-gradient(circle at 22% 58%, rgba(227,6,44,.050), transparent 25rem),
+        radial-gradient(circle at 78% 64%, rgba(227,6,44,.060), transparent 28rem),
+        radial-gradient(circle at 48% 88%, rgba(227,6,44,.040), transparent 24rem) !important;
+      background-size:
+        72px 72px,
+        72px 72px,
+        auto,
+        auto,
+        auto,
+        auto,
+        auto !important;
+      transform:translate3d(0, var(--site-scroll), 0) rotate(-5deg) scale(1.08) !important;
+      -webkit-mask-image:none !important;
+      mask-image:none !important;
+    }
+
+    /* A second very light technical layer for depth */
+    .premium-site-flow::after{
+      content:"";
+      position:absolute;
+      inset:-12%;
+      opacity:.32;
+      background:
+        linear-gradient(90deg, rgba(15,23,42,.026) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(15,23,42,.020) 1px, transparent 1px);
+      background-size:144px 144px, 144px 144px;
+      transform:rotate(-5deg) scale(1.05);
+    }
+
+    /* Keep line animation softer and visible across the full page */
+    .premium-site-svg{
+      opacity:.36 !important;
+      width:110% !important;
+      height:110% !important;
+      left:-5% !important;
+      top:-5% !important;
+    }
+
+    .premium-site-line{
+      stroke:rgba(227,6,44,.085) !important;
+    }
+
+    .premium-site-line.is-soft{
+      stroke:rgba(15,23,42,.035) !important;
+    }
+
+    /* Dots are background accents only, not foreground bubbles */
+    .premium-site-dot,
+    .premium-site-orb,
+    .premium-moving-dot,
+    .premium-flow-node{
+      opacity:.26 !important;
+      z-index:0 !important;
+    }
+
+    /* Hero local mesh should blend with the global mesh, not end as a separate top block */
+    .premium-dynamic-mesh,
+    .premium-engineering-flow{
+      z-index:0 !important;
+      opacity:.58 !important;
+      -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%) !important;
+      mask-image:linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%) !important;
+    }
+
+    .premium-dynamic-mesh::before{
+      opacity:.38 !important;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-120px;
+      z-index:1;
+      height:300px;
+      pointer-events:none;
+      background:linear-gradient(
+        to bottom,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,.32) 48%,
+        rgba(255,255,255,.78) 82%,
+        #fff 100%
+      );
+    }
+
+    .hero .container,
+    .hero-inner{
+      z-index:6 !important;
+    }
+
+    @media (max-width:900px){
+      .premium-site-flow{
+        opacity:.55 !important;
+      }
+
+      .premium-site-flow::before{
+        background-size:
+          64px 64px,
+          64px 64px,
+          auto,
+          auto,
+          auto,
+          auto,
+          auto !important;
+      }
+    }
+
+    @media (max-width:720px){
+      .premium-site-flow{
+        opacity:.36 !important;
+      }
+
+      .premium-site-dot,
+      .premium-site-orb,
+      .premium-moving-dot{
+        display:none !important;
+      }
+
+      .premium-site-svg{
+        opacity:.22 !important;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .premium-site-flow::before{
+        transform:rotate(-5deg) scale(1.08) !important;
+      }
+    }
+
+  </style>
+
 </head>
 <body>
+
+  <div class="premium-site-flow" aria-hidden="true">
+    <svg class="premium-site-svg" viewBox="0 0 1600 900" preserveAspectRatio="none">
+      <path class="premium-site-line" d="M40 160 C260 50 450 190 680 110 S980 70 1180 220 S1430 350 1600 230"></path>
+      <path class="premium-site-line is-soft" d="M70 620 C270 480 480 580 680 430 S980 260 1240 380 S1460 500 1620 390"></path>
+      <path class="premium-site-line" d="M0 840 C220 690 420 780 650 640 S1050 520 1320 690 S1510 820 1660 720"></path>
+      <path class="premium-site-line is-soft" d="M-40 360 C180 250 420 330 650 250 S1000 160 1230 260 S1450 430 1640 300"></path>
+    </svg>
+    <span class="premium-site-dot site-a"></span>
+    <span class="premium-site-dot site-b"></span>
+    <span class="premium-site-dot site-c"></span>
+    <span class="premium-site-orb orb-a"></span>
+    <span class="premium-site-orb orb-b"></span>
+    <span class="premium-site-orb orb-c"></span>
+  </div>
+
   <app-header active="home"></app-header>
 
   <!-- ===== Hero ===== -->
-  <section class="hero">
+  <section class="hero premium-parallax-layer" data-parallax="0.12">
+    <div class="premium-dynamic-mesh" aria-hidden="true"></div>
+
+    <div class="premium-engineering-flow" aria-hidden="true">
+      <svg class="premium-flow-svg" viewBox="0 0 860 560" role="img">
+        <path class="premium-flow-line" d="M40 330 C190 160 340 120 520 210 S730 320 820 130"></path>
+        <path class="premium-flow-line is-soft" d="M120 470 C280 360 420 420 560 300 S690 190 790 250"></path>
+        <path class="premium-flow-line is-soft" d="M80 120 C220 40 380 90 520 70 S720 20 830 90"></path>
+        <circle class="premium-flow-node" cx="214" cy="183" r="8"></circle>
+        <circle class="premium-flow-node is-delay-1" cx="520" cy="210" r="10"></circle>
+        <circle class="premium-flow-node is-delay-2" cx="740" cy="198" r="7"></circle>
+      </svg>
+      <span class="premium-moving-dot dot-a"></span>
+      <span class="premium-moving-dot dot-b"></span>
+      <div class="premium-floating-spec spec-a"><b>AT</b> Austrijas inženierija</div>
+      <div class="premium-floating-spec spec-b"><b>35 dB</b> premium komforts</div>
+      <div class="premium-floating-spec spec-c"><b>−25°C</b> Aukstam klimatam</div>
+    </div>
+
     <div class="container hero-inner">
       <div class="copy">
-         <h1>Austrijas premium siltumsūkņi <em style="color:var(--brand)">komfortam bez kompromisiem.</em></h1>
-        <p class="lead">HELIOTHERM nav vidusmēra izvēle - tās ir premium tehnoloģijas, kas radītas prasīgiem mājokļiem un komerctelpām. Klusums, izcila efektivitāte un nevainojams komforts bez kompromisiem.</p>
+         <h1>Premium klases Austrijas siltumsūkņi <em style="color:var(--brand)">izsmalcinātam komfortam.</em></h1>
+        <p class="lead">Heliotherm apvieno Austrijas inženierijas precizitāti, ilgmūžīgas komponentes un mūsdienīgu vadību, lai nodrošinātu klusu, stabilu un energoefektīvu komfortu prasīgām mājām un komercobjektiem.</p>
+        <div class="premium-badges" aria-label="Premium kvalitātes marķieri">
+          <span class="premium-pill">Ražots Austrijā</span>
+          <span class="premium-pill">Premium klase</span>
+          <span class="premium-pill">Austrijas tehnoloģija</span>
+        </div>
         <div class="actions">
           <a class="btn primary" href="/heliotherm/produkti/">Apskatīt produkciju</a>
           <a class="btn ghost" href="#siltumsukni">Par tehnoloģiju</a>
@@ -33,6 +1054,24 @@
           <source src="media/video/hero_video.mp4" type="video/mp4" />
           Jūsu pārlūks neatbalsta video atskaņošanu.
         </video>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section premium-story premium-parallax-layer" data-parallax="0.08">
+    <div class="container premium-story-wrap">
+      <div class="hd">
+        <div>
+          <p class="premium-story-eyebrow">Austrijas inženierija. Premium komforts.</p>
+          <h2>Austrijas premium tehnoloģija jūsu mājas komfortam</h2>
+          <p class="muted premium-story-lead">Heliotherm siltumsūkņi apvieno Austrijas inženieriju, augstu efektivitāti un modernu vadību, lai nodrošinātu ilgtspējīgu komfortu privātmājām un komerciāliem objektiem.</p>
+        </div>
+      </div>
+      <div class="premium-story-grid">
+        <article class="premium-story-card"><h3>Ražots Austrijā</h3><p class="muted">Eiropas ražošanas kvalitātes standarti ar precīzu kontroli katrā posmā.</p></article>
+        <article class="premium-story-card"><h3>Premium komponentes</h3><p class="muted">Rūpīgi atlasīti materiāli un sistēmas ilgtermiņa darbībai.</p></article>
+        <article class="premium-story-card"><h3>Augsta efektivitāte</h3><p class="muted">Optimizēta enerģijas izmantošana zemām ekspluatācijas izmaksām.</p></article>
+        <article class="premium-story-card"><h3>Ilgmūžīgs risinājums</h3><p class="muted">Paredzēts stabilam komfortam daudzu gadu garumā.</p></article>
       </div>
     </div>
   </section>
@@ -502,6 +1541,112 @@
     });
   })();
   </script>
+
+
+  <script>
+  (function(){
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const mesh = document.querySelector('.premium-dynamic-mesh');
+
+    if(mesh && !reduceMotion){
+      let latestX = 72;
+      let latestY = 32;
+      let ticking = false;
+
+      function setMesh(){
+        mesh.style.setProperty('--mesh-x', latestX + '%');
+        mesh.style.setProperty('--mesh-y', latestY + '%');
+        mesh.style.setProperty('--mesh-scroll', (window.scrollY * 0.045).toFixed(1) + 'px');
+        ticking = false;
+      }
+
+      function requestMeshUpdate(){
+        if(!ticking){
+          window.requestAnimationFrame(setMesh);
+          ticking = true;
+        }
+      }
+
+      window.addEventListener('pointermove', function(event){
+        latestX = Math.round((event.clientX / window.innerWidth) * 100);
+        latestY = Math.round((event.clientY / window.innerHeight) * 100);
+        requestMeshUpdate();
+      }, {passive:true});
+
+      window.addEventListener('scroll', requestMeshUpdate, {passive:true});
+      window.addEventListener('resize', requestMeshUpdate, {passive:true});
+      requestMeshUpdate();
+    }
+
+    const revealTargets = document.querySelectorAll(
+      '.premium-story-card, .intro-spec-panel, .intro-spec-main, .climate-stat, .climate-card, .fact, .product'
+    );
+
+    if(revealTargets.length){
+      revealTargets.forEach((el, index)=>{
+        el.classList.add('premium-reveal');
+        el.style.transitionDelay = Math.min(index % 4, 3) * 80 + 'ms';
+      });
+
+      if(reduceMotion){
+        revealTargets.forEach(el=>el.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {threshold:.16, rootMargin:'0px 0px -8% 0px'});
+
+      revealTargets.forEach(el=>observer.observe(el));
+    }
+  })();
+  </script>
+
+
+
+  <script>
+  (function(){
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const siteFlow = document.querySelector('.premium-site-flow');
+
+    if(!siteFlow || reduceMotion) return;
+
+    let latestX = 68;
+    let latestY = 34;
+    let ticking = false;
+
+    function updateSiteFlow(){
+      siteFlow.style.setProperty('--site-x', latestX + '%');
+      siteFlow.style.setProperty('--site-y', latestY + '%');
+      siteFlow.style.setProperty('--site-scroll', (window.scrollY * -0.018).toFixed(1) + 'px');
+      ticking = false;
+    }
+
+    function requestUpdate(){
+      if(!ticking){
+        window.requestAnimationFrame(updateSiteFlow);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('pointermove', function(event){
+      latestX = Math.round((event.clientX / window.innerWidth) * 100);
+      latestY = Math.round((event.clientY / window.innerHeight) * 100);
+      requestUpdate();
+    }, {passive:true});
+
+    window.addEventListener('scroll', requestUpdate, {passive:true});
+    window.addEventListener('resize', requestUpdate, {passive:true});
+    requestUpdate();
+  })();
+  </script>
+
 
   <script>
   document.getElementById('year') && (document.getElementById('year').textContent=new Date().getFullYear());

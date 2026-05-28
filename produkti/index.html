@@ -1728,6 +1728,40 @@
             display: block;
             object-fit: cover;
         }
+        @media (max-width: 768px) {
+            .hero-products {
+                padding-block: 64px 72px;
+            }
+
+            .hero-products-grid {
+                display: block;
+            }
+
+            .hero-products-text {
+                max-width: 100%;
+            }
+
+            .hero-products-text h1 {
+                font-size: clamp(2rem, 10vw, 2.7rem);
+                line-height: 1.08;
+            }
+
+            .hero-products-text p {
+                max-width: 100%;
+            }
+
+            .hero-products-visual {
+                display: none;
+            }
+
+            .quick-filters {
+                max-width: 100%;
+            }
+
+            .quick-filters .qf {
+                width: fit-content;
+            }
+        }
     </style>
 </head>
 <body>

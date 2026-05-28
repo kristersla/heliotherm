@@ -110,10 +110,17 @@ headerTmpl.innerHTML = `
     .brand{
       display:inline-flex;
       align-items:center;
-      gap:.7rem;
+      gap:.62rem;
       color:#0b0c0f;
       text-decoration:none;
       white-space:nowrap;
+    }
+    .brand-copy{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:2px;
+      line-height:1.05;
     }
 
     .brand .logo{
@@ -127,6 +134,13 @@ headerTmpl.innerHTML = `
       font-weight:800;
       letter-spacing:.03em;
       font-size:.95rem;
+    }
+    .brand-tagline{
+      font-size:.62rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:#7b8493;
+      font-weight:600;
     }
 
     .brand:hover .logo{
@@ -390,9 +404,7 @@ headerTmpl.innerHTML = `
         height:22px;
       }
 
-      .brand-tagline{
-        font-size:.62rem;
-      }
+      .brand-tagline{font-size:.56rem; letter-spacing:.14em}
     }
   </style>
 
@@ -400,8 +412,8 @@ headerTmpl.innerHTML = `
     <div class="nav">
       <a class="brand" href="/index.html#home" aria-label="Sākums">
         <img src="/heliotherm/media/image/logo.svg" alt="Heliotherm logo" class="logo" />
-        <span class="brand-tagline">
-          <strong>Premium</strong> <span>Heat Pumps</span>
+        <span class="brand-copy">
+          <span class="brand-tagline">Premium Austrijas siltumsūkņi</span>
         </span>
       </a>
 
@@ -757,7 +769,7 @@ footerTmpl.innerHTML = `
         <div class="brand">
           <img src="/heliotherm/media/image/logo.svg" alt="Heliotherm logo" class="logo" />
         </div>
-        <p class="muted">Efektīvi, klusi un nākotnei gatavi apkures risinājumi.</p>
+        <p class="muted">Heliotherm Baltics, premium klases Austrijas siltumsūkņu risinājumi.</p>
       </div>
 
       <div>
@@ -813,3 +825,30 @@ class AppFooter extends HTMLElement {
 if (!customElements.get("app-footer")) {
   customElements.define("app-footer", AppFooter);
 }
+
+/* ===================== subtle parallax ===================== */
+(() => {
+  const prefersReduced = matchMedia("(prefers-reduced-motion: reduce)");
+  const layers = () => Array.from(document.querySelectorAll("[data-parallax]"));
+  if (prefersReduced.matches) return;
+
+  let ticking = false;
+  const update = () => {
+    const y = window.scrollY || 0;
+    layers().forEach((el) => {
+      const speed = Number(el.getAttribute("data-parallax")) || 0;
+      el.style.transform = `translate3d(0, ${Math.max(-18, y * speed * -0.18).toFixed(2)}px, 0)`;
+    });
+    ticking = false;
+  };
+
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+
+  addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", onScroll, { passive: true });
+  update();
+})();
