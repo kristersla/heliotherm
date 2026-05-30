@@ -1,0 +1,955 @@
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kontakti un rekvizīti | Heliotherm Baltics</title>
+  <link rel="icon" type="image/x-icon" href="/media/image/favicon.ico" />
+  <meta name="theme-color" content="#0b0c0f" />
+  <meta name="description" content="SIA “Heliotherm Baltics” kontaktinformācija, rekvizīti un datu aizsardzības informācija." />
+  <link rel="stylesheet" href="/assets/style/style.css" />
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <style>
+    body {
+      background: var(--page-bg, #f5f6fa);
+    }
+
+    main {
+      padding-bottom: 64px;
+    }
+
+    .section {
+      padding-top: clamp(40px, 7vh, 64px);
+      padding-bottom: clamp(40px, 7vh, 64px);
+    }
+
+    .container-narrow {
+      max-width: 980px;
+      margin: 0 auto;
+      padding-inline: var(--mx, min(5vw, 28px));
+    }
+
+    .container-wide {
+      max-width: var(--maxw, 1200px);
+      margin: 0 auto;
+      padding-inline: var(--mx, min(5vw, 28px));
+    }
+
+    .contact-hero {
+      max-width: 820px;
+      margin: 0 auto clamp(32px, 5vh, 40px);
+      text-align: center;
+      padding-inline: 1rem;
+    }
+
+    .contact-eyebrow {
+      margin: 0 0 .5rem;
+      font-size: .78rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .contact-hero h1 {
+      margin: 0 0 .7rem;
+      font-size: clamp(2rem, 4.6vw, 2.7rem);
+      line-height: 1.08;
+      letter-spacing: -.01em;
+    }
+
+    .contact-hero .accent {
+      color: var(--brand-2);
+    }
+
+    .contact-lead {
+      max-width: 70ch;
+      margin: 0 auto;
+      font-size: .98rem;
+      color: var(--muted);
+    }
+
+    .band {
+      border-radius: 32px;
+      box-shadow: 0 18px 45px rgba(15,23,42,.10);
+      padding: clamp(24px, 3.5vh, 32px);
+      border: 1px solid rgba(226,232,240,.9);
+      background: rgba(255,255,255,.98);
+    }
+
+    .band + .band {
+      margin-top: clamp(32px, 5vh, 40px);
+    }
+
+    @media (max-width: 768px) {
+      .band {
+        border-radius: 24px;
+        padding: 20px 18px 22px;
+      }
+    }
+
+    .contact-form-section {
+      margin-top: clamp(24px, 4vh, 32px);
+    }
+
+    .contact-form-headline {
+      margin-bottom: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+    }
+
+    .contact-form-eyebrow {
+      font-size: .78rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .contact-form-headline h2 {
+      margin: 0;
+      font-size: clamp(1.7rem, 2.3vw, 2rem);
+    }
+
+    .contact-form-headline p {
+      margin: 0;
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .contact-form-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.1fr);
+      gap: clamp(18px, 2.4vw, 24px);
+    }
+
+    @media (max-width: 960px) {
+      .contact-form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-card {
+      background: rgba(255,255,255,.98);
+      border-radius: 24px;
+      border: 1px solid var(--ring);
+      box-shadow: 0 14px 40px rgba(15,23,42,.08);
+      padding: 22px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+    }
+
+    .form-section-title {
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--muted);
+      margin-bottom: .6rem;
+      font-weight: 600;
+    }
+
+    .form-grid-two {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .6rem .8rem;
+    }
+
+    @media (max-width: 640px) {
+      .form-grid-two {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .field-row {
+      display: flex;
+      flex-direction: column;
+      gap: .32rem;
+      margin-bottom: .7rem;
+    }
+
+    .field-label {
+      font-size: .85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: .25rem;
+    }
+
+    .field-label span.req {
+      color: #e11d48;
+      font-size: .85em;
+    }
+
+    .field-input,
+    .field-textarea,
+    .field-select {
+      border-radius: 999px;
+      border: 1px solid var(--hair);
+      background: var(--panel-2, #f8f9fb);
+      padding: .55rem .9rem;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .16s ease, box-shadow .16s ease, background-color .16s ease, transform .08s ease;
+    }
+
+    .field-textarea {
+      border-radius: 16px;
+      min-height: 120px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .field-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%23808a9b' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .9rem center;
+      background-size: 16px 16px;
+      padding-right: 2.4rem;
+    }
+
+    .field-input:focus,
+    .field-textarea:focus,
+    .field-select:focus {
+      border-color: var(--brand-2);
+      box-shadow: 0 0 0 1px rgba(196, 18, 47, .16), 0 8px 18px rgba(15,23,42,.08);
+      background: #fff;
+      transform: translateY(-0.5px);
+    }
+
+    .pill-radio-row,
+    .check-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem .8rem;
+    }
+
+    .pill-radio,
+    .check-pill {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      padding: .42rem .78rem;
+      border-radius: 999px;
+      border: 1px solid var(--hair);
+      background: var(--panel-2, #f8f9fb);
+      font-size: .85rem;
+      cursor: pointer;
+      user-select: none;
+      transition: border-color .15s ease, background-color .15s ease, box-shadow .15s ease, transform .08s ease;
+    }
+
+    .pill-radio:hover,
+    .check-pill:hover {
+      border-color: rgba(148,163,184,.9);
+      background: rgba(248,250,252,1);
+      transform: translateY(-0.5px);
+    }
+
+    .pill-radio input,
+    .check-pill input {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 1px solid var(--hair-2, #dfe3ea);
+      appearance: none;
+      outline: none;
+      position: relative;
+      background: #fff;
+    }
+
+    .pill-radio input::after,
+    .check-pill input::after {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: inherit;
+      background: var(--brand-2);
+      transform: scale(0);
+      transition: transform .12s ease;
+    }
+
+    .check-pill input[type="checkbox"]::after {
+      border-radius: 4px;
+    }
+
+    .pill-radio input:checked::after,
+    .check-pill input:checked::after {
+      transform: scale(1);
+    }
+
+    .pill-radio input:checked + span,
+    .check-pill input:checked + span {
+      font-weight: 500;
+    }
+
+    .pill-radio input:checked,
+    .check-pill input:checked {
+      border-color: var(--brand-2);
+    }
+
+    .pill-radio:has(input:checked),
+    .check-pill:has(input:checked) {
+      border-color: var(--brand-2);
+      background: rgba(196, 18, 47, .04);
+      box-shadow: 0 0 0 1px rgba(196, 18, 47, .08);
+    }
+
+    .radio-row-split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .5rem;
+    }
+
+    @media (max-width: 600px) {
+      .radio-row-split {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .helper-text {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-top: .2rem;
+    }
+
+    .privacy-row {
+      margin-top: 1.1rem;
+      padding-top: .9rem;
+      border-top: 1px solid var(--hair);
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+    }
+
+    .recaptcha-wrap {
+      margin-top: .15rem;
+      display: flex;
+      justify-content: flex-start;
+      overflow: hidden;
+    }
+
+    .legal-submit-note {
+      margin: .75rem 0 0;
+      font-size: .8rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 380px) {
+      .recaptcha-wrap {
+        transform: scale(.9);
+        transform-origin: left top;
+        margin-bottom: -8px;
+      }
+    }
+
+    .form-status {
+      margin-top: .75rem;
+      min-height: 22px;
+      font-size: .88rem;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .form-actions {
+      margin-top: 1.1rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .form-actions .btn-primary {
+      min-width: 210px;
+      justify-content: center;
+      font-weight: 600;
+    }
+
+    .form-actions .btn-primary:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    .contact-band {
+      margin-top: clamp(32px, 5vh, 40px);
+    }
+
+    .contact-grid {
+      padding-top: 50px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.1fr);
+      gap: clamp(18px, 2.4vw, 24px);
+      align-items: flex-start;
+    }
+
+    @media (max-width: 960px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-card,
+    .contact-map-card {
+      background: rgba(255,255,255,.98);
+      border-radius: 24px;
+      border: 1px solid var(--ring);
+      box-shadow: 0 14px 40px rgba(15,23,42,.08);
+      padding: 22px 24px 24px;
+    }
+
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-card h2,
+    .contact-map-card h2 {
+      margin: 0 0 .4rem;
+      font-size: 1.3rem;
+    }
+
+    .contact-meta {
+      font-size: .9rem;
+      color: var(--muted);
+      margin-top: .3rem;
+    }
+
+    .contact-block + .contact-block {
+      margin-top: 1rem;
+    }
+
+    .contact-block-title {
+      font-weight: 600;
+      margin-bottom: .25rem;
+    }
+
+    .contact-block p {
+      margin: 0;
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: .35rem 0 0;
+      font-size: .95rem;
+      color: var(--muted);
+    }
+
+    .contact-list li + li {
+      margin-top: .2rem;
+    }
+
+    .contact-map-card {
+      padding: 20px 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      max-width: 100%;
+    }
+
+    .contact-map-wrap {
+      margin-top: 8px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--hair);
+      height: 320px;
+    }
+
+    .contact-map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        padding-bottom: 48px;
+      }
+
+      .contact-hero {
+        margin-bottom: 28px;
+      }
+
+      .form-card {
+        border-radius: 20px;
+        padding: 18px 18px 20px;
+      }
+
+      .contact-grid {
+        padding-top: 32px;
+      }
+
+      .contact-card,
+      .contact-map-card {
+        border-radius: 20px;
+        padding: 18px 18px 20px;
+      }
+
+      .contact-map-wrap {
+        height: 260px;
+      }
+
+      .form-actions {
+        justify-content: center;
+      }
+
+      .form-actions .btn-primary {
+        width: 100%;
+        max-width: 260px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-hero h1 {
+        font-size: 1.85rem;
+      }
+
+      .contact-map-wrap {
+        height: 230px;
+      }
+    }
+
+    #projectSubmitBtn {
+      cursor: pointer;
+      min-width: 210px;
+      height: 46px;
+      padding: 0 26px;
+      border: none;
+      border-radius: 999px;
+      background: #c4122f;
+      color: #fff;
+      font-size: .95rem;
+      font-weight: 600;
+      letter-spacing: .01em;
+      box-shadow: 0 10px 24px rgba(196, 18, 47, .22);
+      transition: background-color .16s ease, transform .16s ease, box-shadow .16s ease;
+    }
+
+    #projectSubmitBtn:hover {
+      background: #a90f28;
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(196, 18, 47, .28);
+    }
+
+    #projectSubmitBtn:active {
+      transform: translateY(0);
+      box-shadow: 0 8px 18px rgba(196, 18, 47, .2);
+    }
+
+    #projectSubmitBtn:disabled {
+      opacity: .65;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <app-header active="contact"></app-header>
+
+  <main>
+    <section class="section">
+      <div class="container-narrow">
+        <div class="contact-hero">
+          <p class="contact-eyebrow">Kontakti un rekvizīti</p>
+          <h1>Saikne ar <span class="accent">Heliotherm Baltics</span></h1>
+          <p class="contact-lead">
+            Sazinieties ar mums par siltumsūkņu, apkures, dzesēšanas un citu inženierkomunikāciju risinājumiem.
+            Šeit atradīsiet uzņēmuma rekvizītus, biroja atrašanās vietu un datu aizsardzības informāciju.
+          </p>
+        </div>
+      </div>
+
+      <div class="container-wide">
+        <section class="band contact-form-section" id="form">
+          <div class="contact-form-headline">
+            <div class="contact-form-eyebrow">Sazinieties ar mums</div>
+            <h2>Pastāstiet par savu projektu</h2>
+            <p>
+              Aizpildiet formu vai īsi aprakstiet savu projektu.
+              Mūsu speciālisti sazināsies ar jums un piedāvās piemērotāko siltumsūkņu risinājumu.
+            </p>
+          </div>
+
+          <form
+            id="projectForm"
+            class="contact-form-grid"
+            action="/api/send-project-form.php"
+            method="post"
+          >
+            <div class="hp-field" aria-hidden="true">
+              <label>
+                Website
+                <input type="text" name="website" tabindex="-1" autocomplete="off" />
+              </label>
+            </div>
+
+            <div class="form-card">
+              <div class="form-section-title">Jūsu kontakti</div>
+
+              <div class="field-row">
+                <div class="field-label">Jūs esat:</div>
+                <div class="pill-radio-row">
+                  <label class="pill-radio">
+                    <input type="radio" name="client_type" value="Būvnieks" />
+                    <span>Būvnieks</span>
+                  </label>
+                  <label class="pill-radio">
+                    <input type="radio" name="client_type" value="Uzstādītājs / apkures sistēmu montētājs" />
+                    <span>Uzstādītājs / apkures sistēmu montētājs</span>
+                  </label>
+                  <label class="pill-radio">
+                    <input type="radio" name="client_type" value="Projektētājs / arhitekts" />
+                    <span>Projektētājs / arhitekts</span>
+                  </label>
+                  <label class="pill-radio">
+                    <input type="radio" name="client_type" value="Būvdarbu pasūtītājs" />
+                    <span>Būvdarbu pasūtītājs</span>
+                  </label>
+                  <label class="pill-radio">
+                    <input type="radio" name="client_type" value="Cits" />
+                    <span>Cits</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label class="field-label" for="company">Firma</label>
+                <input class="field-input" id="company" name="company" type="text" autocomplete="organization" />
+              </div>
+
+              <div class="field-row">
+                <label class="field-label" for="salutation">Uzruna</label>
+                <select class="field-select" id="salutation" name="salutation">
+                  <option value="">Izvēlieties</option>
+                  <option value="Kungs">Kungs</option>
+                  <option value="Kundze">Kundze</option>
+                  <option value="Cits">Cits</option>
+                </select>
+              </div>
+
+              <div class="form-grid-two">
+                <div class="field-row">
+                  <label class="field-label" for="first_name">Vārds <span class="req">*</span></label>
+                  <input class="field-input" id="first_name" name="first_name" type="text" autocomplete="given-name" required />
+                </div>
+                <div class="field-row">
+                  <label class="field-label" for="last_name">Uzvārds <span class="req">*</span></label>
+                  <input class="field-input" id="last_name" name="last_name" type="text" autocomplete="family-name" required />
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label class="field-label" for="street">Iela / mājas numurs</label>
+                <input class="field-input" id="street" name="street" type="text" autocomplete="street-address" />
+              </div>
+
+              <div class="form-grid-two">
+                <div class="field-row">
+                  <label class="field-label" for="postcode">Pasta indekss</label>
+                  <input class="field-input" id="postcode" name="postcode" type="text" autocomplete="postal-code" />
+                </div>
+                <div class="field-row">
+                  <label class="field-label" for="city">Pilsēta</label>
+                  <input class="field-input" id="city" name="city" type="text" autocomplete="address-level2" />
+                </div>
+              </div>
+
+              <div class="form-grid-two">
+                <div class="field-row">
+                  <label class="field-label" for="phone">Tālrunis</label>
+                  <input class="field-input" id="phone" name="phone" type="tel" autocomplete="tel" />
+                </div>
+                <div class="field-row">
+                  <label class="field-label" for="email">E-pasts <span class="req">*</span></label>
+                  <input class="field-input" id="email" name="email" type="email" autocomplete="email" required />
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label class="field-label" for="message">Jūsu ziņojums</label>
+                <textarea class="field-textarea" id="message" name="message" rows="4" placeholder="Īsi aprakstiet savu projektu un esošo situāciju."></textarea>
+              </div>
+            </div>
+
+            <div class="form-card">
+              <div class="form-section-title">Papildu informācija</div>
+
+              <div class="field-row">
+                <div class="field-label">Būvprojekts:</div>
+                <div class="radio-row-split">
+                  <label class="pill-radio">
+                    <input type="radio" name="project_type" value="Jaunbūve" />
+                    <span>Jaunbūve</span>
+                  </label>
+                  <label class="pill-radio">
+                    <input type="radio" name="project_type" value="Renovācija" />
+                    <span>Renovācija</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field-label">Konsultācija:</div>
+                <div class="pill-radio-row">
+                  <label class="check-pill">
+                    <input type="checkbox" name="consultation" value="Vēlos saņemt personīgu konsultāciju" />
+                    <span>Vēlos saņemt personīgu konsultāciju</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field-label">Informāciju par siltumsūkņiem vēlos saņemt:</div>
+                <div class="pill-radio-row">
+                  <label class="check-pill">
+                    <input type="checkbox" name="info_channel[]" value="Nosūtīt pa pastu" />
+                    <span>Nosūtīt pa pastu</span>
+                  </label>
+                  <label class="check-pill">
+                    <input type="checkbox" name="info_channel[]" value="Nosūtīt uz e-pastu" />
+                    <span>Nosūtīt uz e-pastu</span>
+                  </label>
+                </div>
+              </div>
+
+              <hr style="border:none;border-top:1px solid var(--hair);margin:1rem 0 .9rem;" />
+
+              <div class="form-section-title">Vēlos saņemt arī papildu informāciju</div>
+
+              <div class="field-row">
+                <div class="field-label">Papildu informācija specializētajiem partneriem</div>
+                <div class="radio-row-split">
+                  <label class="pill-radio">
+                    <input type="radio" name="partner_info" value="Jā" />
+                    <span>Jā</span>
+                  </label>
+                  <label class="pill-radio">
+                    <input type="radio" name="partner_info" value="Nē" />
+                    <span>Nē</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field-label">Pieredze aukstumtehnikas jomā</div>
+                <div class="radio-row-split">
+                  <label class="pill-radio">
+                    <input type="radio" name="cooling_experience" value="Jā" />
+                    <span>Jā</span>
+                  </label>
+                  <label class="pill-radio">
+                    <input type="radio" name="cooling_experience" value="Nē" />
+                    <span>Nē</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field-label">Prospekti</div>
+                <div class="check-row">
+                  <label class="check-pill">
+                    <input type="checkbox" name="prospects[]" value="Iepazīstināšanas prospekts" />
+                    <span>Iepazīstināšanas prospekts</span>
+                  </label>
+                  <label class="check-pill">
+                    <input type="checkbox" name="prospects[]" value="Katalogs arhitektiem" />
+                    <span>Katalogs arhitektiem</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="privacy-row">
+                <div class="recaptcha-wrap">
+                  <div class="g-recaptcha" data-sitekey="6LcrhgQtAAAAAGqvzVkviUENnvFDAFd6d0bPXDZi"></div>
+                </div>
+              </div>
+
+              <div id="formStatus" class="form-status" aria-live="polite"></div>
+
+              <div class="form-actions">
+                <button id="projectSubmitBtn" type="submit" class="btn btn-primary">
+                  Nosūtīt pieteikumu
+                </button>
+              </div>
+
+              <p class="legal-submit-note">
+                Nosūtot pieteikumu, jūs piekrītat Heliotherm Baltics konfidencialitātes politikai un savu personas datu
+                apstrādei, lai saņemtu piedāvājumu vai informāciju par siltumsūkņu risinājumiem.
+              </p>
+            </div>
+          </form>
+        </section>
+
+        <section class="contact-band">
+          <div class="contact-grid">
+            <article class="contact-card">
+              <h2>Uzņēmuma rekvizīti</h2>
+
+              <div class="contact-block">
+                <div class="contact-block-title">SIA “Heliotherm Baltics”</div>
+                <p>
+                  <strong>Juridiskā adrese:</strong><br>
+                  Ieriķu iela 58-29<br>
+                  Rīga, Latvija, LV-1084
+                </p>
+              </div>
+
+              <div class="contact-block">
+                <div class="contact-block-title">Biroja adrese:</div>
+                <p>
+                  Andrejostas iela 4a<br>
+                  Rīga, Latvija, LV-1045
+                </p>
+              </div>
+
+              <div class="contact-block">
+                <div class="contact-block-title">Kontakti:</div>
+                <ul class="contact-list">
+                  <li><strong>Serviss:</strong> +371 26631777</li>
+                  <li><strong>Info par siltumsūkņiem:</strong> +371 29335554</li>
+                  <li><strong>E-pasts:</strong> <a href="mailto:info@heliotherm.lv">info@heliotherm.lv</a></li>
+                  <li><strong>Mājaslapa:</strong> <a href="https://www.heliotherm.lv" target="_blank" rel="noopener">www.heliotherm.lv</a></li>
+                </ul>
+              </div>
+
+              <div class="contact-block">
+                <div class="contact-block-title">Uzņēmuma dati:</div>
+                <ul class="contact-list">
+                  <li><strong>Valdes loceklis:</strong> Mareks Konons</li>
+                  <li><strong>Nodokļu maksātāja numurs:</strong> LV4013253031</li>
+                  <li><strong>Reģistrācijas numurs:</strong> 40103253031</li>
+                </ul>
+              </div>
+
+              <p class="contact-meta">
+                Ja vēlaties piedāvājumu vai konsultāciju par konkrētu objektu, rakstiet mums un īsi aprakstiet
+                projektu. Atbildēsim iespējami drīz.
+              </p>
+            </article>
+
+            <aside class="contact-map-card">
+              <h2>Biroja atrašanās vieta</h2>
+              <p class="contact-meta">
+                Mūsu birojs atrodas Andrejostā, netālu no Eksporta ielas un Rīgas ostas. Autostāvvieta pieejama
+                tieši pie biroja ēkas.
+              </p>
+              <div class="contact-map-wrap">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4350.054115004019!2d24.094381!3d56.965469!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eecf1c3f2fa003%3A0xb8b7d79ec49c77a4!2sSiltums%C5%ABk%C5%86i%20no%20Heliotherm%20Baltics!5e0!3m2!1sen!2slv!4v1763724374618!5m2!1sen!2slv"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen>
+                </iframe>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <app-footer></app-footer>
+  <script src="../assets/js/components.js"></script>
+
+  <script>
+    (function () {
+      const form = document.getElementById('projectForm');
+      const statusBox = document.getElementById('formStatus');
+      const submitBtn = document.getElementById('projectSubmitBtn');
+
+      if (!form) return;
+
+      function showStatus(message, type) {
+        if (!statusBox) return;
+
+        statusBox.textContent = message || '';
+        statusBox.style.color = type === 'success' ? '#167a3a' : '#c4122f';
+      }
+
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        showStatus('', 'error');
+
+        const recaptchaToken = typeof grecaptcha !== 'undefined' ? grecaptcha.getResponse() : '';
+
+        if (!recaptchaToken) {
+          showStatus('Lūdzu, apstipriniet, ka neesat robots.', 'error');
+          return;
+        }
+
+        const originalText = submitBtn ? submitBtn.textContent : '';
+
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Sūta...';
+        }
+
+        try {
+          const formData = new FormData(form);
+
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          let result;
+
+          try {
+            result = await response.json();
+          } catch (error) {
+            throw new Error('Serveris neatgrieza pareizu JSON atbildi.');
+          }
+
+          if (!response.ok || !result.success) {
+            showStatus(result.message || 'Kļūda. Lūdzu, mēģiniet vēlreiz.', 'error');
+
+            if (typeof grecaptcha !== 'undefined') {
+              grecaptcha.reset();
+            }
+
+            return;
+          }
+
+          showStatus(result.message || 'Pieteikums nosūtīts veiksmīgi.', 'success');
+          form.reset();
+
+          if (typeof grecaptcha !== 'undefined') {
+            grecaptcha.reset();
+          }
+        } catch (error) {
+          showStatus('Kļūda. Lūdzu, mēģiniet vēlreiz.', 'error');
+
+          if (typeof grecaptcha !== 'undefined') {
+            grecaptcha.reset();
+          }
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

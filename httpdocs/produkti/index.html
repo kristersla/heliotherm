@@ -1,0 +1,2267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Par mums – Heliotherm Baltics</title>
+    <link rel="icon" type="image/x-icon" href="../media/image/favicon.ico" />
+    <meta name="theme-color" content="#0b0c0f" />
+    <meta name="description" content="Heliotherm ir Eiropas siltumsūkņu tehnoloģiju līderis ar desmitgadēm ilgu pieredzi, starptautiskiem patentiēm un sertificētu kvalitātes vadību. Uzziniet vairāk par mūsu stāstu, kvalitāti un atbalstu sabiedrībai." />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* The entire CSS provided by the user is included here */
+        html {
+        scroll-behavior: smooth;
+        }
+        /* ====== Design Tokens (Light, brand red) ====== */
+        :root{
+            --bg:#ffffff; --panel:#ffffff; --panel-2:#f8f9fb;
+            --text:#0b0c0f; --muted:#5b6474;
+            --brand:#C4122F; --brand-2:#E22A46; --accent:#FFB41F;
+            --ring:#e7e9ee; --hair:#e9ebf0; --hair-2:#dfe3ea;
+            --radius:16px; --shadow:0 8px 28px rgba(0,0,0,.06);
+            --maxw:1200px; --gap:clamp(16px,2vw,28px); --mx:min(5vw,28px);
+
+            /* NEW: band background for full-bleed section */
+            --band-bg:#f6f8fb; /* tweak to #f4f6f9 for slightly darker */
+        }
+
+        /* ====== Reset / Base ====== */
+        *,*::before,*::after{box-sizing:border-box}
+        html,body{height:100%}
+        body{
+            margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+            color:var(--text); background:#fff; line-height:1.55;
+        }
+        img{max-width:100%; display:block}
+        a{color:inherit; text-decoration:none}
+        .container{width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--mx)}
+        .muted{color:var(--muted)}
+        
+
+        /* Buttons & chips */
+        .btn{display:inline-flex; align-items:center; gap:.6rem; padding: 8px 26px;
+            border-radius:999px; font-weight:700; letter-spacing:.2px;
+            transition:transform .16s ease, box-shadow .16s ease, background .16s ease, color .16s ease;
+        }
+        .btn.primary{
+            background:linear-gradient(90deg,var(--brand),var(--brand-2));
+            color:#fff; box-shadow:0 6px 16px rgba(196,18,47,.25);
+        }
+        .btn.primary:hover{transform:translateY(-1px)}
+        .btn.ghost{border:1px solid var(--hair); background:#fff; color:var(--text)}
+        .btn.ghost:hover{background:#fafbfc}
+        .pill{
+            display:inline-flex; gap:.5rem; align-items:center; padding:.4rem .8rem;
+            border:1px solid var(--hair); border-radius:999px; font-size:.85rem; color:var(--muted); background:#fff;
+        }
+        .badge{
+            display:inline-block; padding:.25rem .6rem; border-radius:999px; font-size:.75rem;
+            background:#fff1f3; color:var(--brand); border:1px solid #ffd6dc;
+        }
+
+        /* ====== Header (light frosted) ====== */
+        header{
+            position:sticky; top:0; z-index:50;
+            backdrop-filter:saturate(1.2) blur(10px);
+            background:rgba(255,255,255,.78);
+            border-bottom:1px solid var(--hair);
+        }
+        .nav{display:flex; align-items:center; justify-content:space-between; gap:var(--gap); padding:.8rem 0}
+        .brand{display:flex; align-items:center; gap:.8rem; font-weight:800; letter-spacing:.2px}
+        .brand svg{width:28px; height:28px}
+        nav ul{display:none; gap:1.2rem; list-style:none; margin:0; padding:0}
+
+        .nav-cta{display:none; gap:.6rem}
+        @media (min-width:860px){nav ul,.nav-cta{display:flex}}
+
+        /* ====== Hero ====== */
+        .hero{position:relative; z-index:0; overflow:hidden;}
+        .hero-inner{display:grid; align-items:center; grid-template-columns:1fr; gap:var(--gap); padding-block:clamp(48px,12vh,120px)}
+        @media (min-width:980px){.hero-inner{grid-template-columns:1fr 1.1fr}} /* MODIFIED: Gave visual column more space (1.1fr) */
+        .hero .visual{
+            position:relative; /* aspect-ratio:16/10; REMOVED THIS */ border-radius:var(--radius); overflow:hidden; background:#f3f5f8;
+            box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center; border:1px solid #fff;
+            min-height:380px; /* NEW: Added minimum height */
+        }
+        .hero-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+        .hero h1{font-size:clamp(2rem,5vw,3.2rem); line-height:1.05; margin:0 0 .6rem}
+        .hero em{color:var(--brand); font-style:normal}
+        .hero p.lead{color:var(--muted); font-size:clamp(1rem,2.2vw,1.2rem); max-width:65ch}
+        .hero .actions{display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1.1rem}
+
+        /* The rest of the user-provided CSS is maintained below for consistency and function */
+        /* ... Intro, Split, Facts, Sections, Carousel, Footer, Timeline, Quality, Members, Terms ... */
+        
+        .feature-list,
+        .check-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .feature-list li,
+        .check-list li {
+            position: relative;
+            padding-left: 1.6rem;
+        }
+
+        /* ring-style dot like on Heliotherm site */
+        .feature-list li::before,
+        .check-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            border: 2px solid var(--brand);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(196,18,47,.08);/* soft outer glow */
+        }
+        
+        /* Custom styling for product thumb placeholders */
+        .fact .thumb.placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--band-bg);
+            color: var(--muted);
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--hair);
+            background-image: linear-gradient(135deg, var(--band-bg) 25%, #fff 25%, #fff 50%, var(--band-bg) 50%, var(--band-bg) 75%, #fff 75%, #fff);
+            background-size: 10px 10px;
+        }
+        
+        .fact-grid.product-listing {
+            margin-top: 3rem;
+        }
+        
+        .fact-grid.product-listing .fact {
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .fact-grid.product-listing .fact:hover{
+            transform: translateY(-4px); /* Slightly deeper lift for premium feel */
+            box-shadow: 0 12px 40px rgba(0,0,0,.1);
+        }
+
+        .product-badge.new {
+            background-color: #f1f3f7;
+            color: #111827;
+            border: 1px solid #d1d5db;
+            font-weight: 600;
+        }
+
+        /* Full CSS from the user's previous input */
+        /* Note: For brevity in this response, the full CSS has been omitted but is assumed to be present and functional in the final file */
+
+        /* ====== Intro ====== */
+        /* ===== Intro spec layout ===== */
+
+        .intro-spec {
+
+            padding-block: clamp(52px, 9vh, 80px);
+        }
+
+        .intro-spec-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.5fr);
+            gap: clamp(28px, 4vw, 56px);
+            align-items: start;
+        }
+
+        /* left block */
+
+        .intro-spec-main {
+            position: relative;
+            padding-left: 18px;
+        }
+
+
+
+        .intro-spec-eyebrow {
+            margin: 0 0 .35rem;
+            font-size: .78rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .intro-spec-title {
+            margin: .2rem 0 .9rem;
+            font-size: clamp(2rem, 3.8vw, 2.7rem);
+            line-height: 1.1;
+            letter-spacing: -.01em;
+        }
+
+        .intro-spec-title .accent {
+            color: var(--brand-2);
+        }
+
+        .intro-spec-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin-top: 1.4rem;
+        }
+
+        /* right panel */
+
+        .intro-spec-panel {
+            border-radius: 20px;
+            border: 1px solid var(--ring);
+            background:
+                radial-gradient(circle at top right, rgba(196,18,47,.03), transparent 60%),
+                #ffffff;
+            box-shadow: 0 18px 40px rgba(15,23,42,.06);
+            padding: 18px 20px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .intro-spec-row {
+            display: grid;
+            grid-template-columns: 120px minmax(0, 1fr);
+            gap: 12px;
+            padding-block: 10px;
+            border-bottom: 1px solid var(--hair);
+        }
+
+        .intro-spec-row-last {
+            border-bottom: none;
+            padding-bottom: 6px;
+        }
+
+        .intro-spec-label {
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            color: var(--muted);
+        }
+
+        .intro-spec-value {
+            font-size: .95rem;
+        }
+
+        .intro-spec-note {
+            display: block;
+            margin-top: .15rem;
+            font-size: .82rem;
+            color: var(--muted);
+        }
+
+        /* small bullet list inside the last row */
+
+        .intro-spec-list {
+            list-style: none;
+            padding: 0;
+            margin: .35rem 0 0;
+            display: grid;
+            gap: .35rem;
+        }
+
+        .intro-spec-list li {
+            position: relative;
+            padding-left: 1.4rem;
+        }
+
+        .intro-spec-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: .55em;
+            width: 9px;
+            height: 9px;
+            border-radius: 999px;
+            border: 2px solid var(--brand);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(196,18,47,.08);
+        }
+
+        /* actions at bottom */
+
+        .intro-spec-actions {
+            display: flex;
+            justify-content: center;
+            gap: .6rem;
+            margin-top: 10px;
+        }
+
+        /* responsive */
+
+        @media (max-width: 900px) {
+            .intro-spec-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-spec-panel {
+                order: 2;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .intro-spec-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ====== Feature Split (cards) ====== */
+        /* Full-bleed band background only for this section */
+        .split{
+            position: relative;
+            isolation: isolate;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--gap);
+
+            /* more space inside the band */
+            padding-block: clamp(64px, 10vh, 120px);
+
+            /* white space outside the band (above & below) */
+            margin-block: clamp(32px, 6vh, 80px);
+        }
+
+        /* full-bleed background for the band + soft separators */
+        .split::before{
+            content: "";
+            position: absolute;
+            z-index: -1;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 99vw;
+            top: 0;
+            bottom: 0;
+            background: var(--band-bg);
+            
+        }
+        @media (min-width:980px){
+            .split{ grid-template-columns: 1.1fr 1fr; }
+        }
+        .card{
+            background:#fff; border:1px solid var(--ring); border-radius:var(--radius);
+            padding:clamp(16px,2.2vw,24px); box-shadow:var(--shadow); height:100%;
+            display:flex; flex-direction:column; gap:14px;
+        }
+        .kpis{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:4px}
+        .kpi{background:var(--panel-2); border:1px solid var(--hair); padding:14px; border-radius:12px; text-align:center; display:flex; flex-direction:column; justify-content:center; min-height:96px}
+        .kpi .n{font-size:1.6rem; font-weight:800; color:var(--brand)}
+        .feature-list{list-style:none; margin:0; padding:0; display:grid; gap:12px; line-height:1.8}
+        .feature-list li{position:relative; padding-left:1.2rem}
+        .feature-list li::before{  content: "";
+            position: absolute;
+            left: 0;
+            top: .55em;
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            border: 2px solid var(--brand);}
+        .card .actions{margin-top:auto}
+
+        /* ====== Facts grid (cards with image + CTA) ====== */
+        .facts{padding-block:clamp(44px,9vh,96px); background:#fff}
+        .facts .hd{display:flex; flex-direction:column; gap:8px; align-items:center; text-align:center; margin-bottom:18px}
+
+        .fact-grid{display:grid; grid-template-columns:1fr; gap:var(--gap); align-items:stretch; grid-auto-rows:1fr}
+        @media (min-width:680px){.fact-grid{grid-template-columns:repeat(2,1fr)}}
+        @media (min-width:1020px){.fact-grid{grid-template-columns:repeat(3,1fr)}}
+
+        .fact{
+            background:#fff; border:1px solid var(--ring); border-radius:20px; overflow:hidden;
+            box-shadow:var(--shadow); display:flex; flex-direction:column; height:100%; transition:transform .2s ease;
+        }
+        .fact:hover{transform:translateY(-2px)}
+        
+        .fact .thumb {
+            aspect-ratio: 16/10;
+            background: #ffffff;
+            border-bottom: 1px solid var(--hair);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 12px;
+
+            /* add this */
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .fact .thumb img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+
+
+        .fact .body{padding:20px 22px 18px; display:flex; flex-direction:column; flex:1}
+        .fact .rule{height:2px; width:64px; background:var(--brand); border-radius:999px; margin-bottom:14px}
+        .fact h3{margin:0 0 8px; font-size:1.35rem}
+        .fact h3 .em{color:var(--brand-2); font-weight:700}
+        .fact .cta{display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:14px; border-top:1px solid var(--hair)}
+        .fact .cta a{font-weight:700; letter-spacing:.2px; color:var(--brand)}
+
+        /* ====== Sections & product cards ====== */
+        .section{padding: 50px 0px 50px 0px;; background:#fff}
+        .section .hd{display:flex; flex-direction: column; align-items: center; margin-bottom:18px}
+        .section .hd h2{font-size:clamp(1.4rem,3.6vw,2.2rem); margin:0}
+        .grid{display:grid; grid-template-columns:1fr; gap:var(--gap)}
+        @media (min-width:680px){.grid{grid-template-columns:repeat(2,1fr)}}
+        @media (min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+        .product{
+            background:#fff; border:1px solid var(--ring); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column;
+        }
+        .product .thumb{
+            aspect-ratio:16/10; background:linear-gradient(120deg,rgba(226,42,70,.12),rgba(196,18,47,.10));
+            border-bottom:1px solid var(--hair);
+        }
+        .product .body{padding:16px}
+        .product h3{margin:0 0 6px; font-size:1.1rem}
+        .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; margin-bottom: 8px;}
+        .chip{font-size:.75rem; border:1px solid var(--hair); padding:.25rem .55rem; border-radius:999px; color:var(--muted); background:#fff}
+
+        /* ====== Carousel (unchanged JS, light UI) ====== */
+        .tcarousel{ position:relative; display:flex; flex-direction:column; gap:16px; height:100% }
+        .tviewport{ overflow:hidden; border-radius:12px; background:#fff }
+        .ttrack{ display:flex; transition:transform .4s ease }
+        .tslide{ flex:0 0 100%; padding:2px }
+        .tnav{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:auto }
+        .tdots{ display:flex; gap:8px }
+        .tdot{ width:8px; height:8px; border-radius:999px; background:#e7e9ee; border:1px solid #e7e9ee }
+        .tdot.is-active{ background:var(--brand); border-color:var(--brand) }
+        .tbtn{
+            display:inline-flex; align-items:center; justify-content:center; min-width:38px; height:38px;
+            border-radius:10px; border:1px solid var(--hair); color:var(--text); background:#fff; cursor:pointer;
+            transition:transform .15s ease, background .2s ease, border-color .2s ease;
+        }
+        .tbtn:hover{ transform:translateY(-1px); background:#fafbfc; border-color:var(--hair-2) }
+
+        /* Compact product carousel */
+        .pcarousel .tviewport { overflow:hidden; border-radius:16px; padding-inline:4px; background:transparent }
+        .pcarousel .ttrack { display:flex; gap:16px; transition:transform .4s ease }
+        .pcarousel .tslide { flex:0 0 var(--slide-w,100%) }
+        .pcarousel .product { border-radius:16px }
+        .pcarousel .product .thumb { aspect-ratio:16/9 }
+        .pcarousel .chips { margin-top:10px }
+
+        /* ====== Footer ====== */
+        footer{margin-top:80px; border-top:1px solid var(--hair); background:#fff}
+        .foot{display:grid; grid-template-columns:1fr; gap:var(--gap); padding-block:28px}
+        @media (min-width:860px){.foot{grid-template-columns:2fr 1fr 1fr 1fr}}
+
+        /* Timeline block styled for Heliotherm */
+
+        .timeline-cover {
+
+            padding-block: clamp(56px, 10vh, 56px);
+        }
+
+        .timeline-title {
+            max-width: 720px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        .timeline-title h2 {
+            font-size: clamp(1.9rem, 3.6vw, 2.4rem);
+            margin: .35rem 0 .4rem;
+            line-height: 1.1;
+        }
+
+        .timeline-title p {
+            max-width: 60ch;
+            margin-inline: auto;
+            color: var(--muted);
+        }
+
+        .timeline {
+            padding-top: 24px;
+        }
+
+        .timeline ul {
+            position: relative;
+            list-style: none;
+            padding: 60px 0 0;
+            margin: 0 auto;
+            max-width: 960px;
+        }
+
+        /* Vertical line through the middle */
+        .timeline ul::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            transform: translateX(-50%);
+            background: var(--hair-2);
+        }
+
+        /* Each step */
+        .timeline ul li {
+            position: relative;
+            width: 2px;
+            margin: 0 auto 56px;
+        }
+
+        /* Dot on the line */
+        .timeline ul li::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: -28px;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid var(--brand);
+            box-shadow: 0 0 0 4px rgba(196, 18, 47, .08);
+        }
+
+        /* Card content */
+        .tcontent {
+            position: relative;
+            top: -100px;
+            width: 300px;
+            padding: 18px 20px 18px;
+            border-radius: 18px;
+            background: #fff;
+            border: 1px solid var(--ring);
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity .4s ease, transform .4s ease;
+        }
+
+        /* Reveal state */
+        .tcontent.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Year badge */
+        .tbadge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: .8rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            background: #fff1f3;
+            color: var(--brand);
+            border: 1px solid #ffd6dc;
+        }
+
+        .tcontent h3 {
+            margin: 12px 0 6px;
+            font-size: 1.05rem;
+        }
+
+        .tcontent p {
+            margin: 0;
+            font-size: .9rem;
+            line-height: 1.6;
+        }
+
+        /* Left right alternation */
+        .timeline ul li:nth-child(odd) .tcontent {
+            left: 72px;
+        }
+
+        .timeline ul li:nth-child(even) .tcontent {
+            left: calc(-300px - 72px);
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 1020px) {
+            .tcontent {
+                width: 40vw;
+            }
+            .timeline ul li:nth-child(even) .tcontent {
+                left: calc(-40vw - 48px);
+            }
+        }
+
+        @media (max-width: 720px) {
+            .timeline-title {
+                text-align: left;
+            }
+            .timeline-title h2 {
+                font-size: 1.7rem;
+            }
+            .timeline ul::before {
+                left: 32px;
+                transform: none;
+            }
+            .timeline ul li {
+                margin-left: 32px;
+            }
+            .tcontent {
+                width: calc(100vw - 96px);
+                left: 40px !important;
+            }
+        }
+
+
+
+        .quality-wrap {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+            gap: var(--gap);
+            align-items: flex-start;
+        }
+
+        .quality-main h2 {
+            margin: .4rem 0 .6rem;
+            font-size: clamp(1.7rem, 3.4vw, 2.2rem);
+        }
+
+        .quality-stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 1.4rem;
+        }
+
+        .qstat-label {
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            color: var(--muted);
+        }
+
+        .qstat-value {
+            font-weight: 700;
+            margin-top: .15rem;
+        }
+
+        .quality-side {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .quality-panel {
+            background: #fff;
+            border-radius: 18px;
+            border: 1px solid var(--ring);
+            box-shadow: var(--shadow);
+            padding: 18px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quality-quote {
+            border-radius: 16px;
+            border: 1px dashed var(--hair-2);
+            padding: 16px 18px;
+            font-size: .9rem;
+            background: rgba(196,18,47,.02);
+        }
+
+        .quality-quote p {
+            margin: 0 0 .3rem;
+        }
+
+        .check-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 .8rem;
+            display: grid;
+            gap: .35rem;
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 1.4rem;
+        }
+
+        .check-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: .55em;
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            border: 2px solid var(--brand);
+        }
+
+        /* Members */
+
+        /* ===== Memberships & associations ===== */
+
+        .section-members {
+            background: #fff;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.3fr);
+            gap: var(--gap);
+            align-items: flex-start;
+        }
+
+        .members-title {
+            margin: .45rem 0 .8rem;
+            font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+            line-height: 1.1;
+            letter-spacing: -.01em;
+        }
+
+        .members-main p.muted {
+            max-width: 60ch;
+        }
+
+        /* small meta blocks under the text */
+
+        .members-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px 22px;
+            margin-top: 1.6rem;
+        }
+
+        .members-meta-item {
+            min-width: 210px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--hair);
+            background: #fff;
+        }
+
+        .members-meta-label {
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            color: var(--muted);
+        }
+
+        .members-meta-value {
+            margin-top: .25rem;
+            font-size: .95rem;
+        }
+
+        /* right side card */
+
+        .members-side {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .members-card {
+            width: 100%;
+            border-radius: 20px;
+            border: 1px solid var(--ring);
+            background: #fff;
+            box-shadow: 0 16px 40px rgba(15,23,42,.06);
+            padding: 18px 20px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .members-card-head h3 {
+            margin: 0 0 .25rem;
+            font-size: 1.05rem;
+        }
+
+        .members-card-head p {
+            margin: 0;
+            font-size: .9rem;
+        }
+
+        /* chip cloud */
+
+        .members-chip-cloud {
+            margin-top: .4rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: .45rem;
+        }
+
+        .members-chip-cloud .logo-chip {
+            font-size: .78rem;
+            padding: .35rem .8rem;
+            border-radius: 999px;
+            border: 1px solid var(--hair);
+            background: #fff;
+            color: var(--muted);
+        }
+
+        /* responsive */
+
+        @media (max-width: 900px) {
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .members-card {
+                margin-top: .8rem;
+            }
+        }
+
+        .fact .thumb.is-clickable {
+            cursor: pointer;
+            }
+
+            .fact .thumb.is-clickable img {
+            transition: transform .22s ease;
+            }
+
+            .fact .thumb.is-clickable:hover img {
+            transform: scale(1.035);
+            }
+
+            .fact .thumb.is-clickable:focus-visible {
+            outline: 3px solid var(--brand);
+            outline-offset: 4px;
+            }
+        /* responsive tweaks */
+
+        @media (max-width: 900px) {
+            .members-header-row {
+                flex-direction: column;
+            }
+
+            .members-meta {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .members-marquee-shell {
+                padding-inline: 14px;
+            }
+
+            .logo-chip {
+                font-size: .78rem;
+                padding-inline: .8rem;
+            }
+        }
+
+
+        /* Responsive */
+
+        @media (max-width: 900px) {
+            .quality-wrap,
+            .social-grid,
+            .contact-shell {
+                grid-template-columns: 1fr;
+            }
+            .quality-stats {
+                grid-template-columns: repeat(2, minmax(0,1fr));
+            }
+            .members-strip {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .quality-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        .section-terms {
+            background: #fff;
+        }
+
+        .terms-shell {
+            max-width: 780px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .terms-shell h2 {
+            margin: .4rem 0 .6rem;
+            font-size: clamp(1.7rem, 3.4vw, 2.2rem);
+        }
+
+        .terms-shell p {
+            max-width: 70ch;
+            margin-inline: auto;
+            text-align: center;
+            color: var(--muted);
+        }
+
+        .terms-card {
+            margin-top: 1.6rem;
+            display: inline-flex;
+            flex-direction: column;
+            gap: .8rem;
+            text-align: left;
+            padding: 18px 22px 20px;
+            border-radius: 18px;
+            border: 1px solid var(--ring);
+            box-shadow: var(--shadow);
+            background: #fff;
+        }
+
+        .terms-card .btn {
+            align-self: center;
+        }
+
+        .terms-footnote {
+            font-size: .85rem;
+        }
+
+        .terms-footnote a {
+            color: var(--brand);
+            text-decoration: none;
+        }
+
+        .terms-footnote a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 640px) {
+            .terms-card {
+                padding: 16px 16px 18px;
+            }
+        }
+        /* ===== ISO 9001 quality band ===== */
+
+        .section-quality {
+            position: relative;
+            
+            padding-block: clamp(64px, 10vh, 56px) 40px;
+        }
+
+        /* subtle top hairline for the band */
+        .section-quality::before {
+            content: "";
+            position: absolute;
+            inset-inline: 0;
+            top: 0;
+            height: 1px;
+            
+            opacity: .7;
+        }
+
+        .quality-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.25fr);
+            gap: clamp(24px, 3vw, 40px);
+            align-items: stretch;
+        }
+
+        /* Typography */
+
+        .quality-main h2.quality-title {
+            margin: .45rem 0 .7rem;
+            font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+            line-height: 1.1;
+            letter-spacing: -.01em;
+        }
+
+        .quality-title-accent {
+            padding: .15rem .5rem;
+            border-radius: 999px;
+            background: #fff;
+            border: 1px solid rgba(0,0,0,.04);
+            box-shadow: 0 10px 30px rgba(0,0,0,.04);
+        }
+
+        /* meta stats */
+
+        .quality-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 26px;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--hair);
+        }
+
+        .qmeta-item {
+            min-width: 150px;
+        }
+
+        .qmeta-label {
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            color: var(--muted);
+        }
+
+        .qmeta-value {
+            font-weight: 600;
+            margin-top: .2rem;
+        }
+
+        /* Right card */
+
+        .quality-side {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .quality-panel {
+            background: rgba(255,255,255,.96);
+            border-radius: 22px;
+            border: 1px solid rgba(233,235,240,.9);
+            box-shadow:
+                0 18px 45px rgba(15,23,42,.10),
+                0 0 0 1px rgba(255,255,255,.8);
+            padding: 22px 24px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            backdrop-filter: blur(12px);
+        }
+
+        .quality-panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .quality-panel h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        /* little ISO pill in the corner */
+
+        .quality-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: .3rem .7rem;
+            border-radius: 999px;
+            font-size: .75rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            background: #fff1f3;
+            color: var(--brand);
+            border: 1px solid #ffd6dc;
+        }
+
+        /* checklist with checkmarks, less aggressive red circles */
+
+        .check-list {
+            list-style: none;
+            padding: 0;
+            margin: 4px 0 1rem;
+            display: grid;
+            gap: .45rem;
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 1.6rem;
+        }
+
+        .check-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: .1em;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .7rem;
+            font-weight: 700;
+            background: #e6f5ec;
+            color: #17813a;
+            border: 1px solid #c0e8cf;
+        }
+
+        /* footer inside card */
+
+        .quality-foot {
+            margin-top: .5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: .7rem;
+            align-items: center;
+        }
+
+        .quality-foot-note {
+            font-size: .8rem;
+        }
+
+        /* quote band */
+
+        .quality-quote-row {
+            padding-block: 22px 0;
+        }
+
+        .quality-quote {
+            border-radius: 18px;
+            border: 1px dashed var(--hair-2);
+            padding: 16px 18px;
+            font-size: .9rem;
+            background: rgba(255,255,255,.8);
+            box-shadow: 0 16px 40px rgba(15,23,42,.08);
+        }
+
+        .quality-quote p {
+            margin: 0 0 .35rem;
+        }
+
+        /* responsive */
+
+        @media (max-width: 900px) {
+            .quality-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .quality-panel {
+                padding: 18px 18px 18px;
+            }
+            .quality-meta {
+                flex-direction: column;
+            }
+        }
+        .section-quality {
+            padding-block: clamp(56px, 9vh, 50px);
+        }
+
+        .quality-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+            gap: clamp(28px, 4vw, 56px);
+            align-items: flex-start;
+        }
+
+        /* left side */
+
+        .quality-heading {
+            margin: .5rem 0 .9rem;
+            font-size: clamp(1.9rem, 3.6vw, 2.5rem);
+            line-height: 1.1;
+            letter-spacing: -.01em;
+            position: relative;
+        }
+
+        .quality-heading::after {
+            content: "";
+            display: block;
+            width: 170px;
+            height: 2px;
+            margin-top: .7rem;
+            border-radius: 999px;
+            background: linear-gradient(to right, var(--brand), transparent);
+            opacity: .7;
+        }
+
+        .quality-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px 30px;
+            margin-top: 1.8rem;
+            padding-top: 1.1rem;
+            border-top: 1px solid var(--hair);
+        }
+
+        .qmeta-item {
+            min-width: 150px;
+        }
+
+        .qmeta-label {
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            color: var(--muted);
+        }
+
+        .qmeta-value {
+            font-weight: 600;
+            margin-top: .2rem;
+        }
+
+        /* right side card */
+
+        .quality-side {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .quality-card {
+            position: relative;
+            background: #fff;
+            border-radius: 20px;
+            border: 1px solid var(--ring);
+            box-shadow: 0 20px 40px rgba(15,23,42,.08);
+            padding: 20px 22px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+
+        .quality-card-header h3 {
+            margin: .15rem 0 0;
+            font-size: 1.1rem;
+        }
+
+        .quality-card-eyebrow {
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* checklist, same style you can reuse later */
+
+        .check-list {
+            list-style: none;
+            padding: 0;
+            margin: 4px 0 1.1rem;
+            display: grid;
+            gap: .45rem;
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 1.6rem;
+        }
+
+        .check-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: .55em;
+            width: 9px;
+            height: 9px;
+            border-radius: 999px;
+            background: #c4122fb0;
+            box-shadow: 0 0 0 4px rgba(238, 206, 206, 0.12);
+        }
+
+        /* footer inside card */
+
+        .quality-foot {
+            margin-top: .4rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: .7rem;
+            align-items: center;
+        }
+
+        .quality-foot-note {
+            font-size: .8rem;
+        }
+
+        /* make the button calmer only here, not global */
+
+        .section-quality .quality-btn {
+            background: #0b0c0f;
+            color: #fff;
+            box-shadow: none;
+            padding: .8rem 1.4rem;
+            font-weight: 600;
+        }
+
+        .section-quality .quality-btn:hover {
+            transform: translateY(-1px);
+            background: #111827;
+        }
+
+        /* quote row */
+
+        .quality-quote-row {
+            display: flex;
+            justify-content: center;
+            margin-top: 26px;
+        }
+
+        .quality-quote {
+            border-radius: 18px;
+            border: 1px dashed var(--hair-2);
+            padding: 14px 16px;
+            font-size: .9rem;
+            background: rgba(255,255,255,.9);
+        }
+
+        .quality-quote p {
+            margin: 0 0 .3rem;
+        }
+
+        /* responsive */
+
+        @media (max-width: 900px) {
+            .quality-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .quality-card {
+                padding: 18px 18px 16px;
+            }
+            .quality-meta {
+                flex-direction: column;
+            }
+        }
+
+        .quality-quote-row {
+            margin-top: 20px;
+        }
+
+        .quality-quote {
+            max-width: 640px;
+            margin: 0;
+            padding: 10px 0 0 16px;
+            border-radius: 0;
+            border: none;
+            background: transparent;
+            box-shadow: none;
+            font-size: .9rem;
+        }
+
+        .quality-quote p {
+            margin: 0 0 .25rem;
+            font-style: italic;
+        }
+
+        .quality-quote span.muted {
+            display: flex;
+            justify-content: flex-end;
+            font-size: .82rem;
+        }
+        .feature-list,
+        .check-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .feature-list li,
+        .check-list li {
+            position: relative;
+            padding-left: 1.6rem;
+        }
+
+        /* ring-style dot like on Heliotherm site */
+        .feature-list li::before,
+        .check-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            border: 2px solid var(--brand);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(196,18,47,.08);
+        }
+        /* ===== Konstruēts ziemeļu ziemām section ===== */
+
+        .section-climate {
+
+
+            padding-block: clamp(60px, 10vh, 90px);
+        }
+
+        .climate-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.2fr);
+            gap: clamp(32px, 4vw, 72px);
+            align-items: stretch;
+        }
+
+        /* left side */
+
+        .climate-main h2 {
+            margin: 0 0 .7rem;
+            font-size: clamp(2rem, 3.6vw, 2.6rem);
+            line-height: 1.1;
+            letter-spacing: -.01em;
+        }
+
+        .climate-main p.muted {
+            max-width: 44rem;
+        }
+
+        .climate-stats {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--hair);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .climate-stat {
+            min-width: 150px;
+        }
+
+        .climate-stat-value {
+            font-size: 25px;
+            font-weight: 600;
+            letter-spacing: .02em;
+        }
+
+        .climate-stat-label {
+            margin-top: 6px;
+            font-size: .8rem;
+            flex-wrap: wrap;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            color: var(--muted);
+        }
+
+        /* right card */
+
+        .climate-card {
+            background: #fff;
+            border-radius: 24px;
+            border: 1px solid var(--ring);
+            box-shadow: 0 18px 45px rgba(15,23,42,.08);
+            padding: 24px 26px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .climate-eyebrow {
+            margin: 0;
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            color: var(--muted);
+        }
+
+        .climate-card h3 {
+            margin: .15rem 0 .6rem;
+            font-size: 1.25rem;
+        }
+
+        /* check list */
+
+        .why-list {
+            list-style: none;
+            padding: 0;
+            margin: 4px 0 18px;
+            display: grid;
+            gap: .5rem;
+        }
+
+        .why-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            line-height: 1.7;
+        }
+
+        .why-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: .15em;
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .7rem;
+            font-weight: 700;
+            background: #ffeef3;
+            color: var(--brand);
+            border: 1px solid #ffd6dc;
+            box-shadow: 0 8px 18px rgba(196,18,47,.18);
+        }
+
+        /* button */
+
+        .climate-cta {
+            display: flex;
+            justify-content: center;
+            margin-top: 6px;
+        }
+
+        .section-climate .climate-btn {
+            padding: .95rem 2.6rem;
+            border-radius: 999px;
+            font-size: .95rem;
+            box-shadow: 0 18px 40px rgba(196,18,47,.35);
+        }
+
+        /* responsive */
+
+        @media (max-width: 900px) {
+            .climate-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .climate-card {
+                order: 2;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .climate-stats {
+                gap: 20px;
+            }
+        }
+        .facts{padding-block:clamp(44px,9vh,1px); background:#fff}
+        .facts .hd{display:flex; flex-direction:column; gap:8px; align-items:center; text-align:center; margin-bottom:18px}
+
+        .fact-grid{display:grid; grid-template-columns:1fr; gap:var(--gap); align-items:stretch; grid-auto-rows:1fr}
+        @media (min-width:680px){.fact-grid{grid-template-columns:repeat(2,1fr)}}
+        @media (min-width:1020px){.fact-grid{grid-template-columns:repeat(3,1fr)}}
+
+        .fact{
+            background:#fff; border:1px solid var(--ring); border-radius:20px; overflow:hidden;
+            box-shadow:var(--shadow); display:flex; flex-direction:column; height:100%; transition:transform .2s ease;
+        }
+        .fact:hover{transform:translateY(-2px)}
+        
+        .fact .body{padding:20px 22px 18px; display:flex; flex-direction:column; flex:1}
+        .fact .rule{height:2px; width:64px; background:var(--brand); border-radius:999px; margin-bottom:14px}
+        .fact h3{margin:0 0 8px; font-size:1.35rem}
+        .fact h3 .em{color:var(--brand-2); font-weight:700}
+        .fact .cta{display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:14px; border-top:1px solid var(--hair)}
+        .fact .cta a{font-weight:700; letter-spacing:.2px; color:var(--brand)}
+
+        /* NEW: residential "see more" behaviour */
+        .fact-grid.product-listing .fact.is-extra {
+            display:none;
+        }
+        .fact-grid.product-listing.is-expanded .fact.is-extra {
+            display:flex;
+        }
+        .facts .more-row {
+            margin-top:24px;
+            text-align:center;
+        }
+        .fact-grid.product-listing .fact.is-extra,
+        .fact-grid.commercial-listing .fact.is-extra {
+          display: none;
+        }
+
+        .fact-grid.product-listing.is-expanded .fact.is-extra,
+        .fact-grid.commercial-listing.is-expanded .fact.is-extra {
+          display: flex;
+        }
+
+        .facts .more-row,
+        .section .more-row {
+          margin-top: 24px;
+          text-align: center;
+        }
+        .hero-products-visual {
+            display: flex;
+            gap: 18px;
+            justify-content: flex-end;
+            align-items: center;
+            }
+
+            /* REAL-SIZE placeholder */
+            .pholder-big {
+            width: 420px;                 /* matches typical hero product image width */
+            aspect-ratio: 16 / 10;        /* same as your product thumbnails */
+            border-radius: 20px;
+            background: linear-gradient(135deg, #f3f5f8, #ffffff);
+            border: 1px solid var(--hair);
+            box-shadow: 0 14px 40px rgba(0,0,0,.08);
+            position: relative;
+            overflow: hidden;
+            }
+
+            /* diagonal subtle lines */
+            .pholder-big::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(
+                45deg,
+                rgba(0,0,0,0.04) 0,
+                rgba(0,0,0,0.04) 6px,
+                transparent 6px,
+                transparent 12px
+            );
+            opacity: .28;
+            }
+
+            /* plus icon */
+            .pholder-big::after {
+            content: "+";
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: 48px;
+            height: 48px;
+            border-radius: 999px;
+            border: 2px solid var(--hair-2);
+            color: var(--muted);
+            font-size: 2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            opacity: .55;
+            }
+        .hero-products {
+        background: var(--band-bg);
+        padding-block: clamp(48px, 8vh, 80px);
+        border-bottom: 1px solid var(--hair);
+        }
+
+        .hero-products-grid {
+        display: grid;
+        grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
+        gap: clamp(32px,4vw,64px);
+        align-items: center;
+        }
+
+        .hero-products-text h1 {
+        font-size: clamp(2rem, 3.6vw, 2.9rem);
+        line-height: 1.1;
+        margin: .2rem 0 .8rem;
+        }
+
+        .hero-products-text .accent {
+        color: var(--brand-2);
+        }
+
+        .quick-filters {
+        margin-top: 1.4rem;
+        display:flex;
+        flex-wrap:wrap;
+        gap:.5rem;
+        }
+
+        .quick-filters .qf {
+        padding:.45rem 1rem;
+        border-radius:999px;
+        border:1px solid var(--hair);
+        background:#fff;
+        font-size:.85rem;
+        color:var(--muted);
+        }
+
+        .hero-products-visual {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        }
+
+        .product-collage {
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:12px;
+        }
+
+        /* PREMIUM IMAGE PLACEHOLDERS */
+        .pholder {
+        width:100%;
+        aspect-ratio:1/1;
+        border-radius:14px;
+        background: linear-gradient(
+            135deg,
+            var(--panel-2),
+            #ffffff
+        );
+        border:1px solid var(--hair);
+        box-shadow: 0 12px 32px rgba(0,0,0,.04);
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+        position:relative;
+        overflow:hidden;
+        }
+
+        /* subtle diagonal pattern */
+        .pholder::before {
+        content:"";
+        position:absolute;
+        inset:0;
+        background-image: repeating-linear-gradient(
+            45deg,
+            rgba(0,0,0,0.04) 0,
+            rgba(0,0,0,0.04) 4px,
+            transparent 4px,
+            transparent 8px
+        );
+        opacity:.25;
+        }
+
+        /* small plus icon */
+        .pholder::after {
+        content:"+";
+        font-size:2rem;
+        color:var(--muted);
+        opacity:.4;
+        }
+        .hero-products-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-heroimage {
+            width: 620px; 
+            max-width: 100%;
+            border-radius: 22px;
+            overflow: hidden;
+            background: #f4f6f8;
+            box-shadow: 0 20px 40px rgba(0,0,0,.08);
+        }
+
+        .hero-heroimage img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+        @media (max-width: 768px) {
+            .hero-products {
+                padding-block: 64px 72px;
+            }
+
+            .hero-products-grid {
+                display: block;
+            }
+
+            .hero-products-text {
+                max-width: 100%;
+            }
+
+            .hero-products-text h1 {
+                font-size: clamp(2rem, 10vw, 2.7rem);
+                line-height: 1.08;
+            }
+
+            .hero-products-text p {
+                max-width: 100%;
+            }
+
+            .hero-products-visual {
+                display: none;
+            }
+
+            .quick-filters {
+                max-width: 100%;
+            }
+
+            .quick-filters .qf {
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== Header ====== -->
+    <app-header active="Products"></app-header>
+
+    <main>
+
+        <!-- ====== Hero sadaļa - produkti ====== -->
+        <div class="hero-products">
+            <div class="container">
+                <div class="hero-products-grid">
+
+                    <div class="hero-products-text">
+                        <div class="eyebrow">Produkti un risinājumi</div>
+
+                         <h1>
+                            Luksusa klases Austrijas siltumsūkņi <span class="accent">prasīgiem projektiem</span>
+                        </h1>
+
+                        <p class="muted">
+                            Iepazīstiet HELIOTHERM premium klāstu - augstākās kvalitātes siltumsūkņus, kas ražoti Austrijā privātmājām, daudzdzīvokļu un komerciāliem objektiem.
+                        </p>
+
+                        <div class="quick-filters">
+                            <a class="qf">Zemes siltums - tiešā iztvaikošana</a>
+                            <a class="qf">Zemes siltums - glikola kontūrs</a>
+                            <a class="qf">Gaisa avots</a>
+                            <a class="qf">Industriālie</a>
+                            <a class="qf">R290</a>
+                        </div>
+                    </div>
+
+                    <!-- Hero vizuālais attēls -->
+                    <div class="hero-products-visual">
+                        <div class="hero-heroimage">
+                            <img
+                                src="../media/image/heliotherm-waermepumpentechnik-ges.m.b.h.-in-langkampfen.jpg"
+                                alt="Heliotherm ražotne Langkampfen"
+                            >
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ====== Siltumsūkņi privātmājām ====== -->
+        <div class="facts">
+            <div class="container">
+                <div class="hd">
+                    <h2>Mūsu siltumsūkņi <span class="em">privātmājām</span></h2>
+                    <p class="muted" style="margin-top:0px;">
+                        Pielāgts apkures un dzesēšanas komforts privātmājām, daudzdzīvokļu ēkām un renovācijas projektiem.
+                    </p>
+                </div>
+
+                                <div class="fact-grid product-listing">
+
+                    <div class="fact">
+                        <div class="thumb"
+                             style="background-image:url('../media/image/products/mobile-erdwaermepumpe-direktverdampfung-prestige-web-dx.webp');">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Geothermal Heat Pump Direct Evaporation <span class="em">"Prestige WEB DX"</span></h3>
+                            <p class="muted">Premium tiešās iztvaikošanas siltumsūknis ar SCOP līdz 6.2, modulējošu darbību, PV un Smart Grid gatavību.</p>
+                            <div class="chips">
+                                <span class="chip">Prestige WEB DX</span>
+                                <span class="chip">Direct Evaporation</span>
+                                <span class="chip">PV Ready</span>
+                            </div>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=dx_web">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fact">
+                        <div class="thumb"
+                             style="background-image:url('../media/image/products/mobile-heliotherm-erdwaermepumpe-direktverdampfung-natural-technology.webp');">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Geothermal Heat Pump Direct Expansion <span class="em">"Natural Technology"</span></h3>
+                            <p class="muted">Tiešās izplešanās ģeotermiskais risinājums ar dabisku propāna aukstumaģentu un SCOP līdz 6.7.</p>
+                            <div class="chips">
+                                <span class="chip">Natural Technology</span>
+                                <span class="chip">Direct Expansion</span>
+                                <span class="chip">R290</span>
+                            </div>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=natural-goth">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fact">
+                        <div class="thumb"
+                             style="background-image:url('../media/image/products/erdwaermepumpe-mit-direktverdampfung-von-heliotherm.png');">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Zemes siltumsūknis - tiešā iztvaikošana <span class="em">"Basic Comfort"</span></h3>
+                            <p class="muted">Klasisks tiešās iztvaikošanas risinājums, kas izmanto zemē uzkrāto enerģiju apkurei un dzesēšanai.</p>
+                            <div class="chips">
+                                <span class="chip">Direct Evaporation</span>
+                                <span class="chip">Ģeotermija</span>
+                                <span class="chip">Basic Comfort</span>
+                            </div>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=dx-basic-comfort">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fact is-extra">
+                        <div class="thumb"
+                             style="background-image:url('../media/image/products/erdwaermepumpe-mit-direktverdampfung-von-heliotherm.png');">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Zemes siltumsūknis - glikola kontūra <span class="em">"Basic Comfort"</span></h3>
+                            <p class="muted">Elastīgs brīnes siltumsūknis ar dziļurbumu zondi vai virszemes kolektoru.</p>
+                            <div class="chips">
+                                <span class="chip">Brine</span>
+                                <span class="chip">Probe</span>
+                                <span class="chip">Surface Collector</span>
+                            </div>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=brine-heat-pump">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fact is-extra">
+                        <div class="thumb"
+                             style="background-image:url('../media/image/products/erdwaermepumpe-direktverdampfer-natural-technology-von-heliotherm.png');">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Zemes siltumsūknis - glikola kontūra <span class="em">"Natural Technology"</span></h3>
+                            <p class="muted">Ilgtspējīgāks nākamās paaudzes brīnes risinājums ar Natural Technology pieeju.</p>
+                            <div class="chips">
+                                <span class="chip">Brine</span>
+                                <span class="chip">Natural Technology</span>
+                                <span class="chip">Ilgtspēja</span>
+                            </div>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=brine-natural-technology">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fact is-extra">
+                        <div class="thumb"
+                             style="background-image:url('../media/image/products/solewaermepumpe-complete-von-heliotherm.png');">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Zemes siltumsūknis - glikola kontūra <span class="em">"Complete"</span></h3>
+                            <p class="muted">Pilns brīnes risinājums apkurei, dzesēšanai un karstā ūdens komfortam.</p>
+                            <div class="chips">
+                                <span class="chip">Complete</span>
+                                <span class="chip">Brine</span>
+                                <span class="chip">All in One</span>
+                            </div>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=complete-brine">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fact is-extra">
+                        <div class="thumb"
+                             style="background-image:url('../media/image/products/solewaermepumpe-cube-von-heliotherm.png');">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Zemes siltumsūknis - glikola kontūra <span class="em">"Cube"</span></h3>
+                            <p class="muted">Kompakts brīnes siltumsūknis ar tikai 0.6 m² nospiedumu apkurei un dzesēšanai.</p>
+                            <div class="chips">
+                                <span class="chip">Cube</span>
+                                <span class="chip">0.6 m²</span>
+                                <span class="chip">Compact</span>
+                            </div>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=brine-cube">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fact is-extra">
+                        <div class="thumb"
+                             style="background-image:url('../media/image/products/erdwaermepumpe-mit-direktverdampfung-von-heliotherm.png');">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Gruntsūdens siltumsūknis <span class="em">"Basic Comfort"</span></h3>
+                            <p class="muted">Augstas efektivitātes risinājums, kas izmanto gruntsūdeni kā stabilu siltuma avotu.</p>
+                            <div class="chips">
+                                <span class="chip">Groundwater</span>
+                                <span class="chip">Augsta efektivitāte</span>
+                            </div>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=groundwater-heat-pump">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fact is-extra">
+                        <div class="thumb"
+                             style="background-image:url('../media/image/products/luftwaermepumpe-split-von-heliotherm.png');">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Gaisa siltumsūkņa dalītā konstrukcija <span class="em">"Basic Comfort"</span></h3>
+                            <p class="muted">Kluss split tipa gaisa siltumsūknis ar elastīgu uzstādīšanu renovācijām un jaunbūvēm.</p>
+                            <div class="chips">
+                                <span class="chip">Air Source</span>
+                                <span class="chip">Split</span>
+                                <span class="chip">Quiet</span>
+                            </div>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=air-split">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fact is-extra">
+                        <div class="thumb"
+                             style="background-image:url('../media/image/products/luftwaermepumpe-in-splitbauweise-complete-von-heliotherm.png');">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Gaisa siltumsūkņa dalītā konstrukcija <span class="em">"Complete"</span></h3>
+                            <p class="muted">Complete Air Split risinājums apkurei, dzesēšanai un karstā ūdens sagatavošanai.</p>
+                            <div class="chips">
+                                <span class="chip">Complete</span>
+                                <span class="chip">Air Split</span>
+                                <span class="chip">Hot Water</span>
+                            </div>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=complete-air-split">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fact is-extra">
+                        <div class="thumb"
+                             style="background-image:url('../media/image/air_cube1.png');">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Gaisa siltumsūkņa dalītā konstrukcija <span class="em">"Cube"</span></h3>
+                            <p class="muted">Moderns Air Source Split Cube kompakta dizaina risinājums ar augstu efektivitātes fokusu.</p>
+                            <div class="chips">
+                                <span class="chip">Split Cube</span>
+                                <span class="chip">Air Source</span>
+                                <span class="chip">Compact</span>
+                            </div>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=air-cube">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fact is-extra">
+                        <div class="thumb"
+                             style="background-image:url('../media/image/products/luftwaermepumpe-comfort-compact-von-heliotherm.png');">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Gaisa siltumsūknis - <span class="em">Comfort Compact</span></h3>
+                            <p class="muted">Ļoti kluss, kompakts un efektīvs gaisa siltumsūknis privātmājām.</p>
+                            <div class="chips">
+                                <span class="chip">Comfort Compact</span>
+                                <span class="chip">Air Source</span>
+                                <span class="chip">Quiet</span>
+                            </div>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=comfort-compact">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fact is-extra">
+                        <div class="thumb"
+                             style="background-image:url('../media/image/products/luftwaermepumpe-kompakt-r290.png');">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3><span class="em">Jaunums:</span> Gaisa siltumsūknis <span class="em">“Comfort Compact” R290</span></h3>
+                            <p class="muted">Kompakts gaisa siltumsūknis ar dabisko R290 aukstumaģentu un ilgtspējīgāku tehnoloģijas virzienu.</p>
+                            <div class="chips">
+                                <span class="chip">Comfort Compact</span>
+                                <span class="chip">R290</span>
+                                <span class="chip">Jaunums</span>
+                            </div>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=comfort-compact-r290">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="more-row">
+                    <button class="btn ghost" style="cursor: pointer;" id="toggle-residential">Rādīt vairāk siltumsūkņu</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ====== Siltumsūkņi komerciālām ēkām ====== -->
+        <div class="section">
+            <div class="container">
+                <div class="hd">
+                    <h2>Mūsu <span class="em">lieljaudas siltumsūkņi</span> komerciālām ēkām</h2>
+
+                    <p class="muted">
+                        Risinājumi ar lielu jaudu rūpnieciskām ēkām, daudzdzīvokļu kompleksiem un prasīgiem komerciāliem projektiem.
+                    </p>
+                </div>
+
+                <div class="fact-grid commercial-listing">
+
+                    <!-- 1. Industriālais sālsūdens siltumsūknis -->
+                    <div class="fact">
+                        <div class="thumb">
+                            <img src="../media/image/products/grosswaermepumpe-sole-von-heliotherm.png"
+                                alt="Industriālais sālsūdens siltumsūknis">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Industriālais <span class="em">Zemes siltumsūknis - glikola kontūra</span></h3>
+                            <p class="muted">
+                                Mērogojama veiktspēja lieliem zemes kolektoriem un augstam siltuma patēriņam.
+                            </p>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=solid-brine-large">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Industriālais ūdens siltumsūknis -->
+                    <div class="fact">
+                        <div class="thumb">
+                            <img src="../media/image/products/grosswaermepumpe-wasser-von-heliotherm.png"
+                                alt="Industriālais ūdens siltumsūknis">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Industriālais <span class="em">ūdens siltumsūknis</span></h3>
+                            <p class="muted">
+                                Efektīva, lielas jaudas apkure un dzesēšana, izmantojot ūdens resursus.
+                            </p>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=solid-water-large">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Industriālais gaisa split siltumsūknis -->
+                    <div class="fact">
+                        <div class="thumb">
+                            <img src="../media/image/products/luft-split-grosswaermepumpe-von-heliotherm.png"
+                                alt="Industriālais gaisa split siltumsūknis">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Industriālais <span class="em">gaisa sadalītais siltumsūknis</span></h3>
+                            <p class="muted">
+                                Uzticams gaisa avota risinājums komerciālām telpām ar elastīgām uzstādīšanas iespējām.
+                            </p>
+                            <div class="cta">
+                                <a href="./produkts/index.html?item=solid-air-split-large">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Industriālais gaisa kompakt siltumsūknis -->
+                    <div class="fact is-extra">
+                        <div class="thumb">
+                            <img src="../media/image/products/grosswaermepumpe-luft-kompakt-von-heliotherm.png"
+                                alt="Industriālais gaisa kompakt siltumsūknis">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Industriālais <span class="em">gaisa kompaktais siltumsūknis</span></h3>
+                            <p class="muted">
+                                Kompakts gaisa avota lieljaudas risinājums komerciālām ēkām ar klusu darbību un āra uzstādīšanu.
+                            </p>
+                            <div class="cta">
+                                <span class="product-badge">Premium</span>
+                                <a href="./produkts/index.html?item=solid-air-compact-large">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Industriālais hibrīdsistēmas siltumsūknis -->
+                    <div class="fact is-extra">
+                        <div class="thumb">
+                            <img src="../media/image/products/luft-kompakt-grosswaermepumpe-solidcompactuni.png"
+                                alt="Industriālais hibrīda siltumsūknis">
+                        </div>
+                        <div class="body">
+                            <div class="rule"></div>
+                            <h3>Gaisa kompaktais lielais siltumsūknis <span class="em">Solid Compact Uni</span></h3>
+                            <p class="muted">
+                                Hibrīds zemes glikola kontūra un gaisa risinājums projektiem ar īpaši augstām prasībām pret elastību un drošību.
+                            </p>
+                            <div class="cta">
+                                <span class="product-badge">Hibrīdsistēma</span>
+                                <a href="./produkts/index.html?item=solid-compact-uni">Uzzināt vairāk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="more-row">
+                    <button class="btn ghost" style="cursor: pointer;"  id="toggle-commercial">
+                        Rādīt vairāk industriālo siltumsūkņu
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ====== Kājene ====== -->
+    <app-footer></app-footer>
+    <script src="../assets/js/components.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        function setupToggle(gridSelector, buttonId, moreLabel, lessLabel) {
+          const grid = document.querySelector(gridSelector);
+          const btn = document.getElementById(buttonId);
+          if (!grid || !btn) return;
+
+          let expanded = false;
+
+          btn.addEventListener('click', function () {
+            expanded = !expanded;
+            grid.classList.toggle('is-expanded', expanded);
+            btn.textContent = expanded ? lessLabel : moreLabel;
+          });
+        }
+        
+
+        setupToggle(
+        '.fact-grid.product-listing',
+        'toggle-residential',
+        'Rādīt vairāk siltumsūkņu',
+        'Rādīt mazāk modeļu'
+        );
+
+        setupToggle(
+        '.fact-grid.commercial-listing',
+        'toggle-commercial',
+        'Rādīt vairāk industriālo siltumsūkņu',
+        'Rādīt mazāk modeļu'
+        );
+
+        function makeProductImagesClickable() {
+        document.querySelectorAll('.fact').forEach((card) => {
+            const thumb = card.querySelector('.thumb');
+            const link = card.querySelector('.cta a[href]');
+
+            if (!thumb || !link) return;
+
+            const href = link.getAttribute('href');
+
+            if (!href || href === '#') return;
+
+            thumb.classList.add('is-clickable');
+            thumb.setAttribute('role', 'link');
+            thumb.setAttribute('tabindex', '0');
+            thumb.setAttribute('aria-label', 'Atvērt produkta detalizēto lapu');
+
+            thumb.addEventListener('click', () => {
+            window.location.href = href;
+            });
+
+            thumb.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                window.location.href = href;
+            }
+            });
+        });
+        }
+
+        makeProductImagesClickable();
+      });
+    </script>
+</body>
+
+</html>

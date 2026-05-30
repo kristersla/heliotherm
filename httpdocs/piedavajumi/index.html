@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pakalpojumi | Heliotherm Baltic</title>
+  <link rel="icon" type="image/x-icon" href="../media/image/favicon.ico" />
+  <meta name="theme-color" content="#0b0c0f" />
+  <meta name="description" content="Projektēšana, apkure, dzesēšana, saules elektrostacijas, ventilācija, ūdensapgāde un kanalizācija. Pilns inženierkomunikāciju pakalpojumu klāsts no Heliotherm Baltics." />
+  <link rel="stylesheet" href="../assets/style/style.css" />
+
+  <style>
+    .services-head {
+      max-width: 840px;
+      margin: 0 auto 32px;
+      text-align: center;
+      padding-inline: 1rem;
+    }
+    .services-eyebrow {
+      margin: 0 0 .35rem;
+      font-size: .78rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .services-head h1 {
+      margin: 0 0 .6rem;
+      font-size: clamp(1.9rem, 5vw, 2.7rem);
+      line-height: 1.15;
+      letter-spacing: -.01em;
+    }
+    .services-head h1 .accent {
+      color: var(--brand-2);
+    }
+    .services-lead {
+      max-width: 70ch;
+      margin: 0 auto .6rem;
+      font-size: .98rem;
+      color: var(--muted);
+    }
+    .services-note {
+      margin: 0;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: clamp(16px, 2.4vw, 24px);
+      align-items: stretch;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid var(--ring);
+      box-shadow: var(--shadow);
+      padding: clamp(16px, 2.4vw, 22px);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .service-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .service-icon {
+      flex: 0 0 44px;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(196,18,47,.10), rgba(226,42,70,.12));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .service-title {
+      margin: 0;
+      font-size: clamp(1.05rem, 2.6vw, 1.18rem);
+      line-height: 1.3;
+    }
+
+    .service-tag {
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--muted);
+      margin-bottom: .1rem;
+    }
+
+    .service-body {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .service-body p {
+      margin: 0 0 .5rem;
+    }
+    .service-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .services-cta {
+      margin-top: clamp(28px, 5vh, 44px);
+      text-align: center;
+      padding-inline: 1rem;
+    }
+    .services-cta p {
+      margin: 0 0 1rem;
+      font-size: .96rem;
+      color: var(--muted);
+    }
+
+    /* Larger screens */
+    @media (min-width: 640px) {
+      .services-head {
+        margin-bottom: 40px;
+      }
+      .service-card {
+        border-radius: 20px;
+        padding: 20px 22px 22px;
+        gap: 12px;
+      }
+      .service-icon {
+        flex-basis: 48px;
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+      }
+      .service-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <app-header active="solution"></app-header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+
+        <!-- Hero heading -->
+        <div class="services-head">
+          <p class="services-eyebrow">Pakalpojumi</p>
+          <h1>Inženiertehniskie risinājumi <span class="accent">no projekta līdz ekspluatācijai</span></h1>
+          <p class="services-lead">
+            SIA "Heliotherm Baltics" piedāvā pilnu inženierkomunikāciju pakalpojumu klāstu. No idejas un
+            projektēšanas līdz apkures, dzesēšanas, ventilācijas, saules elektrostaciju, ūdensapgādes un
+            kanalizācijas sistēmu ierīkošanai un nodošanai ekspluatācijā.
+          </p>
+          <p class="services-note">
+            Strādājam ar mūsdienīgām tehnoloģijām un energoefektīviem risinājumiem, kas ir draudzīgi gan videi, gan budžetam.
+          </p>
+        </div>
+
+        <!-- Services -->
+        <div class="services-grid">
+
+          <!-- Projektēšana -->
+          <article class="service-card">
+            <div class="service-head">
+              <div class="service-icon">
+                <!-- Blueprint icon -->
+                <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.5127 6.51953L14.8594 2.17285C15.4156 1.61682 16.1375 1.33402 16.8555 1.33398C17.5736 1.33398 18.2963 1.61658 18.8525 2.17285C19.9586 3.27894 19.9584 5.05983 18.8525 6.16602L14.5059 10.5127L20.2842 16.291L20.0732 16.4941L16.4941 20.0732L16.291 20.2842L10.5127 14.5059L10.1592 14.8594L6.22266 18.7949L6.11816 18.8164L1.67188 19.7012L1.66504 19.7021L1.23047 19.7939L1.32324 19.3604L1.32422 19.3535L2.20898 14.9062L2.22949 14.8008L6.16602 10.8662L6.51953 10.5127L0.714844 4.70801L0.926758 4.50586L4.50586 0.926758L4.70801 0.714844L10.5127 6.51953ZM10.9424 14.0762L11.2959 14.4297L15.9209 19.0537L16.2744 19.4072L19.4072 16.2744L19.0537 15.9209L17.5127 14.3789L17.1592 14.0254L16.8057 14.3789L15.9453 15.2383L15.4902 14.7832L16.7031 13.5703L16.3496 13.2168L14.4297 11.2959L14.0762 10.9424L10.9424 14.0762ZM2.69336 15.5957L2.16309 18.2744L2.01758 19.0078L2.75098 18.8623L5.42969 18.332L6.03027 18.2129L5.79297 17.6475C5.33481 16.5572 4.46822 15.6906 3.37793 15.2324L2.8125 14.9951L2.69336 15.5957ZM3.38379 14.5332L3.98926 14.8477C4.92471 15.3341 5.6913 16.1007 6.17773 17.0361L6.49219 17.6406L17.1074 7.02539L16.7539 6.67188L14.3535 4.27051L14 3.91699L3.38379 14.5332ZM4.34863 1.94434L1.92285 4.34473L1.56543 4.69824L1.9209 5.05371L6.5957 9.72949L6.94922 10.083L10.0576 6.97461L7.42969 4.34668L7.07617 4.7002L6.24121 5.53418L5.78613 5.0791L6.62109 4.24512L6.97168 3.89453L6.62305 3.54102L5.05664 1.94922L4.70508 1.5918L4.34863 1.94434ZM16.8555 1.90039C16.2715 1.90043 15.7499 2.16812 15.3145 2.60352L14.7832 3.13379L14.4297 3.4873L14.7832 3.84082L17.1846 6.24121L17.5381 6.59473L18.4219 5.71094C18.8641 5.26875 19.1162 4.72902 19.1162 4.15723C19.1162 3.58539 18.8641 3.04574 18.4219 2.60352C17.9798 2.16142 17.4318 1.90039 16.8555 1.90039Z" fill="#C4122F" stroke="#C4122F"/>
+                </svg>
+              </div>
+              <div>
+                <div class="service-tag">Inženierkomunikācijas</div>
+                <h2 class="service-title">Projektēšana</h2>
+              </div>
+            </div>
+            <div class="service-body">
+              <p>
+                Veicam iekšējo ŪK un AVK sistēmu projektēšanu, izmantojot BIM un citus modernus rīkus.
+                Projektus izstrādā sertificēti un pieredzējuši inženieri, kuri spēj apvienot energoefektivitāti,
+                komfortu un izmaksu optimizāciju.
+              </p>
+              <p>
+                Palīdzam atrast risinājumus, kas ir draudzīgi videi un budžetam, gan jaunbūvēs, gan renovācijas projektos.
+              </p>
+            </div>
+          </article>
+
+          <!-- Apkure -->
+          <article class="service-card">
+            <div class="service-head">
+              <div class="service-icon">
+                <!-- Heating icon -->
+                <svg width="21" height="23" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.23467 10.759C3.70139 10.1959 3.22099 9.57546 2.80377 8.90888L2.77659 8.86202C2.18528 7.64223 1.83931 6.20478 1.83931 4.68419C1.83931 4.00325 1.90909 3.33894 2.04057 2.69806L2.02956 2.76003C2.03543 2.72073 2.03837 2.67614 2.03837 2.63004C2.03837 2.10857 1.62702 1.68534 1.12019 1.68534C0.649341 1.68534 0.260765 2.05037 0.207877 2.52045L0.207143 2.52499C0.0756584 3.18099 0 3.93448 0 4.70611C0 6.56905 0.439994 8.32619 1.21788 9.87399L1.18923 9.81126C1.69974 10.6449 2.25506 11.3696 2.87576 12.0287L2.87208 12.0249C3.31061 12.498 3.72196 13.0081 4.09878 13.5462L4.12743 13.5885C4.85683 14.7448 5.29095 16.1596 5.29095 17.6779C5.29095 18.4927 5.16608 19.2771 4.9347 20.0132L4.94939 19.9596C4.92294 20.0435 4.90825 20.1395 4.90825 20.24C4.90825 20.6617 5.17636 21.0184 5.54731 21.1401L5.55392 21.1416C5.63472 21.1688 5.72801 21.1847 5.82497 21.1847C5.8257 21.1847 5.82644 21.1847 5.82717 21.1847C6.23705 21.1847 6.58376 20.9081 6.70202 20.5272L6.70349 20.5204C6.97821 19.6671 7.13614 18.6846 7.13614 17.6643C7.13614 15.7538 6.58082 13.9762 5.62811 12.4942L5.64941 12.529C5.19252 11.8707 4.72902 11.2925 4.22879 10.7499L4.2354 10.7575L4.23467 10.759ZM11.1798 10.8043C10.5305 10.1189 9.94578 9.36309 9.43821 8.55065L9.40516 8.49397C8.67942 7.00361 8.25485 5.24572 8.25485 3.38655C8.25485 2.56051 8.33859 1.75487 8.49799 0.977952L8.48477 1.05353C8.48844 1.02103 8.49064 0.983242 8.49064 0.944698C8.49064 0.423225 8.0793 0 7.57246 0C7.10822 0 6.72479 0.354451 6.66309 0.813952L6.66235 0.819242C6.50516 1.59843 6.41554 2.49325 6.41554 3.40998C6.41554 5.61226 6.93414 7.68909 7.85232 9.52029L7.81853 9.44547C8.426 10.4348 9.08563 11.2941 9.82164 12.0763L9.81797 12.0717C10.3483 12.6446 10.8471 13.2628 11.304 13.9143L11.3385 13.9664C12.2324 15.385 12.7642 17.1187 12.7642 18.9809C12.7642 19.9785 12.6115 20.9398 12.3287 21.8407L12.3463 21.7749C12.3198 21.8588 12.3052 21.9548 12.3052 22.0553C12.3052 22.477 12.5733 22.8337 12.9442 22.9554L12.9508 22.9569C13.0316 22.9841 13.1249 23 13.2211 23C13.2219 23 13.2226 23 13.2233 23C13.6332 23 13.9799 22.7234 14.0982 22.3425L14.0997 22.3357C14.4236 21.3283 14.6102 20.1689 14.6102 18.9642C14.6102 16.7106 13.9564 14.6149 12.834 12.8653L12.859 12.9068C12.3162 12.1254 11.7653 11.4399 11.1717 10.7953L11.1798 10.8043ZM19.5118 12.6816C19.0557 12.0241 18.5914 11.4467 18.0919 10.9048L18.0985 10.9116C17.5653 10.3478 17.0841 9.72661 16.6669 9.05928L16.6397 9.01242C16.0513 7.78658 15.7076 6.34308 15.7076 4.81796C15.7076 4.14307 15.7752 3.4848 15.903 2.84845L15.8927 2.91118C15.8971 2.87566 15.9 2.83561 15.9 2.79404C15.9 2.31413 15.5519 1.91736 15.1016 1.8569L15.0972 1.85614C15.0656 1.85236 15.0289 1.8501 14.9914 1.8501C14.5228 1.8501 14.1356 2.20681 14.0717 2.67161L14.071 2.6769C13.9432 3.32609 13.8705 4.07278 13.8705 4.83685C13.8705 6.7066 14.3075 8.47054 15.0832 10.0274L15.0538 9.96316C15.5651 10.7975 16.1204 11.5231 16.7411 12.1821L16.7374 12.1783C17.1745 12.6506 17.5858 13.1608 17.9626 13.6974L17.9913 13.7404C18.7207 14.8968 19.1548 16.3115 19.1548 17.8299C19.1548 18.6446 19.0299 19.429 18.7993 20.1644L18.814 20.1107C18.7875 20.1946 18.7728 20.2906 18.7728 20.3911C18.7728 20.8128 19.041 21.1696 19.4119 21.2912L19.4185 21.2927C19.4993 21.3199 19.5926 21.3358 19.6888 21.3358C19.6896 21.3358 19.6903 21.3358 19.691 21.3358C20.1009 21.3358 20.4476 21.0592 20.5659 20.6783L20.5674 20.6715C20.8413 19.8183 21 18.8365 21 17.8163C21 15.9057 20.4454 14.1282 19.492 12.6454L19.5133 12.6801L19.5118 12.6816Z" fill="#C4122F"/>
+                </svg>
+              </div>
+              <div>
+                <div class="service-tag">Siltuma risinājumi</div>
+                <h2 class="service-title">Apkure</h2>
+              </div>
+            </div>
+            <div class="service-body">
+              <p>
+                Energoefektīvs siltumsūknis strādā vislabāk kopā ar pareizi izveidotu apkures sistēmu.
+                Piedāvājam apkures tīklu projektēšanu un ierīkošanu, siltās grīdas, siltās sienas un
+                radiatoru sistēmas dažāda tipa ēkām.
+              </p>
+              <p>
+                Nodrošinām automātisku temperatūras regulēšanu un pareizu sistēmas ieregulēšanu, lai
+                ikmēneša rēķini par apkuri būtu pēc iespējas zemāki.
+              </p>
+            </div>
+          </article>
+
+          <!-- Dzesēšana -->
+          <article class="service-card">
+            <div class="service-head">
+              <div class="service-icon">
+                <!-- Cooling icon -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 1V23M16.8889 2.22222L12 7.11111L7.12184 2.22222M7.12184 21.7778L12 16.8889L16.8889 21.7778M1 12H23M2.22222 7.11111L7.12184 12L2.22222 16.8889M21.7778 16.8889L16.8889 12L21.7778 7.11111" stroke="#C4122F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <div class="service-tag">Komforts vasarā</div>
+                <h2 class="service-title">Dzesēšana</h2>
+              </div>
+            </div>
+            <div class="service-body">
+              <p>
+                Karstās vasaras dienās iekštelpās bieži veidojas nogurdinošs un veselībai nepatīkams klimats.
+                Heliotherm siltumsūkņi ir īpaši piemēroti dzesēšanai, tāpēc piedāvājam efektīvu dzesēšanas
+                sistēmu projektēšanu un uzstādīšanu dzīvojamām, sabiedriskām un ražošanas ēkām.
+              </p>
+              <p>
+                Izvēlamies videi draudzīgas iekārtas un nodrošinām profesionālu montāžu, lai nodrošinātu
+                patīkamu mikroklimatu bez lieka enerģijas patēriņa.
+              </p>
+            </div>
+          </article>
+
+          <!-- Saules elektrostacijas -->
+          <article class="service-card">
+            <div class="service-head">
+              <div class="service-icon">
+                <!-- Solar icon -->
+                <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14.2631 6.76632C10.4506 6.76632 7.349 9.80957 7.349 13.5517C7.349 17.2938 10.4506 20.3365 14.2631 20.3365C18.0756 20.3365 21.1771 17.2927 21.1771 13.5517C21.1771 9.81073 18.0756 6.76632 14.2631 6.76632ZM14.2631 18.9792C11.2133 18.9792 8.73205 16.5441 8.73205 13.5517C8.73205 10.5581 11.2133 8.1242 14.2631 8.1242C17.3134 8.1242 19.7935 10.5598 19.7935 13.5517C19.7935 16.5447 17.3134 18.9792 14.2631 18.9792ZM13.5715 3.50589V0.678076C13.5715 0.303228 13.8811 0 14.2631 0C14.6444 0 14.9546 0.303228 14.9546 0.678076V3.50589C14.9546 3.88016 14.6439 4.18455 14.2631 4.18455C13.8811 4.18455 13.5715 3.88016 13.5715 3.50589ZM20.6545 7.43457C20.3844 7.17004 20.3844 6.74033 20.6545 6.47522L23.1317 4.0442C23.4018 3.77967 23.8397 3.77967 24.1098 4.0442C24.3799 4.3093 24.3799 4.73902 24.1098 5.00355L21.6327 7.43457C21.4979 7.56684 21.3219 7.63326 21.1442 7.63326C20.9676 7.63326 20.7905 7.56684 20.6545 7.43457ZM3.31344 5.00355C3.04389 4.73902 3.04389 4.3093 3.31344 4.0442C3.58357 3.77967 4.02144 3.77967 4.29099 4.0442L6.76871 6.47522C7.03825 6.74033 7.03825 7.17062 6.76871 7.43457C6.63393 7.56684 6.45678 7.63326 6.28022 7.63326C6.10308 7.63326 5.92593 7.56684 5.79116 7.43457L3.31344 5.00355ZM14.4026 23.4935V26.3213C14.4026 26.6962 14.0936 27 13.7122 27C13.3303 27 13.0207 26.6956 13.0207 26.3213V23.4935C13.0207 23.1187 13.3303 22.8143 13.7122 22.8143C14.0936 22.8143 14.4026 23.1181 14.4026 23.4935ZM7.31957 19.5643C7.58971 19.8288 7.58971 20.2585 7.31957 20.5236L4.84244 22.9552C4.70767 23.0881 4.53052 23.1551 4.35337 23.1551C4.17681 23.1551 3.99966 23.0875 3.86489 22.9552C3.59475 22.6907 3.59475 22.2604 3.86489 21.9953L6.34202 19.5643C6.61216 19.2992 7.04944 19.2992 7.31957 19.5643ZM24.6607 21.9953C24.9308 22.2604 24.9308 22.6895 24.6607 22.9552C24.5259 23.0881 24.3505 23.1551 24.1722 23.1551C23.9962 23.1551 23.8185 23.0875 23.6837 22.9552L21.2066 20.5236C20.9364 20.2585 20.9364 19.8294 21.2066 19.5643C21.4767 19.2992 21.9134 19.2992 22.1835 19.5643L24.6607 21.9953ZM3.80251 14.2309H0.691525C0.309568 14.2309 0 13.926 0 13.5517C0 13.1774 0.309568 12.8725 0.691525 12.8725H3.80251C4.18446 12.8725 4.49403 13.1768 4.49403 13.5517C4.49344 13.926 4.18446 14.2298 3.80251 14.2309ZM28 13.5517C28 13.9265 27.6904 14.2309 27.3091 14.2309H23.6207C23.2388 14.2309 22.9286 13.9265 22.9286 13.5517C22.9286 13.1768 23.2382 12.8725 23.6207 12.8725H27.3091C27.6904 12.8725 28 13.1763 28 13.5517Z" fill="#C4122F"/>
+                </svg>
+              </div>
+              <div>
+                <div class="service-tag">Saules enerģija</div>
+                <h2 class="service-title">Saules elektrostaciju montāža</h2>
+              </div>
+            </div>
+            <div class="service-body">
+              <p>
+                Heliotherm siltumsūkņi ir aprīkoti ar PV Ready funkciju, kas ļauj tieši izmantot saules
+                saražoto elektroenerģiju siltumsūkņa darbībai. Projektējam un uzstādam saules elektrostacijas
+                komplektā ar paneļiem, invertoriem un stiprinājumiem.
+              </p>
+              <p>
+                Gudrā sinhronizācijas sistēma palīdz maksimāli izmantot saražoto enerģiju uz vietas un samazināt
+                atkarību no svārstīgām elektroenerģijas cenām.
+              </p>
+            </div>
+          </article>
+
+          <!-- Ventilācija -->
+          <article class="service-card">
+            <div class="service-head">
+              <div class="service-icon">
+                <!-- Ventilation icon -->
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.13333 11.7333H16.3333M2.53333 16.3333H20.1667C22.2837 16.3333 24 18.0496 24 20.1667C24 22.2838 22.2837 24 20.1667 24M1 7.13333H20.9333C22.6271 7.13333 24 5.76039 24 4.06667C24 2.37295 22.6271 1 20.9333 1" stroke="#C4122F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <div class="service-tag">Svaigs gaiss</div>
+                <h2 class="service-title">Ventilācija</h2>
+              </div>
+            </div>
+            <div class="service-body">
+              <p>
+                Kvalitatīva ventilācija ir viens no galvenajiem nosacījumiem veselīgam mikroklimatam.
+                Projektējam un ierīkojam ventilācijas sistēmas, kas samazina mitrumu, izvada piesārņojumu
+                un nodrošina svaigu gaisu mājokļos un komerctelpās.
+              </p>
+              <p>
+                Piedāvājam pilnu servisu, sākot ar konsultācijām un tehnisko risinājumu izstrādi, līdz
+                profesionālai montāžai objektā.
+              </p>
+            </div>
+          </article>
+
+          <!-- Ūdensapgāde un kanalizācija -->
+          <article class="service-card">
+            <div class="service-head">
+              <div class="service-icon">
+                <!-- Water / pipes icon -->
+                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.16823 0.0784621C5.89362 0.17654 5.4915 0.56885 5.32477 0.912122C5.22669 1.11809 5.19727 1.23578 5.19727 1.57905C5.19727 2.08905 5.31496 2.37348 5.68765 2.74618C6.07016 3.13849 6.18785 3.1581 7.64921 3.1581H8.87518V3.77599V4.39388L9.04191 4.56061C9.2773 4.796 9.51268 4.796 9.73826 4.56061L9.90499 4.39388V3.77599V3.1581H11.1506C12.2687 3.1581 12.4158 3.14829 12.6021 3.06002C13.0827 2.84425 13.3769 2.48137 13.5241 1.95175C13.7104 1.23578 13.3279 0.44135 12.6414 0.117693L12.3864 0L9.37537 0.00980776C6.78612 -3.65368e-09 6.35458 0.0196155 6.16823 0.0784621ZM12.4648 1.15732C12.5629 1.28482 12.5629 1.87328 12.4648 2.01059C12.3962 2.09886 12.3079 2.10867 9.4048 2.10867C5.94266 2.10867 6.2467 2.15771 6.2467 1.58886C6.2467 1.00039 5.97208 1.04943 9.43422 1.05924C12.2981 1.05924 12.3962 1.06905 12.4648 1.15732Z" fill="#C4122F"/>
+                  <path d="M7.54217 5.41396C7.39506 5.54146 7.38525 5.58069 7.35583 5.93377L7.33621 6.31627H3.83484H0.333464L0.166732 6.483L0 6.64974V9.46457V12.2794L0.147117 12.4363L0.294233 12.6031L7.52256 12.6325L14.7411 12.6619L15.0157 12.7894C15.1628 12.8581 15.359 12.9856 15.4472 13.0738C15.7317 13.3582 15.7709 13.4858 15.7905 14.1527L15.8101 14.7608H15.4276C15.0745 14.7608 15.0353 14.7706 14.9078 14.9079L14.7607 15.055V16.3104C14.7607 17.6933 14.7607 17.7227 15.0843 17.86C15.3295 17.9679 22.5775 17.9679 22.8227 17.86C23.1267 17.7325 23.1365 17.6835 23.1463 16.3398C23.1463 15.5454 23.1267 15.0942 23.0973 15.0256C22.9894 14.8294 22.8423 14.7706 22.4696 14.7706H22.1165L22.0871 13.8388C22.0675 13.2111 22.0282 12.76 21.9596 12.4265C21.6457 10.9063 20.9788 9.64111 19.9098 8.58187C18.9486 7.62071 17.7913 6.95378 16.5065 6.63012C15.5944 6.39473 15.4276 6.38493 13.4857 6.3555L11.6026 6.32608L11.583 5.95339C11.5634 5.61011 11.5536 5.57088 11.4064 5.44338L11.2495 5.29626H9.4743H7.6991L7.54217 5.41396ZM10.5237 6.69878C10.5532 7.05186 10.563 7.09109 10.7101 7.21859L10.867 7.3559H12.6618C14.5645 7.3559 15.3001 7.40493 16.0455 7.56186C18.3405 8.05225 19.998 9.51361 20.714 11.6615C20.9494 12.3677 21.0475 13.015 21.0475 13.9369L21.0573 14.7215H18.9584H16.8596L16.8301 14.0546C16.8007 13.4269 16.7909 13.3681 16.6438 13.0542C16.3594 12.4854 15.7905 11.995 15.0451 11.7007C14.849 11.6223 14.3291 11.6125 7.9541 11.5929L1.06905 11.5634V9.47437V7.37551L4.59984 7.34609C8.48372 7.31667 8.23853 7.34609 8.37583 7.01262C8.41507 6.92435 8.44449 6.7282 8.44449 6.58108V6.31627H9.4743H10.4943L10.5237 6.69878ZM22.1067 16.3104V16.8302H18.9486H15.7905V16.3104V15.7906H18.9486H22.1067V16.3104Z" fill="#C4122F"/>
+                  <path d="M18.5561 19.184C18.3502 19.3998 17.6734 20.5767 17.3498 21.2731C16.9476 22.146 16.8594 22.4304 16.8594 22.9306C16.8594 23.3523 16.8594 23.4014 17.0359 23.7446C17.2713 24.2154 17.6734 24.6175 18.1442 24.8431C18.4482 24.9902 18.5267 25 18.9484 25C19.3702 25 19.4486 24.9804 19.7527 24.8431C20.2234 24.6175 20.6354 24.2154 20.8609 23.7446C21.0375 23.4014 21.0473 23.3523 21.0375 22.9306C21.0375 22.4304 20.9492 22.1558 20.5471 21.2731C20.2234 20.5767 19.5369 19.3998 19.3407 19.184C19.1838 19.0173 19.1348 18.9977 18.9484 18.9977C18.7621 18.9977 18.713 19.0173 18.5561 19.184ZM19.4094 21.3515C19.6448 21.8125 19.8802 22.3421 19.939 22.5383C20.0371 22.8521 20.0371 22.9208 19.9881 23.1758C19.8998 23.5779 19.635 23.8427 19.2427 23.931C18.5954 24.0781 18.0461 23.7544 17.9186 23.1758C17.8696 22.9208 17.8696 22.8521 17.9677 22.5383C18.0755 22.1754 18.8896 20.5277 18.9582 20.5277C18.968 20.5277 19.174 20.9004 19.4094 21.3515Z" fill="#C4122F"/>
+                </svg>
+              </div>
+              <div>
+                <div class="service-tag">Ūdens un kanalizācija</div>
+                <h2 class="service-title">Ūdensapgāde un kanalizācijas sistēmas</h2>
+              </div>
+            </div>
+            <div class="service-body">
+              <p>
+                Tīrs un drošs ūdens ir jebkuras ēkas pamata prasība. Projektējam un ierīkojam
+                ūdensapgādes sistēmas mājsaimniecībām, dzīvojamām un sabiedriskām ēkām, rūpējoties par
+                komfortu un veselību.
+              </p>
+              <p>
+                Kanalizācijas sistēmas plānojam ciešā saistībā ar ūdensapgādi un notekūdeņu attīrīšanas
+                iespējām. Piedāvājam individuālus risinājumus privātmājām, viesnīcām, daudzstāvu namiem,
+                tirdzniecības un ražošanas objektiem, kā arī pašvaldību attīrīšanas iekārtu rekonstrukcijai.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- CTA -->
+        <div class="services-cta">
+          <p>
+            Vēlaties uzzināt, kurš risinājums ir piemērotākais jūsu projektam? Mūsu inženieri palīdzēs izvērtēt
+            iespējas un sagatavot piedāvājumu.
+          </p>
+          <a href="../contact/index.html" class="btn btn-primary">Sazināties ar mums</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <app-footer></app-footer>
+  <script src="../assets/js/components.js"></script>
+</body>
+</html>
