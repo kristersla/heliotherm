@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="lv">
+<html lang="lv" class="is-booting">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,7 +7,10 @@
   <link rel="icon" type="image/x-icon" href="media/image/favicon.ico" />
   <meta name="theme-color" content="#111318" />
   <meta name="description" content="Luksusa klases Austrijā ražoti siltumsūkņi mājām un uzņēmumiem. Klusi, ilgmūžīgi un izcili efektīvi." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
   <link rel="stylesheet" href="assets/style/style.css" />
+  <link rel="preload" as="image" href="media/image/hero-intro.webp" type="image/webp" fetchpriority="high" />
 
   <style>
     /* ===== Subtle premium dynamic layer, keeps existing design ===== */
@@ -1956,10 +1959,178 @@
       }
     }
 
+
+
+    /* ===== Performance pass: reduce initial payload and stop grey image stalls ===== */
+    html.is-booting .premium-site-flow,
+    html.is-booting .premium-engineering-flow,
+    html.is-booting .premium-dynamic-mesh,
+    html.is-booting .premium-site-line,
+    html.is-booting .premium-site-dot,
+    html.is-booting .premium-site-orb,
+    html.is-booting .premium-moving-dot,
+    html.is-booting .premium-flow-node,
+    html.is-booting .premium-floating-spec{
+      animation:none !important;
+      transition:none !important;
+    }
+
+    .visual{
+      position:relative;
+      background:linear-gradient(135deg, #fafbfc 0%, #eef1f5 100%);
+      border-radius:18px;
+      overflow:hidden;
+      min-height:260px;
+      aspect-ratio:1195 / 670;
+    }
+
+    .hero-static-poster{
+      position:absolute;
+      inset:0;
+      z-index:3;
+      display:block;
+      background:#f6f7f9;
+      opacity:1;
+      visibility:visible;
+      transition:opacity .42s ease, visibility .42s ease;
+    }
+
+    .hero-static-poster img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+    }
+
+    .hero-video{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      background:#f6f7f9;
+      opacity:0;
+      transition:opacity .42s ease;
+    }
+
+    .visual.is-video-ready .hero-video{
+      opacity:1;
+    }
+
+    .visual.is-video-ready .hero-static-poster{
+      opacity:0;
+      visibility:hidden;
+    }
+
+    .thumb.media-thumb{
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(180deg, #f7f8fb, #eef1f5) !important;
+    }
+
+    .thumb.media-thumb img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      opacity:0;
+      transform:scale(1.01);
+      transition:opacity .22s ease;
+    }
+
+    .thumb.media-thumb img.is-loaded{
+      opacity:1;
+    }
+
+    .thumb.media-thumb::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:linear-gradient(110deg, transparent 0%, rgba(255,255,255,.34) 45%, transparent 70%);
+      transform:translateX(-120%);
+      animation:lazyThumbSheen 1.3s ease-in-out infinite;
+      opacity:.55;
+    }
+
+    .thumb.media-thumb:has(img.is-loaded)::after{
+      display:none;
+    }
+
+    @keyframes lazyThumbSheen{
+      to{ transform:translateX(120%); }
+    }
+
+    .facts,
+    #products,
+    .section-climate,
+    .intro,
+    .intro-spec{
+      content-visibility:auto;
+      contain-intrinsic-size:900px;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .thumb.media-thumb::after{
+        animation:none !important;
+      }
+    }
+
+
+    /* ===== FINAL HERO LCP FIX: video element uses the branded image as its poster =====
+       The poster is visible immediately. The MP4 source is attached only after the
+       poster has had at least 4 seconds on screen, so there is no unrelated image flash. */
+    .visual[data-hero-visual]{
+      position:relative;
+      overflow:hidden;
+      background:#f6f7f9;
+      border-radius:18px;
+      aspect-ratio:1195 / 670;
+      min-height:260px;
+    }
+
+    .visual[data-hero-visual] .hero-video{
+      position:absolute !important;
+      inset:0 !important;
+      z-index:2 !important;
+      display:block !important;
+      width:100% !important;
+      height:100% !important;
+      object-fit:cover !important;
+      opacity:1 !important;
+      visibility:visible !important;
+      background:#f6f7f9 !important;
+      transition:none !important;
+    }
+
+    .visual[data-hero-visual] .hero-static-poster{
+      display:none !important;
+    }
+
+    .visual[data-hero-visual] noscript picture,
+    .visual[data-hero-visual] noscript img{
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
 </style>
 
 </head>
 <body>
+
+  <script>
+    document.documentElement.classList.add('is-booting');
+    window.addEventListener('load', function(){
+      window.setTimeout(function(){
+        document.documentElement.classList.remove('is-booting');
+      }, 900);
+    }, { once:true });
+  </script>
+
 
   <div class="premium-site-flow" aria-hidden="true">
     <svg class="premium-site-svg" viewBox="0 0 1600 900" preserveAspectRatio="none">
@@ -2018,11 +2189,26 @@
           <span class="pill">PV-Ready</span>
         </div>
       </div>
-      <div class="visual">
-        <video autoplay muted loop playsinline disablepictureinpicture preload="auto" class="hero-video">
-          <source src="media/video/hero_video.mp4" type="video/mp4" />
+      <div class="visual" data-hero-visual>
+        <video
+          muted
+          loop
+          playsinline
+          disablepictureinpicture
+          preload="none"
+          poster="media/image/hero-intro.webp"
+          class="hero-video"
+          data-src="media/video/hero-video-optimized.mp4"
+          aria-label="Heliotherm premium siltumsūkņi"
+        >
           Jūsu pārlūks neatbalsta video atskaņošanu.
         </video>
+        <noscript>
+          <picture>
+            <source srcset="media/image/hero-intro.webp" type="image/webp" />
+            <img src="media/image/hero-intro.png" width="1195" height="670" alt="Heliotherm premium siltumsūkņi" />
+          </picture>
+        </noscript>
       </div>
     </div>
   </section>
@@ -2314,7 +2500,7 @@
       <div class="fact-grid">
         <!-- Heat sources for heat pumps -->
         <article class="fact">
-          <div class="thumb" style="background:url('media/image/heatpumps/1 (3).png') center/cover no-repeat;"></div>
+          <div class="thumb media-thumb"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 520'%3E%3C/svg%3E" data-src="media/image/heatpumps/1 (3).png" alt="Siltuma avoti siltumsūkņiem" width="900" height="520" decoding="async" fetchpriority="low" /></div>
           <div class="body">
             <h3>Siltuma avoti siltumsūkņiem</h3>
             <p class="muted">
@@ -2330,7 +2516,7 @@
 
         <!-- Subsidies -->
         <article class="fact">
-          <div class="thumb" style="background:url('media/image/heatpumps/1 (5).png') center/cover no-repeat;"></div>
+          <div class="thumb media-thumb"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 520'%3E%3C/svg%3E" data-src="media/image/heatpumps/1 (5).png" alt="Subsīdijas siltumsūkņiem" width="900" height="520" decoding="async" fetchpriority="low" /></div>
           <div class="body">
             <h3>Subsīdijas siltumsūkņiem</h3>
             <p class="muted">
@@ -2345,7 +2531,7 @@
 
         <!-- How a heat pump works -->
         <article class="fact">
-          <div class="thumb" style="background:url('media/image/heatpumps/1 (1).png') center/cover no-repeat;"></div>
+          <div class="thumb media-thumb"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 520'%3E%3C/svg%3E" data-src="media/image/heatpumps/1 (1).png" alt="Kā darbojas siltumsūknis" width="900" height="520" decoding="async" fetchpriority="low" /></div>
           <div class="body">
             <h3>Kā darbojas siltumsūknis</h3>
             <p class="muted">
@@ -2360,7 +2546,7 @@
 
         <!-- Technical features -->
         <article class="fact">
-          <div class="thumb" style="background:url('media/image/heatpumps/1 (2).png') center/cover no-repeat;"></div>
+          <div class="thumb media-thumb"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 520'%3E%3C/svg%3E" data-src="media/image/heatpumps/1 (2).png" alt="Heliotherm tehniskās īpatnības" width="900" height="520" decoding="async" fetchpriority="low" /></div>
           <div class="body">
             <h3>Heliotherm tehniskās īpatnības</h3>
             <p class="muted">
@@ -2375,7 +2561,7 @@
 
         <!-- Cooling with heat pumps -->
         <article class="fact">
-          <div class="thumb" style="background:url('media/image/heatpumps/1 (4).png') center/cover no-repeat;"></div>
+          <div class="thumb media-thumb"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 520'%3E%3C/svg%3E" data-src="media/image/heatpumps/1 (4).png" alt="Dzesēšana ar siltumsūkni" width="900" height="520" decoding="async" fetchpriority="low" /></div>
           <div class="body">
             <h3>Dzesēšana ar siltumsūkni</h3>
             <p class="muted">
@@ -2405,7 +2591,7 @@
 
             <div class="tslide">
               <div class="product">
-                <div class="thumb" style="background:url('media/image/water_heat.webp') center/cover no-repeat"></div>
+                <div class="thumb media-thumb"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 520'%3E%3C/svg%3E" data-src="media/image/water_heat.webp" alt="Gaisa–ūdens monobloks" width="900" height="520" decoding="async" fetchpriority="low" /></div>
                 <div class="body">
                   <h3>Gaisa–ūdens monobloks</h3>
                   <p class="muted">Kompakta āra iekārta ar integrētu hidrauliku. Ideāli renovācijām.</p>
@@ -2420,7 +2606,7 @@
 
             <div class="tslide">
               <div class="product">
-                <div class="thumb" style="background:url('media/image/split.png') center/cover no-repeat"></div>
+                <div class="thumb media-thumb"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 520'%3E%3C/svg%3E" data-src="media/image/split.png" alt="Dalītā konstrukcija" width="900" height="520" decoding="async" fetchpriority="low" /></div>
                 <div class="body">
                   <h3>Dalītā konstrukcija</h3>
                   <p class="muted">Iekštelpu un āra bloki elastīgai montāžai un apkopei.</p>
@@ -2435,7 +2621,7 @@
 
             <div class="tslide">
               <div class="product">
-                <div class="thumb" style="background:url('media/image/brine.png') center/cover no-repeat"></div>
+                <div class="thumb media-thumb"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 520'%3E%3C/svg%3E" data-src="media/image/brine.png" alt="Zemes brīna siltumsūknis" width="900" height="520" decoding="async" fetchpriority="low" /></div>
                 <div class="body">
                   <h3>Zemes (brīna) siltumsūknis</h3>
                   <p class="muted">Stabilas zondes temperatūras maksimāliem ietaupījumiem.</p>
@@ -2450,7 +2636,7 @@
 
             <div class="tslide">
               <div class="product">
-                <div class="thumb" style="background:url('media/image/grunts.png') center/cover no-repeat"></div>
+                <div class="thumb media-thumb"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 520'%3E%3C/svg%3E" data-src="media/image/grunts.png" alt="Grunts tiešās iztvaices siltumsūknis" width="900" height="520" decoding="async" fetchpriority="low" /></div>
                 <div class="body">
                   <h3>Grunts tiešās iztvaices siltumsūknis</h3>
                   <p class="muted">Efektīvi izmanto dārza potenciālu apkurei un dzesēšanai.</p>
@@ -2465,7 +2651,7 @@
 
             <div class="tslide">
               <div class="product">
-                <div class="thumb" style="background:url('media/image/water-heat-pump.png') center/cover no-repeat"></div>
+                <div class="thumb media-thumb"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 520'%3E%3C/svg%3E" data-src="media/image/water-heat-pump.png" alt="Ūdens siltumsūknis" width="900" height="520" decoding="async" fetchpriority="low" /></div>
                 <div class="body">
                   <h3>Ūdens siltumsūknis</h3>
                   <p class="muted">Izmanto gruntsūdeņos uzkrāto siltumenerģiju ilgtspējīgai apkurei.</p>
@@ -2479,7 +2665,7 @@
 
             <div class="tslide">
               <div class="product">
-                <div class="thumb" style="background:url('media/image/fresh-water.png') center/cover no-repeat"></div>
+                <div class="thumb media-thumb"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 520'%3E%3C/svg%3E" data-src="media/image/fresh-water.png" alt="Karstā ūdens sagatavošanas sistēma" width="900" height="520" decoding="async" fetchpriority="low" /></div>
                 <div class="body">
                   <h3>Karstā ūdens sagatavošanas sistēma</h3>
                   <p class="muted">Inovatīva sistēma ar augstāko efektivitāti SŪT sagatavošanai.</p>
@@ -2493,7 +2679,7 @@
 
             <div class="tslide">
               <div class="product">
-                <div class="thumb" style="background:url('media/image//industrial.jpeg') center/cover no-repeat"></div>
+                <div class="thumb media-thumb"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 520'%3E%3C/svg%3E" data-src="media/image/industrial.jpeg" alt="Industriālie siltumsūkņi" width="900" height="520" decoding="async" fetchpriority="low" /></div>
                 <div class="body">
                   <h3>Industriālie siltumsūkņi</h3>
                   <p class="muted">Efektīvs risinājums lielām ēkām un birojiem ar augstu siltuma pieprasījumu.</p>
@@ -2518,7 +2704,7 @@
   </section>
 
   <app-footer></app-footer>
-  <script src="assets/js/components.js"></script>
+  <script src="assets/js/components.js" defer></script>
 
   <!-- Universal carousel script (lazy-autoplay when visible) -->
   <script>
@@ -2904,6 +3090,102 @@
   }
 
   document.querySelectorAll('[data-hp-selector]').forEach(initSelector);
+})();
+</script>
+
+
+<script>
+(function(){
+  var transparentPlaceholder = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 520'%3E%3C/svg%3E";
+
+  function loadLazyImage(img){
+    if (!img || img.dataset.loaded === 'true') return;
+    var src = img.getAttribute('data-src');
+    if (!src) return;
+    img.dataset.loaded = 'true';
+    img.addEventListener('load', function(){ img.classList.add('is-loaded'); }, { once:true });
+    img.addEventListener('error', function(){ img.classList.add('is-loaded'); }, { once:true });
+    img.src = src;
+  }
+
+  function initLazyImages(){
+    var images = Array.prototype.slice.call(document.querySelectorAll('img[data-src]'));
+    if (!images.length) return;
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            loadLazyImage(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin:'160px 0px', threshold:0.01 });
+
+      images.forEach(function(img){
+        if (!img.getAttribute('src')) img.src = transparentPlaceholder;
+        observer.observe(img);
+      });
+    } else {
+      images.forEach(loadLazyImage);
+    }
+  }
+
+  function startHeroVideo(){
+    var video = document.querySelector('.hero-video[data-src]');
+    if (!video || video.dataset.videoLoaded === 'true') return;
+
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var saveData = navigator.connection && navigator.connection.saveData;
+    if (reduceMotion || saveData) return;
+
+    video.dataset.videoLoaded = 'true';
+
+    var source = document.createElement('source');
+    source.src = video.getAttribute('data-src');
+    source.type = 'video/mp4';
+    video.appendChild(source);
+    video.load();
+
+    video.addEventListener('canplay', function(){
+      var playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(function(){});
+      var visual = video.closest('.visual');
+      if (visual) visual.classList.add('is-video-ready');
+    }, { once:true });
+  }
+
+  function scheduleHeroVideoAfterPoster(){
+    var video = document.querySelector('.hero-video[data-src]');
+    if (!video) return;
+
+    var posterUrl = video.getAttribute('poster');
+
+    function waitFourSecondsThenStart(){
+      window.setTimeout(startHeroVideo, 4000);
+    }
+
+    if (!posterUrl) {
+      waitFourSecondsThenStart();
+      return;
+    }
+
+    var poster = new Image();
+    poster.src = posterUrl;
+
+    if (poster.decode) {
+      poster.decode().catch(function(){}).then(waitFourSecondsThenStart);
+      return;
+    }
+
+    poster.onload = waitFourSecondsThenStart;
+    poster.onerror = waitFourSecondsThenStart;
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    initLazyImages();
+    scheduleHeroVideoAfterPoster();
+  }, { once:true });
 })();
 </script>
 
