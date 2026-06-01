@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
 /* ====== Design Tokens (Light, brand red) ====== */
 :root{
   --bg:#ffffff; --panel:#ffffff; --panel-2:#f8f9fb;
-  --text:#0b0c0f; --muted:#5b6474;
+  --text-main:#15171c; --text-heading:#111318; --text-soft:#5f6673; --text-muted:#8a91a0;
+  --text:var(--text-main); --muted:var(--text-soft);
   --brand:#C4122F; --brand-2:#E22A46; --accent:#FFB41F;
   --ring:#e7e9ee; --hair:#e9ebf0; --hair-2:#dfe3ea;
   --radius:16px; --shadow:0 8px 28px rgba(0,0,0,.06);
@@ -17,9 +19,36 @@ html {
 *,*::before,*::after{box-sizing:border-box}
 html,body{height:100%}
 body{
-  margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
-  color:var(--text); background:#fff; line-height:1.55;
+  margin:0; font-family:"Manrope",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+  font-weight:400;
+  color:var(--text-main); background:#fff; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
+
+
+h1,h2,h3,h4,h5,h6{
+  color:var(--text-heading);
+  font-family:inherit;
+  font-weight:800;
+  letter-spacing:-.025em;
+}
+h1,h2{
+  letter-spacing:-.03em;
+}
+
+p,li,input,textarea,select,button{
+  font-family:inherit;
+}
+
+p{
+  line-height:1.65;
+}
+
+small,.eyebrow,[class*="eyebrow"],.label,[class*="label"]{
+  color:var(--text-muted);
+}
+
 img{max-width:100%; display:block}
 a{color:inherit; text-decoration:none}
 .container{width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--mx)}
@@ -58,7 +87,7 @@ header{
 .brand{display:flex; align-items:center; gap:.8rem; font-weight:800; letter-spacing:.2px}
 .brand svg{width:28px; height:28px}
 nav ul{display:none; gap:1.2rem; list-style:none; margin:0; padding:0}
-nav a{color:var(--muted)} nav a:hover{color:var(--text)}
+nav a{color:var(--text-soft); font-weight:600} nav a:hover{color:var(--text-heading)}
 .nav-cta{display:none; gap:.6rem}
 @media (min-width:860px){nav ul,.nav-cta{display:flex}}
 
@@ -1150,7 +1179,7 @@ footer{margin-top:80px; border-top:1px solid var(--hair); background:#fff}
 /* make the button calmer only here, not global */
 
 .section-quality .quality-btn {
-  background: #0b0c0f;
+  background: var(--text-heading);
   color: #fff;
   box-shadow: none;
   padding: .8rem 1.4rem;
@@ -1159,7 +1188,7 @@ footer{margin-top:80px; border-top:1px solid var(--hair); background:#fff}
 
 .section-quality .quality-btn:hover {
   transform: translateY(-1px);
-  background: #111827;
+  background: var(--text-heading);
 }
 
 /* quote row */

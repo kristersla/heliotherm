@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Par mums – Heliotherm Baltics</title>
     <link rel="icon" type="image/x-icon" href="../media/image/favicon.ico" />
-    <meta name="theme-color" content="#0b0c0f" />
+    <meta name="theme-color" content="#111318" />
     <meta name="description" content="Heliotherm ir Eiropas siltumsūkņu tehnoloģiju līderis ar desmitgadēm ilgu pieredzi, starptautiskiem patentiēm un sertificētu kvalitātes vadību. Uzziniet vairāk par mūsu stāstu, kvalitāti un atbalstu sabiedrībai." />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         /* The entire CSS provided by the user is included here */
@@ -17,7 +17,8 @@
         /* ====== Design Tokens (Light, brand red) ====== */
         :root{
             --bg:#ffffff; --panel:#ffffff; --panel-2:#f8f9fb;
-            --text:#0b0c0f; --muted:#5b6474;
+            --text-main:#15171c; --text-heading:#111318; --text-soft:#5f6673; --text-muted:#8a91a0;
+            --text:var(--text-main); --muted:var(--text-soft);
             --brand:#C4122F; --brand-2:#E22A46; --accent:#FFB41F;
             --ring:#e7e9ee; --hair:#e9ebf0; --hair-2:#dfe3ea;
             --radius:16px; --shadow:0 8px 28px rgba(0,0,0,.06);
@@ -31,9 +32,22 @@
         *,*::before,*::after{box-sizing:border-box}
         html,body{height:100%}
         body{
-            margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
-            color:var(--text); background:#fff; line-height:1.55;
+            margin:0; font-family:"Manrope",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+            font-weight:400;
+            color:var(--text-main); background:#fff; line-height:1.62;
+            -webkit-font-smoothing:antialiased;
+            text-rendering:optimizeLegibility;
         }
+        h1,h2,h3,h4,h5,h6{
+            color:var(--text-heading);
+            font-family:inherit;
+            font-weight:800;
+            letter-spacing:-.025em;
+        }
+        h1,h2{letter-spacing:-.03em}
+        p{line-height:1.65}
+        p,li,input,textarea,select,button{font-family:inherit}
+        small,.eyebrow,[class*="eyebrow"],.label,[class*="label"]{color:var(--text-muted)}
         img{max-width:100%; display:block}
         a{color:inherit; text-decoration:none}
         .container{width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--mx)}
@@ -152,7 +166,7 @@
 
         .product-badge.new {
             background-color: #f1f3f7;
-            color: #111827;
+            color: var(--text-heading);
             border: 1px solid #d1d5db;
             font-weight: 600;
         }
@@ -181,8 +195,6 @@
             position: relative;
             padding-left: 18px;
         }
-
-
 
         .intro-spec-eyebrow {
             margin: 0 0 .35rem;
@@ -399,8 +411,6 @@
             object-fit: contain;
         }
 
-
-
         .fact .body{padding:20px 22px 18px; display:flex; flex-direction:column; flex:1}
         .fact .rule{height:2px; width:64px; background:var(--brand); border-radius:999px; margin-bottom:14px}
         .fact h3{margin:0 0 8px; font-size:1.35rem}
@@ -612,8 +622,6 @@
                 left: 40px !important;
             }
         }
-
-
 
         .quality-wrap {
             display: grid;
@@ -851,7 +859,6 @@
                 padding-inline: .8rem;
             }
         }
-
 
         /* Responsive */
 
@@ -1207,7 +1214,6 @@
             gap: 12px;
         }
 
-
         .quality-card-header h3 {
             margin: .15rem 0 0;
             font-size: 1.1rem;
@@ -1265,7 +1271,7 @@
         /* make the button calmer only here, not global */
 
         .section-quality .quality-btn {
-            background: #0b0c0f;
+            background: var(--text-heading);
             color: #fff;
             box-shadow: none;
             padding: .8rem 1.4rem;
@@ -1274,7 +1280,7 @@
 
         .section-quality .quality-btn:hover {
             transform: translateY(-1px);
-            background: #111827;
+            background: var(--text-heading);
         }
 
         /* quote row */
@@ -1369,7 +1375,6 @@
         /* ===== Konstruēts ziemeļu ziemām section ===== */
 
         .section-climate {
-
 
             padding-block: clamp(60px, 10vh, 90px);
         }
@@ -1763,6 +1768,991 @@
                 width: fit-content;
             }
         }
+
+    /* ===== Premium heat pump selector ===== */
+    .hp-selector{
+      position:relative;
+      z-index:4;
+      padding-block:clamp(36px,6vw,82px);
+      isolation:isolate;
+    }
+
+    .hp-selector *{ box-sizing:border-box; }
+
+    .hp-selector > .container{
+      position:relative;
+      z-index:1;
+    }
+
+    .hp-selector-shell{
+      position:relative;
+      display:grid;
+      grid-template-columns:minmax(0,.94fr) minmax(0,1.12fr);
+      gap:clamp(20px,3.4vw,44px);
+      align-items:stretch;
+      padding:clamp(18px,2.6vw,30px);
+      overflow:hidden;
+      border-radius:30px;
+      border:1px solid rgba(196,18,47,.12);
+      background:linear-gradient(180deg, rgba(255,255,255,.94), rgba(250,251,253,.96));
+      box-shadow:0 20px 60px rgba(15,23,42,.08);
+    }
+
+    .hp-selector-shell::before{
+      content:"";
+      position:absolute;
+      inset:-14%;
+      z-index:-3;
+      opacity:.65;
+      background:
+        radial-gradient(circle at 80% 18%, rgba(196,18,47,.12), transparent 18rem),
+        radial-gradient(circle at 18% 86%, rgba(196,18,47,.08), transparent 16rem),
+        linear-gradient(90deg, rgba(196,18,47,.03) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(196,18,47,.028) 1px, transparent 1px);
+      background-size:auto, auto, 62px 62px, 62px 62px;
+      transform:rotate(-4deg) scale(1.02);
+      mask-image:linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+      -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+    }
+
+    .hp-selector-shell::after{
+      content:"";
+      position:absolute;
+      right:-70px;
+      top:-65px;
+      width:280px;
+      height:280px;
+      z-index:-2;
+      border-radius:999px;
+      background:radial-gradient(circle, rgba(196,18,47,.14), transparent 68%);
+      filter:blur(6px);
+      animation:hpSelectorOrb 10s ease-in-out infinite;
+    }
+
+    .hp-selector-wire{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      opacity:.72;
+    }
+
+    .hp-selector-wire svg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+    }
+
+    .hp-selector-wire path{
+      fill:none;
+      stroke:rgba(196,18,47,.12);
+      stroke-width:1.2;
+      stroke-dasharray:9 14;
+      stroke-linecap:round;
+      animation:hpWireDash 18s linear infinite;
+    }
+
+    .hp-selector-wire path.is-soft{
+      stroke:rgba(17,19,24,.08);
+      stroke-width:1;
+      stroke-dasharray:4 16;
+      animation-duration:24s;
+    }
+
+    .hp-selector-wire .node{
+      fill:#fff;
+      stroke:rgba(196,18,47,.22);
+      stroke-width:1.6;
+      filter:drop-shadow(0 10px 18px rgba(196,18,47,.18));
+      animation:hpNodePulse 4s ease-in-out infinite;
+      transform-origin:center;
+    }
+
+    .hp-selector-copy,
+    .hp-selector-card{ position:relative; z-index:1; }
+
+    .hp-selector-copy{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:22px;
+      padding:clamp(6px,1.1vw,12px);
+    }
+
+    .hp-selector-copy-main{ max-width:34rem; }
+
+    .hp-selector-eyebrow{
+      display:inline-flex;
+      width:max-content;
+      align-items:center;
+      gap:.55rem;
+      margin:0 0 .95rem;
+      padding:.38rem .82rem;
+      border-radius:999px;
+      border:1px solid rgba(196,18,47,.14);
+      background:rgba(255,255,255,.88);
+      color:var(--brand, #C4122F);
+      box-shadow:0 10px 24px rgba(15,23,42,.06);
+      font-size:.76rem;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .hp-selector-eyebrow::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:var(--brand, #C4122F);
+      box-shadow:0 0 0 5px rgba(196,18,47,.10);
+      flex:0 0 auto;
+    }
+
+    .hp-selector-title{
+      margin:0;
+      max-width:10.5em;
+      color:var(--text-heading, #111318);
+      font-size:clamp(1.95rem,3.9vw,3.1rem);
+      line-height:1.03;
+      letter-spacing:-.05em;
+    }
+
+    .hp-selector-title span{ color:var(--brand, #C4122F); }
+
+    .hp-selector-lead{
+      margin:1rem 0 0;
+      max-width:58ch;
+      color:var(--text-soft, #5f6673);
+      font-size:1.08rem;
+      line-height:1.72;
+    }
+
+    .hp-selector-benefits{
+      display:grid;
+      gap:10px;
+      margin-top:1.35rem;
+    }
+
+    .hp-selector-benefit{
+      display:grid;
+      grid-template-columns:18px 1fr;
+      gap:10px;
+      align-items:flex-start;
+      color:var(--text-soft, #5f6673);
+      font-size:.94rem;
+      line-height:1.55;
+    }
+
+    .hp-selector-benefit::before{
+      content:"";
+      width:10px;
+      height:10px;
+      margin-top:.33rem;
+      border-radius:999px;
+      border:2px solid var(--brand, #C4122F);
+      background:#fff;
+      box-shadow:0 0 0 4px rgba(196,18,47,.08);
+    }
+
+    .hp-selector-metrics{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+    }
+
+    .hp-selector-metric{
+      min-height:88px;
+      padding:14px 14px 12px;
+      border-radius:18px;
+      border:1px solid rgba(228,231,237,.94);
+      background:rgba(255,255,255,.72);
+      box-shadow:0 12px 30px rgba(15,23,42,.05);
+      backdrop-filter:blur(12px);
+    }
+
+    .hp-selector-metric strong{
+      display:block;
+      color:var(--text-heading, #111318);
+      font-size:1.22rem;
+      line-height:1;
+      letter-spacing:-.03em;
+    }
+
+    .hp-selector-metric span{
+      display:block;
+      margin-top:.4rem;
+      color:var(--text-muted, #8a91a0);
+      font-size:.76rem;
+      line-height:1.35;
+    }
+
+    .hp-selector-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:26px;
+      border:1px solid rgba(255,255,255,.9);
+      background:rgba(255,255,255,.9);
+      box-shadow:0 24px 60px rgba(15,23,42,.12);
+      backdrop-filter:blur(18px);
+    }
+
+    .hp-selector-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:linear-gradient(135deg, rgba(255,255,255,.75), transparent 46%), radial-gradient(circle at 100% 0%, rgba(196,18,47,.10), transparent 18rem);
+    }
+
+    .hp-selector-top{
+      position:relative;
+      z-index:1;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:18px 18px 0;
+    }
+
+    .hp-selector-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
+      padding:.44rem .78rem;
+      border-radius:999px;
+      background:#111318;
+      color:#fff;
+      font-size:.76rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .hp-selector-stepcount{
+      color:var(--text-muted, #8a91a0);
+      font-size:.8rem;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .hp-selector-progress{
+      position:relative;
+      z-index:1;
+      height:6px;
+      margin:16px 18px 0;
+      overflow:hidden;
+      border-radius:999px;
+      background:#eef0f4;
+    }
+
+    .hp-selector-progress span{
+      display:block;
+      width:20%;
+      height:100%;
+      border-radius:inherit;
+      background:linear-gradient(90deg, var(--brand, #C4122F), #E22A46);
+      transition:width .26s ease;
+    }
+
+    .hp-selector-stage,
+    .hp-selector-result{
+      position:relative;
+      z-index:1;
+      display:none;
+      flex-direction:column;
+      min-height:560px;
+      padding:18px 18px 20px;
+      animation:hpSelectorFade .26s ease both;
+    }
+
+    .hp-selector-stage.is-active,
+    .hp-selector-result.is-active{
+      display:flex;
+    }
+
+    .hp-selector-question{
+      margin:0;
+      color:var(--text-heading, #111318);
+      font-size:clamp(1.28rem,2vw,1.7rem);
+      line-height:1.14;
+      letter-spacing:-.03em;
+    }
+
+    .hp-selector-sub{
+      margin:.55rem 0 1rem;
+      color:var(--text-muted, #8a91a0);
+      font-size:.94rem;
+      line-height:1.58;
+      max-width:58ch;
+    }
+
+    .hp-selector-options{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      grid-template-rows:repeat(2, minmax(0,1fr));
+      gap:14px;
+      flex:1;
+      min-height:0;
+      align-content:stretch;
+    }
+
+    .hp-selector-option{
+      position:relative;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      gap:14px;
+      align-items:start;
+      align-content:start;
+      height:100%;
+      min-height:0;
+      padding:22px 20px;
+      border-radius:18px;
+      border:1px solid #e8ebf1;
+      background:rgba(250,251,253,.9);
+      box-shadow:0 10px 24px rgba(15,23,42,.03);
+      color:var(--text-heading, #111318);
+      text-align:left;
+      cursor:pointer;
+      transition:transform .16s ease, border-color .16s ease, box-shadow .16s ease, background .16s ease;
+    }
+
+    .hp-selector-option:hover,
+    .hp-selector-option:focus-visible{
+      transform:translateY(-2px);
+      border-color:rgba(196,18,47,.26);
+      background:#fff;
+      box-shadow:0 18px 36px rgba(15,23,42,.08);
+      outline:none;
+    }
+
+    .hp-selector-option.is-picked{
+      border-color:rgba(196,18,47,.3);
+      box-shadow:0 18px 36px rgba(196,18,47,.08);
+      background:#fff;
+    }
+
+    .hp-selector-icon{
+      width:50px;
+      height:50px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(249,250,252,.95));
+      border:1px solid rgba(196,18,47,.12);
+      color:var(--brand, #C4122F);
+      box-shadow:0 12px 24px rgba(196,18,47,.08);
+      flex:0 0 auto;
+    }
+
+    .hp-selector-icon svg,
+    .hp-selector-option-arrow svg{
+      width:22px;
+      height:22px;
+      display:block;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:1.9;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .hp-selector-option-copy strong{
+      display:block;
+      color:var(--text-heading, #111318);
+      font-size:1.12rem;
+      line-height:1.2;
+      letter-spacing:-.015em;
+    }
+
+    .hp-selector-option-copy small{
+      display:block;
+      margin-top:.38rem;
+      color:var(--text-muted, #8a91a0);
+      font-size:.92rem;
+      line-height:1.46;
+    }
+
+    .hp-selector-option-arrow{
+      width:38px;
+      height:38px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      border:1px solid #ebedf2;
+      background:#fff;
+      color:#9aa2b1;
+      flex:0 0 auto;
+    }
+
+    .hp-selector-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .hp-selector-back,
+    .hp-selector-reset,
+    .hp-selector-link,
+    .hp-selector-consult{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:.8rem 1.25rem;
+      border-radius:999px;
+      font-weight:700;
+      text-decoration:none;
+      cursor:pointer;
+      transition:transform .14s ease, box-shadow .14s ease, background .14s ease, border-color .14s ease, color .14s ease;
+    }
+
+    .hp-selector-back,
+    .hp-selector-reset{
+      border:1px solid #e6e9ef;
+      background:#fff;
+      color:var(--text-heading, #111318);
+    }
+
+    .hp-selector-link,
+    .hp-selector-consult{
+      border:1px solid transparent;
+      background:linear-gradient(135deg, var(--brand, #C4122F), #A80B24);
+      box-shadow:0 14px 30px rgba(196,18,47,.2);
+      color:#fff;
+    }
+
+    .hp-selector-consult{
+      background:#111318;
+      box-shadow:0 12px 28px rgba(17,19,24,.14);
+    }
+
+    .hp-selector-back:hover,
+    .hp-selector-reset:hover,
+    .hp-selector-link:hover,
+    .hp-selector-consult:hover{
+      transform:translateY(-1px);
+    }
+
+    .hp-result-card{
+      padding:18px;
+      border-radius:22px;
+      border:1px solid rgba(196,18,47,.12);
+      background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(250,251,253,.98));
+      box-shadow:0 18px 42px rgba(15,23,42,.05);
+    }
+
+    .hp-result-main{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:14px;
+      align-items:center;
+    }
+
+    .hp-result-score{
+      width:86px;
+      height:86px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:conic-gradient(var(--brand, #C4122F) 0deg 300deg, #eef0f5 300deg);
+      box-shadow:0 16px 32px rgba(196,18,47,.14);
+    }
+
+    .hp-result-score span{
+      width:64px;
+      height:64px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:#fff;
+      color:var(--text-heading, #111318);
+      font-size:1rem;
+      font-weight:800;
+      letter-spacing:-.02em;
+    }
+
+    .hp-result-label{
+      margin:0 0 .35rem;
+      color:var(--brand, #C4122F);
+      font-size:.75rem;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .hp-result-title{
+      margin:0;
+      color:var(--text-heading, #111318);
+      font-size:1.3rem;
+      line-height:1.2;
+      letter-spacing:-.02em;
+    }
+
+    .hp-result-text{
+      margin:.55rem 0 0;
+      color:var(--text-soft, #5f6673);
+      font-size:.94rem;
+      line-height:1.6;
+    }
+
+    .hp-result-reasons{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .hp-result-reasons span{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      padding:.7rem .8rem;
+      border-radius:14px;
+      border:1px solid #eceff4;
+      background:#fff;
+      color:var(--text-heading, #111318);
+      font-size:.82rem;
+      font-weight:700;
+      text-align:center;
+      line-height:1.35;
+    }
+
+    .hp-alt-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .hp-alt-card{
+      display:block;
+      padding:14px 15px;
+      border-radius:18px;
+      border:1px solid #eaedf3;
+      background:#fff;
+      box-shadow:0 10px 22px rgba(15,23,42,.04);
+      text-decoration:none;
+      transition:transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+    }
+
+    .hp-alt-card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(196,18,47,.22);
+      box-shadow:0 18px 34px rgba(15,23,42,.08);
+    }
+
+    .hp-alt-card b{
+      display:block;
+      color:var(--text-heading, #111318);
+      font-size:.94rem;
+      line-height:1.3;
+    }
+
+    .hp-alt-card span{
+      display:block;
+      margin-top:.35rem;
+      color:var(--text-muted, #8a91a0);
+      font-size:.78rem;
+      line-height:1.4;
+    }
+
+    .hp-selector--compact .hp-selector-shell{
+      grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+      border-radius:28px;
+    }
+
+    .hp-selector--compact .hp-selector-title{
+      font-size:clamp(1.7rem,3vw,2.35rem);
+      max-width:12em;
+    }
+
+    .hp-selector--compact .hp-selector-benefits{
+      gap:8px;
+    }
+
+    .hp-selector--compact .hp-selector-metrics{
+      grid-template-columns:repeat(3,minmax(0,1fr));
+    }
+
+    .hp-selector--compact .hp-selector-stage,
+    .hp-selector--compact .hp-selector-result{
+      min-height:500px;
+    }
+
+    @keyframes hpSelectorFade{
+      from{opacity:0; transform:translateY(12px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+
+    @keyframes hpSelectorOrb{
+      0%,100%{transform:translate3d(0,0,0)}
+      50%{transform:translate3d(-18px,14px,0)}
+    }
+
+    @keyframes hpWireDash{
+      to{stroke-dashoffset:-180;}
+    }
+
+    @keyframes hpNodePulse{
+      0%,100%{transform:scale(1); opacity:.72}
+      50%{transform:scale(1.18); opacity:1}
+    }
+
+    @media (max-width:980px){
+      .hp-selector-shell,
+      .hp-selector--compact .hp-selector-shell{
+        grid-template-columns:1fr;
+      }
+
+      .hp-selector-title{
+        max-width:12em;
+      }
+    }
+
+    @media (max-width:720px){
+      .hp-selector{
+        padding-block:30px 56px;
+      }
+
+      .hp-selector-shell{
+        padding:16px;
+        border-radius:24px;
+      }
+
+      .hp-selector-card{
+        border-radius:22px;
+      }
+
+      .hp-selector-options,
+      .hp-result-reasons,
+      .hp-alt-grid,
+      .hp-selector-metrics{
+        grid-template-columns:1fr;
+      }
+
+      .hp-selector-stage,
+      .hp-selector-result,
+      .hp-selector--compact .hp-selector-stage,
+      .hp-selector--compact .hp-selector-result{
+        min-height:0;
+      }
+
+      .hp-selector-options{
+        grid-template-rows:none;
+      }
+
+      .hp-selector-option{
+        grid-template-columns:auto 1fr;
+      }
+
+      .hp-selector-option-arrow{
+        display:none;
+      }
+
+      .hp-result-main{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .hp-selector-shell::after,
+      .hp-selector-stage,
+      .hp-selector-result,
+      .hp-selector-wire path,
+      .hp-selector-wire .node{
+        animation:none !important;
+      }
+
+      .hp-selector-option,
+      .hp-selector-back,
+      .hp-selector-reset,
+      .hp-selector-link,
+      .hp-selector-consult,
+      .hp-alt-card{
+        transition:none !important;
+      }
+    }
+
+  
+    /* ===== Smart Match centered premium option cards =====
+       Makes every selection card feel full, balanced and centered. */
+    .hp-selector-stage{
+      padding:22px 20px 24px;
+    }
+
+    .hp-selector-options{
+      gap:16px !important;
+      grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+      grid-template-rows:repeat(2,minmax(190px,1fr)) !important;
+      align-items:stretch !important;
+      align-content:stretch !important;
+    }
+
+    .hp-selector-option{
+      position:relative !important;
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:center !important;
+      justify-content:center !important;
+      gap:12px !important;
+      min-height:190px !important;
+      height:100% !important;
+      padding:30px 58px 28px !important;
+      text-align:center !important;
+      border-radius:20px !important;
+      background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(249,250,253,.94)) !important;
+    }
+
+    .hp-selector-option:hover,
+    .hp-selector-option:focus-visible{
+      transform:translateY(-3px) !important;
+    }
+
+    .hp-selector-option.is-picked{
+      background:#fff !important;
+      border-color:rgba(196,18,47,.36) !important;
+      box-shadow:0 22px 44px rgba(196,18,47,.10), 0 12px 28px rgba(15,23,42,.06) !important;
+    }
+
+    .hp-selector-icon{
+      width:58px !important;
+      height:58px !important;
+      margin:0 auto !important;
+      border-radius:17px !important;
+      display:grid !important;
+      place-items:center !important;
+      box-shadow:0 14px 30px rgba(196,18,47,.10) !important;
+    }
+
+    .hp-selector-icon svg{
+      width:25px !important;
+      height:25px !important;
+    }
+
+    .hp-selector-option-copy{
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:center !important;
+      justify-content:center !important;
+      width:100% !important;
+      max-width:190px !important;
+      min-height:70px !important;
+      margin:0 auto !important;
+    }
+
+    .hp-selector-option-copy strong{
+      font-size:1.13rem !important;
+      line-height:1.18 !important;
+      letter-spacing:-.025em !important;
+      text-align:center !important;
+    }
+
+    .hp-selector-option-copy small{
+      margin-top:.45rem !important;
+      font-size:.92rem !important;
+      line-height:1.45 !important;
+      text-align:center !important;
+    }
+
+    .hp-selector-option-arrow{
+      position:absolute !important;
+      top:50% !important;
+      right:18px !important;
+      transform:translateY(-50%) !important;
+      width:42px !important;
+      height:42px !important;
+      display:grid !important;
+      place-items:center !important;
+      background:rgba(255,255,255,.88) !important;
+      box-shadow:0 10px 22px rgba(15,23,42,.05) !important;
+      transition:transform .16s ease, border-color .16s ease, color .16s ease, box-shadow .16s ease !important;
+    }
+
+    .hp-selector-option:hover .hp-selector-option-arrow,
+    .hp-selector-option:focus-visible .hp-selector-option-arrow{
+      transform:translateY(-50%) translateX(2px) !important;
+      border-color:rgba(196,18,47,.22) !important;
+      color:var(--brand, #C4122F) !important;
+      box-shadow:0 12px 26px rgba(196,18,47,.09) !important;
+    }
+
+    @media (max-width:720px){
+      .hp-selector-stage{
+        padding:18px 16px 20px !important;
+      }
+
+      .hp-selector-options{
+        grid-template-columns:1fr !important;
+        grid-template-rows:none !important;
+        gap:13px !important;
+      }
+
+      .hp-selector-option{
+        min-height:150px !important;
+        padding:24px 56px 23px !important;
+        border-radius:18px !important;
+      }
+
+      .hp-selector-icon{
+        width:54px !important;
+        height:54px !important;
+      }
+
+      .hp-selector-option-copy{
+        max-width:240px !important;
+        min-height:0 !important;
+      }
+
+      .hp-selector-option-arrow{
+        right:16px !important;
+        display:grid !important;
+      }
+    }
+
+    @media (max-width:420px){
+      .hp-selector-option{
+        padding:23px 48px 22px !important;
+      }
+
+      .hp-selector-option-copy strong{
+        font-size:1.06rem !important;
+      }
+
+      .hp-selector-option-copy small{
+        font-size:.86rem !important;
+      }
+
+      .hp-selector-option-arrow{
+        width:38px !important;
+        height:38px !important;
+        right:12px !important;
+      }
+    }
+
+
+    /* ===== FINAL FIX: remove the small arrow buttons from Smart Match cards =====
+       The full .hp-selector-option button is clickable, so no separate arrow control is needed. */
+    .hp-selector-option-arrow{
+      display:none !important;
+    }
+
+    .hp-selector-option{
+      padding:30px 24px 28px !important;
+      cursor:pointer !important;
+    }
+
+    .hp-selector-option-copy{
+      pointer-events:none;
+    }
+
+    .hp-selector-icon{
+      pointer-events:none;
+    }
+
+    @media (max-width:720px){
+      .hp-selector-option{
+        padding:24px 22px 23px !important;
+      }
+    }
+
+    @media (max-width:420px){
+      .hp-selector-option{
+        padding:23px 20px 22px !important;
+      }
+    }
+
+
+    /* ===== FINAL FIX: lock Smart Match container height on desktop =====
+       Every quiz step now uses the same visual footprint, so the whole selector
+       no longer jumps taller or shorter when moving between steps. */
+    @media (min-width:981px){
+      .hp-selector-shell{
+        height:800px !important;
+        min-height:800px !important;
+        max-height:800px !important;
+        align-items:stretch !important;
+      }
+
+      .hp-selector-copy,
+      .hp-selector-card{
+        height:100% !important;
+        min-height:0 !important;
+      }
+
+      .hp-selector-card{
+        display:flex !important;
+        flex-direction:column !important;
+        overflow:hidden !important;
+      }
+
+      .hp-selector-top,
+      .hp-selector-progress{
+        flex:0 0 auto !important;
+      }
+
+      .hp-selector-stage,
+      .hp-selector-result,
+      .hp-selector--compact .hp-selector-stage,
+      .hp-selector--compact .hp-selector-result{
+        flex:1 1 auto !important;
+        min-height:0 !important;
+        height:auto !important;
+        overflow:hidden !important;
+      }
+
+      .hp-selector-stage.is-active,
+      .hp-selector-result.is-active{
+        display:flex !important;
+      }
+
+      .hp-selector-options{
+        flex:1 1 auto !important;
+        min-height:0 !important;
+      }
+
+      .hp-selector-actions{
+        flex:0 0 auto !important;
+        margin-top:16px !important;
+      }
+
+      .hp-result-card{
+        flex:0 0 auto !important;
+      }
+    }
+
+    @media (max-width:980px){
+      .hp-selector-shell{
+        height:auto !important;
+        max-height:none !important;
+      }
+
+      .hp-selector-card{
+        display:flex !important;
+        flex-direction:column !important;
+        min-height:680px !important;
+      }
+
+      .hp-selector-stage,
+      .hp-selector-result,
+      .hp-selector--compact .hp-selector-stage,
+      .hp-selector--compact .hp-selector-result{
+        flex:1 1 auto !important;
+        min-height:0 !important;
+      }
+    }
+
+    @media (max-width:720px){
+      .hp-selector-card{
+        min-height:0 !important;
+      }
+    }
+
+
     </style>
 </head>
 <body>
@@ -1788,6 +2778,11 @@
                             Iepazīstiet HELIOTHERM premium klāstu - augstākās kvalitātes siltumsūkņus, kas ražoti Austrijā privātmājām, daudzdzīvokļu un komerciāliem objektiem.
                         </p>
 
+                        <div class="hero-actions" style="margin-top:1.15rem; display:flex; gap:.7rem; flex-wrap:wrap;">
+                            <a class="btn primary" href="#siltumsukna-asistents">Atrast piemērotāko modeli</a>
+                            <a class="btn ghost" href="#residential-products">Skatīt katalogu</a>
+                        </div>
+
                         <div class="quick-filters">
                             <a class="qf">Zemes siltums - tiešā iztvaikošana</a>
                             <a class="qf">Zemes siltums - glikola kontūrs</a>
@@ -1812,8 +2807,134 @@
             </div>
         </div>
 
+  <!-- ===== Premium heat pump selector ===== -->
+  <section class="hp-selector" id="siltumsukna-asistents" data-hp-selector data-product-base="./produkts/index.html?item=">
+    <div class="container">
+      <div class="hp-selector-shell">
+        <div class="hp-selector-wire" aria-hidden="true">
+          <svg viewBox="0 0 1200 700" preserveAspectRatio="none">
+            <path d="M30 210 C180 110 320 150 470 100 S760 60 960 170 S1110 230 1180 110"></path>
+            <path class="is-soft" d="M-10 530 C170 420 360 500 540 390 S840 300 1040 390 S1180 440 1230 350"></path>
+            <path d="M70 660 C230 560 430 620 610 530 S880 450 1080 540"></path>
+            <circle class="node" cx="468" cy="100" r="6"></circle>
+            <circle class="node" cx="960" cy="170" r="6"></circle>
+            <circle class="node" cx="540" cy="390" r="6"></circle>
+          </svg>
+        </div>
+
+        <div class="hp-selector-copy">
+          <div class="hp-selector-copy-main">
+            <p class="hp-selector-eyebrow">Izvēles asistents</p>
+            <h2 class="hp-selector-title">Atrodiet <span>piemērotāko</span> siltumsūkni savam projektam</h2>
+            <p class="hp-selector-lead">Atbildiet uz dažiem vienkāršiem jautājumiem un saņemiet ieteikumu, kurš Heliotherm premium risinājums vislabāk atbilst jūsu mājai vai objektam.</p>
+            <div class="hp-selector-benefits">
+              <div class="hp-selector-benefit">Asistents ir veidots kā viegls premium ceļvedis, nevis smaga tehniskā forma.</div>
+              <div class="hp-selector-benefit">Rezultātā uzreiz redzēsiet galveno ieteikumu, alternatīvas un turpmāko soli.</div>
+              <div class="hp-selector-benefit">Izvēles balstītas uz objekta tipu, avotu, prioritātēm un vajadzīgajām funkcijām.</div>
+            </div>
+          </div>
+
+          <div class="hp-selector-metrics" aria-label="Asistenta priekšrocības">
+            <div class="hp-selector-metric"><strong>5</strong><span>ātri izvēles soļi</span></div>
+            <div class="hp-selector-metric"><strong>45s</strong><span>aptuvenais aizpildes laiks</span></div>
+            <div class="hp-selector-metric"><strong>3</strong><span>ieteiktie risinājumi</span></div>
+          </div>
+        </div>
+
+        <div class="hp-selector-card" aria-live="polite">
+          <div class="hp-selector-top">
+            <span class="hp-selector-stepcount" data-hp-stepcount>Solis 1 / 5</span>
+          </div>
+          <div class="hp-selector-progress"><span data-hp-progress></span></div>
+
+          <div class="hp-selector-stage is-active" data-hp-stage>
+            <h3 class="hp-selector-question">Kādam objektam meklējat risinājumu?</h3>
+            <p class="hp-selector-sub">Tas palīdz saprast, vai piemērotāks būs privātmājas, daudzdzīvokļu, komerciāls vai lieljaudas risinājums.</p>
+            <div class="hp-selector-options">
+              <button class="hp-selector-option" type="button" data-hp-option data-field="project" data-value="home"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 10.5 12 4l7.5 6.5"/><path d="M6.5 9.5V20h11V9.5"/><path d="M10 20v-5h4v5"/></svg></span><span class="hp-selector-option-copy"><strong>Privātmāja</strong><small>Jaunbūve vai esoša māja</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="project" data-value="apartment"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V6.5A1.5 1.5 0 0 1 5.5 5H11v15"/><path d="M13 20V3.5A1.5 1.5 0 0 1 14.5 2H19a1 1 0 0 1 1 1V20"/><path d="M7 8h1M7 11h1M7 14h1M15.5 6h1M15.5 9h1M15.5 12h1M15.5 15h1"/></svg></span><span class="hp-selector-option-copy"><strong>Daudzdzīvokļu ēka</strong><small>Lielāks siltuma patēriņš</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="project" data-value="commercial"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20V8l7-3v15"/><path d="M12 20V10l7-2v12"/><path d="M8 10h1M8 13h1M8 16h1M15 11h1M15 14h1"/></svg></span><span class="hp-selector-option-copy"><strong>Komerctelpas</strong><small>Biroji, viesnīcas, pakalpojumi</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="project" data-value="industrial"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20V11l5 2v-2l4 2V8l5 2v10"/><path d="M6 8h3V5H6z"/></svg></span><span class="hp-selector-option-copy"><strong>Industriāls objekts</strong><small>Lieljaudas projekti</small></span></button>
+            </div>
+          </div>
+
+          <div class="hp-selector-stage" data-hp-stage>
+            <h3 class="hp-selector-question">Kāds enerģijas avots jums šķiet reālākais?</h3>
+            <p class="hp-selector-sub">Ja nezināt, izvēlieties “neesmu pārliecināts”, asistents ieteiks drošāku un elastīgāku virzienu.</p>
+            <div class="hp-selector-options">
+              <button class="hp-selector-option" type="button" data-hp-option data-field="source" data-value="garden"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20c0-5.2 2.2-9.2 6.5-12"/><path d="M12 20c0-5.2-2.2-9.2-6.5-12"/><path d="M12 20V9.5"/><path d="M8.2 7.4c1.6 0 2.8-.6 3.8-2.4 1 1.8 2.2 2.4 3.8 2.4"/></svg></span><span class="hp-selector-option-copy"><strong>Ir zemes platība</strong><small>Ģeotermija vai zemes kontūrs</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="source" data-value="borehole"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="M8 7c.8-1.4 2.1-2 4-2s3.2.6 4 2"/><path d="M8 12c.8-1.4 2.1-2 4-2s3.2.6 4 2"/><path d="M8 17c.8-1.4 2.1-2 4-2s3.2.6 4 2"/></svg></span><span class="hp-selector-option-copy"><strong>Varētu būt urbums vai gruntsūdens</strong><small>Stabils siltuma avots</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="source" data-value="air"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5c1.7 0 2.4-1 4.1-1 1.7 0 2.4 1 4.1 1s2.4-1 4.1-1 2.4 1 4.1 1"/><path d="M3 14c1.6 0 2.3-1 3.9-1s2.3 1 3.9 1 2.3-1 3.9-1 2.3 1 3.9 1"/></svg></span><span class="hp-selector-option-copy"><strong>Vajag bez zemes darbiem</strong><small>Gaisa siltumsūknis</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="source" data-value="unsure"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.8-2.5 2.1-2.5 4"/><path d="M12 18h.01"/><circle cx="12" cy="12" r="9"/></svg></span><span class="hp-selector-option-copy"><strong>Neesmu pārliecināts</strong><small>Ieteikt elastīgāko risinājumu</small></span></button>
+            </div>
+            <div class="hp-selector-actions"><button class="hp-selector-back" type="button" data-hp-back>Atpakaļ</button></div>
+          </div>
+
+          <div class="hp-selector-stage" data-hp-stage>
+            <h3 class="hp-selector-question">Kas jums ir svarīgākais?</h3>
+            <p class="hp-selector-sub">Izvēlieties galveno prioritāti. Konsultācijas laikā varēs precizēt arī pārējās detaļas.</p>
+            <div class="hp-selector-options">
+              <button class="hp-selector-option" type="button" data-hp-option data-field="priority" data-value="efficiency"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19h14"/><path d="M7.5 15.5 11 12l2.5 2.5L18 10"/><path d="M14.5 10H18v3.5"/></svg></span><span class="hp-selector-option-copy"><strong>Maksimāla efektivitāte</strong><small>Zemākas izmaksas ilgtermiņā</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="priority" data-value="quiet"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10h3l4-4v12l-4-4H5z"/><path d="M17 9.5c.7.8 1 1.6 1 2.5s-.3 1.7-1 2.5"/><path d="M19.5 7.5c1.3 1.2 2 2.8 2 4.5s-.7 3.3-2 4.5"/></svg></span><span class="hp-selector-option-copy"><strong>Ļoti klusa darbība</strong><small>Komforts ikdienā</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="priority" data-value="premium"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.5 5 5.5.8-4 3.9.9 5.5L12 15.7 7.1 18.2 8 12.7 4 8.8 9.5 8z"/></svg></span><span class="hp-selector-option-copy"><strong>Premium risinājums</strong><small>Dizains, kvalitāte un kontrole</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="priority" data-value="eco"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 14.5c2.6 2.6 6.9 2.6 9.5 0 2.6-2.6 2.6-6.9 0-9.5"/><path d="M17 5h-5v5"/><path d="M17.5 9.5c-2.6-2.6-6.9-2.6-9.5 0-2.6 2.6-2.6 6.9 0 9.5"/><path d="M7 19h5v-5"/></svg></span><span class="hp-selector-option-copy"><strong>Videi draudzīga tehnoloģija</strong><small>R290, PV un ilgtspēja</small></span></button>
+            </div>
+            <div class="hp-selector-actions"><button class="hp-selector-back" type="button" data-hp-back>Atpakaļ</button></div>
+          </div>
+
+          <div class="hp-selector-stage" data-hp-stage>
+            <h3 class="hp-selector-question">Vai projekts ir jaunbūve vai renovācija?</h3>
+            <p class="hp-selector-sub">Šis solis palīdz atšķirt pilna cikla jaunbūves risinājumu no elastīgas uzstādīšanas esošā objektā.</p>
+            <div class="hp-selector-options">
+              <button class="hp-selector-option" type="button" data-hp-option data-field="stage" data-value="newbuild"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V9.5L12 4l8 5.5V20"/><path d="M9 20v-6h6v6"/><path d="M15 4v4"/></svg></span><span class="hp-selector-option-copy"><strong>Jaunbūve</strong><small>Var plānot sistēmu no sākuma</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="stage" data-value="renovation"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5"/><path d="M14 5h5v5"/><path d="M4 14v5h5"/><path d="M8.5 8.5 6 6l2-2 2.5 2.5"/><path d="M15.5 15.5 18 18l-2 2-2.5-2.5"/></svg></span><span class="hp-selector-option-copy"><strong>Esoša māja vai renovācija</strong><small>Svarīga elastīga uzstādīšana</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="stage" data-value="commercial"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20V8l7-3v15"/><path d="M12 20V10l7-2v12"/><path d="M8 10h1M8 13h1M8 16h1M15 11h1M15 14h1"/></svg></span><span class="hp-selector-option-copy"><strong>Liels objekts</strong><small>Jārēķina jauda un patēriņš</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="stage" data-value="unsure"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10"/><path d="M5 7h14"/><path d="M6 10.5h12v9H6z"/><path d="M9 13h6M9 16h3"/></svg></span><span class="hp-selector-option-copy"><strong>Vēl tikai plānojam</strong><small>Vajadzīgs sākotnējs virziens</small></span></button>
+            </div>
+            <div class="hp-selector-actions"><button class="hp-selector-back" type="button" data-hp-back>Atpakaļ</button></div>
+          </div>
+
+          <div class="hp-selector-stage" data-hp-stage>
+            <h3 class="hp-selector-question">Vai vēlaties papildu funkcijas?</h3>
+            <p class="hp-selector-sub">Dzesēšana un PV integrācija bieži ietekmē to, kurš modelis būs vērtīgākais ilgtermiņā.</p>
+            <div class="hp-selector-options">
+              <button class="hp-selector-option" type="button" data-hp-option data-field="extra" data-value="cooling"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="m6 6 12 12"/><path d="m18 6-12 12"/><path d="M4.5 12h15"/></svg></span><span class="hp-selector-option-copy"><strong>Dzesēšana vasarā</strong><small>Apkure un komforta dzesēšana</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="extra" data-value="pv"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15.5 12 4l2.5 6H20l-8 10-2.5-6z"/></svg></span><span class="hp-selector-option-copy"><strong>Saules paneļu integrācija</strong><small>PV Ready un gudra vadība</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="extra" data-value="both"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5.5h10"/><path d="M12 3v5"/><path d="M12 16v5"/><path d="m6 10 12 12"/><path d="M18 10 6 22"/><path d="M4.5 14.5h15"/></svg></span><span class="hp-selector-option-copy"><strong>Abi varianti</strong><small>Dzesēšana, PV un nākotnes gatavība</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="extra" data-value="none"><span class="hp-selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 9.2 17 19 7.5"/></svg></span><span class="hp-selector-option-copy"><strong>Tikai apkure</strong><small>Vienkāršāks sākuma risinājums</small></span></button>
+            </div>
+            <div class="hp-selector-actions"><button class="hp-selector-back" type="button" data-hp-back>Atpakaļ</button></div>
+          </div>
+
+          <div class="hp-selector-result" data-hp-result>
+            <h3 class="hp-selector-question">Jūsu ieteiktais risinājums</h3>
+            <div class="hp-result-card">
+              <div class="hp-result-main">
+                <div class="hp-result-score"><span data-hp-result-score>92%</span></div>
+                <div>
+                  <p class="hp-result-label" data-hp-result-label>Best match</p>
+                  <h4 class="hp-result-title" data-hp-result-title>Heliotherm risinājums</h4>
+                  <p class="hp-result-text" data-hp-result-text></p>
+                </div>
+              </div>
+              <div class="hp-result-reasons" data-hp-result-reasons></div>
+            </div>
+
+            <div class="hp-alt-grid" data-hp-alt-wrap></div>
+
+            <div class="hp-selector-actions">
+              <a class="hp-selector-link" href="#" data-hp-result-link>Skatīt ieteikto modeli</a>
+              <a class="hp-selector-consult" href="../kontakti/">Pieteikt konsultāciju</a>
+              <button class="hp-selector-reset" type="button" data-hp-reset>Sākt vēlreiz</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
         <!-- ====== Siltumsūkņi privātmājām ====== -->
-        <div class="facts">
+        <div class="facts" id="residential-products">
             <div class="container">
                 <div class="hd">
                     <h2>Mūsu siltumsūkņi <span class="em">privātmājām</span></h2>
@@ -2185,7 +3306,6 @@
 
                 </div>
 
-
                 <div class="more-row">
                     <button class="btn ghost" style="cursor: pointer;"  id="toggle-commercial">
                         Rādīt vairāk industriālo siltumsūkņu
@@ -2262,6 +3382,197 @@
         makeProductImagesClickable();
       });
     </script>
+
+<script>
+(function(){
+
+  const PRODUCTS = [
+    {
+      id:"comfort_compact_r290",
+      title:"Comfort Compact R290",
+      label:"Mūsdienīgs gaisa risinājums",
+      text:"Kompakts premium gaisa siltumsūknis ar dabisko R290 aukstumaģentu. Ļoti laba izvēle renovācijām, privātmājām un projektiem, kur svarīga vienkāršāka uzstādīšana bez zemes darbiem.",
+      reasons:["Bez zemes darbiem", "R290 tehnoloģija", "Kompakts dizains"],
+      tags:["home","renovation","air","eco","compact","quiet","pv","cooling","unsure","none"]
+    },
+    {
+      id:"air_cube",
+      title:"Air Source Split Cube",
+      label:"Premium gaisa avota izvēle",
+      text:"Premium split cube risinājums klientiem, kuri vēlas gaisa avota siltumsūkni ar modernu dizainu, efektīvu darbību un elastīgu montāžu.",
+      reasons:["Gaisa avots", "Premium sajūta", "Elastīga uzstādīšana"],
+      tags:["home","newbuild","renovation","air","premium","quiet","cooling","pv","unsure","both"]
+    },
+    {
+      id:"prestige_web_dx",
+      title:"Prestige WEB DX",
+      label:"Augstākā efektivitāte mājai",
+      text:"Īpaši efektīvs premium risinājums projektiem, kuros iespējams izmantot zemes vai urbuma potenciālu un prioritāte ir maksimāls ilgtermiņa sniegums.",
+      reasons:["Ģeotermija", "Maksimāla efektivitāte", "Premium klase"],
+      tags:["home","newbuild","garden","borehole","efficiency","premium","quiet","eco","both","pv"]
+    },
+    {
+      id:"complete_brine",
+      title:"Complete Brine",
+      label:"Pilns zemes siltumsūkņa risinājums",
+      text:"All in One tipa brīnes siltumsūknis ar apkuri, dzesēšanu un karstā ūdens sagatavošanu. Piemērots jaunbūvēm un pārdomātiem premium projektiem.",
+      reasons:["All in One", "Zeme vai urbums", "Karstais ūdens"],
+      tags:["home","newbuild","garden","borehole","efficiency","premium","quiet","cooling","pv","both"]
+    },
+    {
+      id:"groundwater_basic_comfort",
+      title:"Groundwater Heat Pump Basic Comfort",
+      label:"Stabils siltuma avots",
+      text:"Piemērots īpašumiem, kur iespējams izmantot gruntsūdeni kā stabilu un efektīvu enerģijas avotu. Labs variants projektiem ar augstu efektivitātes fokusu.",
+      reasons:["Gruntsūdens", "Stabila jauda", "Efektīva darbība"],
+      tags:["home","newbuild","borehole","efficiency","quiet","eco","both","pv"]
+    },
+    {
+      id:"solid_air_compact_large",
+      title:"Solid Air Compact lieljaudas siltumsūknis",
+      label:"Komerciāliem objektiem",
+      text:"Lieljaudas gaisa siltumsūkņa risinājums komercēkām, daudzdzīvokļu projektiem un objektiem ar augstāku siltuma pieprasījumu.",
+      reasons:["Lielāka jauda", "Komerciāls pielietojums", "Gaisa avots"],
+      tags:["commercial","industrial","apartment","air","efficiency","premium","cooling","pv","unsure","planning"]
+    },
+    {
+      id:"solid_brine_large",
+      title:"Solid Brine lieljaudas siltumsūknis",
+      label:"Premium lieljaudas zemes risinājums",
+      text:"Spēcīgs brīnes siltumsūknis lieliem objektiem, kur pieejams zemes vai urbuma resurss un svarīga stabila, efektīva jauda ilgtermiņā.",
+      reasons:["Lieljaudas sistēma", "Zeme vai urbums", "Stabila efektivitāte"],
+      tags:["commercial","industrial","apartment","garden","borehole","efficiency","premium","quiet","pv","planning"]
+    }
+  ];
+
+  const questionCount = 5;
+
+  function productUrl(root, id){
+    const base = root.getAttribute("data-product-base") || "./produkts/index.html?item=";
+    return base + encodeURIComponent(id.replace(/_/g, "-"));
+  }
+
+  function scoreProducts(answers){
+    const picked = Object.values(answers).filter(Boolean);
+    return PRODUCTS.map(product => {
+      let score = 40;
+      picked.forEach(value => {
+        if (product.tags.includes(value)) score += 13;
+      });
+
+      if (["commercial", "industrial", "apartment"].includes(answers.project) && product.tags.includes("commercial")) score += 24;
+      if (answers.project === "home" && product.tags.includes("home")) score += 14;
+      if (answers.source === "air" && product.tags.includes("air")) score += 22;
+      if (answers.source === "garden" && product.tags.includes("garden")) score += 22;
+      if (answers.source === "borehole" && product.tags.includes("borehole")) score += 22;
+      if (answers.stage === "renovation" && product.tags.includes("renovation")) score += 18;
+      if (answers.stage === "newbuild" && product.tags.includes("newbuild")) score += 16;
+      if (answers.priority === "premium" && product.tags.includes("premium")) score += 16;
+      if (answers.priority === "efficiency" && product.tags.includes("efficiency")) score += 18;
+      if (answers.priority === "quiet" && product.tags.includes("quiet")) score += 14;
+      if (answers.priority === "eco" && product.tags.includes("eco")) score += 16;
+      if (answers.extra === "both" && (product.tags.includes("pv") || product.tags.includes("cooling"))) score += 14;
+      if (answers.extra === "pv" && product.tags.includes("pv")) score += 11;
+      if (answers.extra === "cooling" && product.tags.includes("cooling")) score += 11;
+      if (answers.source === "unsure" && product.tags.includes("unsure")) score += 8;
+      if (answers.stage === "unsure" && product.tags.includes("planning")) score += 8;
+
+      return { ...product, score: Math.min(98, score) };
+    }).sort((a, b) => b.score - a.score);
+  }
+
+  function initSelector(root){
+    const stages = Array.from(root.querySelectorAll("[data-hp-stage]"));
+    const result = root.querySelector("[data-hp-result]");
+    const progress = root.querySelector("[data-hp-progress]");
+    const stepCount = root.querySelector("[data-hp-stepcount]");
+    const answers = {};
+    let current = 0;
+
+    function updatePicked(field, value){
+      root.querySelectorAll('[data-field="' + field + '"]').forEach(btn => {
+        btn.classList.toggle('is-picked', btn.getAttribute('data-value') === value);
+      });
+    }
+
+    function showStage(index){
+      current = Math.max(0, Math.min(index, stages.length - 1));
+      stages.forEach((stage, i) => stage.classList.toggle("is-active", i === current));
+      if (result) result.classList.remove("is-active");
+      if (progress) progress.style.width = (((current + 1) / questionCount) * 100) + "%";
+      if (stepCount) stepCount.textContent = "Solis " + (current + 1) + " / " + questionCount;
+    }
+
+    function renderResult(){
+      const sorted = scoreProducts(answers);
+      const top = sorted[0];
+      const alternatives = sorted.slice(1, 3);
+      const resultTitle = root.querySelector("[data-hp-result-title]");
+      const resultLabel = root.querySelector("[data-hp-result-label]");
+      const resultText = root.querySelector("[data-hp-result-text]");
+      const resultScore = root.querySelector("[data-hp-result-score]");
+      const resultReasons = root.querySelector("[data-hp-result-reasons]");
+      const resultLink = root.querySelector("[data-hp-result-link]");
+      const altWrap = root.querySelector("[data-hp-alt-wrap]");
+
+      if (resultTitle) resultTitle.textContent = top.title;
+      if (resultLabel) resultLabel.textContent = top.label;
+      if (resultText) resultText.textContent = top.text;
+      if (resultScore) resultScore.textContent = top.score + "%";
+      if (resultReasons) resultReasons.innerHTML = top.reasons.map(reason => '<span>' + reason + '</span>').join('');
+      if (resultLink) resultLink.href = productUrl(root, top.id);
+      if (altWrap) {
+        altWrap.innerHTML = alternatives.map(item => `
+          <a class="hp-alt-card" href="${productUrl(root, item.id)}">
+            <b>${item.title}</b>
+            <span>${item.label}</span>
+          </a>
+        `).join('');
+      }
+
+      stages.forEach(stage => stage.classList.remove('is-active'));
+      if (result) result.classList.add('is-active');
+      if (progress) progress.style.width = '100%';
+      if (stepCount) stepCount.textContent = 'Rezultāts';
+    }
+
+    root.addEventListener('click', function(event){
+      const option = event.target.closest('[data-hp-option]');
+      const back = event.target.closest('[data-hp-back]');
+      const reset = event.target.closest('[data-hp-reset]');
+
+      if (option && root.contains(option)) {
+        const field = option.getAttribute('data-field');
+        const value = option.getAttribute('data-value');
+        if (field) {
+          answers[field] = value;
+          updatePicked(field, value);
+        }
+        if (current >= stages.length - 1) {
+          renderResult();
+        } else {
+          setTimeout(() => showStage(current + 1), 90);
+        }
+      }
+
+      if (back && root.contains(back)) {
+        showStage(current - 1);
+      }
+
+      if (reset && root.contains(reset)) {
+        Object.keys(answers).forEach(key => delete answers[key]);
+        root.querySelectorAll('[data-hp-option]').forEach(btn => btn.classList.remove('is-picked'));
+        showStage(0);
+      }
+    });
+
+    showStage(0);
+  }
+
+  document.querySelectorAll('[data-hp-selector]').forEach(initSelector);
+})();
+</script>
+
 </body>
 
 </html>

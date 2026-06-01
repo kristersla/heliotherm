@@ -7,14 +7,18 @@
   <link rel="icon" type="image/x-icon" href="../../media/image/favicon.ico" />
   <meta name="theme-color" content="#f5f5f7" />
   <meta name="description" content="Heliotherm siltumsūkņu produktu lapa." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root{
       --bg:#f5f5f7;
       --bg-elevated:#ffffff;
-      --text:#111827;
-      --muted:#6b7280;
+      --text-main:#15171c;
+      --text-heading:#111318;
+      --text-soft:#5f6673;
+      --text-muted:#8a91a0;
+      --text:var(--text-main);
+      --muted:var(--text-soft);
       --hair:#e5e7eb;
       --hair-soft:#edf0f4;
       --brand:#C4122F;
@@ -39,12 +43,25 @@
 
     body{
       margin:0;
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      font-family:"Manrope",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      font-weight:400;
       background:var(--bg);
-      color:var(--text);
+      color:var(--text-main);
+      line-height:1.62;
       -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
     }
 
+    h1,h2,h3,h4,h5,h6{
+      color:var(--text-heading);
+      font-family:inherit;
+      font-weight:800;
+      letter-spacing:-.025em;
+    }
+    h1,h2{letter-spacing:-.03em}
+    p{line-height:1.65}
+    p,li,input,textarea,select,button{font-family:inherit}
+    small,.eyebrow,[class*="eyebrow"],.label,[class*="label"]{color:var(--text-muted)}
     .page-shell{
       min-height:100vh;
       display:flex;
@@ -115,7 +132,7 @@
       font-size:.78rem;
       letter-spacing:.18em;
       text-transform:uppercase;
-      color:#9ca3af;
+      color:var(--text-muted);
       margin-bottom:.55rem;
     }
 
@@ -280,12 +297,12 @@
       font-size:.78rem;
       letter-spacing:.16em;
       text-transform:uppercase;
-      color:#9ca3af;
+      color:var(--text-muted);
     }
 
     .spec-media-brand{
       font-size:.76rem;
-      color:#9ca3af;
+      color:var(--text-muted);
     }
 
     .spec-image{
@@ -345,7 +362,7 @@
       border-radius:999px;
       background:#f3f4f6;
       font-size:.78rem;
-      color:#4b5563;
+      color:var(--text-soft);
     }
 
     .spec-chip-dot{
@@ -357,7 +374,7 @@
 
     .spec-label-small{
       font-size:.76rem;
-      color:#9ca3af;
+      color:var(--text-muted);
       text-align:right;
     }
 
@@ -390,11 +407,11 @@
       font-weight:600;
       letter-spacing:.08em;
       text-transform:uppercase;
-      color:#9ca3af;
+      color:var(--text-muted);
     }
 
     .spec-value{
-      color:#111827;
+      color:var(--text-heading);
       line-height:1.6;
     }
 
@@ -422,7 +439,7 @@
     }
 
     .metric-label{
-      color:#9ca3af;
+      color:var(--text-muted);
       font-size:10px;
       text-transform:uppercase;
       letter-spacing:.12em;
@@ -431,7 +448,7 @@
     .metric-value{
       font-size:14px;
       font-weight:600;
-      color:#111827;
+      color:var(--text-heading);
     }
 
     /* Icon row (SVG badges) */
@@ -458,7 +475,7 @@
       align-items:center;
       gap:.45rem;
       font-size:.78rem;
-      color:#4b5563;
+      color:var(--text-soft);
       box-shadow:0 8px 20px rgba(148,163,184,0.16);
     }
 
@@ -515,7 +532,7 @@
       font-size:.78rem;
       letter-spacing:.16em;
       text-transform:uppercase;
-      color:#9ca3af;
+      color:var(--text-muted);
     }
 
     .section-title{
@@ -791,7 +808,7 @@
       border-radius:999px;
       border:1px solid var(--hair-soft);
       font-size:.78rem;
-      color:#6b7280;
+      color:var(--text-soft);
       background:#f9fafb;
       margin-top:.2rem;
     }
@@ -923,7 +940,7 @@
       margin: .8rem 0 0 1.9rem;
       font-size: .92rem;
       line-height: 1.58;
-      color: #6b7280;
+      color: var(--text-soft);
     }
 
     .compat-btn{
