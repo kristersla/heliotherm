@@ -3,14 +3,73 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Heliotherm Baltic</title>
+  <title>Heliotherm Baltics | Premium Austrijas siltumsūkņi Latvijā</title>
+  <meta name="description" content="Austrijā ražoti Heliotherm siltumsūkņi mājām un uzņēmumiem: klusa darbība, augsta energoefektivitāte un konsultācija piemērotākā risinājuma izvēlei." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.heliotherm.lv/" />
+  <link rel="alternate" hreflang="lv" href="https://www.heliotherm.lv/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.heliotherm.lv/" />
+  <link rel="apple-touch-icon" href="media/image/apple-touch-icon.png" />
+  <!-- EN poga ved uz heliotherm.com/en, nevis lokālu Heliotherm Latvia EN lapu, tāpēc hreflang="en" netiek norādīts. -->
   <link rel="icon" type="image/x-icon" href="media/image/favicon.ico" />
   <meta name="theme-color" content="#111318" />
-  <meta name="description" content="Luksusa klases Austrijā ražoti siltumsūkņi mājām un uzņēmumiem. Klusi, ilgmūžīgi un izcili efektīvi." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="lv_LV" />
+  <meta property="og:title" content="Heliotherm Baltics | Premium Austrijas siltumsūkņi Latvijā" />
+  <meta property="og:description" content="Austrijā ražoti Heliotherm siltumsūkņi mājām un uzņēmumiem: klusa darbība, augsta energoefektivitāte un konsultācija piemērotākā risinājuma izvēlei." />
+  <meta property="og:url" content="https://www.heliotherm.lv/" />
+  <meta property="og:site_name" content="Heliotherm Baltics" />
+  <meta property="og:image" content="https://www.heliotherm.lv/media/image/hero-intro.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Heliotherm Baltics | Premium Austrijas siltumsūkņi Latvijā" />
+  <meta name="twitter:description" content="Austrijā ražoti Heliotherm siltumsūkņi mājām un uzņēmumiem: klusa darbība, augsta energoefektivitāte un konsultācija piemērotākā risinājuma izvēlei." />
+  <meta name="twitter:image" content="https://www.heliotherm.lv/media/image/hero-intro.png" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="dns-prefetch" href="//fonts.gstatic.com" />
   <link rel="stylesheet" href="assets/style/style.css" />
   <link rel="preload" as="image" href="media/image/hero-intro.webp" type="image/webp" fetchpriority="high" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.heliotherm.lv/#organization",
+        "name": "Heliotherm Baltics",
+        "url": "https://www.heliotherm.lv/",
+        "logo": "https://www.heliotherm.lv/media/image/logo.svg",
+        "description": "Heliotherm Baltics piedāvā Austrijā ražotus premium siltumsūkņus mājām un uzņēmumiem Latvijā."
+      },
+      {
+        "@type": "HVACBusiness",
+        "@id": "https://www.heliotherm.lv/#business",
+        "name": "SIA Heliotherm Baltics",
+        "url": "https://www.heliotherm.lv/",
+        "logo": "https://www.heliotherm.lv/media/image/logo.svg",
+        "description": "Austrijā ražoti Heliotherm siltumsūkņi, konsultācijas un risinājumi mājām un uzņēmumiem.",
+        "email": "info@heliotherm.lv",
+        "telephone": "+371 29335554",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Andrejostas iela 4a",
+          "addressLocality": "Rīga",
+          "postalCode": "LV-1045",
+          "addressCountry": "LV"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.heliotherm.lv/#website",
+        "name": "Heliotherm Baltics",
+        "url": "https://www.heliotherm.lv/",
+        "inLanguage": "lv",
+        "publisher": {
+          "@id": "https://www.heliotherm.lv/#organization"
+        }
+      }
+    ]
+  }
+  </script>
 
   <style>
     /* ===== Subtle premium dynamic layer, keeps existing design ===== */
@@ -280,7 +339,7 @@
       animation:premiumChipEnter .85s ease-out forwards, premiumFloat 5.5s ease-in-out infinite;
     }
 
-    .premium-floating-spec b{
+    .premium-floating-spec .premium-spec-value{
       color:var(--brand, #e3062c);
       font-weight:950;
     }
@@ -1177,7 +1236,7 @@
       backdrop-filter:blur(12px);
     }
 
-    .hp-selector-metric strong{
+    .hp-selector-metric .hp-selector-metric-value{
       display:block;
       color:var(--text-heading, #111318);
       font-size:1.22rem;
@@ -1364,7 +1423,7 @@
       stroke-linejoin:round;
     }
 
-    .hp-selector-option-copy strong{
+    .hp-selector-option-copy .hp-selector-option-title{
       display:block;
       color:var(--text-heading, #111318);
       font-size:1.12rem;
@@ -1750,7 +1809,7 @@
       margin:0 auto !important;
     }
 
-    .hp-selector-option-copy strong{
+    .hp-selector-option-copy .hp-selector-option-title{
       font-size:1.13rem !important;
       line-height:1.18 !important;
       letter-spacing:-.025em !important;
@@ -1824,7 +1883,7 @@
         padding:23px 48px 22px !important;
       }
 
-      .hp-selector-option-copy strong{
+      .hp-selector-option-copy .hp-selector-option-title{
         font-size:1.06rem !important;
       }
 
@@ -2164,15 +2223,15 @@
       </svg>
       <span class="premium-moving-dot dot-a"></span>
       <span class="premium-moving-dot dot-b"></span>
-      <div class="premium-floating-spec spec-a"><b>AT</b> Austrijas inženierija</div>
-      <div class="premium-floating-spec spec-b"><b>35 dB</b> premium komforts</div>
-      <div class="premium-floating-spec spec spec-c"><b>−25°C</b> Stabils siltums ziemā</div>
+      <div class="premium-floating-spec spec-a"><span class="premium-spec-value">AT</span> Austrijas inženierija</div>
+      <div class="premium-floating-spec spec-b"><span class="premium-spec-value">35 dB</span> premium komforts</div>
+      <div class="premium-floating-spec spec spec-c"><span class="premium-spec-value">−25°C</span> Stabils siltums ziemā</div>
     </div>
 
     <div class="container hero-inner">
       <div class="copy">
          <h1>Premium klases Austrijas siltumsūkņi <em style="color:var(--brand)">izsmalcinātam komfortam.</em></h1>
-        <p class="lead">Heliotherm apvieno Austrijas inženierijas precizitāti, ilgmūžīgas komponentes un mūsdienīgu vadību, lai nodrošinātu klusu, stabilu un energoefektīvu komfortu prasīgām mājām un komercobjektiem.</p>
+        <p class="lead">Premium klases Austrijas siltumsūkņi ir piemēroti gan privātmājām, gan komercobjektiem, kur svarīgs kluss darbs, stabila apkure un zemas ilgtermiņa izmaksas. Heliotherm risinājumi apvieno Austrijas siltumsūkņu tehnoloģiju ar modernu vadību, efektivitāti un ilgmūžību.</p>
         <div class="premium-badges" aria-label="Premium kvalitātes marķieri">
           <span class="premium-pill">Ražots Austrijā</span>
           <span class="premium-pill">Premium klase</span>
@@ -2206,7 +2265,7 @@
         <noscript>
           <picture>
             <source srcset="media/image/hero-intro.webp" type="image/webp" />
-            <img src="media/image/hero-intro.png" width="1195" height="670" alt="Heliotherm premium siltumsūkņi" />
+            <img src="media/image/hero-intro.png" width="1195" height="670" alt="Heliotherm premium siltumsūkņu produktu līnija" />
           </picture>
         </noscript>
       </div>
@@ -2241,9 +2300,9 @@
           </div>
 
           <div class="hp-selector-metrics" aria-label="Asistenta priekšrocības">
-            <div class="hp-selector-metric"><strong>5</strong><span>ātri izvēles soļi</span></div>
-            <div class="hp-selector-metric"><strong>45s</strong><span>aptuvenais aizpildes laiks</span></div>
-            <div class="hp-selector-metric"><strong>3</strong><span>ieteiktie risinājumi</span></div>
+            <div class="hp-selector-metric"><span class="hp-selector-metric-value">5</span><span>ātri izvēles soļi</span></div>
+            <div class="hp-selector-metric"><span class="hp-selector-metric-value">45s</span><span>aptuvenais aizpildes laiks</span></div>
+            <div class="hp-selector-metric"><span class="hp-selector-metric-value">3</span><span>ieteiktie risinājumi</span></div>
           </div>
         </div>
 
@@ -2254,72 +2313,71 @@
           <div class="hp-selector-progress"><span data-hp-progress></span></div>
 
           <div class="hp-selector-stage is-active" data-hp-stage>
-            <h3 class="hp-selector-question">Kādam objektam meklējat risinājumu?</h3>
+            <p class="hp-selector-question">Kādam objektam meklējat risinājumu?</p>
             <p class="hp-selector-sub">Tas palīdz saprast, vai piemērotāks būs privātmājas, daudzdzīvokļu, komerciāls vai lieljaudas risinājums.</p>
             <div class="hp-selector-options">
-              <button class="hp-selector-option" type="button" data-hp-option data-field="project" data-value="home"></span><span class="hp-selector-option-copy"><strong>Privātmāja</strong><small>Jaunbūve vai esoša māja</small></span></button>
-              <button class="hp-selector-option" type="button" data-hp-option data-field="project" data-value="apartment"></span><span class="hp-selector-option-copy"><strong>Daudzdzīvokļu ēka</strong><small>Lielāks siltuma patēriņš</small></span></button>
-              <button class="hp-selector-option" type="button" data-hp-option data-field="project" data-value="commercial"><span class="hp-selector-option-copy"><strong>Komerctelpas</strong><small>Biroji, viesnīcas, pakalpojumi</small></span></button>
-              <button class="hp-selector-option" type="button" data-hp-option data-field="project" data-value="industrial"><span class="hp-selector-option-copy"><strong>Industriāls objekts</strong><small>Lieljaudas projekti</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="project" data-value="home"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Privātmāja</span><small>Jaunbūve vai esoša māja</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="project" data-value="apartment"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Daudzdzīvokļu ēka</span><small>Lielāks siltuma patēriņš</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="project" data-value="commercial"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Komerctelpas</span><small>Biroji, viesnīcas, pakalpojumi</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="project" data-value="industrial"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Industriāls objekts</span><small>Lieljaudas projekti</small></span></button>
             </div>
           </div>
 
           <div class="hp-selector-stage" data-hp-stage>
-            <h3 class="hp-selector-question">Kāds enerģijas avots jums šķiet reālākais?</h3>
+            <p class="hp-selector-question">Kāds enerģijas avots jums šķiet reālākais?</p>
             <p class="hp-selector-sub">Ja nezināt, izvēlieties “neesmu pārliecināts”, asistents ieteiks drošāku un elastīgāku virzienu.</p>
             <div class="hp-selector-options">
-              <button class="hp-selector-option" type="button" data-hp-option data-field="source" data-value="garden"></span><span class="hp-selector-option-copy"><strong>Ir zemes platība</strong><small>Ģeotermija vai zemes kontūrs</small></span></button>
-              <button class="hp-selector-option" type="button" data-hp-option data-field="source" data-value="borehole">><span class="hp-selector-option-copy"><strong>Varētu būt urbums vai gruntsūdens</strong><small>Stabils siltuma avots</small></span></button>
-              <button class="hp-selector-option" type="button" data-hp-option data-field="source" data-value="air"><span class="hp-selector-option-copy"><strong>Vajag bez zemes darbiem</strong><small>Gaisa siltumsūknis</small></span></button>
-              <button class="hp-selector-option" type="button" data-hp-option data-field="source" data-value="unsure"><span class="hp-selector-option-copy"><strong>Neesmu pārliecināts</strong><small>Ieteikt elastīgāko risinājumu</small></span></button>
-            </div>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="source" data-value="garden"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Ir zemes platība</span><small>Ģeotermija vai zemes kontūrs</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="source" data-value="borehole"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Varētu būt urbums vai gruntsūdens</span><small>Stabils siltuma avots</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="source" data-value="air"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Vajag bez zemes darbiem</span><small>Gaisa siltumsūknis</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="source" data-value="unsure"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Neesmu pārliecināts</span><small>Ieteikt elastīgāko risinājumu</small></span></button>
             <div class="hp-selector-actions"><button class="hp-selector-back" type="button" data-hp-back>Atpakaļ</button></div>
           </div>
 
           <div class="hp-selector-stage" data-hp-stage>
-            <h3 class="hp-selector-question">Kas jums ir svarīgākais?</h3>
+            <p class="hp-selector-question">Kas jums ir svarīgākais?</p>
             <p class="hp-selector-sub">Izvēlieties galveno prioritāti. Konsultācijas laikā varēs precizēt arī pārējās detaļas.</p>
             <div class="hp-selector-options">
-              <button class="hp-selector-option" type="button" data-hp-option data-field="priority" data-value="efficiency"><span class="hp-selector-option-copy"><strong>Maksimāla efektivitāte</strong><small>Zemākas izmaksas ilgtermiņā</small></span></button>
-              <button class="hp-selector-option" type="button" data-hp-option data-field="priority" data-value="quiet"><span class="hp-selector-option-copy"><strong>Ļoti klusa darbība</strong><small>Komforts ikdienā</small></span></button>
-              <button class="hp-selector-option" type="button" data-hp-option data-field="priority" data-value="premium"><span class="hp-selector-option-copy"><strong>Premium risinājums</strong><small>Dizains, kvalitāte un kontrole</small></span></button>
-              <button class="hp-selector-option" type="button" data-hp-option data-field="priority" data-value="eco"><span class="hp-selector-option-copy"><strong>Videi draudzīga tehnoloģija</strong><small>R290, PV un ilgtspēja</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="priority" data-value="efficiency"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Maksimāla efektivitāte</span><small>Zemākas izmaksas ilgtermiņā</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="priority" data-value="quiet"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Ļoti klusa darbība</span><small>Komforts ikdienā</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="priority" data-value="premium"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Premium risinājums</span><small>Dizains, kvalitāte un kontrole</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="priority" data-value="eco"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Videi draudzīga tehnoloģija</span><small>R290, PV un ilgtspēja</small></span></button>
             </div>
             <div class="hp-selector-actions"><button class="hp-selector-back" type="button" data-hp-back>Atpakaļ</button></div>
           </div>
 
           <div class="hp-selector-stage" data-hp-stage>
-            <h3 class="hp-selector-question">Vai projekts ir jaunbūve vai renovācija?</h3>
+            <p class="hp-selector-question">Vai projekts ir jaunbūve vai renovācija?</p>
             <p class="hp-selector-sub">Šis solis palīdz atšķirt pilna cikla jaunbūves risinājumu no elastīgas uzstādīšanas esošā objektā.</p>
             <div class="hp-selector-options">
-              <button class="hp-selector-option" type="button" data-hp-option data-field="stage" data-value="newbuild"><span class="hp-selector-option-copy"><strong>Jaunbūve</strong><small>Var plānot sistēmu no sākuma</small></span></button>
-              <button class="hp-selector-option" type="button" data-hp-option data-field="stage" data-value="renovation"><span class="hp-selector-option-copy"><strong>Esoša māja vai renovācija</strong><small>Svarīga elastīga uzstādīšana</small></span></button>
-              <button class="hp-selector-option" type="button" data-hp-option data-field="stage" data-value="commercial"></span><span class="hp-selector-option-copy"><strong>Liels objekts</strong><small>Jārēķina jauda un patēriņš</small></span></button>
-              <button class="hp-selector-option" type="button" data-hp-option data-field="stage" data-value="unsure"><span class="hp-selector-option-copy"><strong>Vēl tikai plānojam</strong><small>Vajadzīgs sākotnējs virziens</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="stage" data-value="newbuild"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Jaunbūve</span><small>Var plānot sistēmu no sākuma</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="stage" data-value="renovation"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Esoša māja vai renovācija</span><small>Svarīga elastīga uzstādīšana</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="stage" data-value="commercial"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Liels objekts</span><small>Jārēķina jauda un patēriņš</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="stage" data-value="unsure"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Vēl tikai plānojam</span><small>Vajadzīgs sākotnējs virziens</small></span></button>
             </div>
             <div class="hp-selector-actions"><button class="hp-selector-back" type="button" data-hp-back>Atpakaļ</button></div>
           </div>
 
           <div class="hp-selector-stage" data-hp-stage>
-            <h3 class="hp-selector-question">Vai vēlaties papildu funkcijas?</h3>
+            <p class="hp-selector-question">Vai vēlaties papildu funkcijas?</p>
             <p class="hp-selector-sub">Dzesēšana un PV integrācija bieži ietekmē to, kurš modelis būs vērtīgākais ilgtermiņā.</p>
             <div class="hp-selector-options">
-              <button class="hp-selector-option" type="button" data-hp-option data-field="extra" data-value="cooling"></span><span class="hp-selector-option-copy"><strong>Dzesēšana vasarā</strong><small>Apkure un komforta dzesēšana</small></span></button>
-              <button class="hp-selector-option" type="button" data-hp-option data-field="extra" data-value="pv"></span><span class="hp-selector-option-copy"><strong>Saules paneļu integrācija</strong><small>PV Ready un gudra vadība</small></span></button>
-              <button class="hp-selector-option" type="button" data-hp-option data-field="extra" data-value="both"><span class="hp-selector-option-copy"><strong>Abi varianti</strong><small>Dzesēšana, PV un nākotnes gatavība</small></span></button>
-              <button class="hp-selector-option" type="button" data-hp-option data-field="extra" data-value="none"><span class="hp-selector-option-copy"><strong>Tikai apkure</strong><small>Vienkāršāks sākuma risinājums</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="extra" data-value="cooling"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Dzesēšana vasarā</span><small>Apkure un komforta dzesēšana</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="extra" data-value="pv"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Saules paneļu integrācija</span><small>PV Ready un gudra vadība</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="extra" data-value="both"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Abi varianti</span><small>Dzesēšana, PV un nākotnes gatavība</small></span></button>
+              <button class="hp-selector-option" type="button" data-hp-option data-field="extra" data-value="none"><span class="hp-selector-option-copy"><span class="hp-selector-option-title">Tikai apkure</span><small>Vienkāršāks sākuma risinājums</small></span></button>
             </div>
             <div class="hp-selector-actions"><button class="hp-selector-back" type="button" data-hp-back>Atpakaļ</button></div>
           </div>
 
           <div class="hp-selector-result" data-hp-result>
-            <h3 class="hp-selector-question">Jūsu ieteiktais risinājums</h3>
+            <p class="hp-selector-question">Jūsu ieteiktais risinājums</p>
             <div class="hp-result-card">
               <div class="hp-result-main">
                 <div class="hp-result-score"><span data-hp-result-score>92%</span></div>
                 <div>
                   <p class="hp-result-label" data-hp-result-label>Best match</p>
-                  <h4 class="hp-result-title" data-hp-result-title>Heliotherm risinājums</h4>
+                  <p class="hp-result-title" data-hp-result-title>Heliotherm risinājums</p>
                   <p class="hp-result-text" data-hp-result-text></p>
                 </div>
               </div>
@@ -2349,10 +2407,10 @@
         </div>
       </div>
       <div class="premium-story-grid">
-        <article class="premium-story-card"><h3>Ražots Austrijā</h3><p class="muted">Eiropas ražošanas kvalitātes standarti ar precīzu kontroli katrā posmā.</p></article>
-        <article class="premium-story-card"><h3>Premium komponentes</h3><p class="muted">Rūpīgi atlasīti materiāli un sistēmas ilgtermiņa darbībai.</p></article>
-        <article class="premium-story-card"><h3>Augsta efektivitāte</h3><p class="muted">Optimizēta enerģijas izmantošana zemām ekspluatācijas izmaksām.</p></article>
-        <article class="premium-story-card"><h3>Ilgmūžīgs risinājums</h3><p class="muted">Paredzēts stabilam komfortam daudzu gadu garumā.</p></article>
+        <article class="premium-story-card"><p class="premium-story-card-title">Ražots Austrijā</p><p class="muted">Eiropas ražošanas kvalitātes standarti ar precīzu kontroli katrā posmā.</p></article>
+        <article class="premium-story-card"><p class="premium-story-card-title">Premium komponentes</p><p class="muted">Rūpīgi atlasīti materiāli un sistēmas ilgtermiņa darbībai.</p></article>
+        <article class="premium-story-card"><p class="premium-story-card-title">Augsta efektivitāte</p><p class="muted">Optimizēta enerģijas izmantošana zemām ekspluatācijas izmaksām.</p></article>
+        <article class="premium-story-card"><p class="premium-story-card-title">Ilgmūžīgs risinājums</p><p class="muted">Paredzēts stabilam komfortam daudzu gadu garumā.</p></article>
       </div>
     </div>
   </section>
@@ -2465,7 +2523,7 @@
       <!-- Right: white card with checks -->
       <aside class="climate-card" aria-label="Klientu ieguvumi">
         <p class="climate-eyebrow">Klientu ieguvumi</p>
-        <h3>Kāpēc Heliotherm?</h3>
+        <p class="climate-card-title">Kāpēc Heliotherm?</p>
 
         <ul class="why-list muted">
           <li>Modulāras iekšējās un ārējās vienības</li>
@@ -2509,7 +2567,7 @@
             </p>
             <div class="cta">
               <!-- nomaini uz reālo URL, ja vajag -->
-              <a href="siltumsukni\siltuma-avoti-siltumsukniem\">Lasīt vairāk</a>
+              <a href="/siltumsukni/siltuma-avoti-siltumsukniem/">Lasīt vairāk</a>
             </div>
           </div>
         </article>
@@ -3044,7 +3102,7 @@
       if (altWrap) {
         altWrap.innerHTML = alternatives.map(item => `
           <a class="hp-alt-card" href="${productUrl(root, item.id)}">
-            <b>${item.title}</b>
+            <span class="hp-result-recommendation-title">${item.title}</span>
             <span>${item.label}</span>
           </a>
         `).join('');

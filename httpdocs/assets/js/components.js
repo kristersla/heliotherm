@@ -451,7 +451,7 @@ headerTmpl.innerHTML = `
   <header>
     <div class="nav">
       <a class="brand" href="/" aria-label="Sākums">
-        <img src="/media/image/logo.svg" alt="Heliotherm logo" class="logo" />
+         <img src="/media/image/logo.svg" alt="Heliotherm Baltics" class="logo" />
         <span class="brand-copy">
           <span class="brand-tagline">Premium Austrijas siltumsūkņi</span>
         </span>
@@ -814,7 +814,7 @@ footerTmpl.innerHTML = `
     <div class="foot">
       <div>
         <div class="brand">
-          <img src="/media/image/logo.svg" alt="Heliotherm logo" class="logo" />
+           <img src="/media/image/logo.svg" alt="Heliotherm Baltics" class="logo" />
         </div>
         <p class="muted">Heliotherm Baltics, premium klases Austrijas siltumsūkņu risinājumi.</p>
       </div>
