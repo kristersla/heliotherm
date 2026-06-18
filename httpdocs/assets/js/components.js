@@ -453,7 +453,7 @@ headerTmpl.innerHTML = `
       <a class="brand" href="/" aria-label="Sākums">
          <img src="/media/image/logo.svg" alt="Heliotherm Baltics" class="logo" />
         <span class="brand-copy">
-          <span class="brand-tagline">Premium Austrijas siltumsūkņi</span>
+          <span class="brand-tagline">Premium siltumsūkņi</span>
         </span>
       </a>
 
@@ -816,24 +816,22 @@ footerTmpl.innerHTML = `
         <div class="brand">
            <img src="/media/image/logo.svg" alt="Heliotherm Baltics" class="logo" />
         </div>
-        <p class="muted">Heliotherm Baltics, premium klases Austrijas siltumsūkņu risinājumi.</p>
+        <p class="muted">Heliotherm Baltics, premium klases siltumsūkņu risinājumi.</p>
       </div>
 
       <div>
         <div class="title">Uzņēmums</div>
         <ul class="muted">
           <li><a href="/par-mums/">Par mums</a></li>
-          <li><a href="/index.html#partners">Partneri</a></li>
-          <li><a href="/index.html#press">Preses materiāli</a></li>
+          <li><a href="https://www.heliotherm.lv/par-mums/#sadarbiba">Partneri</a></li>
+          <li><a href="https://www.heliotherm.lv/par-mums/#sertifikats">ISO 9001 sertifikāts</a></li>
         </ul>
       </div>
 
       <div>
         <div class="title">Resursi</div>
         <ul class="muted">
-          <li><a href="/index.html#docs">Dokumentācija</a></li>
-          <li><a href="/index.html#installers">Uzstādītāju portāls</a></li>
-          <li><a href="/index.html#support">Atbalsts</a></li>
+          <li><a href="https://www.heliotherm.lv/kontakti/">Atbalsts</a></li>
         </ul>
       </div>
 
