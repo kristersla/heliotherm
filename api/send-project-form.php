@@ -46,6 +46,8 @@ $config = [
     'from_email' => 'kristersla@gmail.com',
     'from_name' => 'Heliotherm Baltics Website Form',
     'to_email' => 'kristers.laganovskis@nestswipe.com',
+
+    'recaptcha_secret' => '6LcrhgQtAAAAALaRUGHSE0v79G2RdPi7QgXEKBqL',
 ];
 
 function clean_value($value): string
@@ -73,6 +75,59 @@ function html_escape(string $value): string
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 
+function verify_recaptcha(string $secret, string $token): bool
+{
+    if ($secret === '' || $secret === 'PASTE_RECAPTCHA_SECRET_KEY_HERE') {
+        return false;
+    }
+
+    if ($token === '') {
+        return false;
+    }
+
+    $postData = http_build_query([
+        'secret' => $secret,
+        'response' => $token,
+        'remoteip' => $_SERVER['REMOTE_ADDR'] ?? '',
+    ]);
+
+    $context = stream_context_create([
+        'http' => [
+            'method' => 'POST',
+            'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+            'content' => $postData,
+            'timeout' => 10,
+        ],
+    ]);
+
+    $verifyResponse = @file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
+
+    if ($verifyResponse === false && function_exists('curl_init')) {
+        $curl = curl_init('https://www.google.com/recaptcha/api/siteverify');
+
+        curl_setopt_array($curl, [
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => $postData,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 10,
+            CURLOPT_HTTPHEADER => [
+                'Content-Type: application/x-www-form-urlencoded',
+            ],
+        ]);
+
+        $verifyResponse = curl_exec($curl);
+        curl_close($curl);
+    }
+
+    if (!$verifyResponse) {
+        return false;
+    }
+
+    $captchaResult = json_decode($verifyResponse, true);
+
+    return !empty($captchaResult['success']);
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     respond(false, 'Atļauts tikai POST pieprasījums.', 405);
 }
@@ -85,15 +140,21 @@ if (
     empty($config['smtp_username']) ||
     $config['smtp_username'] === 'YOUR_GMAIL_ADDRESS@gmail.com' ||
     empty($config['smtp_password']) ||
-    $config['smtp_password'] === 'YOUR_GOOGLE_APP_PASSWORD'
+    $config['smtp_password'] === 'YOUR_GOOGLE_APP_PASSWORD' ||
+    $config['smtp_password'] === 'PASTE_GMAIL_APP_PASSWORD_HERE'
 ) {
     respond(false, 'Servera e-pasta konfigurācija nav pabeigta.', 500);
+}
+
+$recaptchaToken = $_POST['g-recaptcha-response'] ?? '';
+
+if (!verify_recaptcha($config['recaptcha_secret'], (string) $recaptchaToken)) {
+    respond(false, 'reCAPTCHA pārbaude neizdevās. Lūdzu, apstipriniet, ka neesat robots.', 400);
 }
 
 $firstName = post_value('first_name');
 $lastName = post_value('last_name');
 $email = post_value('email');
-$privacy = $_POST['privacy'] ?? '';
 
 if ($firstName === '') {
     respond(false, 'Lūdzu, ievadiet vārdu.', 400);
@@ -105,10 +166,6 @@ if ($lastName === '') {
 
 if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     respond(false, 'Lūdzu, ievadiet korektu e-pasta adresi.', 400);
-}
-
-if ($privacy !== '1') {
-    respond(false, 'Lūdzu, apstipriniet piekrišanu datu apstrādei.', 400);
 }
 
 $fields = [
@@ -148,57 +205,11 @@ foreach ($fields as $label => $value) {
 }
 
 $htmlBody .= '</table>';
-$htmlBody .= '<p style="font-family:Arial,sans-serif;font-size:13px;color:#666;margin-top:16px;">Piekrišana datu apstrādei: Jā</p>';
+$htmlBody .= '<p style="font-family:Arial,sans-serif;font-size:13px;color:#666;margin-top:16px;">';
+$htmlBody .= 'Forma nosūtīta ar apstiprinātu reCAPTCHA pārbaudi.';
+$htmlBody .= '</p>';
 
-$plainBody .= "\nPiekrišana datu apstrādei: Jā\n";
-
-$allowedExtensions = ['pdf', 'doc', 'docx', 'jpg', 'jpeg', 'png', 'webp'];
-$maxTotalSize = 10 * 1024 * 1024;
-$totalSize = 0;
-$attachments = [];
-
-if (!empty($_FILES['project_files']) && is_array($_FILES['project_files']['name'])) {
-    $fileCount = count($_FILES['project_files']['name']);
-
-    for ($i = 0; $i < $fileCount; $i++) {
-        $error = $_FILES['project_files']['error'][$i];
-
-        if ($error === UPLOAD_ERR_NO_FILE) {
-            continue;
-        }
-
-        if ($error !== UPLOAD_ERR_OK) {
-            respond(false, 'Neizdevās augšupielādēt vienu no failiem.', 400);
-        }
-
-        $tmpName = $_FILES['project_files']['tmp_name'][$i];
-        $originalName = $_FILES['project_files']['name'][$i];
-        $size = (int) $_FILES['project_files']['size'][$i];
-
-        if (!is_uploaded_file($tmpName)) {
-            respond(false, 'Nederīgs augšupielādētais fails.', 400);
-        }
-
-        $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
-
-        if (!in_array($extension, $allowedExtensions, true)) {
-            respond(false, 'Atļautie failu tipi: PDF, DOC, DOCX, JPG, JPEG, PNG, WEBP.', 400);
-        }
-
-        $totalSize += $size;
-
-        if ($totalSize > $maxTotalSize) {
-            respond(false, 'Failu kopējais izmērs nedrīkst pārsniegt 10MB.', 400);
-        }
-
-        $safeName = preg_replace('/[^a-zA-Z0-9._-]/', '_', $originalName);
-
-        $attachments[] = [
-            'path' => $tmpName,
-            'name' => $safeName ?: 'attachment.' . $extension,
-        ];
-    }
-}
+$plainBody .= "\nForma nosūtīta ar apstiprinātu reCAPTCHA pārbaudi.\n";
 
 try {
     $mail = new PHPMailer(true);
@@ -220,10 +231,6 @@ try {
     $mail->Subject = 'Jauns Heliotherm pieteikums: ' . $firstName . ' ' . $lastName;
     $mail->Body = $htmlBody;
     $mail->AltBody = $plainBody;
-
-    foreach ($attachments as $attachment) {
-        $mail->addAttachment($attachment['path'], $attachment['name']);
-    }
 
     $mail->send();
 

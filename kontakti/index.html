@@ -1,13 +1,29 @@
 <!doctype html>
 <html lang="lv">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2JVC4J6Q8P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-2JVC4J6Q8P');
+  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kontakti un rekvizīti | Heliotherm Baltics</title>
-  <link rel="icon" type="image/x-icon" href="/heliotherm/media/image/favicon.ico" />
-  <meta name="theme-color" content="#0b0c0f" />
-  <meta name="description" content="SIA “Heliotherm Baltics” kontaktinformācija, rekvizīti un datu aizsardzības informācija." />
-  <link rel="stylesheet" href="/heliotherm/assets/style/style.css" />
+  <title>Heliotherm Baltics kontakti un konsultācija</title>
+  <link rel="icon" href="/media/image/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/media/image/apple-touch-icon.png" />
+  <meta name="theme-color" content="#111318" />
+  <meta name="description" content="Sazinieties ar Heliotherm Baltics par siltumsūkņa izvēli, projektu, uzstādīšanu vai piemērotāko risinājumu jūsu ēkai." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/style/style.css" />
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <style>
     body {
@@ -315,19 +331,6 @@
       margin-top: .2rem;
     }
 
-    .file-input-row {
-      margin-top: .6rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: .6rem;
-      align-items: center;
-      font-size: .85rem;
-    }
-
-    .file-input-row input[type="file"] {
-      font-size: .85rem;
-    }
-
     .privacy-row {
       margin-top: 1.1rem;
       padding-top: .9rem;
@@ -337,17 +340,26 @@
       gap: .45rem;
     }
 
-    .privacy-row label {
-      font-size: .85rem;
+    .recaptcha-wrap {
+      margin-top: .15rem;
       display: flex;
-      align-items: flex-start;
-      gap: .55rem;
+      justify-content: flex-start;
+      overflow: hidden;
     }
 
-    .privacy-row input[type="checkbox"] {
-      margin-top: .1rem;
-      width: 16px;
-      height: 16px;
+    .legal-submit-note {
+      margin: .75rem 0 0;
+      font-size: .8rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 380px) {
+      .recaptcha-wrap {
+        transform: scale(.9);
+        transform-origin: left top;
+        margin-bottom: -8px;
+      }
     }
 
     .form-status {
@@ -478,68 +490,6 @@
       display: block;
     }
 
-    .legal-section {
-      margin-top: clamp(40px, 6vh, 60px);
-    }
-
-    .legal-section-head {
-      text-align: center;
-      margin-bottom: 1.6rem;
-      padding-inline: 1rem;
-    }
-
-    .legal-section-head h2 {
-      margin: 0;
-      font-size: clamp(1.7rem, 3vw, 2.1rem);
-    }
-
-    .legal-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      gap: clamp(18px, 2.4vw, 24px);
-    }
-
-    @media (max-width: 960px) {
-      .legal-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .legal-card {
-      background: rgba(255,255,255,.98);
-      border-radius: 22px;
-      border: 1px solid var(--ring);
-      box-shadow: 0 12px 32px rgba(15,23,42,.06);
-      padding: 18px 22px 20px;
-    }
-
-    .legal-card h3 {
-      margin: 1.25rem 0 .35rem;
-      font-size: .98rem;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-weight: 600;
-      color: var(--muted);
-    }
-
-    .legal-card h3:first-of-type {
-      margin-top: .4rem;
-    }
-
-    .legal-card p {
-      margin: 0 0 .6rem;
-      font-size: .9rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .legal-card a {
-      color: var(--brand-2);
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 2px;
-    }
-
     @media (max-width: 768px) {
       main {
         padding-bottom: 48px;
@@ -568,11 +518,6 @@
         height: 260px;
       }
 
-      .legal-card {
-        border-radius: 20px;
-        padding: 16px 18px 18px;
-      }
-
       .form-actions {
         justify-content: center;
       }
@@ -592,7 +537,7 @@
         height: 230px;
       }
     }
-    /* Cleaner contact form submit button */
+
     #projectSubmitBtn {
       cursor: pointer;
       min-width: 210px;
@@ -627,6 +572,19 @@
       box-shadow: none;
     }
   </style>
+
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.heliotherm.lv/kontakti/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="lv_LV" />
+  <meta property="og:site_name" content="Heliotherm Baltics" />
+  <meta property="og:title" content="Heliotherm Baltics kontakti un konsultācija" />
+  <meta property="og:description" content="Sazinieties ar Heliotherm Baltics par siltumsūkņa izvēli, projektu, uzstādīšanu vai piemērotāko risinājumu jūsu ēkai." />
+  <meta property="og:url" content="https://www.heliotherm.lv/kontakti/" />
+  <meta property="og:image" content="https://www.heliotherm.lv/media/image/logo.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Heliotherm Baltics kontakti un konsultācija" />
+  <meta name="twitter:description" content="Sazinieties ar Heliotherm Baltics par siltumsūkņa izvēli, projektu, uzstādīšanu vai piemērotāko risinājumu jūsu ēkai." />
 </head>
 <body>
   <app-header active="contact"></app-header>
@@ -639,7 +597,6 @@
           <h1>Saikne ar <span class="accent">Heliotherm Baltics</span></h1>
           <p class="contact-lead">
             Sazinieties ar mums par siltumsūkņu, apkures, dzesēšanas un citu inženierkomunikāciju risinājumiem.
-            Šeit atradīsiet uzņēmuma rekvizītus, biroja atrašanās vietu un datu aizsardzības informāciju.
           </p>
         </div>
       </div>
@@ -650,7 +607,7 @@
             <div class="contact-form-eyebrow">Sazinieties ar mums</div>
             <h2>Pastāstiet par savu projektu</h2>
             <p>
-              Aizpildiet formu, pievienojiet projekta dokumentus vai īsu aprakstu.
+              Aizpildiet formu vai īsi aprakstiet savu projektu.
               Mūsu speciālisti sazināsies ar jums un piedāvās piemērotāko siltumsūkņu risinājumu.
             </p>
           </div>
@@ -658,9 +615,8 @@
           <form
             id="projectForm"
             class="contact-form-grid"
-            action="/heliotherm/api/send-project-form.php"
+            action="/api/send-project-form.php"
             method="post"
-            enctype="multipart/form-data"
           >
             <div class="hp-field" aria-hidden="true">
               <label>
@@ -700,7 +656,7 @@
 
               <div class="field-row">
                 <label class="field-label" for="company">Firma</label>
-                <input class="field-input" id="company" name="company" type="text" autocomplete="organization" />
+                <input class="field-input" id="company" name="company" type="text" placeholder="Nav obligāts" autocomplete="organization" />
               </div>
 
               <div class="field-row">
@@ -844,32 +800,10 @@
                 </div>
               </div>
 
-              <div class="field-row">
-                <label class="field-label" for="project_files">Projekta dokumenti</label>
-                <div class="file-input-row">
-                  <input
-                    id="project_files"
-                    type="file"
-                    name="project_files[]"
-                    multiple
-                    accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.webp"
-                  />
-                  <p class="helper-text">Ja vēlaties, pievienojiet plānu, skici vai citus projekta failus.</p>
-                </div>
-              </div>
-
               <div class="privacy-row">
-                <label>
-                  <input type="checkbox" name="privacy" value="1" required />
-                  <span>
-                    Es esmu iepazinies ar Heliotherm Baltics konfidencialitātes politiku un piekrītu
-                    manu personas datu apstrādei, lai saņemtu piedāvājumu vai informāciju par siltumsūkņu risinājumiem.
-                  </span>
-                </label>
-                <p class="helper-text">
-                  Jūsu dati netiks nodoti trešajām pusēm, izņemot gadījumus, kad tas nepieciešams pakalpojuma sniegšanai
-                  saskaņā ar spēkā esošajiem datu aizsardzības noteikumiem.
-                </p>
+                <div class="recaptcha-wrap">
+                  <div class="g-recaptcha" data-sitekey="6LcrhgQtAAAAAGqvzVkviUENnvFDAFd6d0bPXDZi"></div>
+                </div>
               </div>
 
               <div id="formStatus" class="form-status" aria-live="polite"></div>
@@ -879,6 +813,11 @@
                   Nosūtīt pieteikumu
                 </button>
               </div>
+
+              <p class="legal-submit-note">
+                Nosūtot pieteikumu, jūs piekrītat Heliotherm Baltics konfidencialitātes politikai un savu personas datu
+                apstrādei, lai saņemtu piedāvājumu vai informāciju par siltumsūkņu risinājumiem.
+              </p>
             </div>
           </form>
         </section>
@@ -923,10 +862,17 @@
                   <li><strong>Reģistrācijas numurs:</strong> 40103253031</li>
                 </ul>
               </div>
+              <div class="contact-block">
+                <div class="contact-block-title">Konfidencialitāte un sīkdatnes:</div>
+                <p>
+                  Vietne var izmantot Google Analytics, lai apkopotu anonīmu mājaslapas lietošanas statistiku,
+                  piemēram, lapu skatījumus, datplūsmas avotus, ierīces tipu un aptuveno atrašanās vietu.
+                </p>
+              </div>
 
               <p class="contact-meta">
-                Ja vēlaties piedāvājumu vai konsultāciju par konkrētu objektu, rakstiet mums un pievienojiet
-                projekta dokumentus vai īsu aprakstu. Atbildēsim iespējami drīz.
+                Ja vēlaties piedāvājumu vai konsultāciju par konkrētu objektu, rakstiet mums un īsi aprakstiet
+                projektu. Atbildēsim iespējami drīz.
               </p>
             </article>
 
@@ -947,103 +893,12 @@
             </aside>
           </div>
         </section>
-
-        <section class="legal-section">
-          <div class="legal-section-head">
-            <h2>Rekvizīti un datu aizsardzība</h2>
-          </div>
-
-          <div class="legal-grid">
-            <div class="legal-card">
-              <h3>Atbildība</h3>
-              <p>
-                Viss saturs ir rūpīgi pārbaudīts. Neskatoties uz to, datu pareizums, pilnīgums un
-                aktualitāte netiek garantēta.
-              </p>
-
-              <h3>Autortiesības</h3>
-              <p>
-                Visi teksti, grafiki un attēli ir aizsargāti ar autortiesībām. To izmantošana ir atļauta
-                tikai ar Heliotherm Wärmepumpentechnik atļauju.
-              </p>
-
-              <h3>Teksti</h3>
-              <p>
-                Heliotherm Wärmepumpentechnik Ges.m.b.H<br>
-                Rosnertexte<br>
-                <a href="http://www.rosnertexte.at" target="_blank" rel="noopener">www.rosnertexte.at</a><br>
-                Stilmittel<br>
-                <a href="http://www.stilmittel.cc" target="_blank" rel="noopener">www.stilmittel.cc</a>
-              </p>
-
-              <h3>Bilžu avoti</h3>
-              <p>
-                Heliotherm Wärmepumpentechnik Ges.m.b.H<br>
-                Fotolia <a href="http://www.fotolia.com" target="_blank" rel="noopener">www.fotolia.com</a><br>
-                Shutterstock <a href="http://www.shutterstock.com" target="_blank" rel="noopener">www.shutterstock.com</a>
-              </p>
-
-              <h3>Video</h3>
-              <p>
-                Media Squad <a href="http://www.mediasquad.eu" target="_blank" rel="noopener">www.mediasquad.eu</a>
-              </p>
-
-              <h3>Saites</h3>
-              <p>
-                Ja vēlama atsauce uz šo mājaslapu, tā jānorāda kā ārēja saite, un katru reizi
-                tiks attēlotas visas lapas. Galvenās lapas atspoguļošana atsevišķā logā nav atļauta.
-                Mājaslapā esošās saites uz ārējām vietnēm atspoguļo tikai ceļu uz šo saturu, to
-                saturs nav mūsu pārziņā. Ja saites norāda uz neatbilstošu vai nelikumīgu saturu,
-                lūdzam mūs informēt. Šādā gadījumā saites tiks nekavējoties izdzēstas.
-              </p>
-            </div>
-
-            <div class="legal-card">
-              <h3>Google Analytics</h3>
-              <p>
-                Mēs izmantojam Google Analytics, uzņēmuma Google Inc. pakalpojumu, lai analizētu
-                mājaslapas lietošanu. Google izmanto sīkdatnes, un iegūtā informācija, ieskaitot
-                IP adresi, tiek nodota Google serveriem Amerikas Savienotajās Valstīs un tur
-                uzglabāta. Google izmanto šo informāciju, lai analizētu mājaslapas lietošanu,
-                sagatavotu atskaites par aktivitātēm vietnē un sniegtu citus pakalpojumus, kas
-                saistīti ar interneta lietošanu. Plašāka informācija pieejama
-                <a href="http://www.google.com/analytics" target="_blank" rel="noopener">www.google.com/analytics</a>.
-              </p>
-
-              <h3>Retargeting tehnoloģija</h3>
-              <p>
-                Mēs izmantojam Google Inc. retargetinga tehnoloģiju. Šī tehnoloģija ļauj parādīt
-                reklāmas lietotājiem, kuri iepriekš interesējušies par mūsu produktiem, un
-                personalizēt reklāmu satura atbilstību. Sīkdatnēs netiek glabāta personiska
-                informācija, tikai anonimizēti dati par lietošanas paradumiem.
-              </p>
-
-              <p>
-                Jūs varat atslēgt sīkdatņu izmantošanu, lejupielādējot un instalējot pārlūkprogrammas
-                spraudni <a href="http://www.google.com/ads/preferences/html/intl/de/plugin/"
-                target="_blank" rel="noopener">www.google.com/ads/preferences/html/intl/de/plugin/</a>.
-                Papildu informācija par datu aizsardzības noteikumiem reklāmas jomā pieejama
-                <a href="http://www.google.com/privacy/ads/" target="_blank" rel="noopener">
-                  www.google.com/privacy/ads/
-                </a>.
-              </p>
-
-              <h3>Satura menedžments</h3>
-              <p>
-                Heliotherm Wärmepumpentechnik Ges.m.b.H ir atbildīgs par šīs mājaslapas satura
-                uzturēšanu un atjaunošanu. Jautājumu vai ierosinājumu gadījumā, kas saistīti ar
-                saturu vai datu aizsardzību, lūdzam sazināties ar mums, izmantojot norādītos
-                kontaktus.
-              </p>
-            </div>
-          </div>
-        </section>
       </div>
     </section>
   </main>
 
   <app-footer></app-footer>
-  <script src="/heliotherm/assets/js/components.js"></script>
+  <script src="../assets/js/components.js"></script>
 
   <script>
     (function () {
@@ -1064,6 +919,13 @@
         event.preventDefault();
 
         showStatus('', 'error');
+
+        const recaptchaToken = typeof grecaptcha !== 'undefined' ? grecaptcha.getResponse() : '';
+
+        if (!recaptchaToken) {
+          showStatus('Lūdzu, apstipriniet, ka neesat robots.', 'error');
+          return;
+        }
 
         const originalText = submitBtn ? submitBtn.textContent : '';
 
@@ -1093,13 +955,31 @@
 
           if (!response.ok || !result.success) {
             showStatus(result.message || 'Kļūda. Lūdzu, mēģiniet vēlreiz.', 'error');
+
+            if (typeof grecaptcha !== 'undefined') {
+              grecaptcha.reset();
+            }
+
             return;
           }
 
           showStatus(result.message || 'Pieteikums nosūtīts veiksmīgi.', 'success');
+          if (typeof window.heliothermTrackEvent === 'function') {
+            window.heliothermTrackEvent('contact_form_submit', {
+              form_name: 'project_contact_form'
+            });
+          }
           form.reset();
+
+          if (typeof grecaptcha !== 'undefined') {
+            grecaptcha.reset();
+          }
         } catch (error) {
           showStatus('Kļūda. Lūdzu, mēģiniet vēlreiz.', 'error');
+
+          if (typeof grecaptcha !== 'undefined') {
+            grecaptcha.reset();
+          }
         } finally {
           if (submitBtn) {
             submitBtn.disabled = false;

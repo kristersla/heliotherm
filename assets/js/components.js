@@ -8,32 +8,65 @@
 */
 
 /* ---------- Helpers ---------- */
+const NAV_ROUTES = {
+  home: ["/", "/heliotherm", "/index.html", "/index.html"],
+  about: ["/par-mums", "/par-mums"],
+  products: ["/produkti", "/produkti"],
+  solutions: [
+    "/piedavajumi",
+    "/piedavajumi",
+    "/piedāvājumi",
+    "/piedāvājumi",
+  ],
+  contacts: ["/kontakti", "/kontakti"],
+};
+
+const NAV_KEY_ALIASES = {
+  contact: "contacts",
+  piedavajumi: "solutions",
+  piedāvājumi: "solutions",
+  solution: "solutions",
+};
+
+function normalizePath(path) {
+  const withoutQuery = (path || "/").split(/[?#]/)[0] || "/";
+  const decoded = decodeURI(withoutQuery)
+    .toLowerCase()
+    .replace(/\/index\.html$/, "");
+  const normalized = decoded.length > 1 ? decoded.replace(/\/+$/, "") : decoded;
+  return normalized || "/";
+}
+
+function getActiveKey(explicitKey) {
+  const path = normalizePath(location.pathname);
+  const routeKey = Object.entries(NAV_ROUTES).find(([, routes]) =>
+    routes.includes(path)
+  )?.[0];
+
+  if (routeKey) return routeKey;
+
+  const explicit = (explicitKey || "").toLowerCase();
+  if (Object.prototype.hasOwnProperty.call(NAV_ROUTES, explicit)) return explicit;
+  if (Object.prototype.hasOwnProperty.call(NAV_KEY_ALIASES, explicit)) {
+    return NAV_KEY_ALIASES[explicit];
+  }
+
+  return "";
+}
+
 function setActive(shadowRoot, explicitKey) {
-  const key = (explicitKey || "").toLowerCase();
-  let matched = false;
+  const activeKey = getActiveKey(explicitKey);
 
-  if (key) {
-    shadowRoot.querySelectorAll("a[data-key]").forEach((a) => {
-      if (a.dataset.key === key) {
-        a.classList.add("is-active");
-        matched = true;
-      }
-    });
-  }
+  shadowRoot.querySelectorAll("a[data-key]").forEach((a) => {
+    const isActive = a.dataset.key === activeKey;
+    a.classList.toggle("is-active", isActive);
 
-  if (!matched) {
-    const path = (location.pathname || "").toLowerCase();
-    shadowRoot.querySelectorAll("a[data-key]").forEach((a) => {
-      const href = (a.getAttribute("href") || "").split("#")[0].toLowerCase();
-      if (href && path.endsWith(href)) {
-        a.classList.add("is-active");
-        matched = true;
-      }
-    });
-  }
-
-  const active = shadowRoot.querySelector("a.is-active");
-  if (active) active.setAttribute("aria-current", "page");
+    if (isActive) {
+      a.setAttribute("aria-current", "page");
+    } else {
+      a.removeAttribute("aria-current");
+    }
+  });
 }
 
 function getLangFromUrl() {
@@ -69,24 +102,26 @@ headerTmpl.innerHTML = `
     :host{
       display:block;
       position:relative;
-      z-index:40;
+      z-index:2147483000;
       isolation:isolate;
       --header-h:72px;
       height:var(--header-h);
       box-sizing:border-box;
+      font-family:"Manrope",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      color:var(--text-main, #15171c);
       max-width:100vw;
       overflow:hidden;
     }
 
-    option{ color:#000 }
+    option{ color:var(--text-heading, #111318) }
 
     header{
       position:fixed;
       top:0;
       left:0;
       right:0;
-      z-index:9999;
-      background:rgba(255,255,255,.9);
+      z-index:2147483001;
+      background:rgba(255,255,255,.96);
       border-bottom:1px solid var(--hair, #e9ebf0);
       backdrop-filter:saturate(1.2) blur(12px);
       -webkit-backdrop-filter:saturate(1.2) blur(12px);
@@ -111,10 +146,11 @@ headerTmpl.innerHTML = `
       display:inline-flex;
       align-items:center;
       gap:.62rem;
-      color:#0b0c0f;
+      color:var(--text-heading, #111318);
       text-decoration:none;
       white-space:nowrap;
     }
+
     .brand-copy{
       display:flex;
       flex-direction:column;
@@ -135,11 +171,12 @@ headerTmpl.innerHTML = `
       letter-spacing:.03em;
       font-size:.95rem;
     }
+
     .brand-tagline{
       font-size:.62rem;
       letter-spacing:.18em;
       text-transform:uppercase;
-      color:#7b8493;
+      color:var(--text-muted, #8a91a0);
       font-weight:600;
     }
 
@@ -156,7 +193,7 @@ headerTmpl.innerHTML = `
     }
 
     nav a{
-      color:#5b6474;
+      color:var(--text-soft, #5f6673);
       font-weight:600;
       position:relative;
       padding:.35rem .1rem;
@@ -166,7 +203,7 @@ headerTmpl.innerHTML = `
     }
 
     nav a:hover{
-      color:#111827;
+      color:var(--text-heading, #111318);
     }
 
     nav a.is-active{
@@ -212,7 +249,7 @@ headerTmpl.innerHTML = `
       cursor:pointer;
       padding:.32rem .64rem;
       border-radius:999px;
-      color:#5b6474;
+      color:var(--text-soft, #5f6673);
       font-weight:700;
       line-height:1;
       letter-spacing:.04em;
@@ -228,7 +265,7 @@ headerTmpl.innerHTML = `
 
     .seg-btn[aria-pressed="true"]{
       background:#f5f6f9;
-      color:#0b0c0f;
+      color:var(--text-heading, #111318);
       outline:1px solid #e9ebf0;
     }
 
@@ -252,7 +289,7 @@ headerTmpl.innerHTML = `
       border-radius:10px;
       border:1px solid #e4e6ee;
       background:#fff;
-      color:#111827;
+      color:var(--text-heading, #111318);
       cursor:pointer;
       box-shadow:0 2px 8px rgba(15,23,42,.06);
       transition:background .16s ease, transform .12s ease, box-shadow .16s ease;
@@ -269,7 +306,7 @@ headerTmpl.innerHTML = `
       inset-inline:0;
       height:2px;
       border-radius:999px;
-      background:#111827;
+      background:var(--text-heading, #111318);
       transition:transform .18s ease, opacity .18s ease, top .18s ease, bottom .18s ease;
     }
 
@@ -317,7 +354,7 @@ headerTmpl.innerHTML = `
       right:0;
       top:var(--header-h);
       display:none;
-      z-index:9998;
+      z-index:2147483000;
       background:#ffffff;
       border-top:1px solid #e5e7ef;
       box-shadow:0 18px 40px rgba(15,23,42,.12);
@@ -345,7 +382,7 @@ headerTmpl.innerHTML = `
       display:block;
       padding:.8rem .85rem;
       border-radius:12px;
-      color:#0b0c0f;
+      color:var(--text-heading, #111318);
       border:1px solid #e4e6ee;
       background:#f7f8fb;
       text-decoration:none;
@@ -363,7 +400,7 @@ headerTmpl.innerHTML = `
       border-radius:999px;
       border:0;
       background:transparent;
-      color:#5b6474;
+      color:var(--text-soft, #5f6673);
       font-size:.78rem;
       font-weight:700;
     }
@@ -404,26 +441,29 @@ headerTmpl.innerHTML = `
         height:22px;
       }
 
-      .brand-tagline{font-size:.56rem; letter-spacing:.14em}
+      .brand-tagline{
+        font-size:.56rem;
+        letter-spacing:.14em;
+      }
     }
   </style>
 
   <header>
     <div class="nav">
-      <a class="brand" href="/index.html#home" aria-label="Sākums">
-        <img src="/heliotherm/media/image/logo.svg" alt="Heliotherm logo" class="logo" />
+      <a class="brand" href="/" aria-label="Sākums">
+         <img src="/media/image/logo.svg" alt="Heliotherm Baltics" class="logo" />
         <span class="brand-copy">
-          <span class="brand-tagline">Premium Austrijas siltumsūkņi</span>
+          <span class="brand-tagline">Premium siltumsūkņi</span>
         </span>
       </a>
 
       <nav aria-label="Primārā navigācija">
         <ul>
-          <li><a data-key="home" href="/heliotherm/">Sākums</a></li>
-          <li><a data-key="about" href="/heliotherm/par-mums/">Par mums</a></li>
-          <li><a data-key="products" href="/heliotherm/produkti/">Produkti</a></li>
-          <li><a data-key="solutions" href="/heliotherm/piedavajumi/">Piedāvājumi</a></li>
-          <li><a data-key="contacts" href="/heliotherm/kontakti/">Kontakti</a></li>
+          <li><a data-key="home" href="/">Sākums</a></li>
+          <li><a data-key="about" href="/par-mums/">Par mums</a></li>
+          <li><a data-key="products" href="/produkti/">Produkti</a></li>
+          <li><a data-key="solutions" href="/piedavajumi/">Piedāvājumi</a></li>
+          <li><a data-key="contacts" href="/kontakti/">Kontakti</a></li>
         </ul>
       </nav>
 
@@ -450,11 +490,11 @@ headerTmpl.innerHTML = `
 
     <div class="mobile">
       <ul>
-        <li><a data-key="home" href="/heliotherm/">Sākums</a></li>
-        <li><a data-key="about" href="/heliotherm/par-mums/">Par mums</a></li>
-        <li><a data-key="products" href="/heliotherm/produkti/">Produkti</a></li>
-        <li><a data-key="solutions" href="/heliotherm/piedavajumi/">Piedāvājumi</a></li>
-        <li><a data-key="contacts" href="/heliotherm/kontakti/">Kontakti</a></li>
+        <li><a data-key="home" href="/">Sākums</a></li>
+        <li><a data-key="about" href="/par-mums/">Par mums</a></li>
+        <li><a data-key="products" href="/produkti/">Produkti</a></li>
+        <li><a data-key="solutions" href="/piedavajumi/">Piedāvājumi</a></li>
+        <li><a data-key="contacts" href="/kontakti/">Kontakti</a></li>
       </ul>
 
       <div class="mlang" aria-label="Valodas izvēle (mobilā)">
@@ -480,6 +520,10 @@ class AppHeader extends HTMLElement {
 
     const root = this.attachShadow({ mode: "open" });
     root.appendChild(headerTmpl.content.cloneNode(true));
+
+    this.style.position = "relative";
+    this.style.zIndex = "2147483000";
+    this.style.isolation = "isolate";
 
     const headerEl = root.querySelector("header");
     const burger = root.querySelector(".burger");
@@ -524,6 +568,14 @@ class AppHeader extends HTMLElement {
         if (!btn) return;
 
         const lang = btn.dataset.lang;
+
+        if (typeof window.heliothermTrackEvent === "function") {
+          window.heliothermTrackEvent("language_switch", {
+            language: lang,
+            button_text: (btn.textContent || "").replace(/\s+/g, " ").trim(),
+            link_url: btn.href || btn.getAttribute("href") || undefined
+          });
+        }
 
         if (lang === "en") {
           return;
@@ -609,18 +661,22 @@ footerTmpl.innerHTML = `
     :host{
       display:block;
       isolation:isolate;
-      --text: var(--text, #0b0c0f);
-      --muted: var(--muted, #5b6474);
-      --hair: var(--hair, #e9ebf0);
+      --footer-text-main: var(--text-main, #15171c);
+      --footer-text-heading: var(--text-heading, #111318);
+      --footer-text-soft: var(--text-soft, #5f6673);
+      --footer-text-muted: var(--text-muted, #8a91a0);
+      --footer-hair: var(--hair, #e9ebf0);
       box-sizing:border-box;
       max-width:100vw;
       overflow:hidden;
+      font-family:"Manrope",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      color:var(--footer-text-main);
     }
 
     footer{
       margin-top:40px;
       background:#fafbfc;
-      border-top:1px solid var(--hair);
+      border-top:1px solid var(--footer-hair);
       box-sizing:border-box;
       max-width:100vw;
       overflow:hidden;
@@ -645,7 +701,7 @@ footerTmpl.innerHTML = `
       align-items:center;
       justify-content:center;
       gap:4px;
-      color:#0b0c0f;
+      color:var(--text-heading, #111318);
       text-decoration:none;
       white-space:nowrap;
       line-height:1;
@@ -662,7 +718,7 @@ footerTmpl.innerHTML = `
       display:block;
       font-size:.72rem;
       letter-spacing:.01em;
-      color:#111827;
+      color:var(--text-heading, #111318);
       line-height:1;
     }
 
@@ -679,13 +735,13 @@ footerTmpl.innerHTML = `
     }
 
     .muted{
-      color:var(--muted);
+      color:var(--footer-text-soft);
     }
 
     .title{
       font-weight:800;
       margin-bottom:6px;
-      color:var(--text);
+      color:var(--footer-text-heading);
       font-size:.92rem;
     }
 
@@ -711,7 +767,7 @@ footerTmpl.innerHTML = `
     }
 
     .bottom{
-      border-top:1px solid var(--hair);
+      border-top:1px solid var(--footer-hair);
       background:#fafbfc;
     }
 
@@ -767,26 +823,24 @@ footerTmpl.innerHTML = `
     <div class="foot">
       <div>
         <div class="brand">
-          <img src="/heliotherm/media/image/logo.svg" alt="Heliotherm logo" class="logo" />
+           <img src="/media/image/logo.svg" alt="Heliotherm Baltics" class="logo" />
         </div>
-        <p class="muted">Heliotherm Baltics, premium klases Austrijas siltumsūkņu risinājumi.</p>
+        <p class="muted">Heliotherm Baltics, premium klases siltumsūkņu risinājumi.</p>
       </div>
 
       <div>
         <div class="title">Uzņēmums</div>
         <ul class="muted">
-          <li><a href="/heliotherm/par-mums/">Par mums</a></li>
-          <li><a href="/index.html#partners">Partneri</a></li>
-          <li><a href="/index.html#press">Preses materiāli</a></li>
+          <li><a href="/par-mums/">Par mums</a></li>
+          <li><a href="https://www.heliotherm.lv/par-mums/#sadarbiba">Partneri</a></li>
+          <li><a href="https://www.heliotherm.lv/par-mums/#sertifikats">ISO 9001 sertifikāts</a></li>
         </ul>
       </div>
 
       <div>
         <div class="title">Resursi</div>
         <ul class="muted">
-          <li><a href="/index.html#docs">Dokumentācija</a></li>
-          <li><a href="/index.html#installers">Uzstādītāju portāls</a></li>
-          <li><a href="/index.html#support">Atbalsts</a></li>
+          <li><a href="https://www.heliotherm.lv/kontakti/">Atbalsts</a></li>
         </ul>
       </div>
 
@@ -826,6 +880,104 @@ if (!customElements.get("app-footer")) {
   customElements.define("app-footer", AppFooter);
 }
 
+/* ===================== GA4 custom event tracking ===================== */
+(() => {
+  const DOWNLOAD_EXTENSIONS = /\.(pdf|doc|docx|xls|xlsx|zip)(?:[?#].*)?$/i;
+  const CTA_WORDS = [
+    "contact",
+    "kontakti",
+    "sazin",
+    "quote",
+    "consult",
+    "konsult",
+    "pieteikt",
+    "find your heat pump",
+    "atrodiet",
+    "siltumsūkni",
+    "siltumsukni"
+  ];
+
+  function currentPageParams() {
+    return {
+      page_path: window.location.pathname + window.location.search,
+      page_title: document.title
+    };
+  }
+
+  function cleanText(value) {
+    return (value || "").replace(/\s+/g, " ").trim();
+  }
+
+  function getLinkUrl(link) {
+    return link ? link.href || link.getAttribute("href") || "" : "";
+  }
+
+  function getProductName(element) {
+    const source = element && element.closest("[data-product-name], [data-product], article, section, main");
+    if (!source) return undefined;
+
+    return (
+      source.getAttribute("data-product-name") ||
+      source.getAttribute("data-product") ||
+      cleanText(source.querySelector("[data-product-title], h1, h2, h3")?.textContent) ||
+      undefined
+    );
+  }
+
+  function trackEvent(eventName, params = {}) {
+    if (typeof window.gtag !== "function") return;
+
+    window.gtag("event", eventName, {
+      ...currentPageParams(),
+      ...params
+    });
+  }
+
+  window.trackEvent = window.trackEvent || trackEvent;
+  window.heliothermTrackEvent = window.heliothermTrackEvent || trackEvent;
+
+  document.addEventListener("click", (event) => {
+    const path = typeof event.composedPath === "function" ? event.composedPath() : [];
+    const clicked = path.find((item) => item instanceof Element && item.matches?.("a, button"));
+    const link = path.find((item) => item instanceof HTMLAnchorElement);
+
+    if (!clicked && !link) return;
+
+    const href = getLinkUrl(link);
+    const hrefLower = href.toLowerCase();
+    const buttonText = cleanText((clicked || link).textContent);
+    const common = {
+      link_url: href || undefined,
+      button_text: buttonText || undefined,
+      product_name: getProductName(clicked || link)
+    };
+
+    if (link && hrefLower.startsWith("tel:")) {
+      trackEvent("phone_click", common);
+      return;
+    }
+
+    if (link && hrefLower.startsWith("mailto:")) {
+      trackEvent("email_click", common);
+      return;
+    }
+
+    if (link && DOWNLOAD_EXTENSIONS.test(hrefLower)) {
+      trackEvent("brochure_download", common);
+    }
+
+    if (link || clicked instanceof HTMLButtonElement) {
+      const textAndHref = `${buttonText} ${hrefLower}`.toLowerCase();
+      const isProductArea = Boolean((clicked || link).closest("[data-hp-selector], .product, .products, .product-card, .hp-selector"));
+      const isCta = CTA_WORDS.some((word) => textAndHref.includes(word));
+
+      if (isCta && (isProductArea || hrefLower.includes("kontakt") || hrefLower.includes("contact") || hrefLower.includes("siltumsukna-asistents"))) {
+        trackEvent("product_cta_click", common);
+      }
+    }
+  });
+})();
+
 /* ===================== subtle parallax ===================== */
 (() => {
   const prefersReduced = matchMedia("(prefers-reduced-motion: reduce)");
@@ -833,12 +985,15 @@ if (!customElements.get("app-footer")) {
   if (prefersReduced.matches) return;
 
   let ticking = false;
+
   const update = () => {
     const y = window.scrollY || 0;
+
     layers().forEach((el) => {
       const speed = Number(el.getAttribute("data-parallax")) || 0;
       el.style.transform = `translate3d(0, ${Math.max(-18, y * speed * -0.18).toFixed(2)}px, 0)`;
     });
+
     ticking = false;
   };
 
