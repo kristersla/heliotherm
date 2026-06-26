@@ -2,24 +2,11 @@
 
 Framework: static HTML/CSS/JavaScript site with PHP form endpoint and Apache `.htaccess`; deployment copy is mirrored in `httpdocs/`. Routing is directory-index based with Apache redirects.
 
-| URL | Status | Redirect | Title | Description | Canonical | Robots | H1 | Lang | Source | Sitemap | Recommended action |
-|---|---:|---|---|---|---|---|---|---|---|---|---|
-| `/` | 200 | — | Siltumsūkņi Latvijā privātmājām un uzņēmumiem | Heliotherm | Austrijā ražoti siltumsūkņi privātmājām un uzņēmumiem Latvijā. Premium risinājumi apkurei, | https://www.heliotherm.lv/ | index,follow | Premium klases Austrijas siltumsūkņi  izsmalcinātam komfortam. | lv | `index.html` | yes | keep with minimal technical SEO improvements |
-| `/kontakti/` | 200 | — | Heliotherm Baltics kontakti un konsultācija | Sazinieties ar Heliotherm Baltics par siltumsūkņa izvēli, projektu, uzstādīšanu vai piemēr | https://www.heliotherm.lv/kontakti/ | index,follow | Saikne ar  Heliotherm Baltics | lv | `kontakti/index.html` | yes | keep with minimal technical SEO improvements |
-| `/par-mums/` | 200 | — | Par Heliotherm Baltics un siltumsūkņu tehnoloģiju | Uzziniet par Heliotherm Baltics pieeju Austrijā ražotu siltumsūkņu tehnoloģijām, kvalitāte | https://www.heliotherm.lv/par-mums/ | index,follow | Siltumsūkņu tehnoloģija prasīgākajiem projektiem. | lv | `par-mums/index.html` | yes | keep with minimal technical SEO improvements |
-| `/piedavajumi/` | 200 | — | Siltumsūkņu risinājumi un pakalpojumi | Heliotherm | Heliotherm Baltics piedāvā siltumsūkņu risinājumus, konsultācijas un inženiertehnisku piee | https://www.heliotherm.lv/piedavajumi/ | index,follow | Inženiertehniskie risinājumi  no projekta līdz ekspluatācijai | lv | `piedavajumi/index.html` | yes | keep with minimal technical SEO improvements |
-| `/produkti/` | 200 | — | Heliotherm siltumsūkņi un modeļi | Produktu katalogs | Pārskatiet Heliotherm zemes, gruntsūdens, gaiss-ūdens un lieljaudas siltumsūkņu modeļus pr | https://www.heliotherm.lv/produkti/ | index,follow | Luksusa klases Austrijas siltumsūkņi  prasīgiem projektiem | lv | `produkti/index.html` | yes | keep with minimal technical SEO improvements |
-| `/produkti/produkts/` | 200 | — | Heliotherm siltumsūkņa modelis | Produkta informācija | Heliotherm produkta lapa ar modeļa aprakstu, attēliem un pieejamo informāciju par siltumsū | https://www.heliotherm.lv/produkti/produkts/ | index,follow | Produkts | lv | `produkti/produkts/index.html` | yes | keep with minimal technical SEO improvements |
-| `/siltumsukni/dzesesana-ar-siltumsukni/` | 200 | — | Dzesēšana ar siltumsūkni vasarā | Heliotherm | Uzziniet par aktīvo un pasīvo dzesēšanu ar siltumsūkni un kas jāņem vērā komfortam vasarā. | https://www.heliotherm.lv/siltumsukni/dzesesana-ar-siltumsukni/ | index,follow | Dzesēšana ar  siltumsūkni | lv | `siltumsukni/dzesesana-ar-siltumsukni/index.html` | yes | keep with minimal technical SEO improvements |
-| `/siltumsukni/heliotherm-tehniskas-ipatnibas/` | 200 | — | Heliotherm siltumsūkņu tehniskās īpatnības | Heliotherm siltumsūkņu tehnoloģijas, vadības un kvalitātes īpatnības, kas palīdz izvēlētie | https://www.heliotherm.lv/siltumsukni/heliotherm-tehniskas-ipatnibas/ | index,follow | Kvalitāte  “Made in Austria” , izstrādāts un ražots Tirolē | lv | `siltumsukni/heliotherm-tehniskas-ipatnibas/index.html` | yes | keep with minimal technical SEO improvements |
-| `/siltumsukni/ka-darbojas-siltumsuknis/` | 200 | — | Kā darbojas siltumsūknis apkurei un dzesēšanai | Heliotherm | Skaidrojums, kā siltumsūknis izmanto dabas siltuma avotus, lai nodrošinātu apkuri, dzesēša | https://www.heliotherm.lv/siltumsukni/ka-darbojas-siltumsuknis/ | index,follow | Kā darbojas  siltumsūknis | lv | `siltumsukni/ka-darbojas-siltumsuknis/index.html` | yes | keep with minimal technical SEO improvements |
-| `/siltumsukni/siltuma-avoti-siltumsukniem/` | 200 | — | Siltumsūkņu siltuma avoti: zeme, ūdens un gaiss | Heliotherm | Uzziniet, kā siltumsūkņi izmanto zemi, gruntsūdeni un gaisu kā siltuma avotus apkurei, dze | https://www.heliotherm.lv/siltumsukni/siltuma-avoti-siltumsukniem/ | index,follow | Neizsmeļami  siltuma avoti  siltumsūkņiem | lv | `siltumsukni/siltuma-avoti-siltumsukniem/index.html` | yes | keep with minimal technical SEO improvements |
-| `/siltumsukni/subsidijas-siltumsukniem/` | 200 | — | Subsīdijas siltumsūkņiem Latvijā | Heliotherm | Informācija par sagatavošanos siltumsūkņu atbalsta programmām un datiem, kas jāpārbauda pi | https://www.heliotherm.lv/siltumsukni/subsidijas-siltumsukniem/ | index,follow | Subsīdijas siltumsūkņiem | lv | `siltumsukni/subsidijas-siltumsukniem/index.html` | yes | keep with minimal technical SEO improvements |
-
 ## Findings addressed
+
 - `/produkti/` used the About page title; this was fixed without changing the approved product-page layout.
-- Several informational pages used generic `Heliotherm Baltic` titles and no H1; the existing visible heading was converted to H1 with matching CSS so the visual treatment stays the same.
-- Canonical redirects now cover host, HTTPS, slash and `/index.html` variants.
-- Thin generic landing pages created in the previous attempt were removed from the public site and sitemap.
-- The EN selector points to the official external heliotherm.com English website, so reciprocal hreflang was not added.
-- Product query-string clean URL migration remains a future task because the current product page depends on query-string item handling.
+- Generic `Heliotherm Baltic` titles on informational pages were replaced with unique metadata.
+- Three informational pages had no H1; their existing visible H2 headings were changed semantically to H1 while preserving identical styling.
+- Canonical redirects now cover production host, HTTPS, slash and `/index.html` variants without forcing arbitrary preview/staging hosts to production.
+- Product query-string URLs remain working and are not redirected to generic pages.
+- No new landing pages are published in this cleanup.

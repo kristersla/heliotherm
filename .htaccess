@@ -1,4 +1,4 @@
-# Heliotherm static site technical SEO, canonical redirects and performance headers
+# Heliotherm static site technical SEO and production-safe headers
 
 AddDefaultCharset UTF-8
 Options -MultiViews
@@ -17,7 +17,7 @@ ErrorDocument 404 /404.html
   RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
   RewriteRule ^ https://www.heliotherm.lv%{REQUEST_URI} [R=301,L,NE]
 
-  # Remove index files.
+  # Remove duplicate index files.
   RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
   RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L,NE]
 
@@ -29,13 +29,10 @@ ErrorDocument 404 /404.html
   RewriteRule ^siltumsuknis/info-par-siltumsukniem/?$ /siltumsukni/ka-darbojas-siltumsuknis/ [R=301,L]
   RewriteRule ^siltumsuknis/info-par-siltumsukniem/geotermalais-siltumsuknis/?$ /siltumsukni/siltuma-avoti-siltumsukniem/ [R=301,L]
 
-  # Product item query URLs are intentionally preserved by the product page router.
-
   # Canonical trailing slash for extensionless page routes.
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_URI} !/$
   RewriteRule ^(.+[^/])$ /$1/ [R=301,L,NE]
-
 </IfModule>
 
 <IfModule mod_mime.c>

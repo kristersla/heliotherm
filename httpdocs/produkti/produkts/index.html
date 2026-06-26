@@ -5093,31 +5093,6 @@
     });
   }
 
-
-    function setMetaBySelector(selector, attr, value){
-      const el = document.querySelector(selector);
-      if (el && value) el.setAttribute(attr, value);
-    }
-
-    function setProductSeo(product){
-      const slug = String(product.id || "").replace(/_/g, "-");
-      const canonicalUrl = new URL(window.location.href);
-      canonicalUrl.search = slug ? `?item=${encodeURIComponent(slug)}` : "";
-      canonicalUrl.hash = "";
-
-      const title = `${product.name} | Heliotherm Baltics`;
-      const description = product.intro || `${product.name} — Heliotherm siltumsūkņa produkta informācija.`;
-
-      document.title = title;
-      setMetaBySelector('meta[name="description"]', 'content', description);
-      setMetaBySelector('link[rel="canonical"]', 'href', canonicalUrl.href);
-      setMetaBySelector('meta[property="og:title"]', 'content', title);
-      setMetaBySelector('meta[property="og:description"]', 'content', description);
-      setMetaBySelector('meta[property="og:url"]', 'content', canonicalUrl.href);
-      setMetaBySelector('meta[name="twitter:title"]', 'content', title);
-      setMetaBySelector('meta[name="twitter:description"]', 'content', description);
-    }
-
   function initProductPage(){
     const product = getProductFromUrl();
 
@@ -5178,7 +5153,7 @@
     renderLineup(product);
     renderIcons(product);
 
-    setProductSeo(product);
+    document.title = `${product.name} - Heliotherm Baltics`;
   }
 
   initProductPage();

@@ -9,16 +9,16 @@
 
 /* ---------- Helpers ---------- */
 const NAV_ROUTES = {
-  home: ["/", "/heliotherm", "/index.html", "/index.html"],
-  about: ["/par-mums", "/par-mums"],
-  products: ["/produkti", "/produkti"],
+  home: ["/", "/heliotherm", "/index.html", "/heliotherm/index.html"],
+  about: ["/par-mums", "/heliotherm/par-mums"],
+  products: ["/produkti", "/heliotherm/produkti"],
   solutions: [
     "/piedavajumi",
-    "/piedavajumi",
+    "/heliotherm/piedavajumi",
     "/piedāvājumi",
-    "/piedāvājumi",
+    "/heliotherm/piedāvājumi",
   ],
-  contacts: ["/kontakti", "/kontakti"],
+  contacts: ["/kontakti", "/heliotherm/kontakti"],
 };
 
 const NAV_KEY_ALIASES = {
