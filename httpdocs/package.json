@@ -1,0 +1,1 @@
+{"scripts":{"seo:check":"node scripts/seo-check.js .","seo:check:httpdocs":"node scripts/seo-check.js httpdocs"},"devDependencies":{}}
