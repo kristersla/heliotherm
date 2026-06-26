@@ -549,6 +549,7 @@ class AppHeader extends HTMLElement {
 
     addEventListener("resize", setHeight, { passive: true });
     addEventListener("orientationchange", setHeight, { passive: true });
+    addEventListener("scroll", setHeight, { passive: true });
 
     const currentLang = getLangFromUrl();
 
@@ -567,6 +568,14 @@ class AppHeader extends HTMLElement {
         if (!btn) return;
 
         const lang = btn.dataset.lang;
+
+        if (typeof window.heliothermTrackEvent === "function") {
+          window.heliothermTrackEvent("language_switch", {
+            language: lang,
+            button_text: (btn.textContent || "").replace(/\s+/g, " ").trim(),
+            link_url: btn.href || btn.getAttribute("href") || undefined
+          });
+        }
 
         if (lang === "en") {
           return;
@@ -870,3 +879,131 @@ class AppFooter extends HTMLElement {
 if (!customElements.get("app-footer")) {
   customElements.define("app-footer", AppFooter);
 }
+
+/* ===================== GA4 custom event tracking ===================== */
+(() => {
+  const DOWNLOAD_EXTENSIONS = /\.(pdf|doc|docx|xls|xlsx|zip)(?:[?#].*)?$/i;
+  const CTA_WORDS = [
+    "contact",
+    "kontakti",
+    "sazin",
+    "quote",
+    "consult",
+    "konsult",
+    "pieteikt",
+    "find your heat pump",
+    "atrodiet",
+    "siltumsūkni",
+    "siltumsukni"
+  ];
+
+  function currentPageParams() {
+    return {
+      page_path: window.location.pathname + window.location.search,
+      page_title: document.title
+    };
+  }
+
+  function cleanText(value) {
+    return (value || "").replace(/\s+/g, " ").trim();
+  }
+
+  function getLinkUrl(link) {
+    return link ? link.href || link.getAttribute("href") || "" : "";
+  }
+
+  function getProductName(element) {
+    const source = element && element.closest("[data-product-name], [data-product], article, section, main");
+    if (!source) return undefined;
+
+    return (
+      source.getAttribute("data-product-name") ||
+      source.getAttribute("data-product") ||
+      cleanText(source.querySelector("[data-product-title], h1, h2, h3")?.textContent) ||
+      undefined
+    );
+  }
+
+  function trackEvent(eventName, params = {}) {
+    if (typeof window.gtag !== "function") return;
+
+    window.gtag("event", eventName, {
+      ...currentPageParams(),
+      ...params
+    });
+  }
+
+  window.trackEvent = window.trackEvent || trackEvent;
+  window.heliothermTrackEvent = window.heliothermTrackEvent || trackEvent;
+
+  document.addEventListener("click", (event) => {
+    const path = typeof event.composedPath === "function" ? event.composedPath() : [];
+    const clicked = path.find((item) => item instanceof Element && item.matches?.("a, button"));
+    const link = path.find((item) => item instanceof HTMLAnchorElement);
+
+    if (!clicked && !link) return;
+
+    const href = getLinkUrl(link);
+    const hrefLower = href.toLowerCase();
+    const buttonText = cleanText((clicked || link).textContent);
+    const common = {
+      link_url: href || undefined,
+      button_text: buttonText || undefined,
+      product_name: getProductName(clicked || link)
+    };
+
+    if (link && hrefLower.startsWith("tel:")) {
+      trackEvent("phone_click", common);
+      return;
+    }
+
+    if (link && hrefLower.startsWith("mailto:")) {
+      trackEvent("email_click", common);
+      return;
+    }
+
+    if (link && DOWNLOAD_EXTENSIONS.test(hrefLower)) {
+      trackEvent("brochure_download", common);
+    }
+
+    if (link || clicked instanceof HTMLButtonElement) {
+      const textAndHref = `${buttonText} ${hrefLower}`.toLowerCase();
+      const isProductArea = Boolean((clicked || link).closest("[data-hp-selector], .product, .products, .product-card, .hp-selector"));
+      const isCta = CTA_WORDS.some((word) => textAndHref.includes(word));
+
+      if (isCta && (isProductArea || hrefLower.includes("kontakt") || hrefLower.includes("contact") || hrefLower.includes("siltumsukna-asistents"))) {
+        trackEvent("product_cta_click", common);
+      }
+    }
+  });
+})();
+
+/* ===================== subtle parallax ===================== */
+(() => {
+  const prefersReduced = matchMedia("(prefers-reduced-motion: reduce)");
+  const layers = () => Array.from(document.querySelectorAll("[data-parallax]"));
+  if (prefersReduced.matches) return;
+
+  let ticking = false;
+
+  const update = () => {
+    const y = window.scrollY || 0;
+
+    layers().forEach((el) => {
+      const speed = Number(el.getAttribute("data-parallax")) || 0;
+      el.style.transform = `translate3d(0, ${Math.max(-18, y * speed * -0.18).toFixed(2)}px, 0)`;
+    });
+
+    ticking = false;
+  };
+
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+
+  addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", onScroll, { passive: true });
+  update();
+})();

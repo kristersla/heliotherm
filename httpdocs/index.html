@@ -3223,6 +3223,13 @@
       if (result) result.classList.add('is-active');
       if (progress) progress.style.width = '100%';
       if (stepCount) stepCount.textContent = 'Rezultāts';
+
+      if (typeof window.heliothermTrackEvent === 'function') {
+        window.heliothermTrackEvent('find_heat_pump_submit', {
+          form_name: 'find_heat_pump_selector',
+          product_name: top.title
+        });
+      }
     }
 
     root.addEventListener('click', function(event){
@@ -3233,9 +3240,16 @@
       if (option && root.contains(option)) {
         const field = option.getAttribute('data-field');
         const value = option.getAttribute('data-value');
+        const isFirstStep = current === 0 && Object.keys(answers).length === 0;
         if (field) {
           answers[field] = value;
           updatePicked(field, value);
+        }
+        if (isFirstStep && typeof window.heliothermTrackEvent === 'function') {
+          window.heliothermTrackEvent('find_heat_pump_start', {
+            form_name: 'find_heat_pump_selector',
+            button_text: option.textContent.replace(/\s+/g, ' ').trim()
+          });
         }
         if (current >= stages.length - 1) {
           renderResult();

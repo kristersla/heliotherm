@@ -951,6 +951,11 @@
           }
 
           showStatus(result.message || 'Pieteikums nosūtīts veiksmīgi.', 'success');
+          if (typeof window.heliothermTrackEvent === 'function') {
+            window.heliothermTrackEvent('contact_form_submit', {
+              form_name: 'project_contact_form'
+            });
+          }
           form.reset();
 
           if (typeof grecaptcha !== 'undefined') {
