@@ -21,13 +21,19 @@ ErrorDocument 404 /404.html
   RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
   RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L,NE]
 
-  # Legacy and duplicate routes.
+  # Legacy SEO migration redirects: one-to-one equivalents only.
   RewriteRule ^sazinaties-ar-mums/?$ /kontakti/ [R=301,L]
   RewriteRule ^pakalpojumi/?$ /piedavajumi/ [R=301,L]
-  RewriteRule ^siltumsukni/?$ /produkti/ [R=301,L]
-  RewriteRule ^siltumsuknis/?$ /produkti/ [R=301,L]
-  RewriteRule ^siltumsuknis/info-par-siltumsukniem/?$ /siltumsukni/ka-darbojas-siltumsuknis/ [R=301,L]
-  RewriteRule ^siltumsuknis/info-par-siltumsukniem/geotermalais-siltumsuknis/?$ /siltumsukni/siltuma-avoti-siltumsukniem/ [R=301,L]
+  RewriteRule ^siltumsuknis/?$ /siltumsukni/ [R=301,L]
+  RewriteRule ^siltumsuknis/info-par-siltumsukniem/?$ /siltumsukni/ [R=301,L]
+
+  # Legacy topic URLs restored as canonical 200 pages, not redirected:
+  # /siltumsukni/
+  # /siltumsuknis/info-par-siltumsukniem/geotermalais-siltumsuknis/
+  # /siltumsuknis/info-par-siltumsukniem/geotermala-energija/
+  # /siltumsuknis/info-par-siltumsukniem/udens-siltumsuknis/
+  # /siltumsuknis/info-par-siltumsukniem/cop/
+  # /siltumsuknis/info-par-siltumsukniem/plusmas-temperatura/
 
   # Canonical trailing slash for extensionless page routes.
   RewriteCond %{REQUEST_FILENAME} !-f
