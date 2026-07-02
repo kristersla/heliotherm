@@ -1,0 +1,19 @@
+.legacy-heat .legacy-hero{max-width:860px;margin:0 auto 34px;text-align:center}
+.legacy-heat .eyebrow{margin:0 0 .35rem;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.legacy-heat h1{margin:0 0 .7rem;font-size:clamp(2rem,3.4vw,2.8rem);line-height:1.1;letter-spacing:-.01em}
+.legacy-heat .lead{max-width:74ch;margin:0 auto;color:var(--muted);font-size:1rem;line-height:1.7}
+.legacy-heat .topic-grid{display:grid;gap:var(--gap);grid-template-columns:1fr;margin-top:34px;max-width:1040px;margin-inline:auto}
+.legacy-heat h2{margin:0 0 .75rem;font-size:clamp(1.35rem,2.4vw,1.85rem);line-height:1.2}
+.legacy-heat p{margin:0 0 1rem}
+.legacy-heat p:last-child{margin-bottom:0}
+.legacy-heat .card p,.legacy-heat li{color:var(--muted);line-height:1.7}
+.legacy-heat .link-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.legacy-heat .link-list a,.legacy-heat .card a:not(.btn){color:var(--brand);font-weight:700}
+.legacy-heat .related{background:var(--panel-2);border:1px solid var(--hair);border-radius:var(--radius);padding:clamp(18px,2.4vw,28px);margin-top:34px}
+.legacy-heat .cta{margin-top:42px;text-align:center;background:linear-gradient(135deg,#fff,#f8f9fb);border:1px solid var(--ring);border-radius:var(--radius);box-shadow:var(--shadow);padding:clamp(24px,4vw,42px)}
+.legacy-heat .cta p{max-width:62ch;margin:0 auto 18px;color:var(--muted);line-height:1.7}
+
+@media (min-width:800px){.legacy-heat .topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.legacy-heat .topic-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
